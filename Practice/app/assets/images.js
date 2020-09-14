@@ -1,0 +1,25 @@
+const images = {
+  menuWhite: require('./img/menuWhite.png'),
+  backWhite: require('./img/backWhite.png'),
+  reminderWhite: require('./img/reminderWhite.png'),
+  sunriseWhite: require('./img/sunriseWhite.png'),
+  sunriseBlack: require('./img/sunriseBlack.png'),
+  dayBlack: require('./img/dayBlack.png'),
+  dayWhite: require('./img/dayWhite.png'),
+  nightBlack: require('./img/nightBlack.png'),
+  nightWhite: require('./img/nightWhite.png'),
+  checkBlack: require('./img/checkBlack.png'),
+  checkWhite: require('./img/checkWhite.png'),
+  xBlack: require('./img/xBlack.png'),
+  xWhite: require('./img/xWhite.png'),
+  beginBlack: require('./img/beginBlack.png'),
+  beginWhite: require('./img/beginWhite.png'),
+  questionMarkBlack: require('./img/questionMarkBlack.png'),
+  questionMarkWhite: require('./img/questionMarkWhite.png'),
+  pauseBlack: require('./img/pauseBlack.png'),
+  pauseWhite: require('./img/pauseWhite.png'),
+  playBlack: require('./img/playBlack.png'),
+  playWhite: require('./img/playWhite.png'),
+};
+
+export default images;

@@ -1,0 +1,20 @@
+export const RESET_AWARENESS_BEGINNER = 'RESET_AWARENESS_BEGINNER';
+
+export const UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_ISCOMPLETE =
+  'UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_ISCOMPLETE';
+export const UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_REMINDERTIME =
+  'UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_REMINDERTIME';
+
+export const resetAwarenessBeginner = () => ({
+  type: RESET_AWARENESS_BEGINNER,
+});
+
+export const updateAwarenessBeginnerClassExerciseIsComplete = (obj) => ({
+  type: UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_ISCOMPLETE,
+  obj,
+});
+
+export const updateAwarenessBeginnerClassExerciseReminderTime = (obj) => ({
+  type: UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_REMINDERTIME,
+  obj,
+});

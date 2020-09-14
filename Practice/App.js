@@ -5,25 +5,26 @@
  * @format
  * @flow strict-local
  */
-import 'react-native-gesture-handler';
 
-import React from 'react';
-import {View, StatusBar} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import 'react-native-gesture-handler'; // need this for react-navigation
+import React, {Component} from 'react';
 
-import BaseNavigation from './config/BaseNavigation';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
-const App: () => React$Node = () => {
-  return (
-    <View style={{flex: 1}}>
-      <StatusBar
-        barStyle="light-content"
-        translucent
-        backgroundColor={'transparent'}
-      />
-      <NavigationContainer>{<BaseNavigation />}</NavigationContainer>
-    </View>
-  );
-};
+import {store, persistor} from './app/config/store';
+import AppSetup from './app/setup/AppSetup';
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppSetup />
+        </PersistGate>
+      </Provider>
+    );
+  }
+}
 
 export default App;

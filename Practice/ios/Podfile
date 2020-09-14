@@ -6,6 +6,8 @@ platform :ios, '10.0'
 target 'Practice' do
   config = use_native_modules!
 
+  pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
+
   use_react_native!(:path => config["reactNativePath"])
 
   target 'PracticeTests' do
