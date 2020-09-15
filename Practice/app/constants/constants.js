@@ -10,10 +10,15 @@ const INSTRUCTION_EXERCISE_SCREEN = 'instruction';
 const STANDARD_EXERCISE_SCREEN = 'exercise';
 
 // EXERCISE METHOD TYPES
-const BREATH_EXERCISE = 'breath';
-const SENSATION_EXERCISE = 'sensation';
-const THOUGHT_EXERCISE = 'thought';
-const HEAR_EXERCISE = 'hear';
+const BREATH_EXERCISE = 'Breath';
+const SENSATION_EXERCISE = 'Sensation';
+const THOUGHT_EXERCISE = 'Thought';
+const HEAR_EXERCISE = 'Hear';
+const SEE_EXERCISE = 'See';
+
+const QUESTION_EXERCISE = 'Question';
+const QUOTE_EXERCISE = 'Quote';
+const INTERACTIVE_EXERCISE = 'Interactive';
 
 // URL & LINKING
 const URL_HEADER = 'practice://';
@@ -29,5 +34,9 @@ export {
   SENSATION_EXERCISE,
   THOUGHT_EXERCISE,
   HEAR_EXERCISE,
+  SEE_EXERCISE,
+  QUESTION_EXERCISE,
+  QUOTE_EXERCISE,
+  INTERACTIVE_EXERCISE,
   URL_HEADER,
 };

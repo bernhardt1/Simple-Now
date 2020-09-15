@@ -17,10 +17,12 @@ import AppSetup from './app/setup/AppSetup';
 
 class App extends Component {
   render() {
+    const {initialNotificationUserInfo} = this.props;
+
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppSetup />
+          <AppSetup initialNotification={initialNotificationUserInfo?.screen} />
         </PersistGate>
       </Provider>
     );

@@ -1,6 +1,5 @@
 import {BRAND_WHITE} from '../../styles/colors';
 import {widthUnit} from '../../styles/constants';
-import {buttonFromEdgeSpacing} from '../../styles/spacings';
 import {
   informationalContainer,
   informationalImage,
@@ -22,7 +21,7 @@ const styles = {
   checkContainer: {
     ...informationalContainer,
     backgroundColor: BRAND_WHITE,
-    marginTop: buttonFromEdgeSpacing.padding,
+    marginTop: widthUnit,
   },
 };
 

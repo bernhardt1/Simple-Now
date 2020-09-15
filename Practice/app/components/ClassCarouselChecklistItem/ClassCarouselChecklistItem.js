@@ -11,7 +11,7 @@ const ClassCarouselChecklistItem = ({image, reminderTime, isComplete}) => {
     <View style={styles.container}>
       <Image source={setLocalImage(`${image}White`)} style={styles.itemImage} />
       <Text style={[subheadFont, whiteFont]}>
-        {convertReminderTimeToReadable(reminderTime) || ''}
+        {convertReminderTimeToReadable(reminderTime) || '-'}
       </Text>
       <View style={styles.checkContainer}>
         {isComplete && (

@@ -46,6 +46,7 @@ const Class = ({navigation, route, reduxAwarenessBeginner}) => {
           classIndex,
           index,
         )}
+        lastItem={index === classInfo?.exercises?.length - 1}
       />
     );
   };

@@ -3,6 +3,12 @@ import {Platform} from 'react-native';
 
 class NotificationHandler {
   onNotification(notification) {
+    this.timeout = setTimeout(() => {
+      this.fireNotification(notification);
+    }, 500);
+  }
+
+  fireNotification(notification) {
     if (typeof this._onNotification === 'function') {
       this._onNotification(notification);
     }

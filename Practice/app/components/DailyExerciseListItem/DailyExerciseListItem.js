@@ -21,6 +21,7 @@ const DailyExerciseListItem = ({
   isExerciseComplete,
   isExerciseScheduled,
   navigation,
+  lastItem,
 }) => {
   const tryNavigateExercise = () => {
     if (isExerciseScheduled) {
@@ -49,7 +50,12 @@ const DailyExerciseListItem = ({
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={tryNavigateExercise}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        lastItem ? {marginBottom: styles.container.margin} : {},
+      ]}
+      onPress={tryNavigateExercise}>
       <LinearGradient
         colors={
           isExerciseComplete
@@ -90,7 +96,7 @@ const DailyExerciseListItem = ({
           )}
         </View>
         <View style={styles.informationBottomContainer}>
-          <Text ellipsizeMode="tail" style={subheadFont}>
+          <Text ellipsizeMode="tail" style={[subheadFont]} numberOfLines={2}>
             {exercise.copy}
           </Text>
         </View>

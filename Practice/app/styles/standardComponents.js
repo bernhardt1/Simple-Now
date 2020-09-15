@@ -16,7 +16,7 @@ const islandCarouselItem = {
 
 // Buttons
 const standardButton = {
-  height: widthUnit * 10,
+  height: widthUnit * 11,
   minWidth: widthUnit * 20,
   borderRadius: BORDER_RADIUS,
   backgroundColor: BRAND_WHITE,
@@ -45,15 +45,15 @@ const bottomButton = {
 
 // Informational Components
 const informationalContainer = {
-  height: widthUnit * 12,
-  width: widthUnit * 12,
-  borderRadius: (widthUnit * 12) / 2,
+  height: widthUnit * 10,
+  width: widthUnit * 10,
+  borderRadius: (widthUnit * 10) / 2,
   justifyContent: 'center',
   alignItems: 'center',
 };
 const informationalImage = {
-  height: widthUnit * 9,
-  width: widthUnit * 9,
+  height: widthUnit * 8,
+  width: widthUnit * 8,
 };
 
 // animatedBottomButton

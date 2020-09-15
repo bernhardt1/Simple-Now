@@ -14,31 +14,31 @@ import GradientHeaderLargeLogic from '../components/GradientHeaderLarge/Gradient
 const Stack = createStackNavigator();
 
 function BaseNavigation() {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    this.timeout = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+  // useEffect(() => {
+  //   this.timeout = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2500);
 
-    return () => {
-      clearTimeout(this.timeout);
-    };
-  });
+  //   return () => {
+  //     clearTimeout(this.timeout);
+  //   };
+  // });
 
-  if (loading) {
-    return (
-      <Stack.Navigator initialRouteName="Loading">
-        <Stack.Screen
-          name="Loading"
-          component={Loading}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <Stack.Navigator initialRouteName="Loading">
+  //       <Stack.Screen
+  //         name="Loading"
+  //         component={Loading}
+  //         options={{
+  //           headerShown: false,
+  //         }}
+  //       />
+  //     </Stack.Navigator>
+  //   );
+  // }
 
   return (
     <Stack.Navigator

@@ -4,10 +4,21 @@ import {CLASS_SCREEN, EXERCISE_SCREEN} from '../constants/constants';
 // this function accepts a string and returns the local image with a matching name.
 function createNavigationStateForExercise(path) {
   const parts = path.split('/');
-  const screen = parts[0];
-  const courseIndex = parts[1];
-  const classIndex = parts[2];
-  const exerciseIndex = parts[3];
+  let screen;
+  let courseIndex;
+  let classIndex;
+  let exerciseIndex;
+
+  if (parts.length < 4) {
+    courseIndex = parts[0];
+    classIndex = parts[1];
+    exerciseIndex = parts[2];
+  } else {
+    screen = parts[0];
+    courseIndex = parts[1];
+    classIndex = parts[2];
+    exerciseIndex = parts[3];
+  }
 
   const course = awarenessBeginner;
 

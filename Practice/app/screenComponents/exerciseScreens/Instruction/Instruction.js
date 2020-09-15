@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {ScrollView, Text, SafeAreaView} from 'react-native';
 import {StackActions} from '@react-navigation/native';
 
 import styles from './styles';
 import {bodyFont} from '../../../styles/fonts';
 import BottomButton from '../../../components/BottomButton/BottomButton';
 import {EXERCISE_SCREEN} from '../../../constants/constants';
+import {InvisibleSeparator} from '../../../components/InvisibleSeparator';
 
 const Instruction = ({
   exercise,
@@ -30,9 +31,14 @@ const Instruction = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.textContainer}>
+      <ScrollView style={styles.scrollView}>
         <Text style={bodyFont}>{exercise?.instructions}</Text>
-      </View>
+        <InvisibleSeparator />
+        <InvisibleSeparator />
+        <InvisibleSeparator />
+        <InvisibleSeparator />
+        <InvisibleSeparator />
+      </ScrollView>
 
       <BottomButton title={'Next'} onPress={navigateNext} />
     </SafeAreaView>

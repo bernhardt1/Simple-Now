@@ -1,16 +1,14 @@
+import {BRAND_WHITE} from '../../../styles/colors';
 import {textContainerSpacing} from '../../../styles/spacings';
 
 const styles = {
   container: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    backgroundColor: BRAND_WHITE,
   },
-  textContainer: {
+  scrollView: {
     flex: 1,
     ...textContainerSpacing,
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
   },
 };
 

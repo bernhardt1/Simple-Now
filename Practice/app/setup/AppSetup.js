@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, StatusBar, Alert, Linking, Platform} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 import {connect} from 'react-redux';
 
@@ -10,6 +11,7 @@ import linking from '../config/linking';
 import {updateNavigationDeepLink} from '../actions/navigation';
 import convertUrlToPath from '../helpers/convertUrlToPath';
 import createNavigationStateForExercise from '../helpers/createNavigationStateForExercise';
+import {BRAND_WHITE} from '../styles/colors';
 
 class AppSetup extends Component {
   constructor(props) {
@@ -22,6 +24,11 @@ class AppSetup extends Component {
 
     global.Notifications = this.notif;
     Linking.addEventListener('url', this.onLink);
+
+    // handle initial notification iOS
+    const {initialNotification} = props;
+    console.log('initialNotification', initialNotification);
+    if (initialNotification) this.onLink(initialNotification);
   }
 
   async componentDidMount() {
@@ -41,7 +48,9 @@ class AppSetup extends Component {
     if (Platform.OS === 'ios' && url?.url) url = url.url;
 
     const path = convertUrlToPath(url);
+    console.log('path', path);
     const linkingState = createNavigationStateForExercise(path);
+    console.log('linkingState', linkingState);
 
     reduxUpdateNavigationDeepLink(linkingState);
   };
@@ -51,9 +60,7 @@ class AppSetup extends Component {
   }
 
   onNotif(notif) {
-    // set state for navigation here
-    console.log('notif', notif);
-    Alert.alert(notif.title, notif.message);
+    this.onLink(notif?.data?.screen);
   }
 
   handlePerm(perms) {

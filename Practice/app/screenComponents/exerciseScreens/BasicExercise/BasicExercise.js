@@ -40,14 +40,6 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
 
   useEffect(() => {
     startAnimation();
-
-    navigation.dispatch((state) => {
-      console.log('current state', state);
-      // Remove the home route from the stack
-      // const routes = state.routes.filter((r) => r.name !== 'Home');
-
-      return state;
-    });
   }, []);
 
   const startAnimation = () => {
@@ -55,7 +47,7 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
       toValue: 1,
       duration: parseInt(remainingDuration, 10),
       easing: Easing.linear,
-      useNativeDriver: false,
+      useNativeDriver: false, // must be false if we want to use the exerciseProgress variable anywhere else
     }).start(({finished}) => {
       if (finished && markAsComplete) {
         markAsComplete();

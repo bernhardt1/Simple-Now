@@ -52,6 +52,23 @@ static void InitializeFlipper(UIApplication *application) {
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
   
+  // Create a Mutable Dictionary to hold the appProperties to pass to React Native.
+  NSMutableDictionary *appProperties = [NSMutableDictionary dictionary];
+
+  if (launchOptions != nil) {
+    // Get Local Notification used to launch application.
+    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+
+    if (notification) {
+      // Instead of passing the entire Notification, we'll pass the userInfo,
+      // where a Record ID could be stored, for example.
+      NSDictionary *notificationUserInfo = [notification userInfo];
+
+      [ appProperties setObject:notificationUserInfo  forKey:@"initialNotificationUserInfo" ];
+    }
+  }
+  rootView.appProperties = appProperties;
+  
   return YES;
 }
 

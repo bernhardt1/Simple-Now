@@ -4,6 +4,14 @@ import {
   SENSATION_EXERCISE,
   THOUGHT_EXERCISE,
 } from '../../constants/constants';
+import {
+  BREATH_0,
+  BREATH_1,
+  HEAR_0,
+  SENSATION_0,
+  THOUGHT_0,
+  VISUAL_0,
+} from './awarenessExercises';
 
 // Awareness Beginner CLASS
 const awarenessBeginner = {
@@ -26,29 +34,19 @@ const awarenessBeginner = {
           image: 'begin',
         },
         {
-          title: 'Breath',
-          copy: 'Notice the natural rhythm of your breath.',
-          recommendedTime: '30000',
+          ...BREATH_0,
           reminderTime: '7:00:00',
-          exerciseType: BREATH_EXERCISE,
           image: 'sunrise',
         },
         {
-          title: 'Sensation',
-          copy: 'Pay attention to the feeling in your lips.',
-          recommendedTime: '30000',
+          ...SENSATION_0,
           reminderTime: '13:00:00',
           image: 'day',
-          exerciseType: SENSATION_EXERCISE,
         },
         {
-          title: 'Thought',
-          copy:
-            'Can you recognize the next thought you have? Just witness it without judgement.',
-          recommendedTime: '30000',
+          ...THOUGHT_0,
           reminderTime: '20:00:00',
           image: 'night',
-          exerciseType: THOUGHT_EXERCISE,
         },
       ],
     },
@@ -56,29 +54,39 @@ const awarenessBeginner = {
       title: 'Day 1',
       exercises: [
         {
-          title: 'Breath',
-          copy: 'Notice the natural rhythm of your breath.',
-          recommendedTime: '30000',
+          ...BREATH_1,
           reminderTime: '7:00:00',
           image: 'sunrise',
-          exerciseType: BREATH_EXERCISE,
         },
         {
-          title: 'Sensation',
-          copy: 'Pay attention to the feeling in your lips.',
-          recommendedTime: '30000',
+          ...VISUAL_0,
           reminderTime: '13:00:00',
           image: 'day',
-          exerciseType: SENSATION_EXERCISE,
         },
         {
-          title: 'Thought',
-          copy:
-            'Can you recognize the next thought you have? Just witness it without judgement.',
-          recommendedTime: '30000',
+          ...HEAR_0,
           reminderTime: '20:00:00',
           image: 'night',
-          exerciseType: THOUGHT_EXERCISE,
+        },
+      ],
+    },
+    {
+      title: 'Day 2',
+      exercises: [
+        {
+          ...BREATH_1,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...VISUAL_0,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...HEAR_0,
+          reminderTime: '20:00:00',
+          image: 'night',
         },
       ],
     },

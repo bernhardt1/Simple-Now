@@ -59,7 +59,6 @@ const styles = {
   },
   informationBottomContainer: {
     flex: 1,
-    alignSelf: 'stretch',
   },
 };
 
