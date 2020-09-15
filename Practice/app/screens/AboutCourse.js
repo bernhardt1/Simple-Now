@@ -41,14 +41,14 @@ const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
           }}
           withBorder
         />
-        <StandardButton
+        {/* <StandardButton
           title={'Send C0E0 notification'}
           onPress={() => {
             global.Notifications.localNotif();
           }}
           withBorder
-        />
-        <StandardButton
+        /> */}
+        {/* <StandardButton
           title={'Print Notifications'}
           onPress={() => {
             global.Notifications.getScheduledLocalNotifications((notifs) =>
@@ -56,14 +56,14 @@ const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
             );
           }}
           withBorder
-        />
-        <StandardButton
+        /> */}
+        {/* <StandardButton
           title={'Cancel Notifications'}
           onPress={() => {
             global.Notifications.cancelAll();
           }}
           withBorder
-        />
+        /> */}
         <View style={scrollViewBottomMargin} />
       </ScrollView>
     </View>

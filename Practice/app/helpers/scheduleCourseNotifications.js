@@ -11,6 +11,10 @@ const scheduleCourseNotifications = (
   const existingNotificationReminderTimes = getCourseNotificationReminderTimes(
     reduxCourse,
   );
+  console.log(
+    'existingNotificationReminderTimes',
+    existingNotificationReminderTimes,
+  );
   let reminderHoursIncrementer = 0;
   // schedule all notifications
 
@@ -26,6 +30,16 @@ const scheduleCourseNotifications = (
         const reminderDate = convertReminderToISODate(
           reminderTime,
           reminderHoursIncrementer,
+        );
+        console.log('reminderDate', reminderDate);
+        console.log('now', now);
+        console.log('reminderDate > now', reminderDate > now);
+
+        console.log(
+          'existingNotificationReminderTimes.includes(JSON.stringify(reminderDate))',
+          !existingNotificationReminderTimes.includes(
+            JSON.stringify(reminderDate),
+          ),
         );
 
         if (
