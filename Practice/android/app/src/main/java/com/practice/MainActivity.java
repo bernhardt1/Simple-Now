@@ -1,4 +1,4 @@
-package com.practice;
+package com.dailymindfulness.practice;
 
 import com.facebook.react.ReactActivity;
 

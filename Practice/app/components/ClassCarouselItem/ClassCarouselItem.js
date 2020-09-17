@@ -17,8 +17,8 @@ import {
 } from '../../styles/fonts';
 import StandardButton from '../StandardButton/StandardButton';
 import {StandardImageButton} from '../StandardImageButton';
-import getClassProgressionInformation from '../../helpers/getClassProgressionInformation';
-import {awarenessBeginner} from '../../assets/courses';
+import getClassProgressionInformation from '../../helpers/reduxHelpers/getClassProgressionInformation';
+import {AWARENESS_BEGINNER_COURSE} from '../../assets/courses';
 import ClassCarouselItemChecklist from '../ClassCarouselItemChecklist/ClassCarouselItemChecklist';
 import StandardFlair from '../StandardFlair/StandardFlair';
 
@@ -57,7 +57,7 @@ const ClassCarouselItem = ({
           {isCourseActivated && (
             <ClassCarouselItemChecklist
               items={getClassProgressionInformation(
-                awarenessBeginner,
+                AWARENESS_BEGINNER_COURSE,
                 reduxAwarenessBeginner,
                 classInfo?.classIndex,
               )}

@@ -1,24 +1,14 @@
-import createCourseObject from '../createCourseObject';
-import getFirstExerciseWithReminderTime from './getFirstExerciseWithReminderTime';
+import createCourseObject from './createCourseObject';
+import getDaysPastSinceStartTimestamp from '../timeHelpers/getDaysPastSinceStartTimestamp';
 
 const getIndexOfMostRecentClass = (reduxCourse) => {
-  const now = new Date();
   const courseObject = createCourseObject(reduxCourse);
 
-  const firstExerciseWithReminder = getFirstExerciseWithReminderTime(
-    courseObject[0]?.exercises,
+  const daysPastSinceStartTimestamp = getDaysPastSinceStartTimestamp(
+    reduxCourse?.startTimestamp,
   );
-  const firstReminderDate = new Date(firstExerciseWithReminder?.reminderTime);
-  const timeSinceActivated = now - firstReminderDate;
-  const daysSinceActivated = timeSinceActivated / 86400000;
 
-  if (daysSinceActivated >= courseObject.length) {
-    return courseObject.length - 1;
-  } else if (daysSinceActivated < 0) {
-    return 0;
-  } else {
-    return Math.floor(daysSinceActivated);
-  }
+  return Math.min(daysPastSinceStartTimestamp, courseObject?.length);
 };
 
 export default getIndexOfMostRecentClass;

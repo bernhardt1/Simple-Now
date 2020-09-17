@@ -21,7 +21,7 @@ import {
   titleFont,
   whiteFont,
 } from '../../../styles/fonts';
-import millisecondsToSeconds from '../../../helpers/millisecondsToSeconds';
+import millisecondsToSeconds from '../../../helpers/timeHelpers/millisecondsToSeconds';
 import {DARK_BLUE_LOGO, LIGHT_BLUE_LOGO} from '../../../styles/colors';
 import setLocalImage from '../../../helpers/setLocalImage';
 

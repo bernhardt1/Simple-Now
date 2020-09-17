@@ -11,7 +11,7 @@ import {
   DARK_BLUE_LOGO,
   LIGHT_BLUE_LOGO,
 } from '../../styles/colors';
-import convertReminderTimeToReadable from '../../helpers/convertReminderTimeToReadable';
+import convertReminderTimeToReadable from '../../helpers/timeHelpers/convertReminderTimeToReadable';
 
 const DailyExerciseListItem = ({
   exercise,
@@ -19,12 +19,14 @@ const DailyExerciseListItem = ({
   classIndex,
   exerciseIndex,
   isExerciseComplete,
-  isExerciseScheduled,
+  isExerciseAvailable,
   navigation,
   lastItem,
 }) => {
   const tryNavigateExercise = () => {
-    if (isExerciseScheduled) {
+    if (isExerciseAvailable) {
+      navigateExercise();
+    } else {
       Alert.alert(
         'Exercise Not Available',
         'This exercise is scheduled for later.',
@@ -34,8 +36,6 @@ const DailyExerciseListItem = ({
           },
         ],
       );
-    } else {
-      navigateExercise();
     }
   };
 
@@ -80,7 +80,7 @@ const DailyExerciseListItem = ({
         <View style={styles.informationTopContainer}>
           <View style={styles.informationTopTextContainer}>
             <Text style={[titleFont, styles.titleAndTimeMargin]}>
-              {exercise.title}
+              {exercise?.title}
             </Text>
             <Text style={subheadFont}>
               {convertReminderTimeToReadable(exercise.reminderTime)}

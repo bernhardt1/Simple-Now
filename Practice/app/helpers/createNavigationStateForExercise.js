@@ -1,4 +1,4 @@
-import {awarenessBeginner} from '../assets/courses';
+import {AWARENESS_BEGINNER_COURSE} from '../assets/courses';
 import {CLASS_SCREEN, EXERCISE_SCREEN} from '../constants/constants';
 
 // this function accepts a string and returns the local image with a matching name.
@@ -20,7 +20,7 @@ function createNavigationStateForExercise(path) {
     exerciseIndex = parts[3];
   }
 
-  const course = awarenessBeginner;
+  const course = AWARENESS_BEGINNER_COURSE;
 
   const linkingState = {
     index: 0,
@@ -48,7 +48,9 @@ function createNavigationStateForExercise(path) {
         name: 'Exercise',
         params: {
           exercise:
-            awarenessBeginner?.classes[classIndex].exercises[exerciseIndex],
+            AWARENESS_BEGINNER_COURSE?.classes[classIndex].exercises[
+              exerciseIndex
+            ],
           classIndex,
           exerciseIndex,
           screenType: EXERCISE_SCREEN,

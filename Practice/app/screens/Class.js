@@ -4,9 +4,10 @@ import {connect} from 'react-redux';
 
 import styles from './screenStyles/ClassStyles';
 import DailyExerciseListItem from '../components/DailyExerciseListItem/DailyExerciseListItem';
-import isExerciseComplete from '../helpers/isExerciseComplete';
+import isExerciseComplete from '../helpers/reduxHelpers/isExerciseComplete';
 import {INSTRUCTION_EXERCISE_SCREEN} from '../constants/constants';
-import isExerciseStillScheduled from '../helpers/reduxHelpers/isExerciseStillScheduled';
+import isExerciseAvailable from '../helpers/reduxHelpers/isExerciseAvailable';
+import {AWARENESS_BEGINNER_COURSE} from '../assets/courses';
 
 const Class = ({navigation, route, reduxAwarenessBeginner}) => {
   const {classInfo, isCourseActivated} = route.params;
@@ -41,8 +42,9 @@ const Class = ({navigation, route, reduxAwarenessBeginner}) => {
           classIndex,
           reduxAwarenessBeginner,
         )}
-        isExerciseScheduled={isExerciseStillScheduled(
+        isExerciseAvailable={isExerciseAvailable(
           reduxAwarenessBeginner,
+          AWARENESS_BEGINNER_COURSE,
           classIndex,
           index,
         )}

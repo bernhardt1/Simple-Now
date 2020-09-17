@@ -1,7 +1,7 @@
-import {awarenessBeginner} from '../assets/courses';
+import {AWARENESS_BEGINNER_COURSE} from '../assets/courses';
 import {
+  UPDATE_AWARENESS_BEGINNER_START_TIMESTAMP,
   UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_ISCOMPLETE,
-  UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_REMINDERTIME,
   RESET_AWARENESS_BEGINNER,
 } from '../actions/awarenessBeginner';
 
@@ -27,18 +27,19 @@ import {
 // property name copies exact names from the course objects with _ to mimic nesting
 //   {
 //     classes0_exercises0_isComplete: true,
-//      classes0_exercises0_reminderTime: Mon Sep 14 2020 20:00:47 GMT-0700 (Pacific Daylight Time),
 //     classes0_exercises1_isComplete: false,
 //     classes0_exercisesCount: 3,
 //     classesCount: 2,
+//     startTimestamp: null
 //   },
 
 const generateInitialState = () => {
   const exercisesIsComplete = {};
   const exercisesCount = {};
   let classesCount = 0;
+  const startTimestamp = null;
 
-  awarenessBeginner?.classes?.forEach((c, cIndex) => {
+  AWARENESS_BEGINNER_COURSE?.classes?.forEach((c, cIndex) => {
     let nextExercisesCount = 0;
 
     c?.exercises?.forEach((e, eIndex) => {
@@ -57,6 +58,7 @@ const generateInitialState = () => {
     ...exercisesIsComplete,
     ...exercisesCount,
     classesCount,
+    startTimestamp,
   };
 };
 
@@ -78,15 +80,10 @@ const awarenessBeginnerReducer = (state = initialState, action) => {
         ...newState,
       };
     }
-    case UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_REMINDERTIME: {
-      const newState = state;
-
-      newState[
-        `classes${action.obj.classIndex}_exercises${action?.obj?.exerciseIndex}_reminderTime`
-      ] = action.obj.reminderTime;
-
+    case UPDATE_AWARENESS_BEGINNER_START_TIMESTAMP: {
       return {
-        ...newState,
+        ...state,
+        startTimestamp: action?.startTimestamp,
       };
     }
     default: {

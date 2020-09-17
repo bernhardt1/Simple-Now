@@ -1,3 +1,3 @@
-import awarenessBeginner from './awarenessBeginner';
+import AWARENESS_BEGINNER_COURSE from './awarenessBeginner';
 
-export {awarenessBeginner};
+export {AWARENESS_BEGINNER_COURSE};

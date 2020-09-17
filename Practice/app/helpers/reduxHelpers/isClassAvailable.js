@@ -1,21 +1,12 @@
-import createCourseObject from '../createCourseObject';
-import getFirstExerciseWithReminderTime from './getFirstExerciseWithReminderTime';
+import getDaysPastSinceStartTimestamp from '../timeHelpers/getDaysPastSinceStartTimestamp';
 
 const isClassAvailable = (reduxCourse, classIndex) => {
-  if (classIndex === 0) return true;
-
-  const now = new Date().toISOString();
-  const courseObject = createCourseObject(reduxCourse);
-  const exerciseWithReminderTime = getFirstExerciseWithReminderTime(
-    courseObject[classIndex]?.exercises,
+  const daysPastSinceStartTimestamp = getDaysPastSinceStartTimestamp(
+    reduxCourse?.startTimestamp,
   );
 
-  if (
-    !exerciseWithReminderTime?.reminderTime ||
-    exerciseWithReminderTime.reminderTime <= now
-  ) {
-    return true;
-  }
+  if (classIndex <= daysPastSinceStartTimestamp) return true;
+
   return false;
 };
 

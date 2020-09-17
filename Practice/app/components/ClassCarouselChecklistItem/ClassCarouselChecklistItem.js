@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text} from 'react-native';
-import convertReminderTimeToReadable from '../../helpers/convertReminderTimeToReadable';
+import convertReminderTimeToReadable from '../../helpers/timeHelpers/convertReminderTimeToReadable';
 import setLocalImage from '../../helpers/setLocalImage';
 import {subheadFont, whiteFont} from '../../styles/fonts';
 

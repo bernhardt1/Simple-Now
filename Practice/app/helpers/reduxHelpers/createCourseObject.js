@@ -50,12 +50,18 @@ const createCourseObject = (reduxCourse) => {
     const exercisesIndex = getExercisesIndex(key);
 
     // set isComplete for each exercise
-    if (key.includes('isComplete')) {
+    if (
+      key?.includes('isComplete') &&
+      classes[classIndex]?.exercises[exercisesIndex]?.exercise
+    ) {
       classes[classIndex].exercises[exercisesIndex].exercise.isComplete = value;
     }
 
     // set reminderTime for each exercise
-    if (key.includes('reminderTime')) {
+    if (
+      key?.includes('reminderTime') &&
+      classes[classIndex]?.exercises[exercisesIndex]?.exercise
+    ) {
       classes[classIndex].exercises[
         exercisesIndex
       ].exercise.reminderTime = value;
