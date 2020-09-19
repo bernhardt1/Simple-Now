@@ -37,10 +37,7 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
   );
   const [buttonImage, setButtonImage] = useState('pauseWhite');
   const [isFinished, setIsFinished] = useState(false);
-
-  useEffect(() => {
-    startAnimation();
-  }, []);
+  const [isStarted, setIsStarted] = useState(false);
 
   const startAnimation = () => {
     Animated.timing(exerciseProgress, {
@@ -111,7 +108,10 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
       </View>
       <TouchableWithoutFeedback
         onPress={() => {
-          if (!isFinished) {
+          if (!isStarted) {
+            startAnimation();
+            setIsStarted(true);
+          } else if (!isFinished) {
             toggleAnimation();
           } else {
             navigateBack();
@@ -127,13 +127,16 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
               },
             ]}
           />
-          {!isFinished && (
+          {!isStarted && (
+            <Text style={[bottomButtonFont, whiteFont]}>{'Start'}</Text>
+          )}
+          {!isFinished && isStarted && (
             <Image
               source={setLocalImage(buttonImage)}
               style={animatedBottomButtonStyles.image}
             />
           )}
-          {isFinished && (
+          {isFinished && isStarted && (
             <Text style={[bottomButtonFont, whiteFont]}>{'Complete'}</Text>
           )}
         </View>

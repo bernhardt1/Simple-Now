@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View, TouchableWithoutFeedback} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -21,6 +21,7 @@ import getClassProgressionInformation from '../../helpers/reduxHelpers/getClassP
 import {AWARENESS_BEGINNER_COURSE} from '../../assets/courses';
 import ClassCarouselItemChecklist from '../ClassCarouselItemChecklist/ClassCarouselItemChecklist';
 import StandardFlair from '../StandardFlair/StandardFlair';
+import isClassAvailable from '../../helpers/reduxHelpers/isClassAvailable';
 
 const ClassCarouselItem = ({
   courseTitle,
@@ -30,8 +31,20 @@ const ClassCarouselItem = ({
   buttonTitle,
   reduxAwarenessBeginner,
   isCourseActivated,
-  isClassAvailable,
+  focusedIndex,
 }) => {
+  const [classAvailable, setClassAvailable] = useState(
+    isClassAvailable(reduxAwarenessBeginner, classInfo?.classIndex),
+  );
+
+  useEffect(() => {
+    if (classInfo?.classIndex === focusedIndex) {
+      setClassAvailable(
+        isClassAvailable(reduxAwarenessBeginner, classInfo?.classIndex),
+      );
+    }
+  }, [focusedIndex]);
+
   const dayTitle = classInfo?.title;
   const subheading = `${classInfo?.exercises?.length} exercises`;
   return (
@@ -51,7 +64,7 @@ const ClassCarouselItem = ({
                 backgroundColor={BRAND_WHITE}
               />
             )}
-            {isClassAvailable && !isComplete && <StandardFlair title={'GO'} />}
+            {classAvailable && !isComplete && <StandardFlair title={'GO'} />}
           </View>
 
           {isCourseActivated && (
@@ -68,7 +81,7 @@ const ClassCarouselItem = ({
           )}
         </LinearGradient>
       </TouchableWithoutFeedback>
-      {!isClassAvailable && (
+      {!classAvailable && (
         <View style={styles.itemBlocker}>
           <Text style={[titleEmphasizedFont, whiteFont, centerAlign]}>
             {'Scheduled For Later'}

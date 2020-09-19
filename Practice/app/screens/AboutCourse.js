@@ -48,7 +48,7 @@ const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
           }}
           withBorder
         /> */}
-        {/* <StandardButton
+        <StandardButton
           title={'Print Notifications'}
           onPress={() => {
             global.Notifications.getScheduledLocalNotifications((notifs) =>
@@ -56,7 +56,7 @@ const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
             );
           }}
           withBorder
-        /> */}
+        />
         {/* <StandardButton
           title={'Cancel Notifications'}
           onPress={() => {

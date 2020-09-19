@@ -665,7 +665,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d0c49aed-e72a-4406-9dd0-86506a74611d";
+				PROVISIONING_PROFILE = "e3f877eb-8f89-498c-9991-a716fe7ff431";
 				PROVISIONING_PROFILE_SPECIFIER = "Practice - Release";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Practice.app/Practice";
 			};
@@ -679,7 +679,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Practice/Practice.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 46X2Y8LV94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Practice/Info.plist;
@@ -706,7 +706,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Practice/Practice.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 46X2Y8LV94;
 				INFOPLIST_FILE = Practice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -717,7 +717,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.daily-mindfulness.Practice";
 				PRODUCT_NAME = Practice;
-				PROVISIONING_PROFILE = "d0c49aed-e72a-4406-9dd0-86506a74611d";
+				PROVISIONING_PROFILE = "e3f877eb-8f89-498c-9991-a716fe7ff431";
 				PROVISIONING_PROFILE_SPECIFIER = "Practice - Release";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -776,7 +776,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.daily-mindfulness.Practice-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d0c49aed-e72a-4406-9dd0-86506a74611d";
+				PROVISIONING_PROFILE = "e3f877eb-8f89-498c-9991-a716fe7ff431";
 				PROVISIONING_PROFILE_SPECIFIER = "Practice - Release";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -834,7 +834,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Practice-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d0c49aed-e72a-4406-9dd0-86506a74611d";
+				PROVISIONING_PROFILE = "e3f877eb-8f89-498c-9991-a716fe7ff431";
 				PROVISIONING_PROFILE_SPECIFIER = "Practice - Release";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Practice-tvOS.app/Practice-tvOS";

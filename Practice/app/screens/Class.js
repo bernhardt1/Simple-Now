@@ -42,12 +42,7 @@ const Class = ({navigation, route, reduxAwarenessBeginner}) => {
           classIndex,
           reduxAwarenessBeginner,
         )}
-        isExerciseAvailable={isExerciseAvailable(
-          reduxAwarenessBeginner,
-          AWARENESS_BEGINNER_COURSE,
-          classIndex,
-          index,
-        )}
+        reduxCourse={reduxAwarenessBeginner}
         lastItem={index === classInfo?.exercises?.length - 1}
       />
     );

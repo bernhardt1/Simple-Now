@@ -12,6 +12,8 @@ import {
   LIGHT_BLUE_LOGO,
 } from '../../styles/colors';
 import convertReminderTimeToReadable from '../../helpers/timeHelpers/convertReminderTimeToReadable';
+import isExerciseAvailable from '../../helpers/reduxHelpers/isExerciseAvailable';
+import {AWARENESS_BEGINNER_COURSE} from '../../assets/courses';
 
 const DailyExerciseListItem = ({
   exercise,
@@ -19,12 +21,19 @@ const DailyExerciseListItem = ({
   classIndex,
   exerciseIndex,
   isExerciseComplete,
-  isExerciseAvailable,
+  reduxCourse,
   navigation,
   lastItem,
 }) => {
   const tryNavigateExercise = () => {
-    if (isExerciseAvailable) {
+    if (
+      isExerciseAvailable(
+        reduxCourse,
+        AWARENESS_BEGINNER_COURSE,
+        classIndex,
+        exerciseIndex,
+      )
+    ) {
       navigateExercise();
     } else {
       Alert.alert(

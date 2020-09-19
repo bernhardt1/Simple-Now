@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {connect} from 'react-redux';
@@ -16,7 +16,6 @@ import getClassesCompleteCount from '../helpers/reduxHelpers/getClassesCompleteC
 import isClassComplete from '../helpers/reduxHelpers/isClassComplete';
 import isCourseActive from '../helpers/reduxHelpers/isCourseActive';
 import {updateAwarenessBeginnerStartTimestamp} from '../actions/awarenessBeginner';
-import isClassAvailable from '../helpers/reduxHelpers/isClassAvailable';
 import {updateNavigationDeepLink} from '../actions/navigation';
 import getIndexOfMostRecentClass from '../helpers/reduxHelpers/getIndexOfMostRecentClass';
 import courseNotificationScheduler from '../helpers/courseNotificationScheduler';
@@ -29,6 +28,10 @@ const Practice = ({
   deepLinkState,
   reduxUpdateNavigationDeepLink,
 }) => {
+  const [focusedIndex, setFocusedIndex] = useState(
+    getIndexOfMostRecentClass(reduxAwarenessBeginner),
+  );
+
   useEffect(() => {
     handleDeepLinkNavigation(deepLinkState);
 
@@ -106,7 +109,7 @@ const Practice = ({
         buttonTitle={isCourseActivated ? 'GO' : 'START HERE'}
         reduxAwarenessBeginner={reduxAwarenessBeginner}
         isCourseActivated={isCourseActivated}
-        isClassAvailable={isClassAvailable(reduxAwarenessBeginner, index)}
+        focusedIndex={focusedIndex}
       />
     );
   };
@@ -140,6 +143,9 @@ const Practice = ({
           inactiveSlideScale={0.9}
           layoutCardOffset={10}
           firstItem={getIndexOfMostRecentClass(reduxAwarenessBeginner)}
+          onSnapToItem={(index) => {
+            setFocusedIndex(index);
+          }}
         />
       </View>
     </View>
