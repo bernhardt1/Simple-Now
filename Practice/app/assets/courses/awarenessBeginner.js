@@ -78,7 +78,7 @@ const AWARENESS_BEGINNER_COURSE = {
           image: 'day',
         },
         {
-          ...THOUGHT_0,
+          ...HEAR_2,
           reminderTime: '20:00:00',
           image: 'night',
         },

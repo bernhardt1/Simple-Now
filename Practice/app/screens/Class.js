@@ -53,7 +53,7 @@ const Class = ({navigation, route, reduxAwarenessBeginner}) => {
       <FlatList
         data={classInfo?.exercises}
         renderItem={({item, index}) => renderItem(item, index)}
-        keyExtractor={(item) => item.title}
+        keyExtractor={(item, index) => `${item.title}${index}`}
         extraData={reduxAwarenessBeginner}
       />
     </View>

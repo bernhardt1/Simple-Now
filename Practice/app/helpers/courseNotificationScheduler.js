@@ -33,8 +33,9 @@ const courseNotificationScheduler = async (
   course?.classes?.forEach((cla, claIndex) => {
     cla?.exercises?.forEach((exercise, eIndex) => {
       const {title, copy: message, reminderTime} = exercise;
-      const id = `${course?.id}/${claIndex}/${eIndex}`;
-      const route = `Home/${id}`;
+      const id = `${course.id}${claIndex}${eIndex}`;
+      const routeToCourse = `${course?.id}/${claIndex}/${eIndex}`;
+      const route = `Home/${routeToCourse}`;
 
       // check if there is less than 30 notifications scheduled. continue if there isn't.
       if (notificationCounter >= MAX_NOTIFICATIONS) return;
