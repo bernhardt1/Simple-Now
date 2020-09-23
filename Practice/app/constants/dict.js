@@ -5,7 +5,7 @@ const STRING_ABOUT_PRACTICE_2 =
 
 // Contact info
 const STRING_CONTACT_INFO_TITLE = 'Contact Information';
-const STRING_CONTACT_INFO_EMAIL = 'Email: practicedailymindfulness@gmail.com';
+const STRING_CONTACT_INFO_EMAIL = 'Email: simplenowteam@gmail.com';
 
 // Exercise How To
 const RECOMMENDED_TIME = 'Recommended Time';

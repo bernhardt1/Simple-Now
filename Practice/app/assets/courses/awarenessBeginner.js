@@ -673,7 +673,7 @@ const AWARENESS_BEGINNER_COURSE = {
             'Congratulations on completing the Awareness Beginner course!',
           copy: 'Congratulations on completing the Awareness Beginner course!',
           instructions:
-            "We hope you have enjoyed the last 30 days of practicing mindfulness.\n\nIf you would like to provide feedback or just want to get in touch please email us at practicedailymindfulness@gmail.com. We would love to hear from you!\n\nEnjoy the final day's exercises and good luck on your journey.",
+            "We hope you have enjoyed the last 30 days of practicing mindfulness.\n\nIf you would like to provide feedback or just want to get in touch please email us at simplenowteam@gmail.com. We would love to hear from you!\n\nEnjoy the final day's exercises and good luck on your journey.",
           hasNext: true,
           screenType: INSTRUCTION_EXERCISE_SCREEN,
           image: 'begin',
