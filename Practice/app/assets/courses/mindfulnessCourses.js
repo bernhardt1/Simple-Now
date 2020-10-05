@@ -1,4 +1,4 @@
-import {INSTRUCTION_EXERCISE_SCREEN} from '../../constants/constants';
+import { INSTRUCTION_EXERCISE_SCREEN } from '../../constants/constants';
 import {
   BREATH_0,
   BREATH_1,
@@ -47,20 +47,179 @@ import {
   QUOTE_2,
 } from './awarenessExercises';
 
-// Awareness Beginner Course
-const AWARENESS_BEGINNER_COURSE = {
-  id: '001',
-  title: 'Awareness Beginner',
+// Mindfulness introductory Course
+const MINDFULNESS_INTRO_COURSE = {
+  id: '000',
+  title: 'Mindfulness Introduction',
   information:
-    'The goal of the Awareness Beginner course is to help you build the mindfulness practice of awareness into your daily life.\n\nThis 30 day program will help you recognize how little control you have over your attention and give you opportunities throughout the day to come back to yourself.\n\nLike all our programs, we recommend combining Awareness Beginner with regular meditation. There are many great apps and books out there to help you learn mindfulness meditation.\n\nOur favorite app for learning mindfulness meditation is Waking Up by Sam Harris.\n\nOur favorite books on the subject are The Power Of Now by Eckhart Tolle and Awareness by Anthony DeMello.\n\nA small warning... Mindfulness isn’t something you can cram. Your results will suffer if you do the practices in one batch. You don’t want to be mindful once each day for 5 minutes afterall!\n\nIf you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting the existing ones based on feedback from people like you.\n\nEnjoy!',
+    'Welcome to our introductory mindfulness course.\n\nThis 3 day introduction course will start you on the path to improving your mindfulness.\n\nLike all our programs, we recommend combining Mindfulness Introduction with regular meditation.\n\nIf you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.\n\nPlease Enjoy!',
   classes: [
     {
       title: 'Day 0',
       exercises: [
         {
           title: 'First Step',
-          subheading: 'Introduction to the Awareness Beginner course',
-          copy: 'Introduction to the Awareness Beginner course',
+          subheading: '3 Day Introduction to Mindfulness Course',
+          copy: '3 Day Introduction to Mindfulness Course',
+          instructions:
+            'This introduction course will improve your mindfulness practice for the next 3 days.\n\nGood luck in your practice.',
+          hasNext: true,
+          screenType: INSTRUCTION_EXERCISE_SCREEN,
+          image: 'begin',
+        },
+        {
+          ...BREATH_0,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...SENSATION_0,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...HEAR_2,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+    {
+      title: 'Day 1',
+      exercises: [
+        {
+          ...SEE_0,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...HEAR_0,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...SENSE_0,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+    {
+      title: 'Day 2',
+      exercises: [
+        {
+          ...SELF_AWARENESS_0,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...BREATH_1,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...SENSATION_1,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+    {
+      title: 'Day 3',
+      exercises: [
+        {
+          ...THOUGHT_1,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...SEE_1,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...HEAR_1,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+    {
+      title: 'Day 4',
+      exercises: [
+        {
+          ...SENSE_1,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...SELF_AWARENESS_1,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...BREATH_2,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+    {
+      title: 'Day 5',
+      exercises: [
+        {
+          ...SENSATION_2,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...THOUGHT_2,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...SEE_2,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+    {
+      title: 'Day 6',
+      exercises: [
+        {
+          ...HEAR_2,
+          reminderTime: '7:00:00',
+          image: 'sunrise',
+        },
+        {
+          ...SENSE_2,
+          reminderTime: '13:00:00',
+          image: 'day',
+        },
+        {
+          ...SELF_AWARENESS_2,
+          reminderTime: '20:00:00',
+          image: 'night',
+        },
+      ],
+    },
+  ],
+};
+
+const MINDFULNESS_BEGINNER_COURSE = {
+  id: '001',
+  title: 'Mindfulness Beginner',
+  information:
+    'The goal of the Mindfulness Beginner Course is to teach you how to practice mindfulness in your daily life.\n\nFor the next 30 days we will send you exercises to bring your attention back to the present.\n\nThis course recognizes that learning to be mindful takes daily practice. For best results, we recommend doing the exercises throughout your day instead of all at once. We will send you spaced out reminders to help you succeed in this.\n\nIf you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.\n\nPlease enjoy!',
+  classes: [
+    {
+      title: 'Day 0',
+      exercises: [
+        {
+          title: 'First Step',
+          subheading: 'Introduction to the Mindfulness Beginner course',
+          copy: 'Introduction to the Mindfulness Beginner course',
           instructions:
             'This 30 day course will build your mindfulness using proven daily exercises.\n\nGood luck in your practice.',
           hasNext: true,
@@ -698,4 +857,4 @@ const AWARENESS_BEGINNER_COURSE = {
   ],
 };
 
-export default AWARENESS_BEGINNER_COURSE;
+export { MINDFULNESS_INTRO_COURSE, MINDFULNESS_BEGINNER_COURSE };

@@ -5,7 +5,7 @@ const getAsyncData = async (key) => {
     const jsonValue = await AsyncStorage.getItem(key);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
-    console.log('Error Getting Data', e);
+    return null;
   }
 };
 

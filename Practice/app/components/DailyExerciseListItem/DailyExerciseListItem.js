@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, Alert} from 'react-native';
+import { View, Image, Text, TouchableOpacity, Alert } from 'react-native';
 
 import styles from './styles';
 import setLocalImage from '../../helpers/setLocalImage';
-import {titleFont, subheadFont} from '../../styles/fonts';
-import {EXERCISE_SCREEN} from '../../constants/constants';
+import { titleFont, subheadFont } from '../../styles/fonts';
+import { EXERCISE_SCREEN } from '../../constants/constants';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   BRAND_WHITE,
@@ -13,9 +13,9 @@ import {
 } from '../../styles/colors';
 import convertReminderTimeToReadable from '../../helpers/timeHelpers/convertReminderTimeToReadable';
 import isExerciseAvailable from '../../helpers/reduxHelpers/isExerciseAvailable';
-import {AWARENESS_BEGINNER_COURSE} from '../../assets/courses';
 
 const DailyExerciseListItem = ({
+  course,
   exercise,
   nextExercise,
   classIndex,
@@ -26,14 +26,7 @@ const DailyExerciseListItem = ({
   lastItem,
 }) => {
   const tryNavigateExercise = () => {
-    if (
-      isExerciseAvailable(
-        reduxCourse,
-        AWARENESS_BEGINNER_COURSE,
-        classIndex,
-        exerciseIndex,
-      )
-    ) {
+    if (isExerciseAvailable(reduxCourse, course, classIndex, exerciseIndex)) {
       navigateExercise();
     } else {
       Alert.alert(
@@ -43,7 +36,7 @@ const DailyExerciseListItem = ({
           {
             text: 'OK',
           },
-        ],
+        ]
       );
     }
   };
@@ -62,9 +55,10 @@ const DailyExerciseListItem = ({
     <TouchableOpacity
       style={[
         styles.container,
-        lastItem ? {marginBottom: styles.container.margin} : {},
+        lastItem ? { marginBottom: styles.container.margin } : {},
       ]}
-      onPress={tryNavigateExercise}>
+      onPress={tryNavigateExercise}
+    >
       <LinearGradient
         colors={
           isExerciseComplete
@@ -75,7 +69,8 @@ const DailyExerciseListItem = ({
           isExerciseComplete
             ? styles.imageContainerComplete
             : styles.imageContainer
-        }>
+        }
+      >
         <Image
           style={styles.image}
           source={

@@ -14,7 +14,8 @@ import {
 export const BREATH_0 = {
   title: 'Breath',
   exerciseType: BREATH_EXERCISE,
-  copy: 'Feel your ribcage expanding and contracting as you breathe.',
+  copy:
+    'Take a few deep breaths then close your eyes and place your attention on your ribcage expanding and contracting as you breathe.',
   recommendedTime: '30000',
 };
 
@@ -161,7 +162,7 @@ export const SEE_0 = {
 export const SEE_1 = {
   title: 'See',
   copy:
-    'Pick out an object and focus on it as intensely as you can. When thoughts arise, let them go and refocus on the object. ',
+    'Pick out an object and focus on it as intensely as you can. When thoughts arise, let them go and refocus on the object.',
   recommendedTime: '30000',
   exerciseType: SEE_EXERCISE,
 };

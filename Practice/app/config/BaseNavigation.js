@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {Easing} from 'react-native';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+
+import {forFade} from './transitions';
+import {forFadeHeader} from './headerTransitions';
 
 import Practice from '../screens/Practice';
 import Class from '../screens/Class';
@@ -10,6 +14,14 @@ import Exercise from '../screens/Exercise';
 import AboutExercise from '../screens/AboutExercise';
 import GradientHeaderNormal from '../components/GradientHeaderNormal/GradientHeaderNormal';
 import GradientHeaderLargeLogic from '../components/GradientHeaderLarge/GradientHeaderLargeLogic';
+
+// const config = {
+//   animation: 'timing',
+//   config: {
+//     duration: 500,
+//     easing: Easing.ease,
+//   },
+// };
 
 const Stack = createStackNavigator();
 
@@ -46,6 +58,7 @@ function BaseNavigation() {
       mode="modal"
       headerMode="screen"
       screenOptions={{
+        cardStyleInterpolator: forFade,
         headerStyle: {
           height: 200,
         },
@@ -67,7 +80,6 @@ function BaseNavigation() {
         name="Practice"
         component={Practice}
         options={{
-          animationEnabled: false,
           headerStyle: {
             height: 80,
           },
@@ -94,38 +106,20 @@ function BaseNavigation() {
       <Stack.Screen
         name="Class"
         component={Class}
-        options={{
-          animationEnabled: false,
-        }}
+        options={
+          {
+            // headerStyleInterpolator: forFadeHeader,
+            // transitionSpec: {
+            //   open: config,
+            //   close: config,
+            // },
+          }
+        }
       />
-      <Stack.Screen
-        name="Exercise"
-        component={Exercise}
-        options={{
-          ...TransitionPresets.SlideFromRightIOS,
-        }}
-      />
-      <Stack.Screen
-        name="About"
-        component={About}
-        options={{
-          ...TransitionPresets.SlideFromRightIOS,
-        }}
-      />
-      <Stack.Screen
-        name="AboutCourse"
-        component={AboutCourse}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <Stack.Screen
-        name="AboutExercise"
-        component={AboutExercise}
-        options={{
-          animationEnabled: false,
-        }}
-      />
+      <Stack.Screen name="Exercise" component={Exercise} />
+      <Stack.Screen name="About" component={About} />
+      <Stack.Screen name="AboutCourse" component={AboutCourse} />
+      <Stack.Screen name="AboutExercise" component={AboutExercise} />
     </Stack.Navigator>
   );
 }

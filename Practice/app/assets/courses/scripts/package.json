@@ -1,0 +1,14 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "scripts for simple now",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('hi');"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "papaparse": "^5.3.0"
+  }
+}

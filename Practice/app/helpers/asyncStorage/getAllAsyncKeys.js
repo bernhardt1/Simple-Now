@@ -4,9 +4,7 @@ const getAllAsyncKeys = async () => {
   let keys = [];
   try {
     keys = await AsyncStorage.getAllKeys();
-  } catch (e) {
-    console.log('Error Getting Async Keys', e);
-  }
+  } catch (e) {}
 
   return keys;
 };

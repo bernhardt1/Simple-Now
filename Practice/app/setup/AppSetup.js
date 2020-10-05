@@ -5,13 +5,14 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 import {connect} from 'react-redux';
 
+import sentryCaptureMessage from '../helpers/errorHelpers/sentryCaptureMessage';
+
 import NotificationService from '../notifications/NotificationService';
 import BaseNavigation from '../config/BaseNavigation';
 import linking from '../config/linking';
 import {updateNavigationDeepLink} from '../actions/navigation';
 import convertUrlToPath from '../helpers/convertUrlToPath';
 import createNavigationStateForExercise from '../helpers/createNavigationStateForExercise';
-import {BRAND_WHITE} from '../styles/colors';
 
 class AppSetup extends Component {
   constructor(props) {
@@ -27,7 +28,6 @@ class AppSetup extends Component {
 
     // handle initial notification iOS
     const {initialNotification} = props;
-    console.log('initialNotification', initialNotification);
     if (initialNotification) this.onLink(initialNotification);
   }
 
@@ -41,18 +41,20 @@ class AppSetup extends Component {
   }
 
   onLink = (incomingUrl) => {
-    const {reduxUpdateNavigationDeepLink} = this.props;
+    try {
+      const {reduxUpdateNavigationDeepLink} = this.props;
+      let url = incomingUrl;
+      if (incomingUrl?.url) url = incomingUrl.url;
+      if (Platform.OS === 'ios' && url?.url) url = url.url;
 
-    let url = incomingUrl;
-    if (incomingUrl?.url) url = incomingUrl.url;
-    if (Platform.OS === 'ios' && url?.url) url = url.url;
+      const path = convertUrlToPath(url);
+      const linkingState = createNavigationStateForExercise(path);
 
-    const path = convertUrlToPath(url);
-    console.log('path', path);
-    const linkingState = createNavigationStateForExercise(path);
-    console.log('linkingState', linkingState);
-
-    reduxUpdateNavigationDeepLink(linkingState);
+      reduxUpdateNavigationDeepLink(linkingState);
+    } catch (e) {
+      sentryCaptureMessage('caught onlink error', incomingUrl);
+      return;
+    }
   };
 
   onRegister(token) {

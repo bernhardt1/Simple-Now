@@ -114,7 +114,6 @@ export default class NotifService {
 
   // async popInitialNotification() {
   //   const poppedNotification = await PushNotification.popInitialNotification();
-  //   console.log('poppedNotification', poppedNotification);
   //   return poppedNotification;
   // }
 

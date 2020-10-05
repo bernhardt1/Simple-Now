@@ -15,6 +15,13 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './app/config/store';
 import AppSetup from './app/setup/AppSetup';
 
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn:
+    'https://ad1f639ecb8f40a195ea0ad6db387752@o453134.ingest.sentry.io/5441618',
+});
+
 class App extends Component {
   render() {
     const {initialNotificationUserInfo} = this.props;

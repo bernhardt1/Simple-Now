@@ -15,22 +15,15 @@ class NotificationHandler {
   }
 
   onRegister(token) {
-    console.log('NotificationHandler:', token);
     if (typeof this._onRegister === 'function') {
       this._onRegister(token);
     }
   }
 
-  onAction(notification) {
-    console.log('Notification action received:');
-    console.log(notification.action);
-    console.log(notification);
-  }
+  onAction(notification) {}
 
   // (optional) Called when the user fails to register for remote notifications. Typically occurs when APNS is having issues, or the device is a simulator. (iOS)
-  onRegistrationError(err) {
-    console.log('onRegistrationError', err);
-  }
+  onRegistrationError(err) {}
 
   attachRegister(handler) {
     this._onRegister = handler;

@@ -1,25 +1,31 @@
-import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import {connect} from 'react-redux';
-import {CommonActions} from '@react-navigation/native';
+import { connect } from 'react-redux';
+import { CommonActions } from '@react-navigation/native';
 
 import styles from './screenStyles/PracticeStyles';
 import CourseItem from '../components/CourseItem/CourseItem';
-import {AWARENESS_BEGINNER_COURSE} from '../assets/courses';
-import {ClassCarouselItem} from '../components/ClassCarouselItem';
-import {Separator} from '../components/Separator';
-import {screenWidth} from '../styles/constants';
-import {islandCarouselItem} from '../styles/standardComponents';
-import {CLASS_SCREEN, ABOUT_CLASS_SCREEN} from '../constants/constants';
+import { ClassCarouselItem } from '../components/ClassCarouselItem';
+import { Separator } from '../components/Separator';
+import { screenWidth } from '../styles/constants';
+import { islandCarouselItem } from '../styles/standardComponents';
+import { CLASS_SCREEN, ABOUT_CLASS_SCREEN } from '../constants/constants';
 import getClassesCompleteCount from '../helpers/reduxHelpers/getClassesCompleteCount';
 import isClassComplete from '../helpers/reduxHelpers/isClassComplete';
 import isCourseActive from '../helpers/reduxHelpers/isCourseActive';
-import {updateAwarenessBeginnerStartTimestamp} from '../actions/awarenessBeginner';
-import {updateNavigationDeepLink} from '../actions/navigation';
+import { updateAwarenessBeginnerStartTimestamp } from '../actions/awarenessBeginner';
+import { updateNavigationDeepLink } from '../actions/navigation';
 import getIndexOfMostRecentClass from '../helpers/reduxHelpers/getIndexOfMostRecentClass';
 import courseNotificationScheduler from '../helpers/courseNotificationScheduler';
 import startCourse from '../helpers/reduxHelpers/startCourse';
+
+import {
+  introCourse,
+  beginnerCourse,
+} from '../assets/courses/finalCourses/index';
+
+import * as data from '../assets/courses/courses/mindfulnessIntroduction.json';
 
 const Practice = ({
   navigation,
@@ -29,8 +35,9 @@ const Practice = ({
   reduxUpdateNavigationDeepLink,
 }) => {
   const [focusedIndex, setFocusedIndex] = useState(
-    getIndexOfMostRecentClass(reduxAwarenessBeginner),
+    getIndexOfMostRecentClass(reduxAwarenessBeginner)
   );
+  console.log('beginnerCourse', beginnerCourse);
 
   useEffect(() => {
     handleDeepLinkNavigation(deepLinkState);
@@ -38,10 +45,7 @@ const Practice = ({
     // Run the course notification scheduler every time the app is opened
     const isCourseActivated = isCourseActive(reduxAwarenessBeginner);
     if (isCourseActivated) {
-      courseNotificationScheduler(
-        AWARENESS_BEGINNER_COURSE,
-        reduxAwarenessBeginner,
-      );
+      courseNotificationScheduler(beginnerCourse, reduxAwarenessBeginner);
     }
   }, [deepLinkState]);
 
@@ -61,13 +65,9 @@ const Practice = ({
     reduxUpdateNavigationDeepLink(null);
   };
 
-  const navigateClass = (classInfo, isCourseActivated) => {
+  const navigateClass = (classInfo, isCourseActivated, course) => {
     navigation.navigate('Class', {
-      courseInfo: {
-        courseTitle: AWARENESS_BEGINNER_COURSE?.title,
-        courseLength: AWARENESS_BEGINNER_COURSE?.classes?.length,
-        courseInformation: AWARENESS_BEGINNER_COURSE?.information,
-      },
+      course,
       classInfo,
       screenType: CLASS_SCREEN,
       isCourseActivated,
@@ -83,23 +83,22 @@ const Practice = ({
 
     return (
       <ClassCarouselItem
-        courseTitle={AWARENESS_BEGINNER_COURSE.title}
+        course={beginnerCourse}
         classInfo={classInfo}
         onPress={() => {
           if (!isCourseActivated) {
             // update redux with the courseStartTimestamp
             startCourse(
-              AWARENESS_BEGINNER_COURSE,
+              beginnerCourse,
               reduxAwarenessBeginner,
-              reduxUpdateAwarenessBeginnerStartTimestamp,
+              reduxUpdateAwarenessBeginnerStartTimestamp
             );
-
             navigateClass(
               {
-                ...AWARENESS_BEGINNER_COURSE?.classes[0],
+                ...beginnerCourse?.classes[0],
                 classIndex: 0,
               },
-              isCourseActivated,
+              isCourseActivated
             );
           } else {
             navigateClass(classInfo, isCourseActivated);
@@ -107,36 +106,53 @@ const Practice = ({
         }}
         isComplete={isClassComplete(reduxAwarenessBeginner, index)}
         buttonTitle={isCourseActivated ? 'GO' : 'START HERE'}
-        reduxAwarenessBeginner={reduxAwarenessBeginner}
+        reduxCourse={reduxAwarenessBeginner}
         isCourseActivated={isCourseActivated}
         focusedIndex={focusedIndex}
       />
     );
   };
 
-  return (
-    <View style={styles.container}>
+  const renderCourseCarouselItem = (item, index) => {
+    return (
       <CourseItem
-        title={AWARENESS_BEGINNER_COURSE?.title}
+        title={item?.title}
         subheading={`${getClassesCompleteCount(reduxAwarenessBeginner)} of ${
-          AWARENESS_BEGINNER_COURSE?.classes?.length
+          item?.classes?.length
         } complete`}
         onPress={() =>
           navigation.navigate('AboutCourse', {
             courseInfo: {
-              courseTitle: AWARENESS_BEGINNER_COURSE?.title,
-              courseLength: AWARENESS_BEGINNER_COURSE?.classes?.length,
-              courseInformation: AWARENESS_BEGINNER_COURSE?.information,
+              courseTitle: item?.title,
+              courseLength: item?.classes?.length,
+              courseInformation: item?.information,
             },
             screenType: ABOUT_CLASS_SCREEN,
           })
         }
       />
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      {/* <View style={{flex: 1}}> */}
+      {renderCourseCarouselItem(beginnerCourse)}
+      {/* <Carousel
+          data={[MINDFULNESS_INTRO_COURSE, beginnerCourse]}
+          renderItem={({item, index}) => renderCourseCarouselItem(item, index)}
+          sliderWidth={screenWidth}
+          itemWidth={islandCarouselItem.width}
+          inactiveSlideOpacity={0.5}
+          inactiveSlideScale={0.9}
+          layoutCardOffset={10}
+        /> */}
+      {/* </View> */}
       <Separator />
-      <View style={{flex: 3}}>
+      <View style={{ flex: 3 }}>
         <Carousel
-          data={AWARENESS_BEGINNER_COURSE?.classes}
-          renderItem={({item, index}) => renderClassCarouselItem(item, index)}
+          data={beginnerCourse?.classes}
+          renderItem={({ item, index }) => renderClassCarouselItem(item, index)}
           sliderWidth={screenWidth}
           itemWidth={islandCarouselItem.width}
           inactiveSlideOpacity={0.5}

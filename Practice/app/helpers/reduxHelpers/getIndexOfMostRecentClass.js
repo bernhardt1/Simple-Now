@@ -8,7 +8,9 @@ const getIndexOfMostRecentClass = (reduxCourse) => {
     reduxCourse?.startTimestamp,
   );
 
-  return Math.min(daysPastSinceStartTimestamp, courseObject?.length);
+  const result = Math.min(daysPastSinceStartTimestamp, courseObject?.length);
+
+  return result || 0;
 };
 
 export default getIndexOfMostRecentClass;

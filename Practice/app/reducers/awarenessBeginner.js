@@ -1,4 +1,4 @@
-import {AWARENESS_BEGINNER_COURSE} from '../assets/courses';
+import { MINDFULNESS_BEGINNER_COURSE } from '../assets/courses';
 import {
   UPDATE_AWARENESS_BEGINNER_START_TIMESTAMP,
   UPDATE_AWARENESS_BEGINNER_CLASS_EXERCISE_ISCOMPLETE,
@@ -39,7 +39,7 @@ const generateInitialState = () => {
   let classesCount = 0;
   const startTimestamp = null;
 
-  AWARENESS_BEGINNER_COURSE?.classes?.forEach((c, cIndex) => {
+  MINDFULNESS_BEGINNER_COURSE?.classes?.forEach((c, cIndex) => {
     let nextExercisesCount = 0;
 
     c?.exercises?.forEach((e, eIndex) => {

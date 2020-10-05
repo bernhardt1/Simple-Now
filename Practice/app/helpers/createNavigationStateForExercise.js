@@ -1,15 +1,17 @@
-import {AWARENESS_BEGINNER_COURSE} from '../assets/courses';
-import {CLASS_SCREEN, EXERCISE_SCREEN} from '../constants/constants';
+import { MINDFULNESS_BEGINNER_COURSE } from '../assets/courses';
+import { CLASS_SCREEN, EXERCISE_SCREEN } from '../constants/constants';
 
 // this function accepts a string and returns the local image with a matching name.
 function createNavigationStateForExercise(path) {
-  const parts = path.split('/');
+  let parts;
+
   let screen;
   let courseIndex;
   let classIndex;
   let exerciseIndex;
 
-  if (parts.length < 4) {
+  if (parts?.length < 3) {
+  } else if (parts.length < 4) {
     courseIndex = parts[0];
     classIndex = parts[1];
     exerciseIndex = parts[2];
@@ -20,7 +22,7 @@ function createNavigationStateForExercise(path) {
     exerciseIndex = parts[3];
   }
 
-  const course = AWARENESS_BEGINNER_COURSE;
+  const course = MINDFULNESS_BEGINNER_COURSE;
 
   const linkingState = {
     index: 0,
@@ -48,7 +50,7 @@ function createNavigationStateForExercise(path) {
         name: 'Exercise',
         params: {
           exercise:
-            AWARENESS_BEGINNER_COURSE?.classes[classIndex].exercises[
+            MINDFULNESS_BEGINNER_COURSE?.classes[classIndex].exercises[
               exerciseIndex
             ],
           classIndex,
