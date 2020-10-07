@@ -1,4 +1,4 @@
-import {BRAND_WHITE} from '../../styles/colors';
+import { BRAND_WHITE } from '../../styles/colors';
 
 const styles = {
   container: {

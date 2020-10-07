@@ -45,6 +45,7 @@ const DailyExerciseListItem = ({
     navigation.navigate('Exercise', {
       exercise,
       nextExercise,
+      courseId: course?.id,
       classIndex,
       exerciseIndex,
       screenType: EXERCISE_SCREEN,

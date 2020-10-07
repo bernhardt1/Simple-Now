@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-import awarenessBeginner from './awarenessBeginner';
+import courses from './courses';
 import navigation from './navigation.js';
 
 const rootReducer = combineReducers({
-  awarenessBeginner,
+  courses,
   navigation,
 });
 

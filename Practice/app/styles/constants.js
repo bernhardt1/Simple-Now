@@ -1,11 +1,22 @@
-import {Dimensions} from 'react-native';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
+import { Dimensions } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+
+const statusBarHeight = getStatusBarHeight();
 
 const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height - statusBarHeight;
+const heightUnit = screenHeight / 100;
 const widthUnit = screenWidth / 100;
-const statusBarHeight = getStatusBarHeight();
 
 const BORDER_RADIUS = 10;
 const BORDER_WIDTH = 3;
 
-export {screenWidth, widthUnit, statusBarHeight, BORDER_RADIUS, BORDER_WIDTH};
+export {
+  screenWidth,
+  screenHeight,
+  widthUnit,
+  heightUnit,
+  statusBarHeight,
+  BORDER_RADIUS,
+  BORDER_WIDTH,
+};

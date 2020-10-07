@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   SafeAreaView,
@@ -11,9 +11,9 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './styles';
-import {animatedBottomButtonStyles} from '../../../styles/standardComponents';
-import {StandardImageButton} from '../../../components/StandardImageButton';
-import {ABOUT_EXERCISE_SCREEN} from '../../../constants/constants';
+import { animatedBottomButtonStyles } from '../../../styles/standardComponents';
+import { StandardImageButton } from '../../../components/StandardImageButton';
+import { ABOUT_EXERCISE_SCREEN } from '../../../constants/constants';
 import {
   bodyFont,
   bottomButtonFont,
@@ -22,18 +22,18 @@ import {
   whiteFont,
 } from '../../../styles/fonts';
 import millisecondsToSeconds from '../../../helpers/timeHelpers/millisecondsToSeconds';
-import {DARK_BLUE_LOGO, LIGHT_BLUE_LOGO} from '../../../styles/colors';
+import { DARK_BLUE_LOGO, LIGHT_BLUE_LOGO } from '../../../styles/colors';
 import setLocalImage from '../../../helpers/setLocalImage';
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-const BasicExercise = ({exercise, navigation, markAsComplete}) => {
+const BasicExercise = ({ exercise, navigation, markAsComplete }) => {
   const [exerciseProgress, setExerciseProgress] = useState(
-    new Animated.Value(0),
+    new Animated.Value(0)
   );
   const [animationActive, setAnimationActive] = useState(true);
   const [remainingDuration, setRemainingDuration] = useState(
-    exercise?.recommendedTime,
+    exercise?.recommendedTime
   );
   const [buttonImage, setButtonImage] = useState('pauseWhite');
   const [isFinished, setIsFinished] = useState(false);
@@ -45,7 +45,7 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
       duration: parseInt(remainingDuration, 10),
       easing: Easing.linear,
       useNativeDriver: false, // must be false if we want to use the exerciseProgress variable anywhere else
-    }).start(({finished}) => {
+    }).start(({ finished }) => {
       if (finished && markAsComplete) {
         markAsComplete();
         setIsFinished(true);
@@ -64,7 +64,7 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
       setAnimationActive(false);
       setButtonImage('playWhite');
       setRemainingDuration(
-        exercise?.recommendedTime * (1 - exerciseProgress._value),
+        exercise?.recommendedTime * (1 - exerciseProgress._value)
       );
       setExerciseProgress(exerciseProgress);
       exerciseProgress.stopAnimation();
@@ -102,7 +102,7 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
         </View>
         <View style={styles.bottomContainer}>
           <Text style={titleFont}>{`${millisecondsToSeconds(
-            exercise?.recommendedTime,
+            exercise?.recommendedTime
           )} seconds`}</Text>
         </View>
       </View>
@@ -116,14 +116,15 @@ const BasicExercise = ({exercise, navigation, markAsComplete}) => {
           } else {
             navigateBack();
           }
-        }}>
+        }}
+      >
         <View style={animatedBottomButtonStyles.container}>
           <AnimatedLinearGradient
             colors={[DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]}
             style={[
               animatedBottomButtonStyles.gradientContainer,
               {
-                transform: [{scaleX: exerciseProgress}],
+                transform: [{ scaleX: exerciseProgress }],
               },
             ]}
           />

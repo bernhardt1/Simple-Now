@@ -1,10 +1,10 @@
-import {screenWidth, widthUnit, BORDER_RADIUS} from './constants';
+import { screenWidth, widthUnit, BORDER_RADIUS } from './constants';
 import {
   buttonFromEdgeSpacing,
   islandSpacing,
   standardButtonSpacing,
 } from './spacings';
-import {BRAND_BLACK, BRAND_WHITE} from './colors';
+import { BRAND_BLACK, BRAND_WHITE } from './colors';
 
 // islands
 const islandShape = {

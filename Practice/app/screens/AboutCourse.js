@@ -1,17 +1,18 @@
 import React from 'react';
-import {Text, ScrollView, View, Alert} from 'react-native';
-import {connect} from 'react-redux';
+import { Text, ScrollView, View, Alert } from 'react-native';
+import { connect } from 'react-redux';
 
 import styles from './screenStyles/AboutStyles';
-import {bodyFont} from '../styles/fonts';
-import {scrollViewBottomMargin} from '../styles/spacings';
-import {InvisibleSeparator} from '../components/InvisibleSeparator';
-import {StandardButton} from '../components/StandardButton';
-import {resetAwarenessBeginner} from '../actions/awarenessBeginner';
+import { bodyFont } from '../styles/fonts';
+import { scrollViewBottomMargin } from '../styles/spacings';
+import { InvisibleSeparator } from '../components/InvisibleSeparator';
+import { StandardButton } from '../components/StandardButton';
+import { resetCourse } from '../actions/courses';
 
-const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
-  const {courseInfo} = route.params;
+const AboutCourse = ({ navigation, route, reduxResetCourse }) => {
+  const { courseInfo } = route.params;
   const content = courseInfo?.courseInformation;
+  const courseId = courseInfo?.courseId;
 
   return (
     <View style={styles.container}>
@@ -32,11 +33,11 @@ const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
                 {
                   text: 'Yes',
                   onPress: () => {
-                    reduxResetAwarenessBeginner();
+                    reduxResetCourse(courseId);
                     global.Notifications.cancelAll();
                   },
                 },
-              ],
+              ]
             );
           }}
           withBorder
@@ -72,7 +73,7 @@ const AboutCourse = ({navigation, route, reduxResetAwarenessBeginner}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reduxResetAwarenessBeginner: () => dispatch(resetAwarenessBeginner()),
+    reduxResetCourse: (courseId) => dispatch(resetCourse(courseId)),
   };
 };
 

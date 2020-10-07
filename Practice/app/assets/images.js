@@ -1,4 +1,5 @@
 const images = {
+  background1: require('./img/background1.png'),
   menuWhite: require('./img/menuWhite.png'),
   backWhite: require('./img/backWhite.png'),
   reminderWhite: require('./img/reminderWhite.png'),

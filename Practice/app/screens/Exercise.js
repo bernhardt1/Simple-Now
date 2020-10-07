@@ -1,26 +1,33 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {updateAwarenessBeginnerClassExerciseIsComplete} from '../actions/awarenessBeginner';
+import { updateCourseClassExerciseIsComplete } from '../actions/courses';
 
-import {INSTRUCTION_EXERCISE_SCREEN} from '../constants/constants';
-import {Instruction} from '../screenComponents/exerciseScreens/Instruction';
-import {BasicExercise} from '../screenComponents/exerciseScreens/BasicExercise';
+import { INSTRUCTION_EXERCISE_SCREEN } from '../constants/constants';
+import { Instruction } from '../screenComponents/exerciseScreens/Instruction';
+import { BasicExercise } from '../screenComponents/exerciseScreens/BasicExercise';
 
 const Exercise = ({
   route,
   navigation,
-  reduxUpdateAwarenessBeginnerClassExerciseIsComplete,
+  reduxUpdateCourseClassExerciseIsComplete,
 }) => {
-  const {exercise, nextExercise, classIndex, exerciseIndex} = route.params;
+  const {
+    exercise,
+    nextExercise,
+    classIndex,
+    exerciseIndex,
+    courseId,
+  } = route.params;
   const markAsComplete = () => {
     const updateArgs = {
+      courseId,
       class: classIndex,
       exercise: exerciseIndex,
       isComplete: true,
     };
 
-    reduxUpdateAwarenessBeginnerClassExerciseIsComplete(updateArgs);
+    reduxUpdateCourseClassExerciseIsComplete(updateArgs);
   };
 
   if (exercise?.screenType === INSTRUCTION_EXERCISE_SCREEN) {
@@ -47,8 +54,8 @@ const Exercise = ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reduxUpdateAwarenessBeginnerClassExerciseIsComplete: (obj) =>
-      dispatch(updateAwarenessBeginnerClassExerciseIsComplete(obj)),
+    reduxUpdateCourseClassExerciseIsComplete: (obj) =>
+      dispatch(updateCourseClassExerciseIsComplete(obj)),
   };
 };
 

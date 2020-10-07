@@ -1,5 +1,5 @@
-import {widthUnit} from './constants';
-import {statusBarHeight} from './constants';
+import { widthUnit } from './constants';
+import { statusBarHeight } from './constants';
 
 const logoTitleSpacing = {
   marginHorizontal: widthUnit * 20,

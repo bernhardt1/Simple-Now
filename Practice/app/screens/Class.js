@@ -16,6 +16,7 @@ const Class = ({ navigation, route, reduxAwarenessBeginner }) => {
       navigation.navigate('Exercise', {
         exercise: classInfo?.exercises[0],
         nextExercise: classInfo?.exercises[1],
+        courseId: course?.id,
         classIndex,
         exerciseIndex: 0,
         screenType: INSTRUCTION_EXERCISE_SCREEN,

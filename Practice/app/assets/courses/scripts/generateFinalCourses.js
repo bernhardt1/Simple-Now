@@ -101,7 +101,6 @@ function convertCourseToJavascript(json) {
 
     // grab the exercise from exercise list if it exists
     const exercise = getExerciseFromStorage(exerciseId);
-    console.log('exercise', exercise);
     if (exerciseId) {
       exerciseTitle = exercise && exercise.title;
       copy = exercise && exercise.copy;
@@ -125,6 +124,7 @@ function convertCourseToJavascript(json) {
       // add course information if it is first item
       course.title = item.title;
       course.information = item.information;
+      course.id = parseInt(item.courseId, 10);
     } else {
       // handle normal exercises
       const nextExercise = {};

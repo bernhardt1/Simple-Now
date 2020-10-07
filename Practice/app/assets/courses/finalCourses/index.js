@@ -1,4 +1,4 @@
-import beginnerCourse from './beginnerCourse.json';
-import introCourse from './introCourse.json';
+import MINDFULNESS_BEGINNER from './beginnerCourse.json';
+import MINDFULNESS_INTRO from './introCourse.json';
 
-export { beginnerCourse, introCourse };
+export { MINDFULNESS_BEGINNER, MINDFULNESS_INTRO };

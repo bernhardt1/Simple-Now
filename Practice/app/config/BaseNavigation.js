@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Easing} from 'react-native';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import React, { useEffect, useState } from 'react';
+import { Easing } from 'react-native';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 
-import {forFade} from './transitions';
-import {forFadeHeader} from './headerTransitions';
+import { forFade } from './transitions';
+import { forFadeHeader } from './headerTransitions';
 
 import Practice from '../screens/Practice';
 import Class from '../screens/Class';
@@ -11,6 +14,7 @@ import About from '../screens/About';
 import AboutCourse from '../screens/AboutCourse';
 import Loading from '../screens/Loading';
 import Exercise from '../screens/Exercise';
+import Exercise2 from '../screens/Exercise2';
 import AboutExercise from '../screens/AboutExercise';
 import GradientHeaderNormal from '../components/GradientHeaderNormal/GradientHeaderNormal';
 import GradientHeaderLargeLogic from '../components/GradientHeaderLarge/GradientHeaderLargeLogic';
@@ -63,8 +67,8 @@ function BaseNavigation() {
           height: 200,
         },
         header: (props) => {
-          const {scene, previous, navigation} = props;
-          const {options} = scene.descriptor;
+          const { scene, previous, navigation } = props;
+          const { options } = scene.descriptor;
 
           return (
             <GradientHeaderLargeLogic
@@ -75,7 +79,8 @@ function BaseNavigation() {
             />
           );
         },
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Practice"
         component={Practice}
@@ -83,8 +88,8 @@ function BaseNavigation() {
           headerStyle: {
             height: 80,
           },
-          header: ({scene, previous, navigation}) => {
-            const {options} = scene.descriptor;
+          header: ({ scene, previous, navigation }) => {
+            const { options } = scene.descriptor;
             const title =
               options.headerTitle !== undefined
                 ? options.headerTitle
@@ -117,6 +122,18 @@ function BaseNavigation() {
         }
       />
       <Stack.Screen name="Exercise" component={Exercise} />
+      <Stack.Screen
+        name="Exercise2"
+        component={Exercise2}
+        options={{
+          headerStyle: {
+            height: 0,
+          },
+          header: ({ scene, previous, navigation }) => {
+            return null;
+          },
+        }}
+      />
       <Stack.Screen name="About" component={About} />
       <Stack.Screen name="AboutCourse" component={AboutCourse} />
       <Stack.Screen name="AboutExercise" component={AboutExercise} />

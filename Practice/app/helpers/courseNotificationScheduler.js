@@ -1,6 +1,6 @@
 import convertReminderTimeToISODate from './timeHelpers/convertReminderTimeToISODate';
 
-import {MAX_NOTIFICATIONS} from '../constants/magicNumbers';
+import { MAX_NOTIFICATIONS } from '../constants/magicNumbers';
 import getDaysPastSinceStartTimestamp from './timeHelpers/getDaysPastSinceStartTimestamp';
 import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
 
@@ -18,7 +18,7 @@ const getScheduledNotifications = async () => {
 const courseNotificationScheduler = async (
   course,
   reduxCourse,
-  startTimestamp,
+  startTimestamp
 ) => {
   try {
     const scheduledNotifications = await getScheduledNotifications();
@@ -27,13 +27,13 @@ const courseNotificationScheduler = async (
     const nowIso = new Date().toISOString();
     const courseStartTimestamp = startTimestamp || reduxCourse?.startTimestamp;
     const daysPastSinceStartTimestamp = getDaysPastSinceStartTimestamp(
-      courseStartTimestamp,
+      courseStartTimestamp
     );
 
     // schedule notifications
     course?.classes?.forEach((cla, claIndex) => {
       cla?.exercises?.forEach((exercise, eIndex) => {
-        const {title, copy: message, reminderTime} = exercise;
+        const { title, copy: message, reminderTime } = exercise;
         const id = `${course.id}${claIndex}${eIndex}`;
         const routeToCourse = `${course?.id}/${claIndex}/${eIndex}`;
         const route = `Home/${routeToCourse}`;
@@ -48,7 +48,7 @@ const courseNotificationScheduler = async (
         const reminderDate = convertReminderTimeToISODate(
           reminderTime,
           daysPastSinceStartTimestamp,
-          claIndex,
+          claIndex
         );
         if (reminderDate < nowIso) return;
 
@@ -57,16 +57,16 @@ const courseNotificationScheduler = async (
 
         // This exercise needs to be scheduled into the notifications list
         const secondsAheadToSchedule = Math.floor(
-          (new Date(reminderDate) - new Date(nowIso)) / 1000,
+          (new Date(reminderDate) - new Date(nowIso)) / 1000
         );
 
         global.Notifications.scheduleNotif(
           id,
-          'steelBell.mp3',
+          'steel_bell.mp3',
           secondsAheadToSchedule,
           title,
           message,
-          route,
+          route
         );
         notificationCounter += 1;
       });

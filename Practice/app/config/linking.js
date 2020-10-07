@@ -1,4 +1,4 @@
-import {URL_HEADER} from '../constants/constants';
+import { URL_HEADER } from '../constants/constants';
 
 const config = {
   screens: {
@@ -25,4 +25,4 @@ const linking = {
 //   },
 // };
 
-export {linking, config};
+export { linking, config };
