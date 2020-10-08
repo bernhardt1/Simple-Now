@@ -11,6 +11,8 @@ import {
 const Sound = require('react-native-sound');
 
 import { StandardImageButton } from '../../../components/StandardImageButton';
+import { EXERCISE_SPEED_MULTIPLIER } from '../../../constants/magicNumbers';
+import sentryCaptureMessage from '../../../helpers/errorHelpers/sentryCaptureMessage';
 import setLocalImage from '../../../helpers/setLocalImage';
 import { heightUnit } from '../../../styles/constants';
 import {
@@ -22,137 +24,124 @@ import {
 
 import styles from './styles';
 
-// Enable playback in silence mode
-Sound.setCategory('Playback');
-
-// Load the sound file 'whoosh.mp3' from the app bundle
-// See notes below about preloading sounds within initialization code below.
-var steelBell = new Sound('steel_bell_long.mp3', Sound.MAIN_BUNDLE, (error) => {
-  if (error) {
-    console.log('failed to load the sound', error);
-    return;
-  }
-
-  // loaded successfully
-  console.log(
-    'duration in seconds: ' +
-      steelBell.getDuration() +
-      'number of channels: ' +
-      steelBell.getNumberOfChannels()
-  );
-});
-
-var chime = new Sound('chime.mp3', Sound.MAIN_BUNDLE, (error) => {
-  if (error) {
-    console.log('failed to load the sound', error);
-    return;
-  }
-
-  // loaded successfully
-  console.log(
-    'duration in seconds: ' +
-      chime.getDuration() +
-      'number of channels: ' +
-      chime.getNumberOfChannels()
-  );
-});
+const BEGIN = 'BEGIN';
+const BREATH_IN = 'BREATH_IN';
+const HOLD = 'HOLD';
+const BREATH_OUT = 'BREATH_OUT';
+const WARMED_UP = 'WARMED_UP';
+const PREPARING = 'PREPARING';
+const COUNTDOWN = 'COUNTDOWN';
+const START_EXERCISE = 'START_EXERCISE';
+const COUNTING_DOWN = 'COUNTING_DOWN';
+const COMPLETED = 'COMPLETED';
+const EBS = EXERCISE_SPEED_MULTIPLIER * 1;
 
 const StandardExercise = ({ navigation }) => {
+  // Enable playback in silence mode
+  Sound.setCategory('Playback');
+  // Load the sound files from the app bundle
+  const steelBell = new Sound(
+    'steel_bell_long.mp3',
+    Sound.MAIN_BUNDLE,
+    (error) => {
+      if (error) {
+        sentryCaptureMessage('caught steelBell loading error', error);
+        return;
+      }
+    }
+  );
+  const chime = new Sound('chime.mp3', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      sentryCaptureMessage('caught chime loading error', error);
+      return;
+    }
+  });
+  this.isPaused = false;
+
   const [simpleInstruction, setSimpleInstruction] = useState('ready');
   const [currentStep, setCurrentStep] = useState('');
 
-  const [simpleContainerAnimation, setSimpleContainerAnimation] = useState(
-    new Animated.Value(0)
-  );
-  const [textContainerAnimation, setTextContainerAnimation] = useState(
-    new Animated.Value(0)
-  );
-  const [simpleScaleAnimation, setSimpleScaleAnimation] = useState(
-    new Animated.Value(0)
-  );
-  const [instructionAnimation, setInstructionAnimation] = useState(
-    new Animated.Value(1)
-  );
-  const [innerRingAnimation, setInnerRingAnimation] = useState(
-    new Animated.Value(0)
-  );
-  const [outerRingAnimation, setOuterRingAnimation] = useState(
-    new Animated.Value(0)
-  );
-  const [outerRingPulseAnimation, setOuterRingPulseAnimation] = useState(
-    new Animated.Value(0)
-  );
+  const [simpleContainerAnimation] = useState(new Animated.Value(0));
+  const [textContainerAnimation] = useState(new Animated.Value(0));
+  const [simpleScaleAnimation] = useState(new Animated.Value(0));
+  const [instructionOpacityAnimation] = useState(new Animated.Value(1));
+  const [innerRingOpacityAnimation] = useState(new Animated.Value(0));
+  const [outerRingOpacityAnimation] = useState(new Animated.Value(0));
+  const [outerRingPulseAnimation] = useState(new Animated.Value(0));
+  const [globalOpacityAnimation] = useState(new Animated.Value(1));
 
   useEffect(() => {
     switch (currentStep) {
-      case 'begin':
-        animateInstruction(0, 500, 'breath in');
+      case BEGIN:
+        animateInstructionOpacity(0, EBS * 500, 'breath in');
         this.timeout = setTimeout(() => {
-          animateSimpleContainer(1, 'breathIn');
-        }, 600);
+          animateSimpleContainer(1, BREATH_IN);
+        }, EBS * 600);
         break;
-      case 'breathIn':
+      case BREATH_IN:
         this.timeout = setTimeout(() => {
-          animateInstruction(1);
-          animateSimpleScale(1, 'hold');
-          animateOuterRing(1);
-        }, 200);
+          animateInstructionOpacity(1);
+          animateSimpleScale(1, HOLD);
+          animateOuterRingOpacity(1, EBS * 2000);
+        }, EBS * 200);
         break;
-      case 'hold':
-        animateInstruction(0, 20, 'hold');
+      case HOLD:
+        animateInstructionOpacity(0, EBS * 20, 'hold');
         this.timeout = setTimeout(() => {
-          animateInstruction(1, 20);
-          animateOuterRing(0, 'breathOut');
-        }, 80);
+          animateInstructionOpacity(1, EBS * 20);
+          animateOuterRingOpacity(0, EBS * 1500, BREATH_OUT);
+        }, EBS * 80);
         break;
-      case 'breathOut':
-        animateInstruction(0, 20, 'breath out');
+      case BREATH_OUT:
+        animateInstructionOpacity(0, EBS * 20, 'breath out');
         this.timeout = setTimeout(() => {
-          animateInstruction(1, 20);
-          animateSimpleScale(0, 'warmedUp');
-          animateInnerRing(1);
-        }, 80);
+          animateInstructionOpacity(1, EBS * 20);
+          animateSimpleScale(0, WARMED_UP);
+          animateInnerRingOpacity(1);
+        }, EBS * 80);
         break;
-      case 'warmedUp':
-        animateInstruction(0, 500, 'begin');
+      case WARMED_UP:
+        animateInstructionOpacity(0, EBS * 500, 'begin');
         this.timeout = setTimeout(() => {
-          animateInnerRing(0);
-          animateSimpleContainer(0, 'preparing');
-        }, 600);
+          animateInnerRingOpacity(0);
+          animateSimpleContainer(0, PREPARING);
+        }, EBS * 600);
         break;
-      case 'preparing':
+      case PREPARING:
         this.timeout = setTimeout(() => {
-          animateTextContainer(1, 'countdown');
-        }, 200);
+          animateTextContainer(1, COUNTDOWN);
+        }, EBS * 200);
         break;
-      case 'countdown':
+      case COUNTDOWN:
         this.timeout = setTimeout(() => {
-          animateInnerRingPulse(1, 'startExercise', 2);
-        }, 200);
+          animateInnerRingPulse(1, START_EXERCISE, 2);
+        }, EBS * 200);
         break;
-      case 'startExercise':
-        animateInstruction(0, 20, 25);
+      case START_EXERCISE:
+        animateInstructionOpacity(0, EBS * 20, 25);
         this.timeout = setTimeout(() => {
-          animateInstruction(1, 600);
+          animateInstructionOpacity(1, EBS * 600);
           this.timeout2 = setTimeout(() => {
             steelBell.play();
-            setCurrentStep('startCountingDown');
-          }, 600);
-        }, 500);
+            setCurrentStep(COUNTING_DOWN);
+          }, EBS * 600);
+        }, EBS * 500);
         break;
-      case 'startCountingDown':
+      case COUNTING_DOWN:
+        if (this.isPaused) return;
+
+        animateGlobalOpacity0(EBS * 6000, EBS * 4000);
         this.timeout = setTimeout(() => {
-          animateCountdown(25, 'completed');
-          setCurrentStep('startCountingDown');
-        }, 200);
+          animateCountdown(simpleInstruction, COMPLETED);
+        }, EBS * 1500);
         break;
-      case 'completed':
-        animateInstruction(0, 100, 'completed');
+      case COMPLETED:
+        animateGlobalOpacity1(0, EBS * 1000, false);
+        animateInstructionOpacity(0, EBS * 100, 'completed');
         this.timeout = setTimeout(() => {
-          animateInstruction(1, 600);
-          chime.play();
+          animateInstructionOpacity(1, EBS * 600);
           animateTextContainer(0);
-        }, 200);
+        }, EBS * 200);
         break;
       default:
         break;
@@ -161,22 +150,24 @@ const StandardExercise = ({ navigation }) => {
     return () => {
       clearTimeout(this.timeout);
       clearTimeout(this.timeout2);
+      clearTimeout(this.timeout3);
+      clearTimeout(this.timeout4);
     };
   }, [currentStep]);
 
   // pass 0 for starting position
   // pass 1 for active position
   const animateSimpleContainer = (value, nextStep) => {
-    Animated.timing(simpleContainerAnimation, {
-      toValue: value,
-      duration: 1500,
-      easing: Easing.inOut(Easing.cubic),
-      useNativeDriver: false, // must be false if we want to use the animated value anywhere else
-    }).start(({ finished }) => {
-      if (finished && nextStep) {
-        setCurrentStep(nextStep);
-      }
-    });
+    // Animated.timing(simpleContainerAnimation, {
+    //   toValue: value,
+    //   duration: EBS * 1500,
+    //   easing: Easing.inOut(Easing.cubic),
+    //   useNativeDriver: false, // must be false if we want to use the animated value anywhere else
+    // }).start(({ finished }) => {
+    //   if (finished && nextStep) {
+    setCurrentStep(nextStep);
+    //   }
+    // });
   };
 
   // pass 0 for starting position
@@ -184,7 +175,7 @@ const StandardExercise = ({ navigation }) => {
   const animateTextContainer = (value, nextStep) => {
     Animated.timing(textContainerAnimation, {
       toValue: value,
-      duration: 1000,
+      duration: EBS * 1000,
       easing: Easing.inOut(Easing.cubic),
       useNativeDriver: false, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
@@ -199,7 +190,7 @@ const StandardExercise = ({ navigation }) => {
   const animateSimpleScale = (value, nextStep) => {
     Animated.timing(simpleScaleAnimation, {
       toValue: value,
-      duration: 3500,
+      duration: EBS * 3500,
       easing: Easing.linear,
       useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
@@ -211,8 +202,8 @@ const StandardExercise = ({ navigation }) => {
 
   // pass 0 for disappearing
   // pass 1 for appearing
-  const animateInstruction = (value, duration, nextInstruction) => {
-    Animated.timing(instructionAnimation, {
+  const animateInstructionOpacity = (value, duration, nextInstruction) => {
+    Animated.timing(instructionOpacityAnimation, {
       toValue: value,
       duration,
       easing: Easing.linear,
@@ -226,10 +217,10 @@ const StandardExercise = ({ navigation }) => {
 
   // pass 0 for disappearing
   // pass 1 for appearing
-  const animateOuterRing = (value, nextStep) => {
-    Animated.timing(outerRingAnimation, {
+  const animateOuterRingOpacity = (value, duration, nextStep) => {
+    Animated.timing(outerRingOpacityAnimation, {
       toValue: value,
-      duration: 2000,
+      duration,
       easing: Easing.in(Easing.cubic),
       useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
@@ -241,10 +232,10 @@ const StandardExercise = ({ navigation }) => {
 
   // pass 0 for disappearing
   // pass 1 for appearing
-  const animateInnerRing = (value, nextStep) => {
-    Animated.timing(innerRingAnimation, {
+  const animateInnerRingOpacity = (value, nextStep) => {
+    Animated.timing(innerRingOpacityAnimation, {
       toValue: value,
-      duration: 2000,
+      duration: EBS * 2000,
       easing: Easing.linear,
       useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
@@ -258,7 +249,7 @@ const StandardExercise = ({ navigation }) => {
   const animateInnerRingPulse = (value, nextStep, count) => {
     Animated.timing(outerRingPulseAnimation, {
       toValue: value,
-      duration: 2500,
+      duration: EBS * 2500,
       easing: Easing.inOut(Easing.ease),
       useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
@@ -287,18 +278,69 @@ const StandardExercise = ({ navigation }) => {
 
   // pass exercise recommendedTime
   const animateCountdown = (recommendedTime, nextStep) => {
+    if (this.isPaused) return;
+
     setSimpleInstruction(recommendedTime - 1);
     this.timeout2 = setTimeout(() => {
       if (recommendedTime > 1) {
         animateCountdown(recommendedTime - 1, nextStep);
       } else {
+        chime.play();
         setCurrentStep(nextStep);
       }
-    }, 1100);
+    }, EBS * 1100);
+  };
+
+  const animateGlobalOpacity0 = (timeout, duration) => {
+    if (currentStep === COUNTING_DOWN) {
+      this.timeout3 = setTimeout(() => {
+        if (this.isPaused) return;
+
+        Animated.timing(globalOpacityAnimation, {
+          toValue: 0,
+          duration: duration,
+          easing: Easing.inOut(Easing.ease),
+          useNativeDriver: true, // must be false if we want to use value anywhere else
+        }).start(({ finished }) => {
+          if (currentStep === COMPLETED) {
+            animateGlobalOpacity1(0, EBS * 1000, false);
+          }
+        });
+      }, timeout);
+    }
+  };
+
+  const animateGlobalOpacity1 = (timeout, duration, autoFade) => {
+    this.timeout4 = setTimeout(() => {
+      Animated.timing(globalOpacityAnimation, {
+        toValue: 1,
+        duration,
+        useNativeDriver: true, // must be false if we want to use value anywhere else
+      }).start(({ finished }) => {
+        if (currentStep === COUNTING_DOWN) {
+          animateGlobalOpacity0(EBS * 6000, EBS * 4000);
+        }
+      });
+    }, timeout);
   };
 
   const onPressSimpleButton = () => {
-    setCurrentStep('begin');
+    console.log('this.isPaused', this.isPaused);
+    if (currentStep === COUNTING_DOWN) {
+      // pause too
+      if (this.isPaused) {
+        this.isPaused = false;
+        animateGlobalOpacity0(EBS * 6000, EBS * 4000);
+        this.timeout = setTimeout(() => {
+          animateCountdown(simpleInstruction, COMPLETED);
+        }, EBS * 1500);
+      } else {
+        animateGlobalOpacity1(0, EBS * 1000, true);
+        this.isPaused = true;
+      }
+    } else {
+      if (!currentStep) setCurrentStep(BEGIN);
+    }
   };
 
   return (
@@ -307,9 +349,17 @@ const StandardExercise = ({ navigation }) => {
       source={setLocalImage('background1')}
       blurRadius={5}
     >
-      <View style={styles.containerDarken}>
-        <View style={styles.headerSpacing} />
-        <View style={styles.containerHeader}>
+      <Animated.View
+        pointerEvents={'auto'}
+        style={[
+          styles.containerDarken,
+          {
+            opacity: globalOpacityAnimation,
+          },
+        ]}
+      >
+        <View style={styles.headerSpacing} pointerEvents={'auto'} />
+        <View style={styles.containerHeader} pointerEvents={'auto'}>
           <StandardImageButton
             image={'backWhite'}
             onPress={navigation.goBack}
@@ -320,114 +370,100 @@ const StandardExercise = ({ navigation }) => {
             onPress={navigation.goBack}
           />
         </View>
-        <View style={styles.containerContent}>
-          <Animated.View
-            style={[
-              styles.textContainer,
-              {
-                transform: [
-                  {
-                    translateY: textContainerAnimation.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0, heightUnit * 20],
-                    }),
-                  },
-                ],
-              },
-            ]}
-          >
-            <Text style={[bodyFontTitle, whiteFont, centerAlign]}>
-              Close your eyes and notice the natural rhythm of your breath.
-            </Text>
-          </Animated.View>
-          <Animated.View
-            style={[
-              styles.simpleContainer,
-              {
-                transform: [
-                  {
-                    translateY: simpleContainerAnimation.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0, -heightUnit * 20],
-                    }),
-                  },
-                ],
-              },
-            ]}
-          >
+
+        <TouchableWithoutFeedback
+          onPress={() => animateGlobalOpacity1(0, EBS * 1000, true)}
+        >
+          <View style={styles.containerContent} pointerEvents={'auto'}>
             <Animated.View
               style={[
-                styles.simpleInnerRing,
-                {
-                  opacity: innerRingAnimation,
-                },
-              ]}
-            />
-            <Animated.View
-              style={[
-                styles.simpleOuterRing,
-                {
-                  opacity: outerRingAnimation,
-                },
-              ]}
-            />
-            <Animated.View
-              style={[
-                styles.simpleInnerRing,
+                styles.textContainer,
                 {
                   transform: [
                     {
-                      scaleX: outerRingPulseAnimation.interpolate({
+                      translateY: textContainerAnimation.interpolate({
                         inputRange: [0, 1],
-                        outputRange: [1, 2],
-                      }),
-                    },
-                    {
-                      scaleY: outerRingPulseAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [1, 2],
+                        outputRange: [0, heightUnit * 20],
                       }),
                     },
                   ],
                 },
+              ]}
+              pointerEvents={'auto'}
+            >
+              <Text style={[bodyFontTitle, whiteFont, centerAlign]}>
+                Close your eyes and notice the natural rhythm of your breath.
+              </Text>
+            </Animated.View>
+            <Animated.View
+              style={[
+                styles.simpleContainer,
                 {
-                  opacity: outerRingPulseAnimation.interpolate({
-                    inputRange: [0, 0.01, 0.5, 0.7, 1],
-                    outputRange: [0, 0.5, 1, 0.1, 0],
-                  }),
+                  transform: [
+                    {
+                      translateY: simpleContainerAnimation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -heightUnit * 20],
+                      }),
+                    },
+                  ],
                 },
               ]}
-            />
-            <TouchableWithoutFeedback
-              // onPress={() => animateInnerRingPulse(1, '', 3)}
-              onPress={() => onPressSimpleButton()}
+              pointerEvents={'auto'}
             >
               <Animated.View
                 style={[
-                  styles.simpleCircle,
+                  styles.simpleInnerRing,
+                  {
+                    opacity: innerRingOpacityAnimation,
+                  },
+                ]}
+                pointerEvents={'auto'}
+              />
+              <Animated.View
+                style={[
+                  styles.simpleOuterRing,
+                  {
+                    opacity: outerRingOpacityAnimation,
+                  },
+                ]}
+                pointerEvents={'auto'}
+              />
+              <Animated.View
+                style={[
+                  styles.simpleInnerRing,
                   {
                     transform: [
                       {
-                        scaleX: simpleScaleAnimation.interpolate({
+                        scaleX: outerRingPulseAnimation.interpolate({
                           inputRange: [0, 1],
-                          outputRange: [1, 1.25],
+                          outputRange: [1, 2],
                         }),
                       },
                       {
-                        scaleY: simpleScaleAnimation.interpolate({
+                        scaleY: outerRingPulseAnimation.interpolate({
                           inputRange: [0, 1],
-                          outputRange: [1, 1.25],
+                          outputRange: [1, 2],
                         }),
                       },
                     ],
                   },
+                  {
+                    opacity: outerRingPulseAnimation.interpolate({
+                      inputRange: [0, 0.01, 0.5, 0.7, 1],
+                      outputRange: [0, 0.5, 1, 0.1, 0],
+                    }),
+                  },
                 ]}
+                pointerEvents={'auto'}
+              />
+              <TouchableWithoutFeedback
+                // onPress={() => animateInnerRingPulse(1, '', 3)}
+                onPress={() => onPressSimpleButton()}
               >
-                <Animated.Text
+                <Animated.View
                   style={[
-                    bodyFontTitle,
-                    whiteFont,
-                    centerAlign,
+                    styles.simpleCircle,
                     {
                       transform: [
                         {
@@ -444,18 +480,42 @@ const StandardExercise = ({ navigation }) => {
                         },
                       ],
                     },
-                    {
-                      opacity: instructionAnimation,
-                    },
                   ]}
                 >
-                  {simpleInstruction}
-                </Animated.Text>
-              </Animated.View>
-            </TouchableWithoutFeedback>
-          </Animated.View>
-        </View>
-      </View>
+                  <Animated.Text
+                    style={[
+                      bodyFontTitle,
+                      whiteFont,
+                      centerAlign,
+                      {
+                        transform: [
+                          {
+                            scaleX: simpleScaleAnimation.interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [1, 1.25],
+                            }),
+                          },
+                          {
+                            scaleY: simpleScaleAnimation.interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [1, 1.25],
+                            }),
+                          },
+                        ],
+                      },
+                      {
+                        opacity: instructionOpacityAnimation,
+                      },
+                    ]}
+                  >
+                    {simpleInstruction}
+                  </Animated.Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </Animated.View>
+          </View>
+        </TouchableWithoutFeedback>
+      </Animated.View>
     </ImageBackground>
   );
 };
