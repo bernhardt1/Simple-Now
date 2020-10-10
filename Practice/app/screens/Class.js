@@ -79,7 +79,7 @@ const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
       source={setLocalImage(background)}
     >
       <HeaderSpacer />
-      <HeaderDefaultBack onPressBack={navigateBack} />
+      <HeaderDefaultBack onPressBack={navigateBack} title={classInfo?.title} />
 
       <FlatList
         data={moveFocusedExerciseToTop(classInfo?.exercises)}

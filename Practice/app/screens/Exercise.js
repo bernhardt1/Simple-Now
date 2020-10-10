@@ -19,6 +19,7 @@ const Exercise = ({
     exerciseIndex,
     courseId,
   } = route.params;
+  console.log('route.params', route.params);
   const markAsComplete = () => {
     const updateArgs = {
       courseId,
@@ -27,6 +28,7 @@ const Exercise = ({
       isComplete: true,
     };
 
+    console.log('marking as complete', updateArgs);
     reduxUpdateCourseClassExerciseIsComplete(updateArgs);
   };
 

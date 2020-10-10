@@ -45,7 +45,7 @@ const coursesReducer = (state = initialState, action) => {
     case RESET_COURSE: {
       return {
         ...state,
-        ...generateInitialState(action?.courseId),
+        ...generateInitialState(action?.val),
       };
     }
     case UPDATE_ACTIVE_COURSE_ID: {
@@ -58,7 +58,7 @@ const coursesReducer = (state = initialState, action) => {
       const newState = state;
 
       newState[
-        `course${action?.obj?.courseId}classes${action?.obj?.class}_exercises${action?.obj?.exercise}_isComplete`
+        `course${action?.obj?.courseId}_classes${action?.obj?.class}_exercises${action?.obj?.exercise}_isComplete`
       ] = action?.obj?.isComplete;
 
       return {

@@ -11,11 +11,6 @@ import { ClassCarouselItem } from '../components/ClassCarouselItem';
 import { Separator } from '../components/Separator';
 import { screenWidth } from '../styles/constants';
 import { islandCarouselItem } from '../styles/standardComponents';
-import {
-  CLASS_SCREEN,
-  ABOUT_CLASS_SCREEN,
-  ABOUT_SCREEN,
-} from '../constants/constants';
 import getClassesCompleteCount from '../helpers/reduxHelpers/getClassesCompleteCount';
 import isClassComplete from '../helpers/reduxHelpers/isClassComplete';
 import isCourseActive from '../helpers/reduxHelpers/isCourseActive';
@@ -26,7 +21,6 @@ import {
 import { updateNavigationDeepLink } from '../actions/navigation';
 import getIndexOfMostRecentClass from '../helpers/reduxHelpers/getIndexOfMostRecentClass';
 import courseNotificationScheduler from '../helpers/courseNotificationScheduler';
-import startCourse from '../helpers/reduxHelpers/startCourse';
 
 import {
   MINDFULNESS_INTRO,
@@ -37,7 +31,7 @@ import HeaderHome from '../components/HeaderHome/HeaderHome';
 import { updateBackground } from '../actions/settings';
 import { BACKGROUND_COUNT } from '../constants/magicNumbers';
 import getCourseFromIndex from '../helpers/courseHelpers/getCourseFromIndex';
-import createReduxCourseObject from '../helpers/reduxHelpers/createReduxCourseObject';
+import createFlatReduxCourse from '../helpers/reduxHelpers/createFlatReduxCourse';
 
 const Home = ({
   navigation,
@@ -45,28 +39,29 @@ const Home = ({
   deepLinkState,
   background,
   reduxUpdateActiveCourseId,
-  reduxUpdateCourseStartTimestamp,
   reduxUpdateNavigationDeepLink,
   reduxUpdateBackground,
 }) => {
-  const [focusedIndex, setFocusedIndex] = useState(
-    getIndexOfMostRecentClass(reduxCourses)
+  const [focusedClassIndex, setFocusedClassIndex] = useState(
+    getIndexOfMostRecentClass(0)
   );
   const [focusedCourse, setFocusedCourseState] = useState(MINDFULNESS_INTRO);
+  const [focusedReduxFlatCourse, setFocusedReduxFlatCourse] = useState(
+    createFlatReduxCourse(reduxCourses, reduxCourses?.activeCourseId)
+  );
 
   useEffect(() => {
-    const focusedReduxCourse = createReduxCourseObject(
-      reduxCourses,
-      reduxCourses?.activeCourseId
-    );
-    console.log('focusedReduxCourse', focusedReduxCourse);
+    // const focusedReduxCourse = createFlatReduxCourse(
+    //   reduxCourses,
+    //   reduxCourses?.activeCourseId
+    // );
     // handleDeepLinkNavigation(deepLinkState);
     // // Run the course notification scheduler every time the app is opened
     // const isCourseActivated = true; //isCourseActive(reduxCourses);
     // if (isCourseActivated) {
     //   courseNotificationScheduler(MINDFULNESS_BEGINNER, reduxCourses);
     // }
-  }, [deepLinkState, background]);
+  }, [deepLinkState, background, focusedCourse, focusedReduxFlatCourse]);
 
   // const handleDeepLinkNavigation = () => {
   //   if (!deepLinkState) return;
@@ -84,15 +79,6 @@ const Home = ({
   //   reduxUpdateNavigationDeepLink(null);
   // };
 
-  const navigateClass = (classInfo, isCourseActivated, course) => {
-    navigation.navigate('Class', {
-      course,
-      classInfo,
-      screenType: CLASS_SCREEN,
-      isCourseActivated,
-    });
-  };
-
   const changeBackground = () => {
     const current = background.split('background')[1];
     const result = current
@@ -103,7 +89,7 @@ const Home = ({
   };
 
   const renderClassCarouselItem = (item, index) => {
-    const isCourseActivated = true; // isCourseActive(reduxCourses);
+    const isCourseActivated = isCourseActive(focusedReduxFlatCourse);
     const classInfo = {
       ...item,
       classIndex: index,
@@ -113,30 +99,12 @@ const Home = ({
       <ClassCarouselItem
         course={focusedCourse}
         classInfo={classInfo}
-        onPress={() => {
-          if (!isCourseActivated) {
-            // update redux with the courseStartTimestamp
-            startCourse(
-              focusedCourse,
-              reduxCourses,
-              reduxUpdateCourseStartTimestamp
-            );
-            navigateClass(
-              {
-                ...focusedCourse?.classes[0],
-                classIndex: 0,
-              },
-              isCourseActivated
-            );
-          } else {
-            navigateClass(classInfo, isCourseActivated);
-          }
-        }}
-        isComplete={isClassComplete(reduxCourses, index)}
+        navigation={navigation}
+        isComplete={isClassComplete(focusedReduxFlatCourse, index)}
         buttonTitle={isCourseActivated ? 'GO' : 'START HERE'}
-        reduxCourse={reduxCourses}
+        reduxCourse={focusedReduxFlatCourse}
         isCourseActivated={isCourseActivated}
-        focusedIndex={focusedIndex}
+        focusedClassIndex={focusedClassIndex}
       />
     );
   };
@@ -149,15 +117,13 @@ const Home = ({
           item?.classes?.length
         } complete`}
         onPress={() =>
-          navigation.navigate('Exercise', {
-            // 'AboutCourse'
+          navigation.navigate('AboutCourse', {
             courseInfo: {
               courseTitle: item?.title,
               courseLength: item?.classes?.length,
               courseInformation: item?.information,
               courseId: item?.id,
             },
-            screenType: ABOUT_CLASS_SCREEN,
           })
         }
       />
@@ -197,16 +163,20 @@ const Home = ({
           layoutCardOffset={10}
           onSnapToItem={(index) => {
             const courseId = getCourseFromIndex(index);
+            console.log('courseId', courseId);
             reduxUpdateActiveCourseId(courseId);
 
             setFocusedCourse(index);
+            setFocusedReduxFlatCourse(
+              createFlatReduxCourse(reduxCourses, courseId)
+            );
           }}
         />
       </View>
       <Separator />
       <View style={{ flex: 3 }}>
         <Carousel
-          data={focusedCourse?.classes}
+          data={[...focusedCourse?.classes]}
           renderItem={({ item, index }) => renderClassCarouselItem(item, index)}
           sliderWidth={screenWidth}
           itemWidth={islandCarouselItem.width}
@@ -215,7 +185,7 @@ const Home = ({
           layoutCardOffset={10}
           firstItem={getIndexOfMostRecentClass(reduxCourses)}
           onSnapToItem={(index) => {
-            setFocusedIndex(index);
+            setFocusedClassIndex(index);
           }}
         />
       </View>

@@ -20,19 +20,12 @@ const getExercisesIndex = (key) => {
   return index || 0;
 };
 
-const createReduxCourseObject = (reduxCourses, courseId) => {
-  // grab the specified course from the redux data
-  const flatCourseData = {};
-  const keys = Object.entries(reduxCourses);
-  for (const [key, val] of keys) {
-    if (key.includes(courseId)) flatCourseData[key.substring(10)] = val;
-  }
-
+const createReduxCourseObject = (reduxCourse) => {
   const classes = []; // an array of exercises
 
   try {
     // fill the array with an object for each class
-    let classCount = flatCourseData?.classesCount;
+    let classCount = reduxCourse?.classesCount;
     while (classCount > 0) {
       classes.push({
         exercises: [],
@@ -41,7 +34,7 @@ const createReduxCourseObject = (reduxCourses, courseId) => {
     }
 
     // fill each class with the appropriate number of exercises
-    for (const [key, value] of Object.entries(flatCourseData)) {
+    for (const [key, value] of Object.entries(reduxCourse)) {
       if (key.includes('exercisesCount')) {
         let exercisesCount = value;
         const classIndex = getClassIndex(key);
@@ -55,7 +48,7 @@ const createReduxCourseObject = (reduxCourses, courseId) => {
       }
     }
 
-    for (const [key, value] of Object.entries(flatCourseData)) {
+    for (const [key, value] of Object.entries(reduxCourse)) {
       const classIndex = getClassIndex(key);
       const exercisesIndex = getExercisesIndex(key);
 

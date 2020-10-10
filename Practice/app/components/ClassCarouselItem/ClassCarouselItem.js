@@ -22,33 +22,60 @@ import getClassProgressionInformation from '../../helpers/reduxHelpers/getClassP
 import ClassCarouselItemChecklist from '../ClassCarouselItemChecklist/ClassCarouselItemChecklist';
 import StandardFlair from '../StandardFlair/StandardFlair';
 import isClassAvailable from '../../helpers/reduxHelpers/isClassAvailable';
+import startCourse from '../../helpers/reduxHelpers/startCourse';
+import { connect } from 'react-redux';
+import { updateCourseStartTimestamp } from '../../actions/courses';
 
 const ClassCarouselItem = ({
   course,
   classInfo,
-  onPress,
+  navigation,
   isComplete,
   buttonTitle,
   reduxCourse,
   isCourseActivated,
-  focusedIndex,
+  focusedClassIndex,
+  reduxUpdateCourseStartTimestamp,
 }) => {
   const [classAvailable, setClassAvailable] = useState(
-    true //isClassAvailable(reduxCourse, classInfo?.classIndex)
+    isClassAvailable(reduxCourse, classInfo?.classIndex)
   );
 
   useEffect(() => {
-    if (classInfo?.classIndex === focusedIndex) {
-      setClassAvailable(true);
-      // setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
+    if (classInfo?.classIndex === focusedClassIndex) {
+      setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
     }
-  }, [focusedIndex]);
+  }, [focusedClassIndex]);
+
+  const navigateClass = () => {
+    navigation.navigate('Class', {
+      course,
+      classInfo,
+      isCourseActivated,
+    });
+  };
+
+  const onPressItem = () => {
+    if (!isCourseActivated) {
+      // update redux with the courseStartTimestamp
+      startCourse(course, reduxCourse, reduxUpdateCourseStartTimestamp);
+      navigateClass(
+        {
+          ...course?.classes[0],
+          classIndex: 0,
+        },
+        isCourseActivated
+      );
+    } else {
+      navigateClass(classInfo, isCourseActivated);
+    }
+  };
 
   const dayTitle = classInfo?.title;
   const subheading = `${classInfo?.exercises?.length} exercises`;
   return (
     <View style={styles.parentContainer}>
-      <TouchableWithoutFeedback onPress={onPress}>
+      <TouchableWithoutFeedback onPress={onPressItem}>
         <LinearGradient
           colors={[DARK_OVERLAY, DARK_OVERLAY]}
           style={styles.container}
@@ -78,7 +105,7 @@ const ClassCarouselItem = ({
             />
           )}
           {!isCourseActivated && (
-            <StandardButton onPress={onPress} title={buttonTitle} />
+            <StandardButton onPress={onPressItem} title={buttonTitle} />
           )}
         </LinearGradient>
       </TouchableWithoutFeedback>
@@ -93,4 +120,11 @@ const ClassCarouselItem = ({
   );
 };
 
-export default ClassCarouselItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reduxUpdateCourseStartTimestamp: (obj) =>
+      dispatch(updateCourseStartTimestamp(obj)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ClassCarouselItem);

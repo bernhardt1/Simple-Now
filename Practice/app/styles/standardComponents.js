@@ -30,6 +30,15 @@ const islandShape = {
 const islandCarouselItem = {
   width: screenWidth - islandSpacing.margin * 3,
 };
+const scrollViewContainerIsland = {
+  flex: 1,
+  alignSelf: 'stretch',
+  margin: widthUnit * 2,
+  marginBottom: widthUnit * 8,
+  padding: widthUnit * 4,
+  backgroundColor: DARK_OVERLAY,
+  ...islandShape,
+};
 
 // Buttons
 const standardButton = {
@@ -105,6 +114,7 @@ const standardFlair = {
 
 export {
   defaultHeader,
+  scrollViewContainerIsland,
   islandShape,
   standardButton,
   bottomButton,

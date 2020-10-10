@@ -4,9 +4,9 @@ export const UPDATE_COURSE_TIMESTAMP = 'UPDATE_COURSE_TIMESTAMP';
 export const UPDATE_COURSE_CLASS_EXERCISE_ISCOMPLETE =
   'UPDATE_COURSE_CLASS_EXERCISE_ISCOMPLETE';
 
-export const resetCourse = (courseId) => ({
+export const resetCourse = (val) => ({
   type: RESET_COURSE,
-  courseId,
+  val,
 });
 
 export const updateActiveCourseId = (val) => ({

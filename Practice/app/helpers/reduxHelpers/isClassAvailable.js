@@ -2,7 +2,7 @@ import getDaysPastSinceStartTimestamp from '../timeHelpers/getDaysPastSinceStart
 
 const isClassAvailable = (reduxCourse, classIndex) => {
   const daysPastSinceStartTimestamp = getDaysPastSinceStartTimestamp(
-    reduxCourse?.startTimestamp,
+    reduxCourse?.startTimestamp
   );
 
   if (classIndex <= daysPastSinceStartTimestamp) return true;

@@ -5,11 +5,11 @@ const isExerciseAvailable = (
   reduxCourse,
   course,
   classIndex,
-  exerciseIndex,
+  exerciseIndex
 ) => {
   const now = new Date().toISOString();
   const daysPastSinceStartTimestamp = getDaysPastSinceStartTimestamp(
-    reduxCourse?.startTimestamp,
+    reduxCourse?.startTimestamp
   );
   const exerciseReminderTime =
     course?.classes[classIndex]?.exercises[exerciseIndex]?.reminderTime;
@@ -21,7 +21,7 @@ const isExerciseAvailable = (
   const reminderDate = convertReminderTimeToISODate(
     exerciseReminderTime,
     daysPastSinceStartTimestamp,
-    classIndex,
+    classIndex
   );
 
   if (reminderDate && reminderDate <= now) {

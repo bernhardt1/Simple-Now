@@ -1,8 +1,16 @@
-import { defaultHeader } from '../../styles/standardComponents';
+import {
+  defaultHeader,
+  standardImageButton,
+} from '../../styles/standardComponents';
 
 const styles = {
   container: {
     ...defaultHeader,
+  },
+  invisibleView: {
+    backgroundColor: 'transparent',
+    height: standardImageButton.height,
+    width: standardImageButton.width,
   },
 };
 
