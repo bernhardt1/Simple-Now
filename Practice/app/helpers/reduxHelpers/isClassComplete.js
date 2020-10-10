@@ -1,7 +1,7 @@
-import createCourseObject from './createCourseObject';
+import createReduxCourseObject from './createReduxCourseObject';
 
 const isClassComplete = (reduxCourse, classIndex) => {
-  const courseObject = createCourseObject(reduxCourse);
+  const courseObject = createReduxCourseObject(reduxCourse);
   let isComplete = true;
 
   courseObject[classIndex]?.exercises.forEach((e) => {

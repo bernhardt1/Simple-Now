@@ -1,7 +1,7 @@
-import createCourseObject from './createCourseObject';
+import createReduxCourseObject from './createReduxCourseObject';
 
 const getClassProgressionInformation = (course, reduxCourse, classIndex) => {
-  const courseObject = createCourseObject(reduxCourse);
+  const courseObject = createReduxCourseObject(reduxCourse);
   const cla = courseObject[classIndex];
   const items = [];
 

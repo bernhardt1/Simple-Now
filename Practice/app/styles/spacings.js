@@ -4,6 +4,9 @@ import { statusBarHeight } from './constants';
 const logoTitleSpacing = {
   marginHorizontal: widthUnit * 20,
 };
+const titleVerticalSpacing = {
+  marginBottom: widthUnit * 2,
+};
 
 // Header Spacings
 const headerContentStatusBarPadding = {
@@ -21,6 +24,13 @@ const standardButtonSpacing = {
   margin: widthUnit * 4,
   padding: widthUnit * 2,
   paddingHorizontal: widthUnit * 4,
+};
+
+// Island Spacings
+const carouselSpacing = {
+  alignSelf: 'stretch',
+  margin: widthUnit * 2,
+  padding: widthUnit * 4,
 };
 
 // Island Spacings
@@ -55,10 +65,12 @@ const scrollViewBottomMargin = {
 
 export {
   logoTitleSpacing,
+  titleVerticalSpacing,
   headerContentStatusBarPadding,
   headerContentPaddingHorizontal,
   standardButtonSpacing,
   headerPaddingHorizontal,
+  carouselSpacing,
   islandSpacing,
   itemSpacing,
   textContainerSpacing,

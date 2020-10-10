@@ -1,19 +1,29 @@
-import {itemSpacing} from '../../styles/spacings';
-import {widthUnit, BORDER_RADIUS} from '../../styles/constants';
-import {BRAND_BLACK} from '../../styles/colors';
+import { itemSpacing } from '../../styles/spacings';
+import { widthUnit, BORDER_RADIUS } from '../../styles/constants';
+import { BRAND_BLACK, DARK_OVERLAY } from '../../styles/colors';
+import { islandShape } from '../../styles/standardComponents';
 
 const styles = {
   container: {
     height: widthUnit * 25,
     flexDirection: 'row',
     ...itemSpacing,
+    ...islandShape,
+    backgroundColor: DARK_OVERLAY,
+  },
+  focusedContainer: {
+    height: widthUnit * 50,
+    ...itemSpacing,
+    margin: itemSpacing.margin / 1.5,
+    marginBottom: itemSpacing.margin,
+    ...islandShape,
+    backgroundColor: DARK_OVERLAY,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   imageContainer: {
     height: widthUnit * 25,
     width: widthUnit * 25,
-    borderRadius: BORDER_RADIUS,
-    borderColor: BRAND_BLACK,
-    borderWidth: 3,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -28,11 +38,39 @@ const styles = {
     height: widthUnit * 18,
     width: widthUnit * 18,
   },
+  focusedImageContainer: {
+    flexDirection: 'row',
+    height: widthUnit * 30,
+    width: widthUnit * 30,
+    paddingTop: itemSpacing.margin,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  focusedImageContainerComplete: {
+    flexDirection: 'row',
+    height: widthUnit * 30,
+    width: widthUnit * 30,
+    borderRadius: BORDER_RADIUS,
+    paddingTop: itemSpacing.margin,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  focusedImage: {
+    height: widthUnit * 25,
+    width: widthUnit * 25,
+  },
   informationContainer: {
     flex: 1,
     marginLeft: itemSpacing.margin,
-    marginVertical: itemSpacing.margin / 2,
+    marginVertical: itemSpacing.margin,
     alignSelf: 'stretch',
+  },
+  focusedInformationContainer: {
+    flex: 1,
+    margin: itemSpacing.margin,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   informationTopContainer: {
     flexDirection: 'row',
@@ -57,9 +95,7 @@ const styles = {
     height: widthUnit * 4,
     width: widthUnit * 4,
   },
-  informationBottomContainer: {
-    flex: 1,
-  },
+  informationBottomContainer: {},
 };
 
 export default styles;

@@ -13,11 +13,11 @@ const linking = {
 
 // const config = {
 //   screens: {
-//     Practice: {
+//     Home: {
 //       screens: {
 //         Class: {
 //           screens: {
-//             Exercise: 'Practice/:courseId/:classId/:exerciseId',
+//             Exercise: 'Home/:courseId/:classId/:exerciseId',
 //           },
 //         },
 //       },

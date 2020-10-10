@@ -5,7 +5,7 @@ import { updateCourseClassExerciseIsComplete } from '../actions/courses';
 
 import { INSTRUCTION_EXERCISE_SCREEN } from '../constants/constants';
 import { Instruction } from '../screenComponents/exerciseScreens/Instruction';
-import { BasicExercise } from '../screenComponents/exerciseScreens/BasicExercise';
+import { StandardExercise } from '../screenComponents/exerciseScreens/StandardExercise';
 
 const Exercise = ({
   route,
@@ -44,7 +44,7 @@ const Exercise = ({
   }
 
   return (
-    <BasicExercise
+    <StandardExercise
       exercise={exercise}
       navigation={navigation}
       markAsComplete={markAsComplete}

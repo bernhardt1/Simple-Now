@@ -1,6 +1,6 @@
 {
   "title": "Mindfulness Introduction",
-  "information": "Welcome to our introductory mindfulness course.\\n\\nThis 3 day introduction course will start you on the path to improving your mindfulness.\\n\\nLike all our programs, we recommend combining Mindfulness Introduction with regular meditation.\\n\\nIf you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.\\n\\nPlease Enjoy!",
+  "information": "Welcome to our introductory mindfulness course.\n\nThis 3 day introduction course will start you on the path to improving your mindfulness.\n\nLike all our programs, we recommend combining Mindfulness Introduction with regular meditation.\n\nIf you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.\n\nPlease Enjoy!",
   "id": 101,
   "classes": [
     {
@@ -10,7 +10,7 @@
           "title": "First Step",
           "subheading": "3 Day Introduction to Mindfulness Course",
           "copy": "3 Day Introduction to Mindfulness Course",
-          "instructions": "This introduction course will improve your mindfulness practice for the next 3 days.\\n\\nGood luck in your practice.",
+          "instructions": "This introduction course will send mindfulness exercises to you over the following 3 days. Each exercise provides an opportunity to practice mindfulness.\n\nGood luck in your practice.",
           "hasNext": true,
           "screenType": "instruction",
           "image": "begin",

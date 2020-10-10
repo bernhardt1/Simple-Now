@@ -1,10 +1,10 @@
-import {BRAND_WHITE} from '../../styles/colors';
-import {textContainerSpacing} from '../../styles/spacings';
+import { BRAND_BLACK } from '../../styles/colors';
+import { textContainerSpacing } from '../../styles/spacings';
 
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: BRAND_WHITE,
+    backgroundColor: BRAND_BLACK,
   },
   scrollView: {
     flex: 1,

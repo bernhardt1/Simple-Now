@@ -1,5 +1,9 @@
 const images = {
+  background0: require('./img/background0.png'),
   background1: require('./img/background1.png'),
+  background2: require('./img/background2.png'),
+  background3: require('./img/background3.png'),
+  background4: require('./img/background4.png'),
   menuWhite: require('./img/menuWhite.png'),
   backWhite: require('./img/backWhite.png'),
   reminderWhite: require('./img/reminderWhite.png'),
@@ -21,6 +25,8 @@ const images = {
   pauseWhite: require('./img/pauseWhite.png'),
   playBlack: require('./img/playBlack.png'),
   playWhite: require('./img/playWhite.png'),
+  mountainBlack: require('./img/mountainBlack.png'),
+  mountainWhite: require('./img/mountainWhite.png'),
 };
 
 export default images;

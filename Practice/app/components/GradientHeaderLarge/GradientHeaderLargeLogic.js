@@ -16,7 +16,7 @@ const GradientHeaderLargeLogic = ({
   headerStyle,
   leftButtonPress,
 }) => {
-  const {options} = scene?.descriptor;
+  const { options } = scene?.descriptor;
   let title =
     options.headerTitle !== undefined
       ? options.headerTitle
@@ -42,7 +42,7 @@ const GradientHeaderLargeLogic = ({
   }
 
   if (scene?.route?.params?.screenType === ABOUT_SCREEN) {
-    title = 'About Practice';
+    title = 'About Simple Now';
     subheading = 'Integrate mindfulness practices into daily life';
   }
 

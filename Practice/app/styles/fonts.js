@@ -1,5 +1,5 @@
-import {iOSUIKit, systemWeights} from 'react-native-typography';
-import {BRAND_BLACK, BRAND_WHITE} from './colors';
+import { iOSUIKit, systemWeights } from 'react-native-typography';
+import { BRAND_BLACK, BRAND_WHITE } from './colors';
 
 const logoTitleFont = {
   ...iOSUIKit.largeTitleEmphasized,
@@ -14,19 +14,18 @@ const titleEmphasizedFont = {
 
 const titleFont = {
   ...iOSUIKit.title3,
-  ...systemWeights.light,
   color: BRAND_BLACK,
 };
 
 const subheadFont = {
   ...iOSUIKit.subhead,
-  ...systemWeights.light,
+  ...systemWeights.semibold,
   color: BRAND_BLACK,
 };
 
 const bodyFont = {
   ...iOSUIKit.body,
-  ...systemWeights.light,
+  ...systemWeights.semibold,
   color: BRAND_BLACK,
 };
 
@@ -38,7 +37,7 @@ const bodyFontTitle = {
 
 const footnoteFont = {
   ...iOSUIKit.footnote,
-  ...systemWeights.light,
+  ...systemWeights.semibold,
   color: BRAND_BLACK,
 };
 
@@ -50,7 +49,7 @@ const buttonFont = {
 
 const bottomButtonFont = {
   ...iOSUIKit.title3,
-  ...systemWeights.light,
+  ...systemWeights.semibold,
   color: BRAND_BLACK,
 };
 

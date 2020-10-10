@@ -1,11 +1,17 @@
-import {BRAND_WHITE} from '../../../styles/colors';
-import {textContainerSpacing} from '../../../styles/spacings';
+import { DARK_OVERLAY } from '../../../styles/colors';
+import { textContainerSpacing } from '../../../styles/spacings';
 
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: BRAND_WHITE,
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  containerDarken: {
+    flex: 1,
+    backgroundColor: DARK_OVERLAY,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   scrollView: {
     flex: 1,

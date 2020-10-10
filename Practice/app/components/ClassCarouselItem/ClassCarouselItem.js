@@ -6,6 +6,7 @@ import styles from './styles';
 import {
   BRAND_WHITE,
   DARK_BLUE_LOGO,
+  DARK_OVERLAY,
   LIGHT_BLUE_LOGO,
 } from '../../styles/colors';
 import {
@@ -33,12 +34,13 @@ const ClassCarouselItem = ({
   focusedIndex,
 }) => {
   const [classAvailable, setClassAvailable] = useState(
-    isClassAvailable(reduxCourse, classInfo?.classIndex)
+    true //isClassAvailable(reduxCourse, classInfo?.classIndex)
   );
 
   useEffect(() => {
     if (classInfo?.classIndex === focusedIndex) {
-      setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
+      setClassAvailable(true);
+      // setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
     }
   }, [focusedIndex]);
 
@@ -48,7 +50,7 @@ const ClassCarouselItem = ({
     <View style={styles.parentContainer}>
       <TouchableWithoutFeedback onPress={onPress}>
         <LinearGradient
-          colors={[DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]}
+          colors={[DARK_OVERLAY, DARK_OVERLAY]}
           style={styles.container}
         >
           <View style={styles.headingContainer}>
@@ -58,8 +60,9 @@ const ClassCarouselItem = ({
             </View>
             {isComplete && (
               <StandardImageButton
-                image={'checkBlack'}
-                backgroundColor={BRAND_WHITE}
+                image={'checkWhite'}
+                withBorder
+                borderColor={BRAND_WHITE}
               />
             )}
             {classAvailable && !isComplete && <StandardFlair title={'GO'} />}

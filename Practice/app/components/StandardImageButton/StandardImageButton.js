@@ -1,22 +1,32 @@
 import React from 'react';
-import {TouchableNativeFeedback, Image, View} from 'react-native';
+import { TouchableNativeFeedback, Image, View } from 'react-native';
 
 import styles from './styles';
 import setLocalImage from '../../helpers/setLocalImage';
-import {BRAND_BLACK} from '../../styles/colors';
-import {BORDER_WIDTH} from '../../styles/constants';
+import { BRAND_BLACK } from '../../styles/colors';
+import { BORDER_WIDTH } from '../../styles/constants';
 
-const StandardImageButton = ({onPress, image, backgroundColor, withBorder}) => {
+const StandardImageButton = ({
+  onPress,
+  image,
+  backgroundColor,
+  withBorder,
+  borderColor,
+}) => {
   return (
     <TouchableNativeFeedback onPress={onPress} styles={styles.button}>
       <View
         style={[
           styles.container,
-          {backgroundColor: backgroundColor},
+          { backgroundColor: backgroundColor },
           withBorder
-            ? {borderColor: BRAND_BLACK, borderWidth: BORDER_WIDTH}
+            ? {
+                borderColor: borderColor || BRAND_BLACK,
+                borderWidth: BORDER_WIDTH,
+              }
             : {},
-        ]}>
+        ]}
+      >
         <Image source={setLocalImage(image)} style={styles.image} />
       </View>
     </TouchableNativeFeedback>

@@ -1,4 +1,5 @@
 import {
+  UPDATE_ACTIVE_COURSE_ID,
   UPDATE_COURSE_TIMESTAMP,
   UPDATE_COURSE_CLASS_EXERCISE_ISCOMPLETE,
   RESET_COURSE,
@@ -34,6 +35,7 @@ import generateInitialState from '../helpers/reduxHelpers/generateInitialState';
 //   },
 
 const initialState = {
+  activeCourseId: 101,
   ...generateInitialState(101),
   ...generateInitialState(102),
 };
@@ -44,6 +46,12 @@ const coursesReducer = (state = initialState, action) => {
       return {
         ...state,
         ...generateInitialState(action?.courseId),
+      };
+    }
+    case UPDATE_ACTIVE_COURSE_ID: {
+      return {
+        ...state,
+        activeCourseId: action.val,
       };
     }
     case UPDATE_COURSE_CLASS_EXERCISE_ISCOMPLETE: {

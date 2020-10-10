@@ -1,7 +1,7 @@
-import createCourseObject from './createCourseObject';
+import createReduxCourseObject from './createReduxCourseObject';
 
 const getClassesCompleteCount = (course) => {
-  const courseObject = createCourseObject(course);
+  const courseObject = createReduxCourseObject(course);
   let classesCompletedCount = 0;
 
   courseObject.forEach((c) => {

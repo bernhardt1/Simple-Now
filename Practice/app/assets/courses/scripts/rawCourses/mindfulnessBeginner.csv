@@ -1,6 +1,16 @@
 title,information,courseId,dayId,exerciseId,image,reminderTime,exerciseTitle,subheading,copy,instructions,hasNext,screenType
-Mindfulness Beginner,"The goal of the Mindfulness Beginner Course is to teach you how to practice mindfulness in your daily life.\n\nFor the next 30 days we will send you exercises to bring your attention back to the present.\n\nThis course recognizes that learning to be mindful takes daily practice. For best results, we recommend doing the exercises throughout your day instead of all at once. We will send you spaced out reminders to help you succeed in this.\n\nIf you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.\n\nPlease enjoy!",102,,,,,,,,,,
-,,,0,,begin,,First Step,Introduction to the Mindfulness Beginner course,Introduction to the Mindfulness Beginner course,This 30 day course will build your mindfulness using proven daily exercises.\n\nGood luck in your practice.,TRUE,instruction
+Mindfulness Beginner,"The goal of the Mindfulness Beginner Course is to teach you how to practice mindfulness in your daily life.
+
+For the next 30 days we will send you exercises to bring your attention back to the present.
+
+This course recognizes that learning to be mindful takes daily practice. For best results, we recommend doing the exercises throughout your day instead of all at once. We will send you spaced out reminders to help you succeed in this.
+
+If you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.
+
+Please enjoy!",102,,,,,,,,,,
+,,,0,,begin,,First Step,Introduction to the Mindfulness Beginner course,Introduction to the Mindfulness Beginner course,"This 30 day course will build your mindfulness using proven daily exercises.
+
+Good luck in your practice.",TRUE,instruction
 ,,,0,Breath-0,sunrise,07:00:00,,,,,,
 ,,,0,Sensation-0,day,13:00:00,,,,,,
 ,,,0,See-0,night,20:00:00,,,,,,

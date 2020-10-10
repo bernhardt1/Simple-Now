@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { DARK_BLUE_LOGO, LIGHT_BLUE_LOGO } from '../../styles/colors';
+import {
+  DARK_BLUE_LOGO,
+  DARK_OVERLAY,
+  LIGHT_BLUE_LOGO,
+} from '../../styles/colors';
 import { titleFont, whiteFont } from '../../styles/fonts';
 
 import styles from './styles';
@@ -22,9 +26,13 @@ const GradientHeaderNormal = ({ scene, navigation, headerStyle }) => {
   };
 
   return (
-    <View style={headerStyle}>
+    <View
+      style={{
+        height: 0,
+      }}
+    >
       <LinearGradient
-        colors={[DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]}
+        colors={[DARK_OVERLAY, DARK_OVERLAY]}
         style={[StyleSheet.absoluteFill, headerStyle, styles.container]}
       >
         <Text style={[titleFont, whiteFont]}>{title}</Text>

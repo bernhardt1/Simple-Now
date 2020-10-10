@@ -8,24 +8,15 @@ import {
 import { forFade } from './transitions';
 import { forFadeHeader } from './headerTransitions';
 
-import Practice from '../screens/Practice';
+import Home from '../screens/Home';
 import Class from '../screens/Class';
 import About from '../screens/About';
 import AboutCourse from '../screens/AboutCourse';
 import Loading from '../screens/Loading';
 import Exercise from '../screens/Exercise';
-import Exercise2 from '../screens/Exercise2';
 import AboutExercise from '../screens/AboutExercise';
 import GradientHeaderNormal from '../components/GradientHeaderNormal/GradientHeaderNormal';
 import GradientHeaderLargeLogic from '../components/GradientHeaderLarge/GradientHeaderLargeLogic';
-
-// const config = {
-//   animation: 'timing',
-//   config: {
-//     duration: 500,
-//     easing: Easing.ease,
-//   },
-// };
 
 const Stack = createStackNavigator();
 
@@ -58,17 +49,27 @@ function BaseNavigation() {
 
   return (
     <Stack.Navigator
-      initialRouteName="Practice"
+      initialRouteName="Home"
       mode="modal"
       headerMode="screen"
       screenOptions={{
+        // transitionSpec: {
+        //   open: {
+        //     duration: 500,
+        //   },
+        //   close: {
+        //     duration: 500,
+        //   },
+        // },
         cardStyleInterpolator: forFade,
         headerStyle: {
-          height: 200,
+          height: 0,
         },
         header: (props) => {
           const { scene, previous, navigation } = props;
           const { options } = scene.descriptor;
+
+          return null;
 
           return (
             <GradientHeaderLargeLogic
@@ -82,11 +83,11 @@ function BaseNavigation() {
       }}
     >
       <Stack.Screen
-        name="Practice"
-        component={Practice}
+        name="Home"
+        component={Home}
         options={{
           headerStyle: {
-            height: 80,
+            height: 0,
           },
           header: ({ scene, previous, navigation }) => {
             const { options } = scene.descriptor;
@@ -96,6 +97,7 @@ function BaseNavigation() {
                 : options.title !== undefined
                 ? options.title
                 : scene.route.name;
+            return null;
 
             return (
               <GradientHeaderNormal
@@ -108,32 +110,8 @@ function BaseNavigation() {
           },
         }}
       />
-      <Stack.Screen
-        name="Class"
-        component={Class}
-        options={
-          {
-            // headerStyleInterpolator: forFadeHeader,
-            // transitionSpec: {
-            //   open: config,
-            //   close: config,
-            // },
-          }
-        }
-      />
+      <Stack.Screen name="Class" component={Class} />
       <Stack.Screen name="Exercise" component={Exercise} />
-      <Stack.Screen
-        name="Exercise2"
-        component={Exercise2}
-        options={{
-          headerStyle: {
-            height: 0,
-          },
-          header: ({ scene, previous, navigation }) => {
-            return null;
-          },
-        }}
-      />
       <Stack.Screen name="About" component={About} />
       <Stack.Screen name="AboutCourse" component={AboutCourse} />
       <Stack.Screen name="AboutExercise" component={AboutExercise} />

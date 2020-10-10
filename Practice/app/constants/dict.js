@@ -1,7 +1,7 @@
-// About Practice
-const STRING_ABOUT_PRACTICE_1 = 'Why Practice?';
+// About Simple Now
+const STRING_ABOUT_PRACTICE_1 = 'Why Simple Now?';
 const STRING_ABOUT_PRACTICE_2 =
-  'Practice helps you build mindfulness practices into your everyday life.\n\nIt uses mindfulness exercises, reflective questions and advice from leading teachers to bring your attention back to your practice.\n\nAs you progress through the courses on Practice you’ll find your daily awareness increasing. The courses help develop mindfulness patterns that stay with you outside the app. Once the patterns are established, you won’t need the app anymore.\n\nWe encourage everyone who uses Practice to incorporate meditation into their lives. Practice is a complementary tool to meditation and will help you incorporate learnings from meditation into your daily experience.\n\nGood luck! We wish you the best of luck on your journey.\n\n\nP.S. We’re excited to continue introducing new mindfulness courses to help our members develop different mindfulness practices into their lives. If there is a particular practice that you are trying to develop please contact us. We prioritize our program development based on demand so your voice will make a difference in what courses come next.\n\n';
+  'Simple Now helps you build mindfulness practices into your everyday life.\n\nIt uses mindfulness exercises, reflective questions and advice from leading teachers to bring your attention back to your practice.\n\nAs you progress through the courses on Simple Now you’ll find your daily awareness increasing. The courses help develop mindfulness patterns that stay with you outside the app. Once the patterns are established, you won’t need the app anymore.\n\nWe encourage everyone who uses Simple Now to incorporate meditation into their lives. Simple Now is a complementary tool to meditation and will help you incorporate learnings from meditation into your daily experience.\n\nGood luck! We wish you the best of luck on your journey.\n\n\nP.S. We’re excited to continue introducing new mindfulness courses to help our members develop different mindfulness practices into their lives. If there is a particular practice that you are trying to develop please contact us. We prioritize our program development based on demand so your voice will make a difference in what courses come next.\n\n';
 
 // Contact info
 const STRING_CONTACT_INFO_TITLE = 'Contact Information';
@@ -29,7 +29,7 @@ const HOW_TO_QUESTION =
 const HOW_TO_QUOTE =
   'The quotes we share are from contemporary and historical teachers.\n\nWe include them to inspire and motivate you as you continue with your practice.';
 const HOW_TO_INTERACTIVE =
-  'Interactive exercises are meant to be a next step beyond private practice.\n\nPractice, the app, is designed to help you integrate mindfulness into every day life. Most of the exercises we share will help you build private mindfulness patterns into your life. These exercises help you bring your awareness to the present moment more often.\n\nThe next step is to be more mindful in everything you do. Whether it’s interacting with others, or doing the dishes. Awareness and attention to the present moment can change everything. These interactive exercises will help you with that progression.';
+  'Interactive exercises are meant to be a next step beyond private practice.\n\nSimple Now, the app, is designed to help you integrate mindfulness into every day life. Most of the exercises we share will help you build private mindfulness patterns into your life. These exercises help you bring your awareness to the present moment more often.\n\nThe next step is to be more mindful in everything you do. Whether it’s interacting with others, or doing the dishes. Awareness and attention to the present moment can change everything. These interactive exercises will help you with that progression.';
 export {
   STRING_ABOUT_PRACTICE_1,
   STRING_ABOUT_PRACTICE_2,

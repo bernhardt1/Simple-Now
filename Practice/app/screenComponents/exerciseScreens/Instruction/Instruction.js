@@ -1,13 +1,25 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
-import {StackActions} from '@react-navigation/native';
+import { View, Text, ImageBackground } from 'react-native';
+import { StackActions } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
+import { connect } from 'react-redux';
 
 import styles from './styles';
-import {centerAlign, titleFont} from '../../../styles/fonts';
+import {
+  centerAlign,
+  titleEmphasizedFont,
+  whiteFont,
+} from '../../../styles/fonts';
 import BottomButton from '../../../components/BottomButton/BottomButton';
-import {EXERCISE_SCREEN} from '../../../constants/constants';
+import { EXERCISE_SCREEN } from '../../../constants/constants';
+import setLocalImage from '../../../helpers/setLocalImage';
+import { HeaderSpacer } from '../../../components/HeaderSpacer';
+import { HeaderDefaultBack } from '../../../components/HeaderDefaultBack';
+import { HeaderTitleBlock } from '../../../components/HeaderTitleBlock';
+import { VERY_DARK_OVERLAY } from '../../../styles/colors';
 
 const Instruction = ({
+  background,
   exercise,
   nextExercise,
   classIndex,
@@ -24,19 +36,47 @@ const Instruction = ({
         screenType: EXERCISE_SCREEN,
         classIndex,
         exerciseIndex: exerciseIndex + 1,
-      }),
+      })
     );
   };
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.scrollView}>
-        <Text style={[titleFont, centerAlign]}>{exercise?.instructions}</Text>
-      </View>
+  const navigateBack = () => {
+    navigation.goBack();
+  };
 
-      <BottomButton title={'Next'} onPress={navigateNext} />
-    </SafeAreaView>
+  return (
+    <ImageBackground
+      style={styles.container}
+      source={setLocalImage(background)}
+      blurRadius={5}
+    >
+      <LinearGradient
+        colors={['transparent', 'transparent', VERY_DARK_OVERLAY]}
+        style={styles.containerDarken}
+      >
+        <HeaderSpacer />
+        <HeaderDefaultBack onPressBack={navigateBack} />
+        <HeaderTitleBlock
+          title={exercise.title}
+          subtitle={exercise.subheading}
+        />
+
+        <View style={styles.scrollView}>
+          <Text style={[titleEmphasizedFont, whiteFont, centerAlign]}>
+            {exercise?.instructions}
+          </Text>
+        </View>
+
+        <BottomButton title={'start'} onPress={navigateNext} />
+      </LinearGradient>
+    </ImageBackground>
   );
 };
 
-export default Instruction;
+const mapStateToProps = (state) => {
+  return {
+    background: state?.settings?.background || 'background1',
+  };
+};
+
+export default connect(mapStateToProps)(Instruction);

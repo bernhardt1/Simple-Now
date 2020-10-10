@@ -1,10 +1,27 @@
-import { screenWidth, widthUnit, BORDER_RADIUS } from './constants';
+import {
+  screenWidth,
+  widthUnit,
+  BORDER_RADIUS,
+  headerHeight,
+} from './constants';
 import {
   buttonFromEdgeSpacing,
+  headerPaddingHorizontal,
   islandSpacing,
   standardButtonSpacing,
 } from './spacings';
-import { BRAND_BLACK, BRAND_WHITE } from './colors';
+import { BRAND_BLACK, BRAND_WHITE, DARK_OVERLAY } from './colors';
+
+// default header
+const defaultHeader = {
+  height: headerHeight,
+  width: screenWidth,
+  backgroundColor: DARK_OVERLAY,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  ...headerPaddingHorizontal,
+};
 
 // islands
 const islandShape = {
@@ -19,7 +36,7 @@ const standardButton = {
   height: widthUnit * 11,
   minWidth: widthUnit * 20,
   borderRadius: BORDER_RADIUS,
-  backgroundColor: BRAND_WHITE,
+  backgroundColor: DARK_OVERLAY,
   ...standardButtonSpacing,
   justifyContent: 'center',
   alignItems: 'center',
@@ -36,9 +53,9 @@ const standardImageButton = {
 };
 
 const bottomButton = {
-  height: widthUnit * 16,
-  width: screenWidth,
-  borderRadius: 0,
+  height: widthUnit * 36,
+  width: widthUnit * 36,
+  borderRadius: (widthUnit * 36) / 2,
   justifyContent: 'center',
   alignItems: 'center',
 };
@@ -87,6 +104,7 @@ const standardFlair = {
 };
 
 export {
+  defaultHeader,
   islandShape,
   standardButton,
   bottomButton,

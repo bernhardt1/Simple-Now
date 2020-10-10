@@ -1,15 +1,24 @@
-import React, { useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './screenStyles/ClassStyles';
 import DailyExerciseListItem from '../components/DailyExerciseListItem/DailyExerciseListItem';
 import isExerciseComplete from '../helpers/reduxHelpers/isExerciseComplete';
 import { INSTRUCTION_EXERCISE_SCREEN } from '../constants/constants';
+import { HeaderSpacer } from '../components/HeaderSpacer';
+import setLocalImage from '../helpers/setLocalImage';
+import { HeaderDefaultBack } from '../components/HeaderDefaultBack';
 
-const Class = ({ navigation, route, reduxAwarenessBeginner }) => {
+const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
   const { classInfo, isCourseActivated, course } = route.params;
   const { classIndex } = classInfo;
+
+  const [focusedExerciseIndex, setFocusedExerciseIndex] = useState(0);
+
+  const navigateBack = () => {
+    navigation.goBack();
+  };
 
   useEffect(() => {
     if (!isCourseActivated) {
@@ -27,6 +36,7 @@ const Class = ({ navigation, route, reduxAwarenessBeginner }) => {
   const renderItem = (exercise, index) => {
     return (
       <DailyExerciseListItem
+        focused={index === 0}
         exercise={exercise}
         nextExercise={
           classInfo?.exercises?.length > index + 1
@@ -48,21 +58,43 @@ const Class = ({ navigation, route, reduxAwarenessBeginner }) => {
     );
   };
 
+  const moveFocusedExerciseToTop = (items) => {
+    const unfocusedItems = [];
+
+    const result = items.filter((i, index) => {
+      if (focusedExerciseIndex !== index) {
+        unfocusedItems.push(i);
+        return false;
+      }
+
+      return true;
+    });
+
+    return [...result, ...unfocusedItems];
+  };
+
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      style={styles.container}
+      source={setLocalImage(background)}
+    >
+      <HeaderSpacer />
+      <HeaderDefaultBack onPressBack={navigateBack} />
+
       <FlatList
-        data={classInfo?.exercises}
+        data={moveFocusedExerciseToTop(classInfo?.exercises)}
         renderItem={({ item, index }) => renderItem(item, index)}
         keyExtractor={(item, index) => `${item.title}${index}`}
         extraData={reduxAwarenessBeginner}
       />
-    </View>
+    </ImageBackground>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
     reduxAwarenessBeginner: state?.awarenessBeginner || {},
+    background: state?.settings?.background || 'background1',
   };
 };
 

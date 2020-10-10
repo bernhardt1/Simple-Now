@@ -28,7 +28,7 @@ function createNavigationStateForExercise(path) {
     index: 0,
     routes: [
       {
-        name: 'Practice',
+        name: 'Home',
       },
       {
         name: 'Class',

@@ -1,6 +1,10 @@
-import {widthUnit} from '../../styles/constants';
-import {exerciseTextSpacing, islandSpacing} from '../../styles/spacings';
-import {islandShape, islandCarouselItem} from '../../styles/standardComponents';
+import { DARK_OVERLAY } from '../../styles/colors';
+import { widthUnit } from '../../styles/constants';
+import { exerciseTextSpacing, islandSpacing } from '../../styles/spacings';
+import {
+  islandShape,
+  islandCarouselItem,
+} from '../../styles/standardComponents';
 
 const styles = {
   parentContainer: {
@@ -26,7 +30,7 @@ const styles = {
     ...exerciseTextSpacing,
     paddingTop: widthUnit * 25,
     ...islandShape,
-    backgroundColor: '#33333366',
+    backgroundColor: DARK_OVERLAY,
   },
   headingContainer: {
     width: islandCarouselItem.width - islandSpacing.padding * 2,

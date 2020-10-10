@@ -1,11 +1,11 @@
-import createCourseObject from './createCourseObject';
+import createReduxCourseObject from './createReduxCourseObject';
 import getDaysPastSinceStartTimestamp from '../timeHelpers/getDaysPastSinceStartTimestamp';
 
 const getIndexOfMostRecentClass = (reduxCourse) => {
-  const courseObject = createCourseObject(reduxCourse);
+  const courseObject = createReduxCourseObject(reduxCourse);
 
   const daysPastSinceStartTimestamp = getDaysPastSinceStartTimestamp(
-    reduxCourse?.startTimestamp,
+    reduxCourse?.startTimestamp
   );
 
   const result = Math.min(daysPastSinceStartTimestamp, courseObject?.length);

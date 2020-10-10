@@ -20,12 +20,19 @@ const getExercisesIndex = (key) => {
   return index || 0;
 };
 
-const createCourseObject = (reduxCourse) => {
+const createReduxCourseObject = (reduxCourses, courseId) => {
+  // grab the specified course from the redux data
+  const flatCourseData = {};
+  const keys = Object.entries(reduxCourses);
+  for (const [key, val] of keys) {
+    if (key.includes(courseId)) flatCourseData[key.substring(10)] = val;
+  }
+
   const classes = []; // an array of exercises
 
   try {
     // fill the array with an object for each class
-    let classCount = reduxCourse?.classesCount;
+    let classCount = flatCourseData?.classesCount;
     while (classCount > 0) {
       classes.push({
         exercises: [],
@@ -34,7 +41,7 @@ const createCourseObject = (reduxCourse) => {
     }
 
     // fill each class with the appropriate number of exercises
-    for (const [key, value] of Object.entries(reduxCourse)) {
+    for (const [key, value] of Object.entries(flatCourseData)) {
       if (key.includes('exercisesCount')) {
         let exercisesCount = value;
         const classIndex = getClassIndex(key);
@@ -48,7 +55,7 @@ const createCourseObject = (reduxCourse) => {
       }
     }
 
-    for (const [key, value] of Object.entries(reduxCourse)) {
+    for (const [key, value] of Object.entries(flatCourseData)) {
       const classIndex = getClassIndex(key);
       const exercisesIndex = getExercisesIndex(key);
 
@@ -73,10 +80,10 @@ const createCourseObject = (reduxCourse) => {
       }
     }
   } catch (error) {
-    sentryCaptureMessage('caught createCourseObject error', error);
+    sentryCaptureMessage('caught createReduxCourseObject error', error);
   }
 
   return classes;
 };
 
-export default createCourseObject;
+export default createReduxCourseObject;
