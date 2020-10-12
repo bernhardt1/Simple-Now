@@ -1,6 +1,6 @@
 import { itemSpacing } from '../../styles/spacings';
-import { widthUnit, BORDER_RADIUS } from '../../styles/constants';
-import { BRAND_BLACK, DARK_OVERLAY } from '../../styles/colors';
+import { widthUnit, BORDER_RADIUS, BORDER_WIDTH } from '../../styles/constants';
+import { BRAND_WHITE, DARK_OVERLAY } from '../../styles/colors';
 import { islandShape } from '../../styles/standardComponents';
 
 const styles = {
@@ -12,11 +12,13 @@ const styles = {
     backgroundColor: DARK_OVERLAY,
   },
   focusedContainer: {
-    height: widthUnit * 50,
+    height: widthUnit * 60,
     ...itemSpacing,
-    margin: itemSpacing.margin / 1.5,
-    marginBottom: itemSpacing.margin,
     ...islandShape,
+    margin: itemSpacing.margin / 1.5,
+    marginTop: itemSpacing.margin,
+    borderColor: BRAND_WHITE,
+    borderWidth: BORDER_WIDTH,
     backgroundColor: DARK_OVERLAY,
     justifyContent: 'center',
     alignItems: 'center',
@@ -42,15 +44,6 @@ const styles = {
     flexDirection: 'row',
     height: widthUnit * 30,
     width: widthUnit * 30,
-    paddingTop: itemSpacing.margin,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  focusedImageContainerComplete: {
-    flexDirection: 'row',
-    height: widthUnit * 30,
-    width: widthUnit * 30,
-    borderRadius: BORDER_RADIUS,
     paddingTop: itemSpacing.margin,
     justifyContent: 'center',
     alignItems: 'center',
@@ -81,19 +74,6 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: widthUnit * 45,
-  },
-  informationTopCompleteContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: widthUnit * 5,
-    width: widthUnit * 5,
-    borderRadius: (widthUnit * 5) / 2,
-    backgroundColor: BRAND_BLACK,
-  },
-  informationTopCompleteImage: {
-    height: widthUnit * 4,
-    width: widthUnit * 4,
   },
   informationBottomContainer: {},
 };

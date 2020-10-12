@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './styles';
-import {
-  BRAND_WHITE,
-  DARK_BLUE_LOGO,
-  DARK_OVERLAY,
-  LIGHT_BLUE_LOGO,
-} from '../../styles/colors';
+import { BRAND_WHITE, DARK_OVERLAY } from '../../styles/colors';
 import {
   whiteFont,
   subheadFont,
@@ -23,6 +18,7 @@ import ClassCarouselItemChecklist from '../ClassCarouselItemChecklist/ClassCarou
 import StandardFlair from '../StandardFlair/StandardFlair';
 import isClassAvailable from '../../helpers/reduxHelpers/isClassAvailable';
 import startCourse from '../../helpers/reduxHelpers/startCourse';
+import isCourseAvailable from '../../helpers/reduxHelpers/isCourseAvailable';
 import { connect } from 'react-redux';
 import { updateCourseStartTimestamp } from '../../actions/courses';
 
@@ -33,8 +29,8 @@ const ClassCarouselItem = ({
   isComplete,
   buttonTitle,
   reduxCourse,
+  reduxCourses,
   isCourseActivated,
-  focusedClassIndex,
   reduxUpdateCourseStartTimestamp,
 }) => {
   const [classAvailable, setClassAvailable] = useState(
@@ -42,32 +38,37 @@ const ClassCarouselItem = ({
   );
 
   useEffect(() => {
-    if (classInfo?.classIndex === focusedClassIndex) {
-      setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
-    }
-  }, [focusedClassIndex]);
+    setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
+  }, [reduxCourse]);
 
   const navigateClass = () => {
-    navigation.navigate('Class', {
-      course,
-      classInfo,
-      isCourseActivated,
-    });
-  };
-
-  const onPressItem = () => {
-    if (!isCourseActivated) {
-      // update redux with the courseStartTimestamp
-      startCourse(course, reduxCourse, reduxUpdateCourseStartTimestamp);
-      navigateClass(
-        {
-          ...course?.classes[0],
-          classIndex: 0,
-        },
-        isCourseActivated
-      );
+    if (isCourseAvailable(reduxCourses, course.id)) {
+      if (!isCourseActivated) {
+        // update redux with the courseStartTimestamp
+        startCourse(course, reduxCourse, reduxUpdateCourseStartTimestamp);
+        navigation.navigate('Class', {
+          classInfo: {
+            ...course?.classes[0],
+            classIndex: 0,
+          },
+          isCourseActivated,
+        });
+      } else {
+        navigation.navigate('Class', {
+          classInfo,
+          isCourseActivated,
+        });
+      }
     } else {
-      navigateClass(classInfo, isCourseActivated);
+      Alert.alert(
+        'Course Not Available',
+        'Please complete the previous courses first.',
+        [
+          {
+            text: 'OK',
+          },
+        ]
+      );
     }
   };
 
@@ -75,7 +76,7 @@ const ClassCarouselItem = ({
   const subheading = `${classInfo?.exercises?.length} exercises`;
   return (
     <View style={styles.parentContainer}>
-      <TouchableWithoutFeedback onPress={onPressItem}>
+      <TouchableWithoutFeedback onPress={navigateClass}>
         <LinearGradient
           colors={[DARK_OVERLAY, DARK_OVERLAY]}
           style={styles.container}
@@ -105,7 +106,7 @@ const ClassCarouselItem = ({
             />
           )}
           {!isCourseActivated && (
-            <StandardButton onPress={onPressItem} title={buttonTitle} />
+            <StandardButton onPress={navigateClass} title={buttonTitle} />
           )}
         </LinearGradient>
       </TouchableWithoutFeedback>

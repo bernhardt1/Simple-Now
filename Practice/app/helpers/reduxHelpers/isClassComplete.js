@@ -1,8 +1,6 @@
 import createReduxCourseObject from './createReduxCourseObject';
 
 const isClassComplete = (reduxCourse, classIndex) => {
-  console.log('reduxCourse', reduxCourse);
-  console.log('classIndex', classIndex);
   const courseObject = createReduxCourseObject(reduxCourse);
   let isComplete = true;
 

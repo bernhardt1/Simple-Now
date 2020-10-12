@@ -3,6 +3,7 @@ import {
   widthUnit,
   BORDER_RADIUS,
   headerHeight,
+  BORDER_WIDTH,
 } from './constants';
 import {
   buttonFromEdgeSpacing,
@@ -62,9 +63,9 @@ const standardImageButton = {
 };
 
 const bottomButton = {
-  height: widthUnit * 36,
-  width: widthUnit * 36,
-  borderRadius: (widthUnit * 36) / 2,
+  height: widthUnit * 30,
+  width: widthUnit * 30,
+  borderRadius: (widthUnit * 30) / 2,
   justifyContent: 'center',
   alignItems: 'center',
 };
@@ -112,6 +113,11 @@ const standardFlair = {
   paddingHorizontal: buttonFromEdgeSpacing.padding,
 };
 
+const standardBorder = {
+  borderWidth: BORDER_WIDTH,
+  borderColor: BRAND_WHITE,
+};
+
 export {
   defaultHeader,
   scrollViewContainerIsland,
@@ -124,4 +130,5 @@ export {
   informationalContainer,
   informationalImage,
   standardFlair,
+  standardBorder,
 };

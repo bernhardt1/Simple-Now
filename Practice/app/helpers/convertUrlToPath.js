@@ -1,4 +1,4 @@
-import {URL_HEADER} from '../constants/constants';
+import { URL_HEADER } from '../constants/constants';
 import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
 
 // this function accepts a string and returns the local image with a matching name.

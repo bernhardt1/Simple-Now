@@ -35,6 +35,7 @@ const COUNTDOWN = 'COUNTDOWN';
 const START_EXERCISE = 'START_EXERCISE';
 const COUNTING_DOWN = 'COUNTING_DOWN';
 const COMPLETED = 'COMPLETED';
+const CLEAN_UP = 'CLEAN_UP';
 const EBS = EXERCISE_SPEED_MULTIPLIER * 1;
 
 const StandardExercise = ({
@@ -62,7 +63,6 @@ const StandardExercise = ({
       return;
     }
   });
-  this.isPaused = false;
 
   const [simpleInstruction, setSimpleInstruction] = useState('ready');
   const [currentStep, setCurrentStep] = useState('');
@@ -126,7 +126,7 @@ const StandardExercise = ({
         }, EBS * 40);
         break;
       case COUNTING_DOWN:
-        if (this.isPaused) return;
+        if (this?.isPaused) return;
 
         animateGlobalOpacity0(EBS * 6000, EBS * 4000);
         this.timeout = setTimeout(() => {
@@ -134,12 +134,17 @@ const StandardExercise = ({
         }, EBS * 1500);
         break;
       case COMPLETED:
-        animateGlobalOpacity1(0, EBS * 1000, false);
+        markAsComplete();
         animateInstructionOpacity(0, EBS * 100, 'completed');
         this.timeout = setTimeout(() => {
-          animateInstructionOpacity(1, EBS * 600);
-          animateTextContainer(0);
+          animateInstructionOpacity(1, EBS * 600, 'completed', CLEAN_UP);
         }, EBS * 200);
+        break;
+      case CLEAN_UP:
+        animateGlobalOpacity1(0, EBS * 600, false);
+        this.timeout = setTimeout(() => {
+          animateTextContainer(0);
+        }, EBS * 800);
         break;
       default:
         break;
@@ -185,7 +190,12 @@ const StandardExercise = ({
 
   // pass 0 for disappearing
   // pass 1 for appearing
-  const animateInstructionOpacity = (value, duration, nextInstruction) => {
+  const animateInstructionOpacity = (
+    value,
+    duration,
+    nextInstruction,
+    nextStep
+  ) => {
     Animated.timing(instructionOpacityAnimation, {
       toValue: value,
       duration,
@@ -194,6 +204,10 @@ const StandardExercise = ({
     }).start(({ finished }) => {
       if (finished && nextInstruction) {
         setSimpleInstruction(nextInstruction);
+      }
+
+      if (finished && nextStep) {
+        setCurrentStep(nextStep);
       }
     });
   };
@@ -261,7 +275,7 @@ const StandardExercise = ({
 
   // pass exercise recommendedTime
   const animateCountdown = (recommendedTime, nextStep) => {
-    if (this.isPaused) return;
+    if (this?.isPaused) return;
 
     setSimpleInstruction(recommendedTime - 1);
     this.timeout2 = setTimeout(() => {
@@ -277,7 +291,7 @@ const StandardExercise = ({
   const animateGlobalOpacity0 = (timeout, duration) => {
     if (currentStep === COUNTING_DOWN) {
       this.timeout3 = setTimeout(() => {
-        if (this.isPaused) return;
+        if (this?.isPaused) return;
 
         Animated.timing(globalOpacityAnimation, {
           toValue: 0,
@@ -310,20 +324,23 @@ const StandardExercise = ({
   const onPressSimpleButton = () => {
     if (currentStep === COUNTING_DOWN) {
       // pause too
-      if (this.isPaused) {
-        this.isPaused = false;
+      if (this?.isPaused) {
+        if (this) this.isPaused = false;
         animateGlobalOpacity0(EBS * 6000, EBS * 4000);
         this.timeout = setTimeout(() => {
           animateCountdown(simpleInstruction, COMPLETED);
         }, EBS * 1500);
       } else {
         animateGlobalOpacity1(0, EBS * 1000, true);
-        this.isPaused = true;
+        if (this) this.isPaused = true;
       }
-    } else if (currentStep === COMPLETED) {
+    } else if (currentStep === CLEAN_UP) {
       navigation.goBack();
     } else {
-      if (!currentStep) setCurrentStep(BEGIN_BREATHE_IN);
+      if (!currentStep) {
+        if (this) this.isPaused = false;
+        setCurrentStep(BEGIN_BREATHE_IN);
+      }
     }
   };
 
@@ -363,7 +380,9 @@ const StandardExercise = ({
         </View>
 
         <TouchableWithoutFeedback
-          onPress={() => animateGlobalOpacity1(0, EBS * 1000, true)}
+          onPress={() => {
+            animateGlobalOpacity1(0, EBS * 1000, true);
+          }}
         >
           <View style={styles.containerContent} pointerEvents={'auto'}>
             <Animated.View

@@ -10,25 +10,19 @@ import { StandardExercise } from '../screenComponents/exerciseScreens/StandardEx
 const Exercise = ({
   route,
   navigation,
+  activeCourseId,
   reduxUpdateCourseClassExerciseIsComplete,
 }) => {
-  const {
-    exercise,
-    nextExercise,
-    classIndex,
-    exerciseIndex,
-    courseId,
-  } = route.params;
-  console.log('route.params', route.params);
+  const { exercise, nextExercise, classIndex, exerciseIndex } = route.params;
+
   const markAsComplete = () => {
     const updateArgs = {
-      courseId,
+      courseId: activeCourseId,
       class: classIndex,
       exercise: exerciseIndex,
       isComplete: true,
     };
 
-    console.log('marking as complete', updateArgs);
     reduxUpdateCourseClassExerciseIsComplete(updateArgs);
   };
 
@@ -54,6 +48,12 @@ const Exercise = ({
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    activeCourseId: state?.courses?.activeCourseId,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     reduxUpdateCourseClassExerciseIsComplete: (obj) =>
@@ -61,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Exercise);
+export default connect(mapStateToProps, mapDispatchToProps)(Exercise);

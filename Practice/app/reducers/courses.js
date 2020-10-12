@@ -32,6 +32,7 @@ import generateInitialState from '../helpers/reduxHelpers/generateInitialState';
 //     course101_classes0_exercisesCount: 3,
 //     course101_classesCount: 2,
 //     course101_startTimestamp: null
+//     course101_complete: false
 //   },
 
 const initialState = {

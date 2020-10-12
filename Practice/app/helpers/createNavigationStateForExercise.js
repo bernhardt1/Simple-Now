@@ -1,9 +1,19 @@
 import { CLASS_SCREEN, EXERCISE_SCREEN } from '../constants/constants';
 import getCourseFromId from './courseHelpers/getCourseFromId';
+import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
 
 // this function accepts a string and returns the local image with a matching name.
 function createNavigationStateForExercise(path) {
   let parts;
+
+  try {
+    parts = path.split('/');
+  } catch (error) {
+    sentryCaptureMessage(
+      'caught createNavigationStateForExercise path split error',
+      path
+    );
+  }
 
   let screen;
   let courseId;

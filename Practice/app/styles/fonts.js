@@ -1,9 +1,22 @@
-import { iOSUIKit, systemWeights } from 'react-native-typography';
+import {
+  iOSUIKit,
+  sanFranciscoSpacing,
+  systemWeights,
+} from 'react-native-typography';
 import { BRAND_BLACK, BRAND_WHITE } from './colors';
 
 const logoTitleFont = {
   ...iOSUIKit.largeTitleEmphasized,
   ...systemWeights.regular,
+  color: BRAND_BLACK,
+};
+
+const largeTitleFont = {
+  ...iOSUIKit.title3Emphasized,
+  ...systemWeights.semibold,
+  fontSize: 30,
+  lineHeight: 30,
+  letterSpacing: sanFranciscoSpacing(30),
   color: BRAND_BLACK,
 };
 
@@ -63,6 +76,7 @@ const centerAlign = {
 
 export {
   logoTitleFont,
+  largeTitleFont,
   titleEmphasizedFont,
   titleFont,
   subheadFont,

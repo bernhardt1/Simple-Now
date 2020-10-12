@@ -13,7 +13,7 @@ const getCourseFromId = (courseId) => {
       case 102 || '102':
         return MINDFULNESS_BEGINNER;
       default:
-        break;
+        return MINDFULNESS_INTRO;
     }
   } catch (e) {
     sentryCaptureMessage('caught getCourseFromId error', courseId);

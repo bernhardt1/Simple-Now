@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { View, ImageBackground } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { connect } from 'react-redux';
@@ -30,54 +30,53 @@ import setLocalImage from '../helpers/setLocalImage';
 import HeaderHome from '../components/HeaderHome/HeaderHome';
 import { updateBackground } from '../actions/settings';
 import { BACKGROUND_COUNT } from '../constants/magicNumbers';
-import getCourseFromIndex from '../helpers/courseHelpers/getCourseFromIndex';
+import getCourseIdFromIndex from '../helpers/courseHelpers/getCourseIdFromIndex';
 import createFlatReduxCourse from '../helpers/reduxHelpers/createFlatReduxCourse';
+import getCourseFromId from '../helpers/courseHelpers/getCourseFromId';
+import getIndexOfMostRecentCourse from '../helpers/reduxHelpers/getIndexOfMostRecentCourse';
 
 const Home = ({
   navigation,
   reduxCourses,
+  activeCourseId,
   deepLinkState,
   background,
   reduxUpdateActiveCourseId,
   reduxUpdateNavigationDeepLink,
   reduxUpdateBackground,
 }) => {
-  const [focusedClassIndex, setFocusedClassIndex] = useState(
-    getIndexOfMostRecentClass(0)
+  const [focusedCourse, setFocusedCourseState] = useState(
+    getCourseFromId(activeCourseId)
   );
-  const [focusedCourse, setFocusedCourseState] = useState(MINDFULNESS_INTRO);
-  const [focusedReduxFlatCourse, setFocusedReduxFlatCourse] = useState(
-    createFlatReduxCourse(reduxCourses, reduxCourses?.activeCourseId)
+  const focusedReduxFlatCourse = useMemo(
+    () => createFlatReduxCourse(reduxCourses, activeCourseId),
+    [reduxCourses, activeCourseId]
   );
 
   useEffect(() => {
-    // const focusedReduxCourse = createFlatReduxCourse(
-    //   reduxCourses,
-    //   reduxCourses?.activeCourseId
-    // );
-    // handleDeepLinkNavigation(deepLinkState);
-    // // Run the course notification scheduler every time the app is opened
-    // const isCourseActivated = true; //isCourseActive(reduxCourses);
-    // if (isCourseActivated) {
-    //   courseNotificationScheduler(MINDFULNESS_BEGINNER, reduxCourses);
-    // }
+    handleDeepLinkNavigation(deepLinkState);
+    // Run the course notification scheduler every time the app is opened
+    const isCourseActivated = isCourseActive(focusedReduxFlatCourse);
+    if (isCourseActivated) {
+      courseNotificationScheduler(focusedCourse, focusedReduxFlatCourse);
+    }
   }, [deepLinkState, background, focusedCourse, focusedReduxFlatCourse]);
 
-  // const handleDeepLinkNavigation = () => {
-  //   if (!deepLinkState) return;
+  const handleDeepLinkNavigation = () => {
+    if (!deepLinkState) return;
 
-  //   navigation.dispatch((state) => {
-  //     const newState = CommonActions.reset({
-  //       index: 0,
-  //       ...deepLinkState,
-  //     });
+    navigation.dispatch((state) => {
+      const newState = CommonActions.reset({
+        index: 0,
+        ...deepLinkState,
+      });
 
-  //     return newState;
-  //   });
+      return newState;
+    });
 
-  //   // Reset the route after handling it
-  //   reduxUpdateNavigationDeepLink(null);
-  // };
+    // Reset the route after handling it
+    reduxUpdateNavigationDeepLink(null);
+  };
 
   const changeBackground = () => {
     const current = background.split('background')[1];
@@ -103,8 +102,8 @@ const Home = ({
         isComplete={isClassComplete(focusedReduxFlatCourse, index)}
         buttonTitle={isCourseActivated ? 'GO' : 'START HERE'}
         reduxCourse={focusedReduxFlatCourse}
+        reduxCourses={reduxCourses}
         isCourseActivated={isCourseActivated}
-        focusedClassIndex={focusedClassIndex}
       />
     );
   };
@@ -113,7 +112,7 @@ const Home = ({
     return (
       <CourseItem
         title={item?.title}
-        subheading={`${getClassesCompleteCount(reduxCourses)} of ${
+        subheading={`${getClassesCompleteCount(focusedReduxFlatCourse)} of ${
           item?.classes?.length
         } complete`}
         onPress={() =>
@@ -130,17 +129,10 @@ const Home = ({
     );
   };
 
-  const setFocusedCourse = (index) => {
-    switch (index) {
-      case 0:
-        setFocusedCourseState(MINDFULNESS_INTRO);
-        break;
-      case 1:
-        setFocusedCourseState(MINDFULNESS_BEGINNER);
-        break;
-      default:
-        break;
-    }
+  const setFocusedCourse = (courseId) => {
+    const course = getCourseFromId(courseId);
+
+    setFocusedCourseState(course);
   };
 
   return (
@@ -161,15 +153,12 @@ const Home = ({
           inactiveSlideOpacity={0.5}
           inactiveSlideScale={0.9}
           layoutCardOffset={10}
+          firstItem={getIndexOfMostRecentCourse(activeCourseId)}
           onSnapToItem={(index) => {
-            const courseId = getCourseFromIndex(index);
-            console.log('courseId', courseId);
-            reduxUpdateActiveCourseId(courseId);
+            const courseId = getCourseIdFromIndex(index);
 
-            setFocusedCourse(index);
-            setFocusedReduxFlatCourse(
-              createFlatReduxCourse(reduxCourses, courseId)
-            );
+            reduxUpdateActiveCourseId(courseId);
+            setFocusedCourse(courseId);
           }}
         />
       </View>
@@ -183,10 +172,7 @@ const Home = ({
           inactiveSlideOpacity={0.5}
           inactiveSlideScale={0.9}
           layoutCardOffset={10}
-          firstItem={getIndexOfMostRecentClass(reduxCourses)}
-          onSnapToItem={(index) => {
-            setFocusedClassIndex(index);
-          }}
+          firstItem={getIndexOfMostRecentClass(focusedReduxFlatCourse)}
         />
       </View>
     </ImageBackground>
@@ -196,6 +182,7 @@ const Home = ({
 const mapStateToProps = (state) => {
   return {
     reduxCourses: state?.courses || {},
+    activeCourseId: state?.courses?.activeCourseId,
     deepLinkState: state?.navigation?.deepLinkState || null,
     background: state?.settings?.background || 'background1',
   };
@@ -203,8 +190,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reduxUpdateActiveCourseId: (deepLinkState) =>
-      dispatch(updateActiveCourseId(deepLinkState)),
+    reduxUpdateActiveCourseId: (val) => dispatch(updateActiveCourseId(val)),
     reduxUpdateCourseStartTimestamp: (obj) =>
       dispatch(updateCourseStartTimestamp(obj)),
     reduxUpdateNavigationDeepLink: (deepLinkState) =>

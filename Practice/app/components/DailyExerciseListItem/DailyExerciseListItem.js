@@ -3,7 +3,13 @@ import { View, Image, Text, TouchableOpacity, Alert } from 'react-native';
 
 import styles from './styles';
 import setLocalImage from '../../helpers/setLocalImage';
-import { titleFont, subheadFont, whiteFont } from '../../styles/fonts';
+import {
+  titleFont,
+  subheadFont,
+  whiteFont,
+  titleEmphasizedFont,
+  largeTitleFont,
+} from '../../styles/fonts';
 import { EXERCISE_SCREEN } from '../../constants/constants';
 import LinearGradient from 'react-native-linear-gradient';
 import { DARK_BLUE_LOGO, LIGHT_BLUE_LOGO } from '../../styles/colors';
@@ -42,7 +48,6 @@ const DailyExerciseListItem = ({
     navigation.navigate('Exercise', {
       exercise,
       nextExercise,
-      courseId: course?.id,
       classIndex,
       exerciseIndex,
       screenType: EXERCISE_SCREEN,
@@ -58,45 +63,26 @@ const DailyExerciseListItem = ({
       onPress={tryNavigateExercise}
     >
       <LinearGradient
-        colors={
-          isExerciseComplete
-            ? [DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]
-            : ['transparent', 'transparent']
-        }
-        style={
-          isExerciseComplete
-            ? styles.focusedImageContainerComplete
-            : styles.focusedImageContainer
-        }
+        colors={['transparent', 'transparent']}
+        style={styles.focusedImageContainer}
       >
-        {isExerciseComplete && <View />}
         <Image
           style={styles.focusedImage}
-          source={
-            isExerciseComplete
-              ? setLocalImage(`${exercise.image}White`)
-              : setLocalImage(`${exercise.image}White`)
-          }
+          source={setLocalImage(`${exercise.image}White`)}
         />
-        {isExerciseComplete && (
-          <View style={styles.informationTopCompleteContainer}>
-            <Image
-              style={styles.informationTopCompleteImage}
-              source={setLocalImage(`checkWhite`)}
-            />
-          </View>
-        )}
       </LinearGradient>
       <View style={styles.focusedInformationContainer}>
-        <Text style={[titleFont, whiteFont, styles.titleAndTimeMargin]}>
+        <Text style={[largeTitleFont, whiteFont, styles.titleAndTimeMargin]}>
           {exercise?.title}
         </Text>
         <Text
           ellipsizeMode="tail"
-          style={[subheadFont, whiteFont]}
+          style={[titleFont, whiteFont]}
           numberOfLines={2}
         >
-          now
+          {isExerciseAvailable(reduxCourse, course, classIndex, exerciseIndex)
+            ? 'now'
+            : convertReminderTimeToReadable(exercise?.reminderTime)}
         </Text>
       </View>
     </TouchableOpacity>
@@ -122,28 +108,16 @@ const DailyExerciseListItem = ({
       >
         <Image
           style={styles.image}
-          source={
-            isExerciseComplete
-              ? setLocalImage(`${exercise.image}White`)
-              : setLocalImage(`${exercise.image}White`)
-          }
+          source={setLocalImage(`${exercise.image}White`)}
         />
       </LinearGradient>
       <View style={styles.informationContainer}>
         <View style={styles.informationTopContainer}>
           <View style={styles.informationTopTextContainer}>
             <Text style={[titleFont, whiteFont, styles.titleAndTimeMargin]}>
-              {exercise?.title}
+              {`${exercise?.title}${isExerciseComplete ? ' - complete' : ''}`}
             </Text>
           </View>
-          {isExerciseComplete && (
-            <View style={styles.informationTopCompleteContainer}>
-              <Image
-                style={styles.informationTopCompleteImage}
-                source={setLocalImage(`checkWhite`)}
-              />
-            </View>
-          )}
         </View>
         <View style={styles.informationBottomContainer}>
           <Text

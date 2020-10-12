@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import {View, StatusBar, Alert, Linking, Platform} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import React, { Component } from 'react';
+import { View, StatusBar, Alert, Linking, Platform } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import sentryCaptureMessage from '../helpers/errorHelpers/sentryCaptureMessage';
 
 import NotificationService from '../notifications/NotificationService';
 import BaseNavigation from '../config/BaseNavigation';
 import linking from '../config/linking';
-import {updateNavigationDeepLink} from '../actions/navigation';
+import { updateNavigationDeepLink } from '../actions/navigation';
 import convertUrlToPath from '../helpers/convertUrlToPath';
 import createNavigationStateForExercise from '../helpers/createNavigationStateForExercise';
 
@@ -20,14 +20,14 @@ class AppSetup extends Component {
 
     this.notif = new NotificationService(
       this.onRegister.bind(this),
-      this.onNotif.bind(this),
+      this.onNotif.bind(this)
     );
 
     global.Notifications = this.notif;
     Linking.addEventListener('url', this.onLink);
 
     // handle initial notification iOS
-    const {initialNotification} = props;
+    const { initialNotification } = props;
     if (initialNotification) this.onLink(initialNotification);
   }
 
@@ -42,7 +42,7 @@ class AppSetup extends Component {
 
   onLink = (incomingUrl) => {
     try {
-      const {reduxUpdateNavigationDeepLink} = this.props;
+      const { reduxUpdateNavigationDeepLink } = this.props;
       let url = incomingUrl;
       if (incomingUrl?.url) url = incomingUrl.url;
       if (Platform.OS === 'ios' && url?.url) url = url.url;
@@ -58,7 +58,7 @@ class AppSetup extends Component {
   };
 
   onRegister(token) {
-    this.setState({registerToken: token.token, fcmRegistered: true});
+    this.setState({ registerToken: token.token, fcmRegistered: true });
   }
 
   onNotif(notif) {
@@ -71,7 +71,7 @@ class AppSetup extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <StatusBar
           barStyle="light-content"
           translucent

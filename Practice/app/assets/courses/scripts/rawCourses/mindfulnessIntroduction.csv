@@ -1,5 +1,5 @@
-title,information,courseId,dayId,exerciseId,image,reminderTime,exerciseTitle,subheading,copy,instructions,hasNext,screenType
-Mindfulness Introduction,"Welcome to our introductory mindfulness course.
+title,information,courseId,dayId,exerciseId,image,reminderTime,exerciseTitle,subheading,copy,instructions,hasNext,screenType,notificationMessage
+Mindfulness Introduction,"Welcome to our Introductory Mindfulness course.
 
 This 3 day introduction course will start you on the path to improving your mindfulness.
 
@@ -7,16 +7,16 @@ Like all our programs, we recommend combining Mindfulness Introduction with regu
 
 If you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.
 
-Please Enjoy!",101,,,,,,,,,,
+Please Enjoy!",101,,,,,,,,,,,
 ,,,0,,begin,,First Step,3 Day Introduction to Mindfulness Course,3 Day Introduction to Mindfulness Course,"This introduction course will send mindfulness exercises to you over the following 3 days. Each exercise provides an opportunity to practice mindfulness.
 
-Good luck in your practice.",TRUE,instruction
-,,,0,Breath-4,sunrise,07:00:00,,,,,,
-,,,0,Sensation-5,day,13:00:00,,,,,,
-,,,0,Breath-5,night,19:00:00,,,,,,
-,,,1,Breath-6,sunrise,06:00:00,,,,,,
-,,,1,Sensation-6,day,12:00:00,,,,,,
-,,,1,Breath-7,night,17:30:00,,,,,,
-,,,2,Breath-8,sunrise,09:00:00,,,,,,
-,,,2,Hear-0,day,15:00:00,,,,,,
-,,,2,Breath-9,night,19:30:00,,,,,,
+Good luck in your practice.",TRUE,instruction,
+,,,0,Breath-4,sunrise,06:00:00,,,,,,,Morning breath control exercise
+,,,0,Sensation-5,day,13:00:00,,,,,,,Afternoon sight relaxation exercise available
+,,,0,Breath-5,night,19:00:00,,,,,,,Evening calming breath exercise
+,,,1,Breath-6,sunrise,06:00:00,,,,,,,Morning breath setting exercise available
+,,,1,Sensation-0,day,12:00:00,,,,,,,Noon felt sense exercise ready
+,,,1,Breath-1,night,17:30:00,,,,,,,Evening breath calming exercise
+,,,2,Breath-8,sunrise,09:00:00,,,,,,,Morning controlled breath exercise
+,,,2,Hear-0,day,15:00:00,,,,,,,afternoon sound scan exercise available
+,,,2,Breath-9,night,19:30:00,,,,,,,Evening calming breath exercise available

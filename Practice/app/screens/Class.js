@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, ImageBackground } from 'react-native';
+import React, { useEffect, useState, useMemo } from 'react';
+import { FlatList, ImageBackground, Alert } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './screenStyles/ClassStyles';
@@ -9,12 +9,26 @@ import { INSTRUCTION_EXERCISE_SCREEN } from '../constants/constants';
 import { HeaderSpacer } from '../components/HeaderSpacer';
 import setLocalImage from '../helpers/setLocalImage';
 import { HeaderDefaultBack } from '../components/HeaderDefaultBack';
+import createFlatReduxCourse from '../helpers/reduxHelpers/createFlatReduxCourse';
+import getCourseFromId from '../helpers/courseHelpers/getCourseFromId';
+import getIndexOfNextExercise from '../helpers/reduxHelpers/getIndexOfNextExercise';
+import BottomButton from '../components/BottomButton/BottomButton';
 
-const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
-  const { classInfo, isCourseActivated, course } = route.params;
+const Class = ({
+  navigation,
+  route,
+  reduxCourses,
+  activeCourseId,
+  background,
+}) => {
+  const { classInfo, isCourseActivated } = route.params;
   const { classIndex } = classInfo;
 
-  const [focusedExerciseIndex, setFocusedExerciseIndex] = useState(0);
+  const [focusedCourse] = useState(getCourseFromId(activeCourseId));
+  const focusedReduxFlatCourse = useMemo(
+    () => createFlatReduxCourse(reduxCourses, activeCourseId),
+    [reduxCourses, activeCourseId]
+  );
 
   const navigateBack = () => {
     navigation.goBack();
@@ -25,7 +39,6 @@ const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
       navigation.navigate('Exercise', {
         exercise: classInfo?.exercises[0],
         nextExercise: classInfo?.exercises[1],
-        courseId: course?.id,
         classIndex,
         exerciseIndex: 0,
         screenType: INSTRUCTION_EXERCISE_SCREEN,
@@ -33,10 +46,35 @@ const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
     }
   }, []);
 
+  const navigateNextExercise = () => {
+    const targetIndex = getIndexOfNextExercise(
+      focusedCourse,
+      focusedReduxFlatCourse,
+      classIndex
+    );
+
+    navigation.navigate('Exercise', {
+      exercise: classInfo?.exercises[targetIndex],
+      nextExercise:
+        classInfo?.exercises?.length > targetIndex + 1
+          ? classInfo?.exercises[targetIndex + 1]
+          : null,
+      classIndex,
+      exerciseIndex: targetIndex,
+      targetIndex,
+    });
+  };
+
   const renderItem = (exercise, index) => {
+    const targetIndex = getIndexOfNextExercise(
+      focusedCourse,
+      focusedReduxFlatCourse,
+      classIndex
+    );
+
     return (
       <DailyExerciseListItem
-        focused={index === 0}
+        focused={index === targetIndex}
         exercise={exercise}
         nextExercise={
           classInfo?.exercises?.length > index + 1
@@ -49,28 +87,13 @@ const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
         isExerciseComplete={isExerciseComplete(
           index,
           classIndex,
-          reduxAwarenessBeginner
+          focusedReduxFlatCourse
         )}
-        course={course}
-        reduxCourse={reduxAwarenessBeginner}
+        course={focusedCourse}
+        reduxCourse={focusedReduxFlatCourse}
         lastItem={index === classInfo?.exercises?.length - 1}
       />
     );
-  };
-
-  const moveFocusedExerciseToTop = (items) => {
-    const unfocusedItems = [];
-
-    const result = items.filter((i, index) => {
-      if (focusedExerciseIndex !== index) {
-        unfocusedItems.push(i);
-        return false;
-      }
-
-      return true;
-    });
-
-    return [...result, ...unfocusedItems];
   };
 
   return (
@@ -82,18 +105,26 @@ const Class = ({ navigation, route, reduxAwarenessBeginner, background }) => {
       <HeaderDefaultBack onPressBack={navigateBack} title={classInfo?.title} />
 
       <FlatList
-        data={moveFocusedExerciseToTop(classInfo?.exercises)}
+        data={classInfo?.exercises}
         renderItem={({ item, index }) => renderItem(item, index)}
         keyExtractor={(item, index) => `${item.title}${index}`}
-        extraData={reduxAwarenessBeginner}
+        extraData={focusedReduxFlatCourse}
       />
+      {getIndexOfNextExercise(
+        focusedCourse,
+        focusedReduxFlatCourse,
+        classIndex
+      ) !== null && (
+        <BottomButton onPress={navigateNextExercise} title={'start'} absolute />
+      )}
     </ImageBackground>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    reduxAwarenessBeginner: state?.awarenessBeginner || {},
+    reduxCourses: state?.courses || {},
+    activeCourseId: state?.courses?.activeCourseId,
     background: state?.settings?.background || 'background1',
   };
 };

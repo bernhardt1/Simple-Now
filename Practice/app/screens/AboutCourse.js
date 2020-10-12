@@ -43,7 +43,7 @@ const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
             global.Notifications.localNotif();
           }}
           withBorder
-        /> */}
+        />
         <StandardButton
           title={'Print Notifications'}
           onPress={() => {
@@ -81,7 +81,7 @@ const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
             );
           }}
           withBorder
-        />
+        /> */}
       </View>
     </ImageBackground>
   );

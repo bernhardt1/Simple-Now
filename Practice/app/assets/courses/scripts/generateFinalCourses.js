@@ -95,6 +95,7 @@ function convertCourseToJavascript(json) {
       instructions,
       hasNext,
       screenType,
+      notificationMessage,
     } = item;
 
     console.log('item', item);
@@ -145,6 +146,7 @@ function convertCourseToJavascript(json) {
       nextExercise.recommendedTime = recommendedTime;
       nextExercise.exerciseType =
         exerciseType && exerciseType.length > 0 ? exerciseType : null;
+      nextExercise.notificationMessage = notificationMessage || null;
 
       classes[currentDayId].exercises.push(nextExercise);
     }
