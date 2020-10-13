@@ -1,5 +1,5 @@
 import PushNotification from 'react-native-push-notification';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 
 class NotificationHandler {
   onNotification(notification) {
@@ -65,7 +65,7 @@ PushNotification.configure({
    * - Specified if permissions (ios) and token (android and ios) will requested or not,
    * - if not, you must call PushNotificationsHandler.requestPermissions() later
    */
-  requestPermissions: Platform.OS === 'ios',
+  requestPermissions: false,
 });
 
 export default handler;

@@ -127,7 +127,6 @@ const StandardExercise = ({
         break;
       case COUNTING_DOWN:
         if (this?.isPaused) return;
-
         animateGlobalOpacity0(EBS * 6000, EBS * 4000);
         this.timeout = setTimeout(() => {
           animateCountdown(simpleInstruction, COMPLETED);
@@ -277,7 +276,14 @@ const StandardExercise = ({
   const animateCountdown = (recommendedTime, nextStep) => {
     if (this?.isPaused) return;
 
-    setSimpleInstruction(recommendedTime - 1);
+    if (!isNaN(recommendedTime)) {
+      setSimpleInstruction(recommendedTime - 1);
+    } else {
+      setSimpleInstruction(
+        millisecondsToSeconds(exercise?.recommendedTime || 40)
+      );
+    }
+
     this.timeout2 = setTimeout(() => {
       if (recommendedTime > 1) {
         animateCountdown(recommendedTime - 1, nextStep);

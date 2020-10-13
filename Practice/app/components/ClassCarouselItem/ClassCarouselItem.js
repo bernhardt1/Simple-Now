@@ -21,6 +21,7 @@ import startCourse from '../../helpers/reduxHelpers/startCourse';
 import isCourseAvailable from '../../helpers/reduxHelpers/isCourseAvailable';
 import { connect } from 'react-redux';
 import { updateCourseStartTimestamp } from '../../actions/courses';
+import sentryCaptureMessage from '../../helpers/errorHelpers/sentryCaptureMessage';
 
 const ClassCarouselItem = ({
   course,
@@ -31,6 +32,7 @@ const ClassCarouselItem = ({
   reduxCourse,
   reduxCourses,
   isCourseActivated,
+  togglePushModal,
   reduxUpdateCourseStartTimestamp,
 }) => {
   const [classAvailable, setClassAvailable] = useState(
@@ -40,6 +42,21 @@ const ClassCarouselItem = ({
   useEffect(() => {
     setClassAvailable(isClassAvailable(reduxCourse, classInfo?.classIndex));
   }, [reduxCourse]);
+
+  const checkPermissionsBeforeNavigating = async () => {
+    try {
+      global.Notifications.checkPermission((permissions) => {
+        if (permissions.notificationCenter) {
+          navigateClass();
+        } else {
+          togglePushModal();
+        }
+      });
+    } catch (error) {
+      sentryCaptureMessage('error checking push permissions');
+      togglePushModal();
+    }
+  };
 
   const navigateClass = () => {
     if (isCourseAvailable(reduxCourses, course.id)) {
@@ -76,7 +93,7 @@ const ClassCarouselItem = ({
   const subheading = `${classInfo?.exercises?.length} exercises`;
   return (
     <View style={styles.parentContainer}>
-      <TouchableWithoutFeedback onPress={navigateClass}>
+      <TouchableWithoutFeedback onPress={checkPermissionsBeforeNavigating}>
         <LinearGradient
           colors={[DARK_OVERLAY, DARK_OVERLAY]}
           style={styles.container}

@@ -3,7 +3,7 @@ import {
   sanFranciscoSpacing,
   systemWeights,
 } from 'react-native-typography';
-import { BRAND_BLACK, BRAND_WHITE } from './colors';
+import { BRAND_BLACK, BRAND_WHITE, SYSTEM_BLUE } from './colors';
 
 const logoTitleFont = {
   ...iOSUIKit.largeTitleEmphasized,
@@ -70,6 +70,10 @@ const whiteFont = {
   color: BRAND_WHITE,
 };
 
+const systemFont = {
+  color: SYSTEM_BLUE,
+};
+
 const centerAlign = {
   textAlign: 'center',
 };
@@ -86,5 +90,6 @@ export {
   buttonFont,
   bottomButtonFont,
   whiteFont,
+  systemFont,
   centerAlign,
 };

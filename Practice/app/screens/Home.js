@@ -3,6 +3,7 @@ import { View, ImageBackground } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { connect } from 'react-redux';
 import { CommonActions } from '@react-navigation/native';
+import Modal from 'react-native-modal';
 
 import styles from './screenStyles/HomeStyles';
 import CourseItem from '../components/CourseItem/CourseItem';
@@ -34,6 +35,7 @@ import getCourseIdFromIndex from '../helpers/courseHelpers/getCourseIdFromIndex'
 import createFlatReduxCourse from '../helpers/reduxHelpers/createFlatReduxCourse';
 import getCourseFromId from '../helpers/courseHelpers/getCourseFromId';
 import getIndexOfMostRecentCourse from '../helpers/reduxHelpers/getIndexOfMostRecentCourse';
+import PushPermissionModalContent from '../components/PushPermissionModalContent/PushPermissionModalContent';
 
 const Home = ({
   navigation,
@@ -45,6 +47,8 @@ const Home = ({
   reduxUpdateNavigationDeepLink,
   reduxUpdateBackground,
 }) => {
+  const [isPushPermissionVisible, setIsPushPermissionVisible] = useState(false);
+
   const [focusedCourse, setFocusedCourseState] = useState(
     getCourseFromId(activeCourseId)
   );
@@ -104,6 +108,7 @@ const Home = ({
         reduxCourse={focusedReduxFlatCourse}
         reduxCourses={reduxCourses}
         isCourseActivated={isCourseActivated}
+        togglePushModal={togglePushModal}
       />
     );
   };
@@ -131,8 +136,11 @@ const Home = ({
 
   const setFocusedCourse = (courseId) => {
     const course = getCourseFromId(courseId);
-
     setFocusedCourseState(course);
+  };
+
+  const togglePushModal = () => {
+    setIsPushPermissionVisible((prevPermission) => !prevPermission);
   };
 
   return (
@@ -140,6 +148,10 @@ const Home = ({
       style={styles.container}
       source={setLocalImage(background)}
     >
+      <Modal coverScreen={false} isVisible={isPushPermissionVisible}>
+        <PushPermissionModalContent onPress={togglePushModal} />
+      </Modal>
+
       <HeaderSpacer />
       <HeaderHome onPressHamburger={changeBackground} />
       <View style={{ flex: 1 }}>

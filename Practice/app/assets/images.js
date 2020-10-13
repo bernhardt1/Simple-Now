@@ -27,6 +27,7 @@ const images = {
   playWhite: require('./img/playWhite.png'),
   mountainBlack: require('./img/mountainBlack.png'),
   mountainWhite: require('./img/mountainWhite.png'),
+  notificationPermission: require('./img/notificationPermission.png'),
 };
 
 export default images;
