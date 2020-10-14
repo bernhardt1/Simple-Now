@@ -102,7 +102,11 @@ const StandardExercise = ({
         }, EBS * 80);
         break;
       case WARMED_UP:
-        animateInstructionOpacity(0, EBS * 10, 'begin');
+        animateInstructionOpacity(
+          0,
+          EBS * 10,
+          millisecondsToSeconds(exercise?.recommendedTime) || 40
+        );
         animateInnerRingOpacity(0, EBS * 10);
         animateTextContainer(1, COUNTDOWN);
         break;
@@ -112,18 +116,11 @@ const StandardExercise = ({
         }, EBS * 200);
         break;
       case START_EXERCISE:
-        animateInstructionOpacity(
-          0,
-          EBS * 20,
-          millisecondsToSeconds(exercise?.recommendedTime) || 40
-        );
+        animateInstructionOpacity(1, EBS * 600);
         this.timeout = setTimeout(() => {
-          animateInstructionOpacity(1, EBS * 600);
-          this.timeout2 = setTimeout(() => {
-            steelBell.play();
-            setCurrentStep(COUNTING_DOWN);
-          }, EBS * 600);
-        }, EBS * 40);
+          steelBell.play();
+          setCurrentStep(COUNTING_DOWN);
+        }, EBS * 600);
         break;
       case COUNTING_DOWN:
         if (this?.isPaused) return;

@@ -133,8 +133,8 @@ android {
         applicationId "com.dailymindfulness.practice"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 8           // uploaded on october 12, 2020
-        versionName "1.8"
+        versionCode 12           // uploaded on october 13, 2020
+        versionName "1.12"
     }
     splits {
         abi {

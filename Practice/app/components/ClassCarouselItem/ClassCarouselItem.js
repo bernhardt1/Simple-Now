@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
+import {
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  Alert,
+  Platform,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './styles';
@@ -44,6 +50,11 @@ const ClassCarouselItem = ({
   }, [reduxCourse]);
 
   const checkPermissionsBeforeNavigating = async () => {
+    if (Platform.OS !== 'ios') {
+      navigateClass();
+      return;
+    }
+
     try {
       global.Notifications.checkPermission((permissions) => {
         if (permissions.notificationCenter) {
