@@ -51,7 +51,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -70,5 +70,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AvenirNextRoundedProBold.ttf</string>
+		<string>AvenirNextRoundedProBoldIt.ttf</string>
+		<string>AvenirNextRoundedProDemi.ttf</string>
+		<string>AvenirNextRoundedProDemiIt.ttf</string>
+		<string>AvenirNextRoundedProMedium.ttf</string>
+		<string>AvenirNextRoundedProMediumIt.ttf</string>
+		<string>AvenirNextRoundedProRegular.ttf</string>
+		<string>AvenirNextRoundedProRegularIt.ttf</string>
+	</array>
 </dict>
 </plist>

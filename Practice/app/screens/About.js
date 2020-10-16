@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, ScrollView, View} from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 import styles from './screenStyles/AboutStyles';
 import {
   STRING_ABOUT_PRACTICE_1,
@@ -7,9 +7,9 @@ import {
   STRING_CONTACT_INFO_TITLE,
   STRING_CONTACT_INFO_EMAIL,
 } from '../constants/dict';
-import {bodyFont, bodyFontTitle} from '../styles/fonts';
-import {scrollViewBottomMargin} from '../styles/spacings';
-import {InvisibleSeparator} from '../components/InvisibleSeparator';
+import { bodyFont, bodyFontTitle } from '../styles/fonts';
+import { scrollViewBottomMargin } from '../styles/spacings';
+import { InvisibleSeparator } from '../components/InvisibleSeparator';
 
 const About = () => {
   return (

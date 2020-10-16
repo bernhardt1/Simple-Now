@@ -1,10 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 import styles from './styles';
-import {ClassCarouselChecklistItem} from '../ClassCarouselChecklistItem/index';
+import { ClassCarouselChecklistItem } from '../ClassCarouselChecklistItem/index';
 
-const ClassCarouselItemChecklist = ({items}) => {
+const ClassCarouselItemChecklist = ({ items }) => {
   const renderChecklistItems = (checklistItems) => {
     return checklistItems.map((item) => {
       return (
