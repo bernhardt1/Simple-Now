@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableNativeFeedback, Image, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, View } from 'react-native';
 
 import styles from './styles';
 import setLocalImage from '../../helpers/setLocalImage';
@@ -14,7 +14,7 @@ const StandardImageButton = ({
   borderColor,
 }) => {
   return (
-    <TouchableNativeFeedback onPress={onPress} styles={styles.button}>
+    <TouchableWithoutFeedback onPress={onPress} styles={styles.button}>
       <View
         style={[
           styles.container,
@@ -29,7 +29,7 @@ const StandardImageButton = ({
       >
         <Image source={setLocalImage(image)} style={styles.image} />
       </View>
-    </TouchableNativeFeedback>
+    </TouchableWithoutFeedback>
   );
 };
 

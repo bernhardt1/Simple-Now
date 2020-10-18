@@ -37,10 +37,17 @@ const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
 
           <View style={scrollViewBottomMargin} />
         </ScrollView>
-        {/* <StandardButton
+        <StandardButton
           title={'Send C0E0 notification'}
           onPress={() => {
-            global.Notifications.localNotif();
+            global.Notifications.scheduleNotif(
+              '123456789',
+              'steel_bell.mp3',
+              1,
+              'test notification',
+              'this is a test',
+              '103/20/7'
+            );
           }}
           withBorder
         />
@@ -81,7 +88,7 @@ const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
             );
           }}
           withBorder
-        /> */}
+        />
       </View>
     </ImageBackground>
   );

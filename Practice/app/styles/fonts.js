@@ -1,9 +1,14 @@
-import {
-  iOSUIKit,
-  sanFranciscoSpacing,
-  systemWeights,
-} from 'react-native-typography';
+import { Platform } from 'react-native';
+import { human, sanFranciscoSpacing } from 'react-native-typography';
 import { BRAND_BLACK, BRAND_WHITE, SYSTEM_BLUE } from './colors';
+
+// NOTE: copy the following code into AppDelegeate.m to print all fonts
+// for (NSString *familyName in [UIFont familyNames]){
+//   NSLog(@"Family name: %@", familyName);
+//   for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+//       NSLog(@"--Font name: %@", fontName);
+//   }
+// }
 
 // FONT NAMES
 // AvenirNextRoundedPro-Reg
@@ -16,72 +21,72 @@ import { BRAND_BLACK, BRAND_WHITE, SYSTEM_BLUE } from './colors';
 // AvenirNextRoundedPro-DemiIt
 
 const logoTitleFont = {
-  ...iOSUIKit.largeTitleEmphasized,
-  ...systemWeights.regular,
+  ...human.largeTitle,
   fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '500',
   color: BRAND_BLACK,
 };
 
 const largeTitleFont = {
-  ...iOSUIKit.title3Emphasized,
-  ...systemWeights.semibold,
+  ...human.title1,
   fontSize: 30,
   lineHeight: 30,
   letterSpacing: sanFranciscoSpacing(30),
   fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '500',
   color: BRAND_BLACK,
 };
 
 const titleEmphasizedFont = {
-  ...iOSUIKit.title3Emphasized,
+  ...human.title2,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '700',
 };
 
 const titleFont = {
-  ...iOSUIKit.title3,
+  ...human.title3,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '500',
 };
 
 const subheadFont = {
-  ...iOSUIKit.subhead,
-  ...systemWeights.semibold,
+  ...human.body,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '500',
 };
 
 const bodyFont = {
-  ...iOSUIKit.body,
-  ...systemWeights.semibold,
+  ...human.body,
+  lineHeight: human.body.fontSize * 1.25,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '500',
 };
 
 const bodyFontTitle = {
-  ...iOSUIKit.body,
-  ...systemWeights.semibold,
+  ...human.body,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
 
 const footnoteFont = {
-  ...iOSUIKit.footnote,
-  ...systemWeights.semibold,
+  ...human.footnote,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
 
 const buttonFont = {
-  ...iOSUIKit.subheadShort,
-  ...systemWeights.bold,
+  ...human.body,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
 
 const bottomButtonFont = {
-  ...iOSUIKit.title3,
-  ...systemWeights.semibold,
+  ...human.title1,
+  fontWeight: '500',
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };

@@ -53,11 +53,11 @@ const standardButton = {
 };
 
 const standardImageButton = {
-  height: widthUnit * 8,
-  width: widthUnit * 8,
+  height: widthUnit * 9,
+  width: widthUnit * 9,
   minWidth: 30,
   minHeight: 30,
-  borderRadius: Math.max((widthUnit * 8) / 2, 30 / 2),
+  borderRadius: Math.max((widthUnit * 9) / 2, 30 / 2),
   justifyContent: 'center',
   alignItems: 'center',
 };

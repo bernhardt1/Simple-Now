@@ -7,9 +7,9 @@ import {
   TouchableWithoutFeedback,
   Easing,
 } from 'react-native';
-// Import the react-native-sound module
-const Sound = require('react-native-sound');
+import Sound from 'react-native-sound';
 import { connect } from 'react-redux';
+import { useKeepAwake } from 'expo-keep-awake';
 
 import { StandardImageButton } from '../../../components/StandardImageButton';
 import { EXERCISE_SPEED_MULTIPLIER } from '../../../constants/magicNumbers';
@@ -17,7 +17,7 @@ import sentryCaptureMessage from '../../../helpers/errorHelpers/sentryCaptureMes
 import setLocalImage from '../../../helpers/setLocalImage';
 import { heightUnit } from '../../../styles/constants';
 import {
-  bodyFontTitle,
+  titleFont,
   centerAlign,
   titleEmphasizedFont,
   whiteFont,
@@ -26,6 +26,9 @@ import {
 import styles from './styles';
 import millisecondsToSeconds from '../../../helpers/timeHelpers/millisecondsToSeconds';
 import { ABOUT_EXERCISE_SCREEN } from '../../../constants/constants';
+import loadSound from '../../../helpers/loadSound';
+import { updateIsSoundOn } from '../../../actions/settings';
+import StandardButton from '../../../components/StandardButton/StandardButton';
 
 const BEGIN_BREATHE_IN = 'BEGIN_BREATHE_IN';
 const HOLD = 'HOLD';
@@ -42,33 +45,27 @@ const StandardExercise = ({
   navigation,
   exercise,
   markAsComplete,
+  reduxUpdateIsSoundOn,
   background,
+  isSoundOn,
 }) => {
   // Enable playback in silence mode
+  useKeepAwake();
   Sound.setCategory('Playback');
+
   // Load the sound files from the app bundle
-  const steelBell = new Sound(
-    'steel_bell_long.mp3',
-    Sound.MAIN_BUNDLE,
-    (error) => {
-      if (error) {
-        sentryCaptureMessage('caught steelBell loading error', error);
-        return;
-      }
-    }
-  );
-  const chime = new Sound('chime.mp3', Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-      sentryCaptureMessage('caught chime loading error', error);
-      return;
-    }
-  });
+  let steelBell = loadSound('steel_bell_long.mp3');
+  let chime = loadSound('chime.mp3');
 
   const [simpleInstruction, setSimpleInstruction] = useState('ready');
   const [currentStep, setCurrentStep] = useState('');
+  const [exerciseDuration, setExerciseDuration] = useState(
+    millisecondsToSeconds(exercise?.recommendedTime) || 40
+  );
 
   const [simpleContainerAnimation] = useState(new Animated.Value(0));
   const [textContainerAnimation] = useState(new Animated.Value(0));
+  const [addTimeOpacityAnimation] = useState(new Animated.Value(0));
   const [simpleScaleAnimation] = useState(new Animated.Value(0));
   const [instructionOpacityAnimation] = useState(new Animated.Value(1));
   const [innerRingOpacityAnimation] = useState(new Animated.Value(0));
@@ -84,13 +81,13 @@ const StandardExercise = ({
           animateInstructionOpacity(1, EBS * 800);
           animateSimpleScale(1, HOLD);
           animateOuterRingOpacity(1, EBS * 2000);
-        }, EBS * 1000);
+        }, EBS * 600);
         break;
       case HOLD:
         animateInstructionOpacity(0, EBS * 20, 'hold');
         this.timeout = setTimeout(() => {
           animateInstructionOpacity(1, EBS * 20);
-          animateOuterRingOpacity(0, EBS * 1500, BREATHE_OUT);
+          animateOuterRingOpacity(0, EBS * 1200, BREATHE_OUT);
         }, EBS * 80);
         break;
       case BREATHE_OUT:
@@ -102,11 +99,7 @@ const StandardExercise = ({
         }, EBS * 80);
         break;
       case WARMED_UP:
-        animateInstructionOpacity(
-          0,
-          EBS * 10,
-          millisecondsToSeconds(exercise?.recommendedTime) || 40
-        );
+        animateInstructionOpacity(0, EBS * 10, exerciseDuration);
         animateInnerRingOpacity(0, EBS * 10);
         animateTextContainer(1, COUNTDOWN);
         break;
@@ -118,7 +111,7 @@ const StandardExercise = ({
       case START_EXERCISE:
         animateInstructionOpacity(1, EBS * 600);
         this.timeout = setTimeout(() => {
-          steelBell.play();
+          if (isSoundOn) steelBell?.play();
           setCurrentStep(COUNTING_DOWN);
         }, EBS * 600);
         break;
@@ -140,6 +133,7 @@ const StandardExercise = ({
         animateGlobalOpacity1(0, EBS * 600, false);
         this.timeout = setTimeout(() => {
           animateTextContainer(0);
+          animateTimeOpacity(1, 1000 * EBS);
         }, EBS * 800);
         break;
       default:
@@ -152,7 +146,7 @@ const StandardExercise = ({
       clearTimeout(this.timeout3);
       clearTimeout(this.timeout4);
     };
-  }, [currentStep]);
+  }, [currentStep, isSoundOn]);
 
   // pass 0 for starting position
   // pass 1 for active position
@@ -162,6 +156,21 @@ const StandardExercise = ({
       duration: EBS * 1000,
       easing: Easing.inOut(Easing.cubic),
       useNativeDriver: false, // must be false if we want to use the animated value anywhere else
+    }).start(({ finished }) => {
+      if (finished && nextStep) {
+        setCurrentStep(nextStep);
+      }
+    });
+  };
+
+  // pass 0 for disappearing
+  // pass 1 for appearing
+  const animateTimeOpacity = (value, duration, nextStep) => {
+    Animated.timing(addTimeOpacityAnimation, {
+      toValue: value,
+      duration,
+      easing: Easing.in(Easing.cubic),
+      useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
       if (finished && nextStep) {
         setCurrentStep(nextStep);
@@ -269,7 +278,7 @@ const StandardExercise = ({
     });
   };
 
-  // pass exercise recommendedTime
+  // pass exercise exerciseDuration
   const animateCountdown = (recommendedTime, nextStep) => {
     if (this?.isPaused) return;
 
@@ -285,10 +294,10 @@ const StandardExercise = ({
       if (recommendedTime > 1) {
         animateCountdown(recommendedTime - 1, nextStep);
       } else {
-        chime.play();
+        if (isSoundOn) chime?.play();
         setCurrentStep(nextStep);
       }
-    }, EBS * 1100);
+    }, EBS * 1000);
   };
 
   const animateGlobalOpacity0 = (timeout, duration) => {
@@ -354,11 +363,26 @@ const StandardExercise = ({
     });
   };
 
+  const toggleSound = () => {
+    if (isSoundOn) {
+      reduxUpdateIsSoundOn(false);
+    } else {
+      reduxUpdateIsSoundOn(true);
+    }
+  };
+
+  const addTime = (val) => {
+    setExerciseDuration(val);
+    setSimpleInstruction(val);
+    animateTimeOpacity(0, 1000 * EBS);
+    setCurrentStep(START_EXERCISE);
+  };
+
   return (
     <ImageBackground
       style={styles.container}
       source={setLocalImage(background)}
-      blurRadius={5}
+      blurRadius={1}
     >
       <Animated.View
         pointerEvents={'auto'}
@@ -375,10 +399,18 @@ const StandardExercise = ({
             image={'backWhite'}
             onPress={navigation.goBack}
           />
-          <Text style={[titleEmphasizedFont, whiteFont]}>Breath Exercise</Text>
+          <Text
+            style={[titleEmphasizedFont, whiteFont]}
+          >{`${exercise?.title} Exercise`}</Text>
           <StandardImageButton
             image={'questionMarkWhite'}
             onPress={navigateAboutExercise}
+          />
+        </View>
+        <View style={styles.volumeHeader} pointerEvents={'auto'}>
+          <StandardImageButton
+            image={isSoundOn ? 'soundOnWhite' : 'soundOffWhite'}
+            onPress={toggleSound}
           />
         </View>
 
@@ -404,10 +436,37 @@ const StandardExercise = ({
               ]}
               pointerEvents={'auto'}
             >
-              <Text style={[titleEmphasizedFont, whiteFont, centerAlign]}>
+              <Text style={[titleFont, whiteFont, centerAlign]}>
                 {exercise?.copy}
               </Text>
             </Animated.View>
+
+            <Animated.View
+              style={[
+                styles.addTimeContainer,
+                {
+                  opacity: addTimeOpacityAnimation,
+                },
+              ]}
+              pointerEvents={'auto'}
+            >
+              <StandardButton
+                withBorder
+                title={'+1 min'}
+                onPress={() => addTime(60)}
+              />
+              <StandardButton
+                withBorder
+                title={'+2 min'}
+                onPress={() => addTime(120)}
+              />
+              <StandardButton
+                withBorder
+                title={'+5 min'}
+                onPress={() => addTime(300)}
+              />
+            </Animated.View>
+
             <Animated.View
               style={[
                 styles.simpleContainer,
@@ -529,10 +588,18 @@ const StandardExercise = ({
     </ImageBackground>
   );
 };
+
 const mapStateToProps = (state) => {
   return {
     background: state?.settings?.background || 'background1',
+    isSoundOn: state?.settings?.isSoundOn,
   };
 };
 
-export default connect(mapStateToProps)(StandardExercise);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reduxUpdateIsSoundOn: (val) => dispatch(updateIsSoundOn(val)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StandardExercise);

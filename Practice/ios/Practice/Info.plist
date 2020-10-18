@@ -72,14 +72,14 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AvenirNextRoundedProBold.ttf</string>
-		<string>AvenirNextRoundedProBoldIt.ttf</string>
-		<string>AvenirNextRoundedProDemi.ttf</string>
-		<string>AvenirNextRoundedProDemiIt.ttf</string>
-		<string>AvenirNextRoundedProMedium.ttf</string>
-		<string>AvenirNextRoundedProMediumIt.ttf</string>
-		<string>AvenirNextRoundedProRegular.ttf</string>
-		<string>AvenirNextRoundedProRegularIt.ttf</string>
+		<string>AvenirNextRoundedPro-Bold.ttf</string>
+		<string>AvenirNextRoundedPro-BoldIt.ttf</string>
+		<string>AvenirNextRoundedPro-Demi.ttf</string>
+		<string>AvenirNextRoundedPro-DemiIt.ttf</string>
+		<string>AvenirNextRoundedPro-Italic.ttf</string>
+		<string>AvenirNextRoundedPro-Med.ttf</string>
+		<string>AvenirNextRoundedPro-MedIt.ttf</string>
+		<string>AvenirNextRoundedPro-Reg.ttf</string>
 	</array>
 </dict>
 </plist>

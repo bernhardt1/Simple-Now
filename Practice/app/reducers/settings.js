@@ -1,7 +1,8 @@
-import { UPDATE_BACKGROUND } from '../actions/settings';
+import { UPDATE_BACKGROUND, UPDATE_IS_SOUND_ON } from '../actions/settings';
 
 const initialState = {
   background: 'background1',
+  isSoundOn: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         background: action.val,
+      };
+    case UPDATE_IS_SOUND_ON:
+      return {
+        ...state,
+        isSoundOn: action.val,
       };
     default:
       return state;

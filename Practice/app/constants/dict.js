@@ -30,6 +30,7 @@ const HOW_TO_QUOTE =
   'The quotes we share are from contemporary and historical teachers.\n\nWe include them to inspire and motivate you as you continue with your practice.';
 const HOW_TO_INTERACTIVE =
   'Interactive exercises are meant to be a next step beyond private practice.\n\nSimple Now, the app, is designed to help you integrate mindfulness into every day life. Most of the exercises we share will help you build private mindfulness patterns into your life. These exercises help you bring your awareness to the present moment more often.\n\nThe next step is to be more mindful in everything you do. Whether it’s interacting with others, or doing the dishes. Awareness and attention to the present moment can change everything. These interactive exercises will help you with that progression.';
+
 export {
   STRING_ABOUT_PRACTICE_1,
   STRING_ABOUT_PRACTICE_2,

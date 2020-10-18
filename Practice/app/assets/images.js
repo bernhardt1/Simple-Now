@@ -27,6 +27,10 @@ const images = {
   playWhite: require('./img/playWhite.png'),
   mountainBlack: require('./img/mountainBlack.png'),
   mountainWhite: require('./img/mountainWhite.png'),
+  soundOffBlack: require('./img/soundOffBlack.png'),
+  soundOffWhite: require('./img/soundOffWhite.png'),
+  soundOnBlack: require('./img/soundOnBlack.png'),
+  soundOnWhite: require('./img/soundOnWhite.png'),
   notificationPermission: require('./img/notificationPermission.png'),
 };
 

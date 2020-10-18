@@ -35,7 +35,7 @@ import getCourseIdFromIndex from '../helpers/courseHelpers/getCourseIdFromIndex'
 import createFlatReduxCourse from '../helpers/reduxHelpers/createFlatReduxCourse';
 import getCourseFromId from '../helpers/courseHelpers/getCourseFromId';
 import getIndexOfMostRecentCourse from '../helpers/reduxHelpers/getIndexOfMostRecentCourse';
-import PushPermissionModalContent from '../components/PushPermissionModalContent/PushPermissionModalContent';
+import { PushPermissionModalContent } from '../components/ModalContent/index';
 
 const Home = ({
   navigation,

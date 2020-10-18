@@ -5,11 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import {
-  centerAlign,
-  titleEmphasizedFont,
-  whiteFont,
-} from '../../../styles/fonts';
+import { centerAlign, titleFont, whiteFont } from '../../../styles/fonts';
 import BottomButton from '../../../components/BottomButton/BottomButton';
 import { EXERCISE_SCREEN } from '../../../constants/constants';
 import setLocalImage from '../../../helpers/setLocalImage';
@@ -48,7 +44,7 @@ const Instruction = ({
     <ImageBackground
       style={styles.container}
       source={setLocalImage(background)}
-      blurRadius={5}
+      blurRadius={1}
     >
       <LinearGradient
         colors={['transparent', 'transparent', VERY_DARK_OVERLAY]}
@@ -62,7 +58,7 @@ const Instruction = ({
         />
 
         <View style={styles.scrollView}>
-          <Text style={[titleEmphasizedFont, whiteFont, centerAlign]}>
+          <Text style={[titleFont, whiteFont, centerAlign]}>
             {exercise?.instructions}
           </Text>
         </View>
