@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Practice.app"
-               BlueprintName = "Practice"
-               ReferencedContainer = "container:Practice.xcodeproj">
+               BuildableName = "SimpleNow.app"
+               BlueprintName = "SimpleNow"
+               ReferencedContainer = "container:SimpleNow.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "PracticeTests.xctest"
-               BlueprintName = "PracticeTests"
-               ReferencedContainer = "container:Practice.xcodeproj">
+               BuildableName = "SimpleNowTests.xctest"
+               BlueprintName = "SimpleNowTests"
+               ReferencedContainer = "container:SimpleNow.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Practice.app"
-            BlueprintName = "Practice"
-            ReferencedContainer = "container:Practice.xcodeproj">
+            BuildableName = "SimpleNow.app"
+            BlueprintName = "SimpleNow"
+            ReferencedContainer = "container:SimpleNow.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Practice.app"
-            BlueprintName = "Practice"
-            ReferencedContainer = "container:Practice.xcodeproj">
+            BuildableName = "SimpleNow.app"
+            BlueprintName = "SimpleNow"
+            ReferencedContainer = "container:SimpleNow.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
