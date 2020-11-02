@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Practice</string>
+	<string>Simple Now</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -51,7 +51,18 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AvenirNextRoundedPro-Bold.ttf</string>
+		<string>AvenirNextRoundedPro-BoldIt.ttf</string>
+		<string>AvenirNextRoundedPro-Demi.ttf</string>
+		<string>AvenirNextRoundedPro-DemiIt.ttf</string>
+		<string>AvenirNextRoundedPro-Italic.ttf</string>
+		<string>AvenirNextRoundedPro-Med.ttf</string>
+		<string>AvenirNextRoundedPro-MedIt.ttf</string>
+		<string>AvenirNextRoundedPro-Reg.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -70,16 +81,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AvenirNextRoundedPro-Bold.ttf</string>
-		<string>AvenirNextRoundedPro-BoldIt.ttf</string>
-		<string>AvenirNextRoundedPro-Demi.ttf</string>
-		<string>AvenirNextRoundedPro-DemiIt.ttf</string>
-		<string>AvenirNextRoundedPro-Italic.ttf</string>
-		<string>AvenirNextRoundedPro-Med.ttf</string>
-		<string>AvenirNextRoundedPro-MedIt.ttf</string>
-		<string>AvenirNextRoundedPro-Reg.ttf</string>
-	</array>
 </dict>
 </plist>
