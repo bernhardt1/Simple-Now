@@ -1,0 +1,6 @@
+id,title,exerciseType,copy,recommendedTime
+Sense-0,Sense,Sense,"Unfocus your eyes. For 10 seconds, observe the sounds you hear. For 10 seconds, observe your visual field. Can you do both at the same time?",30000
+Sense-1,Sense,Sense,"Close your eyes. For 10 seconds, observe the sounds you hear. For 10 seconds, feel the sensations in your body. Can you do both at the same time?",30000
+Sense-2,Sense,Sense,"Close your eyes. For 10 seconds, observe your thoughts. For 10 seconds, feel the sensations in your body. Can you do both at the same time?",30000
+Sense-3,Sense,Sense,"Look at an object in your environment. For 10 seconds, look at it. For 10 seconds, focus on the feeling of your breath. Can you do both at the same time?",30000
+Sense-4,Sense,Sense,"With your eyes open, observe the next 5 thoughts. Then, for 10 seconds, look at an object in your environment. Can you do both at the same time?",30000

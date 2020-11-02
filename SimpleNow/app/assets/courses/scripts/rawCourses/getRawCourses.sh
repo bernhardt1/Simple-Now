@@ -1,0 +1,2 @@
+wget -O ~/React-Native/Practice/Practice/app/assets/courses/scripts/rawCourses/mindfulnessIntroduction.csv https://docs.google.com/spreadsheets/d/17fEtdHSavxiB2uB6-XtGStqdS1Nekc4GyQYqYV9L_Ak/export?format=csv&gid=0
+wget -O ~/React-Native/Practice/Practice/app/assets/courses/scripts/rawCourses/mindfulnessBeginner.csv https://docs.google.com/spreadsheets/d/11DKr0dK2on_Xf3D9EVIqnOJ54PUL8Kp7pNk7Vlfq-BM/export?format=csv&gid=0

@@ -1,0 +1,37 @@
+title,information,courseId,dayId,exerciseId,image,reminderTime,exerciseTitle,subheading,copy,instructions,hasNext,screenType,notificationMessage
+Mindfulness Beginner,"The goal of the Mindfulness Beginner Course is to help you practice mindfulness in your daily life.
+
+For the next 7 days we will send you exercises to bring your attention back to the present.
+
+This course recognizes that learning to be mindful takes daily practice. For best results, we recommend doing the exercises throughout your day instead of all at once. We will send you spaced out reminders to help you succeed in this.
+
+If you have any feedback please don’t hesitate to reach out. We are continually developing additional courses and adjusting our existing offerings based on feedback from people like you.
+
+Please enjoy!",102,,,,,,,,,,,
+,,,0,,begin,,First Step,Mindfulness Beginner Course,Mindfulness Beginner Course,"This 7 day course will help you practice mindfulness by sending you daily exercises.
+
+Good luck in your practice.",TRUE,instruction,
+,,,0,Breath-0,sunrise,06:00:00,,,,,,,Morning breath exercise
+,,,0,Sensation-0,day,12:00:00,,,,,,,First day sensation exercise
+,,,0,See-0,night,19:00:00,,,,,,,Evening mindfulness exercise available
+,,,1,Sensation-1,sunrise,06:00:00,,,,,,,Morning mindfulness exercise
+,,,1,Hear-0,day,13:00:00,,,,,,,Afternoon mindfulness practice available
+,,,1,Breath-1,night,19:00:00,,,,,,,Evening calming exercise
+,,,2,Sensation-2,sunrise,06:00:00,,,,,,,Morning sensation exercise
+,,,2,Breath-2,day,12:30:00,,,,,,,Midday breath exercise
+,,,2,See-2,night,19:30:00,,,,,,,Evening awareness exercise
+,,,3,Breath-3,sunrise,06:00:00,,,,,,,Early morning breath exercise available
+,,,3,Sensation-3,day,11:00:00,,,,,,,Late morning sensation exercise available
+,,,3,Hear-1,night,18:30:00,,,,,,,Evening sound scan exercise available
+,,,4,Breath-4,sunrise,06:00:00,,,,,,,Morning breathing exercise ready
+,,,4,Sensation-4,day,12:00:00,,,,,,,Noon body scan exercise available
+,,,4,Hear-2,night,16:45:00,,,,,,,Evening sound awareness exercise
+,,,5,Breath-5,sunrise,06:00:00,,,,,,,Early morning breath setting
+,,,5,Sensation-5,day,12:30:00,,,,,,,Afternoon eyes exercise available
+,,,5,Hear-3,night,19:00:00,,,,,,,Evening attention slowdown exercise
+,,,6,,begin,,Last Day,Mindfulness Beginner Complete,Mindfulness Beginner Complete,"Thank you for practicing with us. If you enjoyed the course please give us a 5 star rating on the app store. This goes a long way in helping us reach more people.
+
+There will be more content coming soon.",TRUE,instruction,
+,,,6,Breath-6,sunrise,06:00:00,,,,,,,Morning simple breathing exercise available
+,,,6,Sensation-6,day,11:00:00,,,,,,,Midday feeling exercise ready
+,,,6,Breath-7,night,19:30:00,,,,,,,Evening calming exercise
