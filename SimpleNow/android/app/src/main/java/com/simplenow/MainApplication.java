@@ -1,5 +1,5 @@
-package com.dailymindfulness.practice;
-import com.dailymindfulness.practice.generated.BasePackageList;
+package com.simplenow;
+import com.simplenow.generated.BasePackageList;
 
 import android.app.Application;
 import android.content.Context;
@@ -77,7 +77,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.dailymindfulness.practice.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.simplenow.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

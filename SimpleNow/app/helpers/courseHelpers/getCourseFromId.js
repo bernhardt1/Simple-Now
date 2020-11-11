@@ -1,5 +1,6 @@
 import sentryCaptureMessage from '../errorHelpers/sentryCaptureMessage';
 import {
+  MINDFULNESS_101,
   MINDFULNESS_INTRO,
   MINDFULNESS_BEGINNER,
 } from '../../assets/courses/finalCourses/index';
@@ -8,6 +9,8 @@ import {
 const getCourseFromId = (courseId) => {
   try {
     switch (courseId) {
+      case 100 || '100':
+        return MINDFULNESS_101;
       case 101 || '101':
         return MINDFULNESS_INTRO;
       case 102 || '102':

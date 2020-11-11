@@ -28,9 +28,9 @@
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
-                android:value="Practice Exercise"/>
+                android:value="Simple Now Exercise"/>
         <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_description"
-                    android:value="Practice exercise notifications"/>
+                    android:value="Simple Now exercise notifications"/>
 
         <!-- Change the value to true to enable pop-up for in foreground (remote-only, for local use ignoreInForeground) -->
         <meta-data  android:name="com.dieam.reactnativepushnotification.notification_foreground"

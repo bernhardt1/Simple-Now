@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   ImageBackground,
@@ -10,10 +10,10 @@ import {
 import Sound from 'react-native-sound';
 import { connect } from 'react-redux';
 import { useKeepAwake } from 'expo-keep-awake';
+import Moment from 'moment';
 
 import { StandardImageButton } from '../../../components/StandardImageButton';
 import { EXERCISE_SPEED_MULTIPLIER } from '../../../constants/magicNumbers';
-import sentryCaptureMessage from '../../../helpers/errorHelpers/sentryCaptureMessage';
 import setLocalImage from '../../../helpers/setLocalImage';
 import { heightUnit } from '../../../styles/constants';
 import {
@@ -21,19 +21,16 @@ import {
   centerAlign,
   titleEmphasizedFont,
   whiteFont,
+  bodyFont,
 } from '../../../styles/fonts';
 
 import styles from './styles';
-import millisecondsToSeconds from '../../../helpers/timeHelpers/millisecondsToSeconds';
+import convertMillisecondsToSeconds from '../../../helpers/timeHelpers/convertMillisecondsToSeconds';
 import { ABOUT_EXERCISE_SCREEN } from '../../../constants/constants';
-import loadSound from '../../../helpers/loadSound';
 import { updateIsSoundOn } from '../../../actions/settings';
 import StandardButton from '../../../components/StandardButton/StandardButton';
+import convertSecondsToMmSs from '../../../helpers/timeHelpers/convertSecondsToMmSs';
 
-const BEGIN_BREATHE_IN = 'BEGIN_BREATHE_IN';
-const HOLD = 'HOLD';
-const BREATHE_OUT = 'BREATHE_OUT';
-const WARMED_UP = 'WARMED_UP';
 const COUNTDOWN = 'COUNTDOWN';
 const START_EXERCISE = 'START_EXERCISE';
 const COUNTING_DOWN = 'COUNTING_DOWN';
@@ -53,14 +50,14 @@ const StandardExercise = ({
   useKeepAwake();
   Sound.setCategory('Playback');
 
-  // Load the sound files from the app bundle
-  let steelBell = loadSound('steel_bell_long.mp3');
-  let chime = loadSound('chime.mp3');
+  // const copyAudioRef = useRef(true);
+  const steelBellRef = useRef(true);
+  const chimeRef = useRef(true);
 
   const [simpleInstruction, setSimpleInstruction] = useState('ready');
   const [currentStep, setCurrentStep] = useState('');
   const [exerciseDuration, setExerciseDuration] = useState(
-    millisecondsToSeconds(exercise?.recommendedTime) || 40
+    convertMillisecondsToSeconds(exercise?.recommendedTime) || 60
   );
 
   const [simpleContainerAnimation] = useState(new Animated.Value(0));
@@ -74,79 +71,118 @@ const StandardExercise = ({
   const [globalOpacityAnimation] = useState(new Animated.Value(1));
 
   useEffect(() => {
+    console.log('triggered');
     switch (currentStep) {
-      case BEGIN_BREATHE_IN:
-        animateInstructionOpacity(0, EBS * 500, 'breathe in');
-        this.timeout = setTimeout(() => {
-          animateInstructionOpacity(1, EBS * 800);
-          animateSimpleScale(1, HOLD);
-          animateOuterRingOpacity(1, EBS * 2000);
-        }, EBS * 600);
-        break;
-      case HOLD:
-        animateInstructionOpacity(0, EBS * 20, 'hold');
-        this.timeout = setTimeout(() => {
-          animateInstructionOpacity(1, EBS * 20);
-          animateOuterRingOpacity(0, EBS * 1200, BREATHE_OUT);
-        }, EBS * 80);
-        break;
-      case BREATHE_OUT:
-        animateInstructionOpacity(0, EBS * 20, 'breathe out');
-        this.timeout = setTimeout(() => {
-          animateInstructionOpacity(1, EBS * 20);
-          animateSimpleScale(0, WARMED_UP);
-          animateInnerRingOpacity(1, EBS * 1000);
-        }, EBS * 80);
-        break;
-      case WARMED_UP:
-        animateInstructionOpacity(0, EBS * 10, exerciseDuration);
-        animateInnerRingOpacity(0, EBS * 10);
-        animateTextContainer(1, COUNTDOWN);
-        break;
       case COUNTDOWN:
-        this.timeout = setTimeout(() => {
-          animateInnerRingPulse(1, START_EXERCISE, 1);
-        }, EBS * 200);
+        animateInstructionOpacity(
+          0,
+          EBS * 10,
+          convertSecondsToMmSs(exerciseDuration)
+        );
+        if (this) {
+          this.timeout = setTimeout(() => {
+            animateInnerRingPulse(1, START_EXERCISE, 1);
+          }, EBS * 200);
+        }
         break;
       case START_EXERCISE:
         animateInstructionOpacity(1, EBS * 600);
-        this.timeout = setTimeout(() => {
-          if (isSoundOn) steelBell?.play();
-          setCurrentStep(COUNTING_DOWN);
-        }, EBS * 600);
+        if (this) {
+          this.timeout = setTimeout(() => {
+            steelBellRef?.current?.play();
+            setCurrentStep(COUNTING_DOWN);
+          }, EBS * 600);
+        }
         break;
       case COUNTING_DOWN:
         if (this?.isPaused) return;
         animateGlobalOpacity0(EBS * 6000, EBS * 4000);
-        this.timeout = setTimeout(() => {
-          animateCountdown(simpleInstruction, COMPLETED);
-        }, EBS * 1500);
+        this.startTimestamp = Moment();
+        if (this) {
+          this.timeout = setTimeout(() => {
+            animateCountdown(COMPLETED);
+          }, EBS * 100);
+        }
         break;
       case COMPLETED:
         markAsComplete();
         animateInstructionOpacity(0, EBS * 100, 'completed');
-        this.timeout = setTimeout(() => {
-          animateInstructionOpacity(1, EBS * 600, 'completed', CLEAN_UP);
-        }, EBS * 200);
+        if (this) {
+          this.timeout = setTimeout(() => {
+            animateInstructionOpacity(1, EBS * 600, 'completed', CLEAN_UP);
+          }, EBS * 200);
+        }
         break;
       case CLEAN_UP:
         animateGlobalOpacity1(0, EBS * 600, false);
-        this.timeout = setTimeout(() => {
-          animateTextContainer(0);
-          animateTimeOpacity(1, 1000 * EBS);
-        }, EBS * 800);
+        if (this) {
+          this.timeout = setTimeout(() => {
+            animateTextContainer(0);
+            animateTimeOpacity(1, 1000 * EBS);
+          }, EBS * 800);
+        }
         break;
       default:
         break;
     }
+  }, [currentStep]);
+
+  useEffect(() => {}, [isSoundOn]);
+
+  // componentWillUnmount
+  useEffect(() => {
+    // copyAudioRef.current = new Sound(
+    //   'AttentionToTheBreath.mp3',
+    //   Sound.MAIN_BUNDLE,
+    //   (error) => {
+    //     if (error) {
+    //       console.log('failed to load the sound', error);
+    //       return;
+    //     }
+
+    //     copyAudioRef.current.play();
+
+    //     if (!isSoundOn) {
+    //       copyAudioRef.current.setVolume(0);
+    //     }
+    //   }
+    // );
+
+    steelBellRef.current = new Sound(
+      'steel_bell_long.mp3',
+      Sound.MAIN_BUNDLE,
+      (error) => {
+        if (error) {
+          return;
+        }
+
+        if (!isSoundOn) {
+          steelBellRef.current.setVolume(0);
+        }
+      }
+    );
+
+    chimeRef.current = new Sound('chime.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        return;
+      }
+
+      if (!isSoundOn) {
+        chimeRef.current.setVolume(0);
+      }
+    });
 
     return () => {
-      clearTimeout(this.timeout);
-      clearTimeout(this.timeout2);
-      clearTimeout(this.timeout3);
-      clearTimeout(this.timeout4);
+      console.log('returned');
+      // copyAudioRef.current?.release();
+      steelBellRef.current?.release();
+      chimeRef.current?.release();
+      if (this?.timeout) clearTimeout(this.timeout);
+      if (this?.timeout2) clearTimeout(this.timeout2);
+      if (this?.timeout3) clearTimeout(this.timeout3);
+      if (this?.timeout4) clearTimeout(this.timeout4);
     };
-  }, [currentStep, isSoundOn]);
+  }, []);
 
   // pass 0 for starting position
   // pass 1 for active position
@@ -170,21 +206,6 @@ const StandardExercise = ({
       toValue: value,
       duration,
       easing: Easing.in(Easing.cubic),
-      useNativeDriver: true, // must be false if we want to use the animated value anywhere else
-    }).start(({ finished }) => {
-      if (finished && nextStep) {
-        setCurrentStep(nextStep);
-      }
-    });
-  };
-
-  // pass 0 for breathing out
-  // pass 1 for breathing in
-  const animateSimpleScale = (value, nextStep) => {
-    Animated.timing(simpleScaleAnimation, {
-      toValue: value,
-      duration: EBS * 4000,
-      easing: Easing.linear,
       useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
       if (finished && nextStep) {
@@ -217,41 +238,11 @@ const StandardExercise = ({
     });
   };
 
-  // pass 0 for disappearing
-  // pass 1 for appearing
-  const animateOuterRingOpacity = (value, duration, nextStep) => {
-    Animated.timing(outerRingOpacityAnimation, {
-      toValue: value,
-      duration,
-      easing: Easing.in(Easing.cubic),
-      useNativeDriver: true, // must be false if we want to use the animated value anywhere else
-    }).start(({ finished }) => {
-      if (finished && nextStep) {
-        setCurrentStep(nextStep);
-      }
-    });
-  };
-
-  // pass 0 for disappearing
-  // pass 1 for appearing
-  const animateInnerRingOpacity = (value, duration, nextStep) => {
-    Animated.timing(innerRingOpacityAnimation, {
-      toValue: value,
-      duration: EBS * 2000,
-      easing: Easing.linear,
-      useNativeDriver: true, // must be false if we want to use the animated value anywhere else
-    }).start(({ finished }) => {
-      if (finished && nextStep) {
-        setCurrentStep(nextStep);
-      }
-    });
-  };
-
   // pass 1 to pulse
   const animateInnerRingPulse = (value, nextStep, count) => {
     Animated.timing(innerRingPulseAnimation, {
       toValue: value,
-      duration: EBS * 5000,
+      duration: EBS * 3000,
       easing: Easing.inOut(Easing.ease),
       useNativeDriver: true, // must be false if we want to use the animated value anywhere else
     }).start(({ finished }) => {
@@ -278,59 +269,74 @@ const StandardExercise = ({
     });
   };
 
-  // pass exercise exerciseDuration
-  const animateCountdown = (recommendedTime, nextStep) => {
+  const animateCountdown = (nextStep, lastInstruction) => {
     if (this?.isPaused) return;
 
-    if (!isNaN(recommendedTime)) {
-      setSimpleInstruction(recommendedTime - 1);
-    } else {
-      setSimpleInstruction(
-        millisecondsToSeconds(exercise?.recommendedTime || 40)
-      );
-    }
+    if (this) {
+      this.timeout2 = setTimeout(() => {
+        const remainingTime = getRemainingTime();
+        const nextInstruction = convertSecondsToMmSs(remainingTime);
 
-    this.timeout2 = setTimeout(() => {
-      if (recommendedTime > 1) {
-        animateCountdown(recommendedTime - 1, nextStep);
-      } else {
-        if (isSoundOn) chime?.play();
-        setCurrentStep(nextStep);
-      }
-    }, EBS * 1000);
+        if (lastInstruction !== nextInstruction) {
+          setSimpleInstruction(nextInstruction);
+        }
+
+        if (remainingTime > 1) {
+          animateCountdown(nextStep, nextInstruction);
+        } else {
+          chimeRef?.play();
+          setCurrentStep(nextStep);
+        }
+      }, EBS * 50);
+    }
+  };
+
+  const getRemainingTime = () => {
+    const millisecondsPastSinceStartTimestamp = Moment().diff(
+      this.startTimestamp
+    );
+    const inSeconds = Math.floor(millisecondsPastSinceStartTimestamp / 1000);
+
+    const remainingTime = exerciseDuration - inSeconds;
+
+    return remainingTime;
   };
 
   const animateGlobalOpacity0 = (timeout, duration) => {
     if (currentStep === COUNTING_DOWN) {
-      this.timeout3 = setTimeout(() => {
-        if (this?.isPaused) return;
+      if (this) {
+        this.timeout3 = setTimeout(() => {
+          if (this?.isPaused) return;
 
-        Animated.timing(globalOpacityAnimation, {
-          toValue: 0,
-          duration: duration,
-          easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true, // must be false if we want to use value anywhere else
-        }).start(({ finished }) => {
-          if (currentStep === COMPLETED) {
-            animateGlobalOpacity1(0, EBS * 1000, false);
-          }
-        });
-      }, timeout);
+          Animated.timing(globalOpacityAnimation, {
+            toValue: 0,
+            duration: duration,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true, // must be false if we want to use value anywhere else
+          }).start(({ finished }) => {
+            if (currentStep === COMPLETED) {
+              animateGlobalOpacity1(0, EBS * 1000, false);
+            }
+          });
+        }, timeout);
+      }
     }
   };
 
   const animateGlobalOpacity1 = (timeout, duration, autoFade) => {
-    this.timeout4 = setTimeout(() => {
-      Animated.timing(globalOpacityAnimation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true, // must be false if we want to use value anywhere else
-      }).start(({ finished }) => {
-        if (currentStep === COUNTING_DOWN) {
-          animateGlobalOpacity0(EBS * 6000, EBS * 4000);
-        }
-      });
-    }, timeout);
+    if (this) {
+      this.timeout4 = setTimeout(() => {
+        Animated.timing(globalOpacityAnimation, {
+          toValue: 1,
+          duration,
+          useNativeDriver: true, // must be false if we want to use value anywhere else
+        }).start(({ finished }) => {
+          if (currentStep === COUNTING_DOWN) {
+            animateGlobalOpacity0(EBS * 6000, EBS * 4000);
+          }
+        });
+      }, timeout);
+    }
   };
 
   const onPressSimpleButton = () => {
@@ -339,11 +345,13 @@ const StandardExercise = ({
       if (this?.isPaused) {
         if (this) this.isPaused = false;
         animateGlobalOpacity0(EBS * 6000, EBS * 4000);
-        this.timeout = setTimeout(() => {
-          animateCountdown(simpleInstruction, COMPLETED);
-        }, EBS * 1500);
+        if (this) {
+          this.startTimestamp = Moment();
+          animateCountdown(COMPLETED);
+        }
       } else {
         animateGlobalOpacity1(0, EBS * 1000, true);
+        setExerciseDuration(getRemainingTime());
         if (this) this.isPaused = true;
       }
     } else if (currentStep === CLEAN_UP) {
@@ -351,7 +359,7 @@ const StandardExercise = ({
     } else {
       if (!currentStep) {
         if (this) this.isPaused = false;
-        setCurrentStep(BEGIN_BREATHE_IN);
+        setCurrentStep(COUNTDOWN);
       }
     }
   };
@@ -365,9 +373,15 @@ const StandardExercise = ({
 
   const toggleSound = () => {
     if (isSoundOn) {
+      // copyAudioRef.current.setVolume(0);
+      steelBellRef.current.setVolume(0);
+      chimeRef.current.setVolume(0);
       reduxUpdateIsSoundOn(false);
     } else {
       reduxUpdateIsSoundOn(true);
+      // copyAudioRef.current.setVolume(1);
+      steelBellRef.current.setVolume(1);
+      chimeRef.current.setVolume(1);
     }
   };
 
@@ -399,9 +413,7 @@ const StandardExercise = ({
             image={'backWhite'}
             onPress={navigation.goBack}
           />
-          <Text
-            style={[titleEmphasizedFont, whiteFont]}
-          >{`${exercise?.title} Exercise`}</Text>
+          <Text style={[titleFont, whiteFont]}>{`${exercise?.title}`}</Text>
           <StandardImageButton
             image={'questionMarkWhite'}
             onPress={navigateAboutExercise}
@@ -436,7 +448,7 @@ const StandardExercise = ({
               ]}
               pointerEvents={'auto'}
             >
-              <Text style={[titleFont, whiteFont, centerAlign]}>
+              <Text style={[bodyFont, whiteFont, centerAlign]}>
                 {exercise?.copy}
               </Text>
             </Animated.View>

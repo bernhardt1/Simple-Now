@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import { human, sanFranciscoSpacing } from 'react-native-typography';
 import { BRAND_BLACK, BRAND_WHITE, SYSTEM_BLUE } from './colors';
+import { screenWidth } from './constants';
 
 // NOTE: copy the following code into AppDelegeate.m to print all fonts
 // for (NSString *familyName in [UIFont familyNames]){
@@ -27,11 +28,21 @@ const logoTitleFont = {
   color: BRAND_BLACK,
 };
 
+const massiveTitleFont = {
+  ...human.title1,
+  fontSize: screenWidth / 9,
+  lineHeight: screenWidth / 9,
+  letterSpacing: sanFranciscoSpacing(screenWidth / 9),
+  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '500',
+  color: BRAND_BLACK,
+};
+
 const largeTitleFont = {
   ...human.title1,
-  fontSize: 30,
-  lineHeight: 30,
-  letterSpacing: sanFranciscoSpacing(30),
+  fontSize: screenWidth / 12,
+  lineHeight: screenWidth / 12,
+  letterSpacing: sanFranciscoSpacing(screenWidth / 12),
   fontFamily: 'AvenirNextRoundedPro-Reg',
   fontWeight: '500',
   color: BRAND_BLACK,
@@ -49,6 +60,13 @@ const titleFont = {
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
   fontWeight: '500',
+};
+
+const boldSubheadFont = {
+  ...human.body,
+  color: BRAND_BLACK,
+  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontWeight: '700',
 };
 
 const subheadFont = {
@@ -72,8 +90,16 @@ const bodyFontTitle = {
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
 
+const captionFont = {
+  ...human.caption1,
+  fontWeight: '500',
+  color: BRAND_BLACK,
+  fontFamily: 'AvenirNextRoundedPro-Reg',
+};
+
 const footnoteFont = {
   ...human.footnote,
+  fontWeight: '500',
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
@@ -105,12 +131,15 @@ const centerAlign = {
 
 export {
   logoTitleFont,
+  massiveTitleFont,
   largeTitleFont,
   titleEmphasizedFont,
   titleFont,
+  boldSubheadFont,
   subheadFont,
   bodyFont,
   bodyFontTitle,
+  captionFont,
   footnoteFont,
   buttonFont,
   bottomButtonFont,

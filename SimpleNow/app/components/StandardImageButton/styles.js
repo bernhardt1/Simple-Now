@@ -9,12 +9,12 @@ const styles = {
   },
   image: {
     height: Math.max(
-      standardImageButton.height * 0.75,
-      standardImageButton.minHeight * 0.75
+      standardImageButton.height * 0.55,
+      standardImageButton.minHeight * 0.55
     ),
     width: Math.max(
-      standardImageButton.width * 0.75,
-      standardImageButton.minWidth * 0.75
+      standardImageButton.width * 0.55,
+      standardImageButton.minWidth * 0.55
     ),
   },
 };

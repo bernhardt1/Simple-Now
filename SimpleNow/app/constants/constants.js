@@ -22,7 +22,7 @@ const QUOTE_EXERCISE = 'Quote';
 const INTERACTIVE_EXERCISE = 'Interactive';
 
 // URL & LINKING
-const URL_HEADER = 'practice://';
+const URL_HEADER = 'simple-now://';
 
 export {
   CLASS_SCREEN,

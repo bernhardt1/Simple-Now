@@ -1,5 +1,6 @@
 import sentryCaptureMessage from '../errorHelpers/sentryCaptureMessage';
 import {
+  MINDFULNESS_101,
   MINDFULNESS_INTRO,
   MINDFULNESS_BEGINNER,
 } from '../../assets/courses/finalCourses/index';
@@ -9,11 +10,13 @@ const getCourseIdFromIndex = (courseIndex) => {
   try {
     switch (courseIndex) {
       case 0:
-        return MINDFULNESS_INTRO?.id;
+        return MINDFULNESS_101?.id;
       case 1:
+        return MINDFULNESS_INTRO?.id;
+      case 2:
         return MINDFULNESS_BEGINNER?.id;
       default:
-        return MINDFULNESS_INTRO?.id;
+        return MINDFULNESS_101?.id;
     }
   } catch (e) {
     sentryCaptureMessage('caught getCourseIdFromIndex error', courseIndex);

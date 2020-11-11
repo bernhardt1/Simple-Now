@@ -1,23 +1,20 @@
 import { DARK_OVERLAY } from '../../styles/colors';
-import { carouselSpacing } from '../../styles/spacings';
+import { widthUnit } from '../../styles/constants';
+import { courseItemCarouselSpacing } from '../../styles/spacings';
 import { islandShape } from '../../styles/standardComponents';
 
 const styles = {
   container: {
-    flex: 1,
-    ...carouselSpacing,
+    flex: 0.5,
+    ...courseItemCarouselSpacing,
     ...islandShape,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
+    width: widthUnit * 60,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: DARK_OVERLAY,
   },
   imageContainer: {
     ...islandShape,
-  },
-  flexContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
   },
 };
 

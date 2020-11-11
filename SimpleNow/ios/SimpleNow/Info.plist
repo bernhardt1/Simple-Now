@@ -26,10 +26,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>practice</string>
+			<string>simplenow</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>practice</string>
+				<string>simplenow</string>
 			</array>
 		</dict>
 	</array>
@@ -62,6 +62,7 @@
 		<string>AvenirNextRoundedPro-Med.ttf</string>
 		<string>AvenirNextRoundedPro-MedIt.ttf</string>
 		<string>AvenirNextRoundedPro-Reg.ttf</string>
+    <string>Ionicons.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

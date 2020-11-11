@@ -1,15 +1,21 @@
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Text, TouchableWithoutFeedback } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { standardButton } from '../../styles/standardComponents';
 import { buttonFont, centerAlign, whiteFont } from '../../styles/fonts';
-import { BRAND_WHITE } from '../../styles/colors';
+import {
+  BRAND_WHITE,
+  DARK_BLUE_LOGO,
+  LIGHT_BLUE_LOGO,
+} from '../../styles/colors';
 import { BORDER_WIDTH } from '../../styles/constants';
 
 const StandardButton = ({ title, onPress, withBorder }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View
+      <LinearGradient
+        colors={[DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]}
         style={[
           standardButton,
           withBorder
@@ -18,7 +24,7 @@ const StandardButton = ({ title, onPress, withBorder }) => {
         ]}
       >
         <Text style={[buttonFont, whiteFont, centerAlign]}>{title}</Text>
-      </View>
+      </LinearGradient>
     </TouchableWithoutFeedback>
   );
 };

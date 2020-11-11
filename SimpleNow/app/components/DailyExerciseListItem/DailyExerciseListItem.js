@@ -16,7 +16,7 @@ import { DARK_BLUE_LOGO, LIGHT_BLUE_LOGO } from '../../styles/colors';
 import convertReminderTimeToReadable from '../../helpers/timeHelpers/convertReminderTimeToReadable';
 import isExerciseAvailable from '../../helpers/reduxHelpers/isExerciseAvailable';
 
-const DailyExerciseListItem = ({
+const ExerciseListItem = ({
   focused,
   course,
   exercise,
@@ -133,4 +133,4 @@ const DailyExerciseListItem = ({
   );
 };
 
-export default DailyExerciseListItem;
+export default ExerciseListItem;

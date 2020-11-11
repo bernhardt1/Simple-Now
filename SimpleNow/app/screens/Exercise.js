@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { updateCourseClassExerciseIsComplete } from '../actions/courses';
 
 import { INSTRUCTION_EXERCISE_SCREEN } from '../constants/constants';
-import { Instruction } from '../screenComponents/exerciseScreens/Instruction';
-import { StandardExercise } from '../screenComponents/exerciseScreens/StandardExercise';
+import { Instruction } from '../screenComponents/ExerciseScreens/Instruction';
+import { StandardExercise } from '../screenComponents/ExerciseScreens/StandardExercise';
 
 const Exercise = ({
   route,

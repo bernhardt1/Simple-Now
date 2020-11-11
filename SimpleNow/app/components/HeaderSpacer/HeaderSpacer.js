@@ -3,8 +3,15 @@ import { View } from 'react-native';
 
 import styles from './styles';
 
-const HeaderSpacer = () => {
-  return <View style={styles.container} />;
+const HeaderSpacer = ({ transparent }) => {
+  return (
+    <View
+      style={[
+        styles.container,
+        transparent ? { backgroundColor: 'transparent' } : {},
+      ]}
+    />
+  );
 };
 
 export default HeaderSpacer;

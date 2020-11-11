@@ -13,7 +13,7 @@ const headerContentStatusBarPadding = {
   paddingTop: statusBarHeight,
 };
 const headerPaddingHorizontal = {
-  paddingHorizontal: widthUnit * 4,
+  paddingHorizontal: widthUnit * 2,
 };
 const headerContentPaddingHorizontal = {
   paddingHorizontal: widthUnit * 10,
@@ -26,11 +26,23 @@ const standardButtonSpacing = {
   paddingHorizontal: widthUnit * 4,
 };
 
-// Island Spacings
-const carouselSpacing = {
-  alignSelf: 'stretch',
-  margin: widthUnit * 2,
-  padding: widthUnit * 4,
+const standardSettingButtonSpacing = {
+  margin: widthUnit,
+  padding: widthUnit,
+  paddingHorizontal: widthUnit * 3,
+};
+
+// Carousel Spacings
+const courseItemCarouselSpacing = {
+  margin: widthUnit,
+  padding: widthUnit * 2,
+};
+
+const practiceCarouselSpacing = {
+  marginLeft: widthUnit * 3,
+  marginTop: widthUnit * 2,
+  marginBottom: widthUnit * 4,
+  padding: widthUnit * 3,
 };
 
 // Island Spacings
@@ -69,8 +81,10 @@ export {
   headerContentStatusBarPadding,
   headerContentPaddingHorizontal,
   standardButtonSpacing,
+  standardSettingButtonSpacing,
   headerPaddingHorizontal,
-  carouselSpacing,
+  courseItemCarouselSpacing,
+  practiceCarouselSpacing,
   islandSpacing,
   itemSpacing,
   textContainerSpacing,

@@ -1,4 +1,4 @@
-package com.dailymindfulness.practice.generated;
+package com.simplenow.generated;
 
 import java.util.Arrays;
 import java.util.List;

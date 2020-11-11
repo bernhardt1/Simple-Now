@@ -1,4 +1,4 @@
-app_identifier("com.daily-mindfulness.Practice") # The bundle identifier of your app
+app_identifier("com.SimpleNow") # The bundle identifier of your app
 apple_id("jason_bernhardt_12@hotmail.com") # Your Apple email address
 
 itc_team_id("119454767") # App Store Connect Team ID

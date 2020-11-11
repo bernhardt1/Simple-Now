@@ -10,7 +10,7 @@ const heightUnit = screenHeight / 100;
 const widthUnit = screenWidth / 100;
 
 const BORDER_RADIUS = 10;
-const BORDER_WIDTH = 3;
+const BORDER_WIDTH = 2;
 
 export {
   screenWidth,

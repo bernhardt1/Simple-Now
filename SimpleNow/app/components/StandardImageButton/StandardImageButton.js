@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableWithoutFeedback, Image, View } from 'react-native';
+import { TouchableHighlight, Image, View } from 'react-native';
 
 import styles from './styles';
 import setLocalImage from '../../helpers/setLocalImage';
@@ -14,22 +14,24 @@ const StandardImageButton = ({
   borderColor,
 }) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress} styles={styles.button}>
-      <View
-        style={[
-          styles.container,
-          { backgroundColor: backgroundColor },
-          withBorder
-            ? {
-                borderColor: borderColor || BRAND_BLACK,
-                borderWidth: BORDER_WIDTH,
-              }
-            : {},
-        ]}
-      >
+    <TouchableHighlight
+      onPress={onPress}
+      style={[
+        styles.container,
+        { backgroundColor: backgroundColor },
+        withBorder
+          ? {
+              borderColor: borderColor || BRAND_BLACK,
+              borderWidth: BORDER_WIDTH,
+            }
+          : {},
+      ]}
+      underlayColor={'#FFFFFF33'}
+    >
+      <View>
         <Image source={setLocalImage(image)} style={styles.image} />
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableHighlight>
   );
 };
 

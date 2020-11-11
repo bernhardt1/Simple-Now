@@ -18,7 +18,7 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    increment_build_number(xcodeproj: "Practice.xcodeproj")
+    increment_build_number(xcodeproj: "SimpleNow.xcodeproj")
 
     get_certificates( # Create or get certificate, and install it
       output_path: "./builds" # Download certificate in the build folder (you don't need to create the folder)
@@ -28,8 +28,8 @@ platform :ios do
       filename: "provisioning.mobileprovision" # Rename the local provisioning profile
     )
     update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
-      xcodeproj: "Practice.xcodeproj",
-      target_filter: "Practice", # Name of your project
+      xcodeproj: "SimpleNow.xcodeproj",
+      target_filter: "SimpleNow", # Name of your project
       profile: "./builds/provisioning.mobileprovision",
       build_configuration: "Release"
     )
@@ -38,8 +38,8 @@ platform :ios do
     )
 
     build_app(
-      workspace: "Practice.xcworkspace",
-      scheme: "Practice",
+      workspace: "SimpleNow.xcworkspace",
+      scheme: "SimpleNow",
       clean: true,
       export_method: "app-store",
       export_options: {

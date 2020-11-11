@@ -10,6 +10,7 @@ import {
   headerPaddingHorizontal,
   islandSpacing,
   standardButtonSpacing,
+  standardSettingButtonSpacing,
 } from './spacings';
 import { BRAND_BLACK, BRAND_WHITE, DARK_OVERLAY } from './colors';
 
@@ -43,21 +44,30 @@ const scrollViewContainerIsland = {
 
 // Buttons
 const standardButton = {
-  height: widthUnit * 11,
-  minWidth: widthUnit * 20,
+  height: widthUnit * 12,
+  minWidth: widthUnit * 40,
   borderRadius: BORDER_RADIUS,
-  backgroundColor: DARK_OVERLAY,
   ...standardButtonSpacing,
   justifyContent: 'center',
   alignItems: 'center',
 };
 
-const standardImageButton = {
+const standardSettingButton = {
   height: widthUnit * 9,
-  width: widthUnit * 9,
+  minWidth: widthUnit * 20,
+  borderRadius: BORDER_RADIUS,
+  backgroundColor: DARK_OVERLAY,
+  ...standardSettingButtonSpacing,
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+const standardImageButton = {
+  height: widthUnit * 11,
+  width: widthUnit * 11,
   minWidth: 30,
   minHeight: 30,
-  borderRadius: Math.max((widthUnit * 9) / 2, 30 / 2),
+  borderRadius: Math.max((widthUnit * 11) / 2, 30 / 2),
   justifyContent: 'center',
   alignItems: 'center',
 };
@@ -123,6 +133,7 @@ export {
   scrollViewContainerIsland,
   islandShape,
   standardButton,
+  standardSettingButton,
   bottomButton,
   standardImageButton,
   islandCarouselItem,

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>600426179549-2dbs11tqasnd92taaqg39e7hs1lrult7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.600426179549-2dbs11tqasnd92taaqg39e7hs1lrult7</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>600426179549-53grv0cheo0k7fch1vsbc4csjfrp1mss.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCy5nHy5agajeXEGPTsjSXZfHsjLhOyO78</string>
+	<key>GCM_SENDER_ID</key>
+	<string>600426179549</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.SimpleNow</string>
+	<key>PROJECT_ID</key>
+	<string>simple-now</string>
+	<key>STORAGE_BUCKET</key>
+	<string>simple-now.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:600426179549:ios:36c226727909d53d87e434</string>
+	<key>DATABASE_URL</key>
+	<string>https://simple-now.firebaseio.com</string>
+</dict>
+</plist>

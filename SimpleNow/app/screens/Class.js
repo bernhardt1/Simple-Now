@@ -23,6 +23,7 @@ const Class = ({
 }) => {
   const { classInfo, isCourseActivated } = route.params;
   const { classIndex } = classInfo;
+  console.log('classInfo', classInfo);
 
   const [focusedCourse] = useState(getCourseFromId(activeCourseId));
   const focusedReduxFlatCourse = useMemo(

@@ -4,6 +4,7 @@ const images = {
   background2: require('./img/background2.png'),
   background3: require('./img/background3.png'),
   background4: require('./img/background4.png'),
+  background5: require('./img/background5.png'),
   menuWhite: require('./img/menuWhite.png'),
   backWhite: require('./img/backWhite.png'),
   reminderWhite: require('./img/reminderWhite.png'),
@@ -13,6 +14,8 @@ const images = {
   dayWhite: require('./img/dayWhite.png'),
   nightBlack: require('./img/nightBlack.png'),
   nightWhite: require('./img/nightWhite.png'),
+  editBlack: require('./img/editBlack.png'),
+  editWhite: require('./img/editWhite.png'),
   checkBlack: require('./img/checkBlack.png'),
   checkWhite: require('./img/checkWhite.png'),
   xBlack: require('./img/xBlack.png'),
@@ -31,6 +34,10 @@ const images = {
   soundOffWhite: require('./img/soundOffWhite.png'),
   soundOnBlack: require('./img/soundOnBlack.png'),
   soundOnWhite: require('./img/soundOnWhite.png'),
+  plusWhite: require('./img/plusWhite.png'),
+  plusBlack: require('./img/plusBlack.png'),
+  plusBrand: require('./img/plusBrand.png'),
+  plusOrange: require('./img/plusOrange.png'),
   notificationPermission: require('./img/notificationPermission.png'),
 };
 

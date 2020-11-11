@@ -30,14 +30,14 @@ import {
 import setLocalImage from '../helpers/setLocalImage';
 import HeaderHome from '../components/HeaderHome/HeaderHome';
 import { updateBackground } from '../actions/settings';
-import { BACKGROUND_COUNT } from '../constants/magicNumbers';
+import { BACKGROUND_IMAGE_COUNT } from '../constants/magicNumbers';
 import getCourseIdFromIndex from '../helpers/courseHelpers/getCourseIdFromIndex';
 import createFlatReduxCourse from '../helpers/reduxHelpers/createFlatReduxCourse';
 import getCourseFromId from '../helpers/courseHelpers/getCourseFromId';
 import getIndexOfMostRecentCourse from '../helpers/reduxHelpers/getIndexOfMostRecentCourse';
 import { PushPermissionModalContent } from '../components/ModalContent/index';
 
-const Home = ({
+const Learn = ({
   navigation,
   reduxCourses,
   activeCourseId,
@@ -85,7 +85,7 @@ const Home = ({
   const changeBackground = () => {
     const current = background.split('background')[1];
     const result = current
-      ? `background${(parseInt(current, 10) + 1) % BACKGROUND_COUNT}`
+      ? `background${(parseInt(current, 10) + 1) % BACKGROUND_IMAGE_COUNT}`
       : 'background1';
 
     reduxUpdateBackground(result);
@@ -212,4 +212,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Learn);
