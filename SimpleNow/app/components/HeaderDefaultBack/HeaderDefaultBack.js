@@ -11,6 +11,7 @@ const HeaderDefaultBack = ({
   title,
   transparent,
   rightButtonImage,
+  onPressRightButton,
 }) => {
   console.log('rightButtonImage', rightButtonImage);
   return (
@@ -24,7 +25,10 @@ const HeaderDefaultBack = ({
       <Text style={[titleEmphasizedFont, whiteFont]}>{title}</Text>
       {!rightButtonImage && <View style={styles.invisibleView} />}
       {rightButtonImage && (
-        <StandardImageButton image={rightButtonImage} onPress={onPressBack} />
+        <StandardImageButton
+          image={rightButtonImage}
+          onPress={onPressRightButton}
+        />
       )}
     </View>
   );

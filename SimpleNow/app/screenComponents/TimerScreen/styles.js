@@ -1,22 +1,19 @@
-import { BRAND_WHITE, DARK_OVERLAY } from '../../styles/colors';
+import { BRAND_BLACK, BRAND_WHITE, DARK_OVERLAY } from '../../styles/colors';
 import {
   screenWidth,
   statusBarHeight,
   widthUnit,
   heightUnit,
 } from '../../styles/constants';
+import { islandSpacing } from '../../styles/spacings';
+import { shadow } from '../../styles/standardComponents';
 
 const styles = {
   container: {
     flex: 1,
   },
-  containerDarken: {
-    flex: 1,
-    backgroundColor: DARK_OVERLAY,
-  },
   headerSpacing: {
     height: statusBarHeight,
-    // backgroundColor: 'white',
     width: screenWidth,
   },
   containerHeader: {
@@ -30,62 +27,33 @@ const styles = {
   },
   containerContent: {
     flex: 1,
+    ...islandSpacing,
+    justifyContent: 'flex-end',
   },
-  textContainer: {
-    position: 'absolute',
-    backgroundColor: 'black',
-    top: heightUnit * 0,
-    left: widthUnit * 0,
-    width: widthUnit * 100,
-    height: heightUnit * 40,
+  countdownContainer: {
+    marginBottom: heightUnit * 6,
+    marginTop: heightUnit * 4,
+  },
+  countdownClocksContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: widthUnit * 15,
   },
-  simpleContainer: {
-    position: 'absolute',
-    backgroundColor: 'blue',
-    top: heightUnit * 42,
-    left: widthUnit * 0,
-    width: widthUnit * 100,
-    height: heightUnit * 40,
+  timeBarContainer: {
+    width: screenWidth - (islandSpacing.margin + islandSpacing.padding) * 2,
+    height: widthUnit,
+    backgroundColor: BRAND_WHITE,
+    borderRadius: widthUnit / 2,
   },
-  simpleCircle: {
+  progressTracker: {
     position: 'absolute',
-    top: (heightUnit * 40) / 2 - (widthUnit * 50) / 2,
-    left: screenWidth / 2 - (widthUnit * 50) / 2,
-    width: widthUnit * 50,
-    height: widthUnit * 50,
-    backgroundColor: 'transparent',
-    borderColor: BRAND_WHITE,
-    borderWidth: 3,
-    borderRadius: (widthUnit * 50) / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  simpleInnerRing: {
-    position: 'absolute',
-    top: (heightUnit * 40) / 2 - (widthUnit * 50) / 2,
-    left: screenWidth / 2 - (widthUnit * 50) / 2,
-    width: widthUnit * 50,
-    height: widthUnit * 50,
-    backgroundColor: 'transparent',
-    borderColor: BRAND_WHITE,
-    borderWidth: 1,
-    borderRadius: (widthUnit * 50 * 1.25) / 2,
-    borderStyle: 'dashed',
-  },
-  simpleOuterRing: {
-    position: 'absolute',
-    top: (heightUnit * 40) / 2 - (widthUnit * 50 * 1.25) / 2,
-    left: screenWidth / 2 - (widthUnit * 50 * 1.25) / 2,
-    width: widthUnit * 50 * 1.25,
-    height: widthUnit * 50 * 1.25,
-    backgroundColor: 'transparent',
-    borderColor: BRAND_WHITE,
-    borderWidth: 1,
-    borderRadius: (widthUnit * 50 * 1.25) / 2,
-    borderStyle: 'dashed',
+    top: (-widthUnit * 2) / 2,
+    left: (-widthUnit * 3) / 2,
+    height: widthUnit * 3,
+    width: widthUnit * 3,
+    borderRadius: (widthUnit * 3) / 2,
+    backgroundColor: BRAND_WHITE,
+    ...shadow,
   },
 };
 

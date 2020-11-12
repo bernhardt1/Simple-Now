@@ -30,6 +30,14 @@ const TimerSetupScreen = ({
 }) => {
   const [time, setTime] = useState(1);
 
+  const navigateSetBellInterval = () => {
+    navigation.navigate('SetBellInterval');
+  };
+
+  const navigateTimer = () => {
+    navigation.navigate('Timer');
+  };
+
   const toggleSound = () => {
     if (isSoundOn) {
       reduxUpdateIsSoundOn(false);
@@ -111,10 +119,14 @@ const TimerSetupScreen = ({
         />
       </View>
       <View style={styles.footerContainer}>
-        <StandardButton title={'Begin'} />
+        <StandardButton title={'Begin'} onPress={navigateTimer} />
         <View style={styles.bottomButtons}>
           <View style={styles.standardSettingButtonContainer}>
-            <StandardSettingButton title={'BELL INTERVAL'} withBorder />
+            <StandardSettingButton
+              title={'BELL INTERVAL'}
+              withBorder
+              onPress={navigateSetBellInterval}
+            />
             <Text style={[captionFont, whiteFont]}>{'Every minute'}</Text>
           </View>
         </View>

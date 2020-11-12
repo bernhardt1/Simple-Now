@@ -62,7 +62,7 @@
 		<string>AvenirNextRoundedPro-Med.ttf</string>
 		<string>AvenirNextRoundedPro-MedIt.ttf</string>
 		<string>AvenirNextRoundedPro-Reg.ttf</string>
-    <string>Ionicons.ttf</string>
+		<string>Ionicons.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

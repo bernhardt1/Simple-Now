@@ -92,6 +92,15 @@ const informationalImage = {
   height: widthUnit * 8,
   width: widthUnit * 8,
 };
+const smallInformationIsland = {
+  height: widthUnit * 6,
+  minWidth: widthUnit * 10,
+  borderRadius: BORDER_RADIUS,
+  backgroundColor: DARK_OVERLAY,
+  ...standardSettingButtonSpacing,
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 // animatedBottomButton
 const animatedBottomButtonStyles = {
@@ -128,6 +137,18 @@ const standardBorder = {
   borderColor: BRAND_WHITE,
 };
 
+const shadow = {
+  shadowColor: '#000000',
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+
+  elevation: 3,
+};
+
 export {
   defaultHeader,
   scrollViewContainerIsland,
@@ -140,6 +161,8 @@ export {
   animatedBottomButtonStyles,
   informationalContainer,
   informationalImage,
+  smallInformationIsland,
   standardFlair,
   standardBorder,
+  shadow,
 };

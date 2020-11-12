@@ -132,7 +132,7 @@ const StandardExercise = ({
   // componentWillUnmount
   useEffect(() => {
     // copyAudioRef.current = new Sound(
-    //   'AttentionToTheBreath.mp3',
+    //   'attention_to_the_breathe.mp3',
     //   Sound.MAIN_BUNDLE,
     //   (error) => {
     //     if (error) {
@@ -173,7 +173,6 @@ const StandardExercise = ({
     });
 
     return () => {
-      console.log('returned');
       // copyAudioRef.current?.release();
       steelBellRef.current?.release();
       chimeRef.current?.release();

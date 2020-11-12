@@ -15,15 +15,19 @@
 		15F83F3A512E4CD0A83A3C76 /* AvenirNextRoundedPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D6E4E1D2DF45ACBC9B7A12 /* AvenirNextRoundedPro-Bold.ttf */; };
 		176AC623B7064AEEA0621262 /* AvenirNextRoundedPro-DemiIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7EF0AE1D87C4CB8804500F3 /* AvenirNextRoundedPro-DemiIt.ttf */; };
 		198157F5254F9508001D9377 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 198157F4254F9508001D9377 /* GoogleService-Info.plist */; };
-		198157F72553108C001D9377 /* AttentionToTheBreath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 198157F62553108C001D9377 /* AttentionToTheBreath.mp3 */; };
 		198F46BF252D83FC004C0150 /* steel_bell_long.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 198F46BD252D83FC004C0150 /* steel_bell_long.mp3 */; };
 		198F46C0252D83FC004C0150 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 198F46BE252D83FC004C0150 /* chime.mp3 */; };
 		19D4CBC8250AA27700F37C8E /* steel_bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19D4CBC7250AA27700F37C8E /* steel_bell.mp3 */; };
+		19E6A2B3255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */; };
+		19E6A2B4255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */; };
+		19E6A2B5255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */; };
+		19E6A2B8255DB727005C5CF7 /* attention_to_the_breathe.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19E6A2B7255DB727005C5CF7 /* attention_to_the_breathe.mp3 */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* SimpleNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SimpleNowTests.m */; };
 		4CA61AB88CFBB9C8E099F3AD /* libPods-SimpleNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE591847F66F965196B11AA /* libPods-SimpleNow.a */; };
+		4CD9A4FAA7E24061A4E0C50B /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */; };
 		4CE36A89231567C0A27BB13E /* libPods-SimpleNow-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D74350BAC9E997BB6E6E9083 /* libPods-SimpleNow-tvOSTests.a */; };
 		65F1B6D3679B0036242FDC29 /* libPods-SimpleNow-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60D885BE5F7F22D4DA88D8 /* libPods-SimpleNow-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -58,6 +62,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SimpleNowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleNowTests.m; sourceTree = "<group>"; };
 		0413CAD4BF0137AD885755B1 /* Pods-SimpleNow-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNow-tvOSTests/Pods-SimpleNow-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		044BF20E6E6E437BA69784D1 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SimpleNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SimpleNow/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SimpleNow/AppDelegate.m; sourceTree = "<group>"; };
@@ -66,33 +71,49 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SimpleNow/main.m; sourceTree = "<group>"; };
 		15E4BA6BD3765A4C6EAB4EB6 /* Pods-SimpleNow-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNow-tvOS/Pods-SimpleNow-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		198157F4254F9508001D9377 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/Simple_Now/firebaseConfigFiles/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		198157F62553108C001D9377 /* AttentionToTheBreath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AttentionToTheBreath.mp3; sourceTree = "<group>"; };
 		198F46BD252D83FC004C0150 /* steel_bell_long.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steel_bell_long.mp3; sourceTree = "<group>"; };
 		198F46BE252D83FC004C0150 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 		19D4CBC1250A8DD700F37C8E /* SimpleNow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SimpleNow.entitlements; path = SimpleNow/SimpleNow.entitlements; sourceTree = "<group>"; };
 		19D4CBC7250AA27700F37C8E /* steel_bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steel_bell.mp3; sourceTree = "<group>"; };
+		19E6A2B7255DB727005C5CF7 /* attention_to_the_breathe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attention_to_the_breathe.mp3; path = ../../../../../Documents/Simple_Now/audio/attention_to_the_breathe.mp3; sourceTree = "<group>"; };
 		1F60D885BE5F7F22D4DA88D8 /* libPods-SimpleNow-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleNow-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F63DAFEA12B491080F8A5D8 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		291FA4BD23E6838803A1DD78 /* Pods-SimpleNow-SimpleNowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-SimpleNowTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleNow-SimpleNowTests/Pods-SimpleNow-SimpleNowTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SimpleNow-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleNow-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SimpleNow-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SimpleNow-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC7D5FF6920A3B22F6F9937 /* Pods-SimpleNow-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SimpleNow-tvOS/Pods-SimpleNow-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		3294965B8F14E2883C962A08 /* Pods-SimpleNow-SimpleNowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-SimpleNowTests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNow-SimpleNowTests/Pods-SimpleNow-SimpleNowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D901740EC1B4DB38DC32BC0 /* AvenirNextRoundedPro-MedIt.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-MedIt.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-MedIt.ttf"; sourceTree = "<group>"; };
+		4729F8E059974B97A593475B /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		4B2214478AC040329F724B88 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		4B443CFC4B46421A9191BB78 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		555F517177A59E8E892A4C51 /* Pods-SimpleNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow.release.xcconfig"; path = "Target Support Files/Pods-SimpleNow/Pods-SimpleNow.release.xcconfig"; sourceTree = "<group>"; };
 		561A69242B844B57A176AC95 /* AvenirNextRoundedPro-Reg.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-Reg.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-Reg.ttf"; sourceTree = "<group>"; };
+		56A3CE24A74541408AA88CDE /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		633A1086B5214436ABC00BC0 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		65D6E4E1D2DF45ACBC9B7A12 /* AvenirNextRoundedPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-Bold.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-Bold.ttf"; sourceTree = "<group>"; };
 		6B59682C29F14372AA69CE39 /* AvenirNextRoundedPro-Demi.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-Demi.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-Demi.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SimpleNow/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8C88537BF6624BAAA29CDD40 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		9BE591847F66F965196B11AA /* libPods-SimpleNow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleNow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4355E4BABAF45548B32B007 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		ADCD9FEBA9DC41E1A8049AAE /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		B9208CFBB09F409998D391BC /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		BD57A62852C14286849B3213 /* AvenirNextRoundedPro-BoldIt.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-BoldIt.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-BoldIt.ttf"; sourceTree = "<group>"; };
 		C7EF0AE1D87C4CB8804500F3 /* AvenirNextRoundedPro-DemiIt.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-DemiIt.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-DemiIt.ttf"; sourceTree = "<group>"; };
+		C9770AA0A5E24096933B4635 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		D31C72063D16482F87287A7D /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		D5F2DC48636B490297F17C6F /* AvenirNextRoundedPro-Med.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-Med.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-Med.ttf"; sourceTree = "<group>"; };
 		D74350BAC9E997BB6E6E9083 /* libPods-SimpleNow-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleNow-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DADB38F9DF3E48B6B73AF52F /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		DF2280BE2C7B4D7289E5CDA6 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		E338AFEB699A7AF40EDB5B13 /* libPods-SimpleNow-SimpleNowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleNow-SimpleNowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8FFCA5C9B7B48878C592E3A /* AvenirNextRoundedPro-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextRoundedPro-Italic.ttf"; path = "../assets/fonts/AvenirNextRoundedPro-Italic.ttf"; sourceTree = "<group>"; };
 		EB70A3A4092B0B0E0DD17C06 /* Pods-SimpleNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNow/Pods-SimpleNow.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = RNPlaceholder.swift; sourceTree = "<group>"; };
+		FCC09D39D64D401A86BDB632 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		FFEE3269E3E815776B3E2523 /* Pods-SimpleNow-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleNow-tvOSTests/Pods-SimpleNow-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,20 +188,44 @@
 		19D4CBC2250AA13600F37C8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				198157F62553108C001D9377 /* AttentionToTheBreath.mp3 */,
 				198F46BE252D83FC004C0150 /* chime.mp3 */,
 				198F46BD252D83FC004C0150 /* steel_bell_long.mp3 */,
 				19D4CBC7250AA27700F37C8E /* steel_bell.mp3 */,
 				65D6E4E1D2DF45ACBC9B7A12 /* AvenirNextRoundedPro-Bold.ttf */,
 				BD57A62852C14286849B3213 /* AvenirNextRoundedPro-BoldIt.ttf */,
+				19E6A2B7255DB727005C5CF7 /* attention_to_the_breathe.mp3 */,
 				6B59682C29F14372AA69CE39 /* AvenirNextRoundedPro-Demi.ttf */,
 				C7EF0AE1D87C4CB8804500F3 /* AvenirNextRoundedPro-DemiIt.ttf */,
 				E8FFCA5C9B7B48878C592E3A /* AvenirNextRoundedPro-Italic.ttf */,
 				D5F2DC48636B490297F17C6F /* AvenirNextRoundedPro-Med.ttf */,
 				3D901740EC1B4DB38DC32BC0 /* AvenirNextRoundedPro-MedIt.ttf */,
 				561A69242B844B57A176AC95 /* AvenirNextRoundedPro-Reg.ttf */,
+				4B2214478AC040329F724B88 /* AntDesign.ttf */,
+				C9770AA0A5E24096933B4635 /* Entypo.ttf */,
+				DF2280BE2C7B4D7289E5CDA6 /* EvilIcons.ttf */,
+				044BF20E6E6E437BA69784D1 /* Feather.ttf */,
+				B9208CFBB09F409998D391BC /* FontAwesome.ttf */,
+				FCC09D39D64D401A86BDB632 /* FontAwesome5_Brands.ttf */,
+				4B443CFC4B46421A9191BB78 /* FontAwesome5_Regular.ttf */,
+				DADB38F9DF3E48B6B73AF52F /* FontAwesome5_Solid.ttf */,
+				56A3CE24A74541408AA88CDE /* Fontisto.ttf */,
+				A4355E4BABAF45548B32B007 /* Foundation.ttf */,
+				8C88537BF6624BAAA29CDD40 /* Ionicons.ttf */,
+				D31C72063D16482F87287A7D /* MaterialCommunityIcons.ttf */,
+				1F63DAFEA12B491080F8A5D8 /* MaterialIcons.ttf */,
+				4729F8E059974B97A593475B /* Octicons.ttf */,
+				ADCD9FEBA9DC41E1A8049AAE /* SimpleLineIcons.ttf */,
+				633A1086B5214436ABC00BC0 /* Zocial.ttf */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		19E6A2B6255DABF6005C5CF7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		1F98C0770F1ED461BE57D5CE /* Pods */ = {
@@ -229,6 +274,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1F98C0770F1ED461BE57D5CE /* Pods */,
+				19E6A2B6255DABF6005C5CF7 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -395,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19E6A2B8255DB727005C5CF7 /* attention_to_the_breathe.mp3 in Resources */,
 				19D4CBC8250AA27700F37C8E /* steel_bell.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
@@ -403,7 +450,6 @@
 				15F83F3A512E4CD0A83A3C76 /* AvenirNextRoundedPro-Bold.ttf in Resources */,
 				E93BFC161C8248FAB36A427B /* AvenirNextRoundedPro-BoldIt.ttf in Resources */,
 				9998391CCB37442BB39F4C75 /* AvenirNextRoundedPro-Demi.ttf in Resources */,
-				198157F72553108C001D9377 /* AttentionToTheBreath.mp3 in Resources */,
 				176AC623B7064AEEA0621262 /* AvenirNextRoundedPro-DemiIt.ttf in Resources */,
 				9C6C646854954031BECED1D3 /* AvenirNextRoundedPro-Italic.ttf in Resources */,
 				E0F582DA16454C2E9555FDD6 /* AvenirNextRoundedPro-Med.ttf in Resources */,
@@ -443,7 +489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport EXTRA_PACKAGER_ARGS=\"--sourcemap-output $DERIVED_FILE_DIR/main.jsbundle.map\"\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport EXTRA_PACKAGER_ARGS=\"--sourcemap-output $DERIVED_FILE_DIR/main.jsbundle.map\"\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0718D57BBCC8F76A3CD77AD6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -717,6 +763,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* SimpleNowTests.m in Sources */,
+				19E6A2B3255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +773,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				4CD9A4FAA7E24061A4E0C50B /* RNPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +783,7 @@
 			files = (
 				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
 				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
+				19E6A2B4255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DCD954D1E0B4F2C00145EB5 /* SimpleNowTests.m in Sources */,
+				19E6A2B5255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +832,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNow.app/SimpleNow";
 			};
 			name = Debug;
@@ -805,6 +856,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
 				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNow.app/SimpleNow";
 			};
 			name = Release;
@@ -831,7 +883,7 @@
 				PRODUCT_NAME = SimpleNow;
 				PROVISIONING_PROFILE_SPECIFIER = "SimpleNow-development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -857,7 +909,7 @@
 				PRODUCT_NAME = SimpleNow;
 				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
 				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -886,6 +938,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.daily-mindfulness.SimpleNow-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -917,6 +970,7 @@
 				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
 				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -945,6 +999,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.SimpleNow-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNow-tvOS.app/SimpleNow-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
@@ -975,6 +1030,7 @@
 				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
 				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNow-tvOS.app/SimpleNow-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
@@ -1037,6 +1093,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1089,6 +1146,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

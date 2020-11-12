@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableWithoutFeedback } from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { standardButton } from '../../styles/standardComponents';
@@ -10,10 +10,13 @@ import {
   LIGHT_BLUE_LOGO,
 } from '../../styles/colors';
 import { BORDER_WIDTH } from '../../styles/constants';
+import setLocalImage from '../../helpers/setLocalImage';
 
-const StandardButton = ({ title, onPress, withBorder }) => {
+import styles from './styles';
+
+const StandardButton = ({ title, image, onPress, withBorder }) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <LinearGradient
         colors={[DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]}
         style={[
@@ -23,9 +26,12 @@ const StandardButton = ({ title, onPress, withBorder }) => {
             : {},
         ]}
       >
-        <Text style={[buttonFont, whiteFont, centerAlign]}>{title}</Text>
+        {title && (
+          <Text style={[buttonFont, whiteFont, centerAlign]}>{title}</Text>
+        )}
+        {image && <Image source={setLocalImage(image)} style={styles.image} />}
       </LinearGradient>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   );
 };
 

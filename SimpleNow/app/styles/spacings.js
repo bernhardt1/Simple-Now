@@ -51,6 +51,11 @@ const islandSpacing = {
   margin: widthUnit * 6,
   padding: widthUnit * 4,
 };
+const bigIslandSpacing = {
+  alignSelf: 'stretch',
+  margin: widthUnit * 2,
+  padding: widthUnit * 4,
+};
 
 // List Item Spacings
 const itemSpacing = {
@@ -68,6 +73,10 @@ const exerciseTextSpacing = {
 };
 const buttonFromEdgeSpacing = {
   padding: widthUnit * 2,
+  paddingHorizontal: widthUnit * 3,
+};
+const verticalButtonsMargin = {
+  marginBottom: widthUnit,
 };
 
 // ScrollView Bottom Spacing
@@ -86,9 +95,11 @@ export {
   courseItemCarouselSpacing,
   practiceCarouselSpacing,
   islandSpacing,
+  bigIslandSpacing,
   itemSpacing,
   textContainerSpacing,
   exerciseTextSpacing,
   buttonFromEdgeSpacing,
+  verticalButtonsMargin,
   scrollViewBottomMargin,
 };

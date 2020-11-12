@@ -13,6 +13,10 @@ const SetRemindersScreen = ({ background, navigation }) => {
     navigation.goBack();
   };
 
+  const navigateCreateReminder = () => {
+    navigation.navigate('CreateReminder');
+  };
+
   return (
     <ImageBackground
       style={styles.container}
@@ -25,6 +29,7 @@ const SetRemindersScreen = ({ background, navigation }) => {
           onPressBack={navigateBack}
           title={'Practice Reminders'}
           rightButtonImage={'plusOrange'}
+          onPressRightButton={navigateCreateReminder}
         />
         <InvisibleSeparator />
       </ScrollView>
