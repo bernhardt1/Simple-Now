@@ -1,4 +1,4 @@
-import {widthUnit} from '../../styles/constants';
+import { widthUnit } from '../../styles/constants';
 
 const styles = {
   container: {

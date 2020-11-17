@@ -1,0 +1,59 @@
+{
+  "title": "Breath III",
+  "information": "Welcome to Mindfulness Breath III",
+  "id": 111,
+  "exercises": [
+    {
+      "title": "Breath",
+      "subheading": null,
+      "copy": "Close your eyes and focus on your breath. Count each you take.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "image": "sunrise",
+      "reminderTime": "06:00:00",
+      "recommendedTime": 30000,
+      "exerciseType": "Breath",
+      "notificationMessage": "Early morning breath exercise available"
+    },
+    {
+      "title": "Breath",
+      "subheading": null,
+      "copy": "Breathe very slowly and deeply with each breath. ",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "image": "sunrise",
+      "reminderTime": "06:00:00",
+      "recommendedTime": 30000,
+      "exerciseType": "Breath",
+      "notificationMessage": "Morning breathing exercise ready"
+    },
+    {
+      "title": "Breath",
+      "subheading": null,
+      "copy": "Close your eyes and focus intensely on the feeling of your lungs expanding and deflating as you breathe. ",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "image": "sunrise",
+      "reminderTime": "06:00:00",
+      "recommendedTime": 30000,
+      "exerciseType": "Breath",
+      "notificationMessage": "Early morning breath setting"
+    },
+    {
+      "title": "Breath",
+      "subheading": null,
+      "copy": "Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "image": "sunrise",
+      "reminderTime": "06:00:00",
+      "recommendedTime": 30000,
+      "exerciseType": "Breath",
+      "notificationMessage": "Morning simple breathing exercise available"
+    }
+  ]
+}

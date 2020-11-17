@@ -1,6 +1,12 @@
 import { Platform } from 'react-native';
 import { human, sanFranciscoSpacing } from 'react-native-typography';
-import { BRAND_BLACK, BRAND_WHITE, SYSTEM_BLUE } from './colors';
+import {
+  BRAND_BLACK,
+  BRAND_ORANGE,
+  BRAND_WHITE,
+  BRAND_WHITE_UNSELECTED,
+  SYSTEM_BLUE,
+} from './colors';
 import { screenWidth } from './constants';
 
 // NOTE: copy the following code into AppDelegeate.m to print all fonts
@@ -121,6 +127,14 @@ const whiteFont = {
   color: BRAND_WHITE,
 };
 
+const unselectedWhiteFont = {
+  color: BRAND_WHITE_UNSELECTED,
+};
+
+const orangeFont = {
+  color: BRAND_ORANGE,
+};
+
 const systemFont = {
   color: SYSTEM_BLUE,
 };
@@ -144,6 +158,8 @@ export {
   buttonFont,
   bottomButtonFont,
   whiteFont,
+  unselectedWhiteFont,
+  orangeFont,
   systemFont,
   centerAlign,
 };

@@ -1,5 +1,3 @@
-const styles = {
-  container: {},
-};
+const styles = {};
 
 export default styles;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { View, ImageBackground, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import Moment from 'moment';
@@ -6,9 +6,7 @@ import Moment from 'moment';
 import setLocalImage from '../../helpers/setLocalImage';
 import {
   captionFont,
-  largeTitleFont,
   massiveTitleFont,
-  subheadFont,
   titleFont,
   whiteFont,
 } from '../../styles/fonts';
@@ -20,7 +18,6 @@ import { screenWidth, widthUnit } from '../../styles/constants';
 import StandardSettingButton from '../../components/StandardSettingButton/StandardSettingButton';
 
 const TIMER_OPTIONS = Array.from(Array(120).keys()).map((i) => i + 1);
-console.log('TIMER_OPTIONS', TIMER_OPTIONS);
 
 const TimerSetupScreen = ({
   navigation,

@@ -158,7 +158,6 @@ const Home = ({
     );
   };
 
-  console.log('focusedCourse', focusedCourse);
   return (
     <ImageBackground
       style={styles.container}

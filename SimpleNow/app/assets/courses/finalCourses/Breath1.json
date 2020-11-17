@@ -1,0 +1,68 @@
+{
+  "title": "Breath I",
+  "information": "Welcome to Mindfulness Breath I",
+  "id": 109,
+  "exercises": [
+    {
+      "title": "Noticing the Breath",
+      "subheading": null,
+      "copy": "Close your eyes and notice the natural rhythm of your breath.",
+      "copyAudio": "attention_to_the_breathe.mp3",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 30000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "Inhalation and Exhalation",
+      "subheading": null,
+      "copy": "Close your eyes and narrow your attention to the rising and falling of your chest as you breathe.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 30000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "Mental Breathing Focus",
+      "subheading": null,
+      "copy": "Close your eyes and keep a mental count of your inhales and exhales as you breath. Notice when your attention drifts and come back to counting.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 60000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "Tip of the Nose",
+      "subheading": null,
+      "copy": "Close your eyes and narrow your attention to the sensation of air flowing in and out through the nose as you breathe.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 30000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "Returning to the Breath",
+      "subheading": null,
+      "copy": "Close your eyes and focus on your breathing. When you notice you’ve become distracted, acknowledge the distraction with a smile, then return your attention to the breath.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 60000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "⭐ Mindful Breathing",
+      "subheading": null,
+      "copy": "Choose a breathing focal point such as the rising and falling of the chest or air flowing through the nose and keep your attention there. Gently acknowledge moments of distraction then return your attention to the breath.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 60000,
+      "exerciseType": "Breath"
+    }
+  ]
+}

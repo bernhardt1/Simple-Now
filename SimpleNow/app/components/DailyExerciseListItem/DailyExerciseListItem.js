@@ -68,7 +68,7 @@ const ExerciseListItem = ({
       >
         <Image
           style={styles.focusedImage}
-          source={setLocalImage(`${exercise.image}White`)}
+          source={setLocalImage(`${exercise?.image}White`)}
         />
       </LinearGradient>
       <View style={styles.focusedInformationContainer}>
@@ -108,7 +108,7 @@ const ExerciseListItem = ({
       >
         <Image
           style={styles.image}
-          source={setLocalImage(`${exercise.image}White`)}
+          source={setLocalImage(`${exercise?.image}White`)}
         />
       </LinearGradient>
       <View style={styles.informationContainer}>
@@ -125,7 +125,7 @@ const ExerciseListItem = ({
             style={[subheadFont, whiteFont]}
             numberOfLines={2}
           >
-            {convertReminderTimeToReadable(exercise.reminderTime)}
+            {convertReminderTimeToReadable(exercise?.reminderTime)}
           </Text>
         </View>
       </View>

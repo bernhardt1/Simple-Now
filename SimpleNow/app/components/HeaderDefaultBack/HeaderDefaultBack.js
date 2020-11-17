@@ -13,7 +13,6 @@ const HeaderDefaultBack = ({
   rightButtonImage,
   onPressRightButton,
 }) => {
-  console.log('rightButtonImage', rightButtonImage);
   return (
     <View
       style={[

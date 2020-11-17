@@ -71,7 +71,6 @@ const StandardExercise = ({
   const [globalOpacityAnimation] = useState(new Animated.Value(1));
 
   useEffect(() => {
-    console.log('triggered');
     switch (currentStep) {
       case COUNTDOWN:
         animateInstructionOpacity(

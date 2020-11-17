@@ -89,7 +89,6 @@ const TrackPlayerBar = ({ ...props }) => {
     this.onTrackChange = TrackPlayer.addEventListener(
       'playback-track-changed',
       async (data) => {
-        console.log('nextTrack', nextTrack);
         const nextTrack = await TrackPlayer.getTrack(data.nextTrack);
         setTrack(nextTrack);
       }

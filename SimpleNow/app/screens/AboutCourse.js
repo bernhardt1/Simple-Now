@@ -13,6 +13,7 @@ import { HeaderSpacer } from '../components/HeaderSpacer';
 import { HeaderDefaultBack } from '../components/HeaderDefaultBack';
 
 const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
+  // JUST PASS COURSE ID & GET INFO FROM THAT
   const { courseInfo } = route.params;
   const title = courseInfo?.courseTitle;
   const content = courseInfo?.courseInformation;

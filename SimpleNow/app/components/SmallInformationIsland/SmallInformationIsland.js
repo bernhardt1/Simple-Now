@@ -12,14 +12,15 @@ const SmallInformationIsland = ({ title, withBorder, imageName }) => {
   return (
     <View
       style={[
-        styles.container,
         smallInformationIsland,
         withBorder
           ? { borderColor: BRAND_WHITE, borderWidth: BORDER_WIDTH }
           : {},
       ]}
     >
-      <Text style={[footnoteFont, whiteFont, centerAlign]}>{title}</Text>
+      {title && (
+        <Text style={[footnoteFont, whiteFont, centerAlign]}>{title}</Text>
+      )}
       {imageName && (
         <Image source={setLocalImage(imageName)} style={styles.image} />
       )}

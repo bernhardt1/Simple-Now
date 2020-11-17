@@ -1,5 +1,5 @@
-import MINDFULNESS_BEGINNER from './beginnerCourse.json';
-import MINDFULNESS_INTRO from './introCourse.json';
-import MINDFULNESS_101 from './101Course.json';
+import BREATH_1 from './Breath1.json';
+import BREATH_2 from './Breath2.json';
+import BREATH_3 from './Breath3.json';
 
-export { MINDFULNESS_BEGINNER, MINDFULNESS_INTRO, MINDFULNESS_101 };
+export { BREATH_1, BREATH_2, BREATH_3 };

@@ -12,6 +12,8 @@ import { forFade } from './transitions';
 import Home from '../screens/Home';
 
 import Practice from '../screens/Practice';
+import Program from '../screens/Program';
+
 import ChangePractice from '../screens/ChangePractice';
 import SetReminders from '../screens/SetReminders';
 import CreateReminder from '../screens/CreateReminder';
@@ -69,7 +71,7 @@ function TabNavigation() {
         },
       }}
     >
-      <Tab.Screen name="LEARN" component={Learn} />
+      {/* <Tab.Screen name="LEARN" component={Learn} /> */}
       <Tab.Screen name="PRACTICE" component={Practice} />
       {/* <Tab.Screen name="HISTORY" component={History} /> */}
       <Tab.Screen name="TIMER" component={TimerSetup} />
@@ -116,6 +118,7 @@ function BaseNavigation() {
       <Stack.Screen name="Timer" component={Timer} />
 
       <Stack.Screen name="Class" component={Class} />
+      <Stack.Screen name="Program" component={Program} />
       <Stack.Screen name="Exercise" component={Exercise} />
       <Stack.Screen name="About" component={About} />
       <Stack.Screen name="AboutCourse" component={AboutCourse} />

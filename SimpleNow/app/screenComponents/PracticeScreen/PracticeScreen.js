@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { StandardSettingButton } from '../../components/StandardSettingButton';
 import { StandardButton } from '../../components/StandardButton';
+import { DailyExerciseItem } from '../../components/DailyExerciseItem';
 import setLocalImage from '../../helpers/setLocalImage';
 
 import styles from './styles';
@@ -22,14 +23,21 @@ const PracticeScreen = ({ background, navigation }) => {
       source={setLocalImage(background)}
     >
       <HeaderSpacer transparent />
-      <View style={styles.headerSection}>
-        <Text style={[titleFont, whiteFont]}>Get ready to practice</Text>
+      <View style={styles.topSection}>
         <StandardSettingButton
-          title={'APPLYING MINDFULNESS'}
+          title={'CHANGE PRACTICE'}
           imageName={'editWhite'}
           onPress={() => navigation.navigate('ChangePractice')}
         />
+        <View style={styles.infoButtonContainer}>
+          <StandardSettingButton
+            title={'SET REMINDERS'}
+            onPress={() => navigation.navigate('SetReminders')}
+          />
+          <Text style={[footnoteFont, whiteFont]}>WEEK DAYS @ 6 AM</Text>
+        </View>
       </View>
+
       <View style={styles.centerSection}>
         <View style={styles.centerCircle}>
           <Text style={[captionFont, whiteFont, styles.textSpacing]}>
@@ -40,23 +48,10 @@ const PracticeScreen = ({ background, navigation }) => {
         </View>
       </View>
       <View style={styles.bottomSection}>
-        <View style={styles.upperBottomSection}>
-          <Text style={[titleFont, whiteFont]}>Up next</Text>
-          <StandardButton title={'Day Two'} />
-        </View>
-        <View style={styles.lowerBottomSection}>
-          <StandardSettingButton
-            title={'CHANGE PRACTICE'}
-            onPress={() => navigation.navigate('ChangePractice')}
-          />
-          <View style={styles.infoButtonContainer}>
-            <StandardSettingButton
-              title={'SET REMINDERS'}
-              onPress={() => navigation.navigate('SetReminders')}
-            />
-            <Text style={[footnoteFont, whiteFont]}>WEEK DAYS @ 6 AM</Text>
-          </View>
-        </View>
+        <Text style={[titleFont, whiteFont]}>Today's Practice</Text>
+        <DailyExerciseItem />
+        <DailyExerciseItem />
+        <DailyExerciseItem />
       </View>
     </ImageBackground>
   );

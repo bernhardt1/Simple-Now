@@ -9,10 +9,12 @@ import {
   buttonFromEdgeSpacing,
   headerPaddingHorizontal,
   islandSpacing,
+  practiceCarouselSpacing,
   standardButtonSpacing,
   standardSettingButtonSpacing,
 } from './spacings';
 import { BRAND_BLACK, BRAND_WHITE, DARK_OVERLAY } from './colors';
+import { footnoteFont } from './fonts';
 
 // default header
 const defaultHeader = {
@@ -93,11 +95,11 @@ const informationalImage = {
   width: widthUnit * 8,
 };
 const smallInformationIsland = {
-  height: widthUnit * 6,
-  minWidth: widthUnit * 10,
-  borderRadius: BORDER_RADIUS,
+  height: footnoteFont.fontSize + widthUnit * 4,
+  width: footnoteFont.fontSize + widthUnit * 4,
+  borderRadius: (footnoteFont.fontSize + widthUnit * 4) / 2,
   backgroundColor: DARK_OVERLAY,
-  ...standardSettingButtonSpacing,
+  padding: widthUnit,
   justifyContent: 'center',
   alignItems: 'center',
 };
@@ -120,6 +122,16 @@ const animatedBottomButtonStyles = {
     height: bottomButton.height * 0.75,
     width: bottomButton.height * 0.75,
   },
+};
+
+// Program Info Card
+const programInfoCard = {
+  height: widthUnit * 30,
+  width: widthUnit * 30,
+  backgroundColor: BRAND_WHITE,
+  ...practiceCarouselSpacing,
+  ...islandShape,
+  justifyContent: 'space-between',
 };
 
 //Flair
@@ -162,6 +174,7 @@ export {
   informationalContainer,
   informationalImage,
   smallInformationIsland,
+  programInfoCard,
   standardFlair,
   standardBorder,
   shadow,

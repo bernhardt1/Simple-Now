@@ -39,7 +39,7 @@ const courseItemCarouselSpacing = {
 };
 
 const practiceCarouselSpacing = {
-  marginLeft: widthUnit * 3,
+  marginLeft: widthUnit * 6,
   marginTop: widthUnit * 2,
   marginBottom: widthUnit * 4,
   padding: widthUnit * 3,

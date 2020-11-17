@@ -1,0 +1,37 @@
+{
+  "title": "Breath II",
+  "information": "Welcome to Mindfulness Breath II",
+  "id": 110,
+  "exercises": [
+    {
+      "title": "Using the Core",
+      "subheading": null,
+      "copy": "Take a few deep breaths then close your eyes and place your attention on your ribcage expanding and contracting as you breathe.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 30000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "Keeping Count",
+      "subheading": null,
+      "copy": "Close your eyes and count the next 5 breaths mentally. Keep your attention on your breath.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 30000,
+      "exerciseType": "Breath"
+    },
+    {
+      "title": "Focus on the Flow",
+      "subheading": null,
+      "copy": "Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.",
+      "instructions": null,
+      "hasNext": false,
+      "screenType": null,
+      "recommendedTime": 30000,
+      "exerciseType": "Breath"
+    }
+  ]
+}

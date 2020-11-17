@@ -38,6 +38,11 @@ const images = {
   plusBlack: require('./img/plusBlack.png'),
   plusBrand: require('./img/plusBrand.png'),
   plusOrange: require('./img/plusOrange.png'),
+  minusBlack: require('./img/minusBlack.png'),
+  minusWhite: require('./img/minusWhite.png'),
+  minusRed: require('./img/minusRed.png'),
+  infoWhite: require('./img/infoWhite.png'),
+  infoBlack: require('./img/infoBlack.png'),
   notificationPermission: require('./img/notificationPermission.png'),
 };
 

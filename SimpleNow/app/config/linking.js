@@ -11,18 +11,4 @@ const linking = {
   config,
 };
 
-// const config = {
-//   screens: {
-//     Home: {
-//       screens: {
-//         Class: {
-//           screens: {
-//             Exercise: 'Home/:courseId/:classId/:exerciseId',
-//           },
-//         },
-//       },
-//     },
-//   },
-// };
-
 export { linking, config };

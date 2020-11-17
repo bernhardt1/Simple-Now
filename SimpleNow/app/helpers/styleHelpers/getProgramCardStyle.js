@@ -1,3 +1,9 @@
+import {
+  BREATH_1_COLOR,
+  BREATH_2_COLOR,
+  BREATH_3_COLOR,
+} from '../../styles/colors';
+
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -7,8 +13,14 @@ function getRandomColor() {
   return color;
 }
 
-const getPracticeColor = (practiceId) => {
+const getProgramCardStyle = (practiceId) => {
   switch (practiceId) {
+    case 109:
+      return BREATH_1_COLOR;
+    case 110:
+      return BREATH_2_COLOR;
+    case 111:
+      return BREATH_3_COLOR;
     case 'Applying Mindfulness':
       return '#123456';
     default:
@@ -16,4 +28,4 @@ const getPracticeColor = (practiceId) => {
   }
 };
 
-export default getPracticeColor;
+export default getProgramCardStyle;

@@ -8,6 +8,7 @@
 
 import 'react-native-gesture-handler'; // need this for react-navigation
 import React, { Component } from 'react';
+import { LogBox } from 'react-native';
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -16,6 +17,8 @@ import { store, persistor } from './app/config/store';
 import AppSetup from './app/setup/AppSetup';
 
 import * as Sentry from '@sentry/react-native';
+
+LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
 
 Sentry.init({
   dsn:
