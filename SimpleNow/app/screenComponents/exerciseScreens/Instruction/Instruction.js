@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 
 import styles from './styles';
 import { centerAlign, titleFont, whiteFont } from '../../../styles/fonts';
-import BottomButton from '../../../components/BottomButton/BottomButton';
-import { EXERCISE_SCREEN } from '../../../constants/constants';
+import SecondaryButton from '../../../components/SecondaryButton/SecondaryButton';
 import setLocalImage from '../../../helpers/setLocalImage';
 import { HeaderSpacer } from '../../../components/HeaderSpacer';
 import { HeaderDefaultBack } from '../../../components/HeaderDefaultBack';
@@ -29,7 +28,6 @@ const Instruction = ({
     navigation.dispatch(
       StackActions.replace('Exercise', {
         exercise: nextExercise,
-        screenType: EXERCISE_SCREEN,
         classIndex,
         exerciseIndex: exerciseIndex + 1,
       })
@@ -63,7 +61,7 @@ const Instruction = ({
           </Text>
         </View>
 
-        <BottomButton title={'start'} onPress={navigateNext} />
+        <SecondaryButton title={'start'} onPress={navigateNext} />
       </LinearGradient>
     </ImageBackground>
   );

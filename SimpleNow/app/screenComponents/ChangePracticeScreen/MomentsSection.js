@@ -1,75 +1,59 @@
 import React from 'react';
-import { View, ScrollView, Text, FlatList } from 'react-native';
-
-import { InvisibleSeparator } from '../../components/InvisibleSeparator';
-import ProgramInfoCard from '../../components/ProgramInfoCard/ProgramInfoCard';
+import { View, FlatList } from 'react-native';
 
 import getBreathCourseList from '../../helpers/courseHelpers/getBreathCourseList';
 
-import { titleFont, whiteFont } from '../../styles/fonts';
-import { DARK_OVERLAY } from '../../styles/colors';
+import {
+  breath,
+  sensation,
+  thought,
+  hear,
+  see,
+  sense,
+  awareness,
+  quote,
+  question,
+  interactive,
+} from '../../assets/courses/exercises/index';
+
+const categories = [
+  breath,
+  sensation,
+  thought,
+  hear,
+  see,
+  sense,
+  awareness,
+  quote,
+  question,
+  interactive,
+].map((c) => {
+  return {
+    type: c?.exerciseData?.type,
+    description: c?.exerciseData?.description,
+  };
+});
 
 import styles from './styles';
 
-const MomentsSection = ({ renderProgramInfoCard }) => {
+const MomentsSection = ({ renderMomentCategoryCard, momentCategories }) => {
   return (
-    <ScrollView
-      bounces={false}
-      horizontal={false}
-      contentContainerStyle={{ backgroundColor: DARK_OVERLAY }}
-    >
-      <InvisibleSeparator />
-      <View style={styles.practiceCategory}>
-        <Text style={[titleFont, whiteFont, styles.textMargin]}>Breath</Text>
-        <FlatList
-          data={getBreathCourseList()}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          contentContainerStyle={styles.practiceListScrollerContainer}
-          renderItem={({ item, index }) => renderProgramInfoCard(item)}
-          removeClippedSubviews
-          keyExtractor={(item) => `${item?.id}`}
-        />
-        <FlatList />
-      </View>
-      <View style={styles.practiceCategory}>
-        <Text style={[titleFont, whiteFont, styles.textMargin]}>Hear</Text>
-        <FlatList
-          data={[{ id: 'Hear I' }, { id: 'Hear II' }, { id: 'Hear III' }]}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          contentContainerStyle={styles.practiceListScrollerContainer}
-          renderItem={({ item, index }) => renderProgramInfoCard(item)}
-          removeClippedSubviews
-          keyExtractor={(item) => `${item?.id}`}
-        />
-        <FlatList />
-      </View>
-      <View style={styles.practiceCategory}>
-        <Text style={[titleFont, whiteFont, styles.textMargin]}>Sensation</Text>
-        <FlatList
-          data={[
-            { id: 'Sensation I' },
-            { id: 'Sensation II' },
-            { id: 'Sensation III' },
-          ]}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          contentContainerStyle={styles.practiceListScrollerContainer}
-          renderItem={({ item, index }) => renderProgramInfoCard(item)}
-          removeClippedSubviews
-          keyExtractor={(item) => `${item?.id}`}
-        />
-        <FlatList />
-      </View>
-      <InvisibleSeparator />
-      <InvisibleSeparator />
-      <InvisibleSeparator />
-      <InvisibleSeparator />
-      <InvisibleSeparator />
-      <InvisibleSeparator />
-      <InvisibleSeparator />
-    </ScrollView>
+    <View style={styles.momentsCategoryContainer}>
+      <FlatList
+        data={categories}
+        numColumns={2}
+        contentContainerStyle={styles.momentsFlatlistContainer}
+        ItemSeparatorComponent={() => {
+          return (
+            <View
+              style={{ marginTop: styles.momentsFlatlistContainer.marginTop }}
+            />
+          );
+        }}
+        renderItem={({ item, index }) => renderMomentCategoryCard(item)}
+        keyExtractor={(item) => `${item?.type}`}
+      />
+    </View>
   );
 };
 

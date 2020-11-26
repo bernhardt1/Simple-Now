@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import setLocalImage from '../../helpers/setLocalImage';
 import { titleEmphasizedFont, whiteFont } from '../../styles/fonts';
 import { StandardImageButton } from '../StandardImageButton';
 
@@ -12,6 +11,7 @@ const HeaderDefaultBack = ({
   transparent,
   rightButtonImage,
   onPressRightButton,
+  rightButtonComponent,
 }) => {
   return (
     <View
@@ -20,15 +20,20 @@ const HeaderDefaultBack = ({
         transparent ? { backgroundColor: 'transparent' } : {},
       ]}
     >
+      <View style={styles.centerTextContainer}>
+        <Text style={[titleEmphasizedFont, whiteFont]}>{title}</Text>
+      </View>
       <StandardImageButton image={'backWhite'} onPress={onPressBack} />
-      <Text style={[titleEmphasizedFont, whiteFont]}>{title}</Text>
-      {!rightButtonImage && <View style={styles.invisibleView} />}
+      {!rightButtonImage && !rightButtonComponent && (
+        <View style={styles.invisibleView} />
+      )}
       {rightButtonImage && (
         <StandardImageButton
           image={rightButtonImage}
           onPress={onPressRightButton}
         />
       )}
+      {rightButtonComponent && rightButtonComponent}
     </View>
   );
 };

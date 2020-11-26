@@ -1,11 +1,12 @@
 import { itemSpacing, textContainerSpacing } from '../../styles/spacings';
-import { widthUnit } from '../../styles/constants';
+import { screenWidth, widthUnit } from '../../styles/constants';
 import { DARK_OVERLAY } from '../../styles/colors';
 import { islandShape } from '../../styles/standardComponents';
 
 const styles = {
   container: {
     height: widthUnit * 20,
+    width: screenWidth - itemSpacing.margin * 2,
     flexDirection: 'row',
     alignSelf: 'stretch',
     ...itemSpacing,

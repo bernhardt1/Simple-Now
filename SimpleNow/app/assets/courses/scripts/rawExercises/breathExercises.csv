@@ -1,11 +1,21 @@
 id,title,exerciseType,copy,recommendedTime
-Breath-0,Breath,Breath,Take a few deep breaths then close your eyes and place your attention on your ribcage expanding and contracting as you breathe.,30000
-Breath-1,Breath,Breath,Close your eyes and count the next 5 breaths mentally. Keep your attention on your breath.,30000
-Breath-2,Breath,Breath,Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose for 5 breaths.,30000
-Breath-3,Breath,Breath,Close your eyes and focus on your breath. Count each you take.,30000
-Breath-4,Breath,Breath,Breathe very slowly and deeply with each breath. ,30000
-Breath-5,Breath,Breath,Close your eyes and focus intensely on the feeling of your lungs expanding and deflating as you breathe. ,30000
-Breath-6,Breath,Breath,Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.,30000
-Breath-7,Breath,Breath,"Without adjusting anything, simply notice the natural rhythm of your breath.",30000
-Breath-8,Breath,Breath,Find a pain or discomfort in your body. Breathe into that spot. Feel the sensation change as you breathe in and out.,30000
-Breath-9,Breath,Breath,Focus on the feeling of your chest rising and falling as you breath.,30000
+Breath-0,Breath 1,Breath,Close your eyes and notice the natural rhythm of your breath.,30000
+Breath-1,Breath 2,Breath,Narrow your attention to the rising and falling of your chest as you breathe.,30000
+Breath-2,Breath 3,Breath,Narrow your attention to the feeling of air flowing in and out through your nose. Keep your mouth closed and breath only through your nose.,30000
+Breath-3,Breath 4,Breath,"Focus on your breath. When you notice you’ve become distracted by a thought, gently acknowledge that thought with a smile and return attention to your breath.",30000
+Breath-4,Breath 5,Breath,Place your attention on your ribcage expanding and contracting as you breathe.,30000
+Breath-5,Breath 6,Breath,Close your eyes and mentally count your breaths. Keep your attention on your breathing.,30000
+Breath-6,Breath 7,Breath,Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.,30000
+Breath-7,Breath 8,Breath,Close your eyes and focus on your breath. Count each breath you take.,60000
+Breath-8,Breath 9,Breath,Breathe very slowly and deeply by mentally counting to five for every inhale and again to five for every exhale.,60000
+Breath-9,Breath 10,Breath,Close your eyes and focus intensely on the feeling of your lungs expanding and deflating as you breathe. ,60000
+Breath-10,Breath 11,Breath,Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.,60000
+Breath-11,Breath 12,Breath,"Without adjusting anything, simply notice the natural rhythm of your breath.",60000
+Breath-12,Breath 13,Breath,Find a pain or discomfort in your body. Breathe into that spot. Feel the sensation change as you breathe in and out.,60000
+Breath-13,Breath 14,Breath,Focus on the feeling of your chest rising and falling as you breath.,90000
+Breath-14,Breath 15,Breath,Focus on the feeling of your lungs expanding and contracting with each breath.,60000
+Breath-15,Breath 16,Breath,Narrow your attention to the natural rhythm of your breath. Do this without changing or controlling your breathing pattern.,90000
+Breath-16,Breath 17,Breath,"Find an area of tension, perhaps in your neck or eyes. Narrow your attention to that spot as you breath. With each inhale focus on a specific point of tension and with each exhale release the tension you feel.",90000
+Breath-17,Breath 18,Breath,Close your eyes and feel the natural movement of your entire body as you breath. Focus on this broad external expansion and contraction of the entire body.  ,90000
+Breath-18,Breath 19,Breath,"Close your eyes and, starting in the toes, move your attention through your body slowly. Breath into and release any muscle tension in the areas you pass your attention through. ",120000
+Breath-19,Breath 20,Breath,"Close your eyes and focus on your breath as intensely as you can. Think of nothing else. Ignore any thoughts, or distractions that arise.",120000

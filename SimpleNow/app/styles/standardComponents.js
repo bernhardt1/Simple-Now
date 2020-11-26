@@ -55,7 +55,7 @@ const standardButton = {
 };
 
 const standardSettingButton = {
-  height: widthUnit * 9,
+  minHeight: widthUnit * 9,
   minWidth: widthUnit * 20,
   borderRadius: BORDER_RADIUS,
   backgroundColor: DARK_OVERLAY,
@@ -75,9 +75,9 @@ const standardImageButton = {
 };
 
 const bottomButton = {
-  height: widthUnit * 30,
-  width: widthUnit * 30,
-  borderRadius: (widthUnit * 30) / 2,
+  minHeight: widthUnit * 10,
+  minWidth: widthUnit * 24,
+  borderRadius: (widthUnit * 10) / 2,
   justifyContent: 'center',
   alignItems: 'center',
 };
@@ -126,12 +126,37 @@ const animatedBottomButtonStyles = {
 
 // Program Info Card
 const programInfoCard = {
+  height: widthUnit * 14,
+  width: widthUnit * 14,
+  backgroundColor: BRAND_WHITE,
+  marginRight: widthUnit * 3,
+  padding: widthUnit * 3,
+  ...islandShape,
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+const meditationCard = {
   height: widthUnit * 30,
-  width: widthUnit * 30,
+  width: widthUnit * 55,
   backgroundColor: BRAND_WHITE,
   ...practiceCarouselSpacing,
   ...islandShape,
   justifyContent: 'space-between',
+};
+
+// Moment Category Card
+const momentCategoryCard = {
+  height: widthUnit * 42.5,
+  width: widthUnit * 42.5,
+  backgroundColor: BRAND_WHITE,
+  marginLeft: widthUnit * 5,
+
+  padding: widthUnit * 3,
+  ...islandShape,
+  justifyContent: 'center',
+  alignItems: 'center',
+  ...shadow,
 };
 
 //Flair
@@ -175,6 +200,8 @@ export {
   informationalImage,
   smallInformationIsland,
   programInfoCard,
+  meditationCard,
+  momentCategoryCard,
   standardFlair,
   standardBorder,
   shadow,

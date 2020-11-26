@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Easing } from 'react-native';
+import React from 'react';
 import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { forFade } from './transitions';
 
-import Home from '../screens/Home';
-
 import Practice from '../screens/Practice';
 import Program from '../screens/Program';
+import Home from '../screens/Home';
 
 import ChangePractice from '../screens/ChangePractice';
+import EditPractice from '../screens/EditPractice';
 import SetReminders from '../screens/SetReminders';
 import CreateReminder from '../screens/CreateReminder';
-
-import Learn from '../screens/Learn';
 
 import TimerSetup from '../screens/TimerSetup';
 import Timer from '../screens/Timer';
 import SetBellInterval from '../screens/SetBellInterval';
 
-import Class from '../screens/Class';
 import About from '../screens/About';
 import AboutCourse from '../screens/AboutCourse';
 import Exercise from '../screens/Exercise';
@@ -44,12 +41,10 @@ function TabNavigation() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === 'LEARN') {
-            iconName = focused ? 'book' : 'book-outline';
-          } else if (route.name === 'TIMER') {
+          if (route.name === 'TIMER') {
             iconName = focused ? 'time' : 'time-outline';
-          } else if (route.name === 'HISTORY') {
-            iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+          } else if (route.name === 'HOME') {
+            iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'PRACTICE') {
             iconName = focused ? 'heart' : 'heart-outline';
           }
@@ -71,10 +66,9 @@ function TabNavigation() {
         },
       }}
     >
-      {/* <Tab.Screen name="LEARN" component={Learn} /> */}
       <Tab.Screen name="PRACTICE" component={Practice} />
-      {/* <Tab.Screen name="HISTORY" component={History} /> */}
       <Tab.Screen name="TIMER" component={TimerSetup} />
+      <Tab.Screen name="HOME" component={Home} />
     </Tab.Navigator>
   );
 }
@@ -97,32 +91,23 @@ function BaseNavigation() {
         },
       }}
     >
-      <Stack.Screen
-        name="Learn"
-        component={Learn}
-        options={{
-          headerStyle: {
-            height: 0,
-          },
-          header: () => {
-            return null;
-          },
-        }}
-      />
       <Stack.Screen name="TabNavigation" component={TabNavigation} />
+
       <Stack.Screen name="ChangePractice" component={ChangePractice} />
+      <Stack.Screen name="EditPractice" component={EditPractice} />
+      <Stack.Screen name="Program" component={Program} />
+
       <Stack.Screen name="SetReminders" component={SetReminders} />
       <Stack.Screen name="CreateReminder" component={CreateReminder} />
-      <Stack.Screen name="SetBellInterval" component={SetBellInterval} />
 
       <Stack.Screen name="Timer" component={Timer} />
+      <Stack.Screen name="SetBellInterval" component={SetBellInterval} />
 
-      <Stack.Screen name="Class" component={Class} />
-      <Stack.Screen name="Program" component={Program} />
       <Stack.Screen name="Exercise" component={Exercise} />
+      <Stack.Screen name="AboutExercise" component={AboutExercise} />
+
       <Stack.Screen name="About" component={About} />
       <Stack.Screen name="AboutCourse" component={AboutCourse} />
-      <Stack.Screen name="AboutExercise" component={AboutExercise} />
     </Stack.Navigator>
   );
 }

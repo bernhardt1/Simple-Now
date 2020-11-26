@@ -7,17 +7,15 @@ import { bodyFont, whiteFont } from '../styles/fonts';
 import { scrollViewBottomMargin } from '../styles/spacings';
 import { InvisibleSeparator } from '../components/InvisibleSeparator';
 import { StandardButton } from '../components/StandardButton';
-import { resetCourse } from '../actions/courses';
 import setLocalImage from '../helpers/setLocalImage';
 import { HeaderSpacer } from '../components/HeaderSpacer';
 import { HeaderDefaultBack } from '../components/HeaderDefaultBack';
 
-const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
+const AboutCourse = ({ navigation, route, background }) => {
   // JUST PASS COURSE ID & GET INFO FROM THAT
   const { courseInfo } = route.params;
   const title = courseInfo?.courseTitle;
   const content = courseInfo?.courseInformation;
-  const courseId = courseInfo?.courseId;
 
   const navigateBack = () => {
     navigation.goBack();
@@ -68,28 +66,6 @@ const AboutCourse = ({ navigation, route, reduxResetCourse, background }) => {
           }}
           withBorder
         />
-        <StandardButton
-          title={'Cancel Course'}
-          onPress={() => {
-            Alert.alert(
-              'Are you sure you want to cancel this course?',
-              'This will erase your progress and cancel all reminders.',
-              [
-                {
-                  text: 'Go Back',
-                },
-                {
-                  text: 'Yes',
-                  onPress: () => {
-                    reduxResetCourse(courseId);
-                    global.Notifications.cancelAll();
-                  },
-                },
-              ]
-            );
-          }}
-          withBorder
-        />
       </View>
     </ImageBackground>
   );
@@ -101,10 +77,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    reduxResetCourse: (courseId) => dispatch(resetCourse(courseId)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AboutCourse);
+export default connect(mapStateToProps)(AboutCourse);

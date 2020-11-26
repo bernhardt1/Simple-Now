@@ -1,4 +1,3 @@
-import { CLASS_SCREEN, EXERCISE_SCREEN } from '../constants/constants';
 import getCourseFromId from './courseHelpers/getCourseFromId';
 import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
 
@@ -38,31 +37,11 @@ function createNavigationStateForExercise(path) {
     index: 0,
     routes: [
       {
-        name: 'Home',
-      },
-      {
-        name: 'Class',
-        params: {
-          courseInfo: {
-            courseTitle: course?.title,
-            courseLength: course?.classes?.length,
-            courseInformation: course?.information,
-          },
-          classInfo: {
-            ...course?.classes[classIndex],
-            classIndex: classIndex,
-          },
-          screenType: CLASS_SCREEN,
-          isCourseActivated: true,
-        },
-      },
-      {
         name: 'Exercise',
         params: {
           exercise: course?.classes[classIndex].exercises[exerciseIndex],
           classIndex,
           exerciseIndex,
-          screenType: EXERCISE_SCREEN,
         },
       },
     ],

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, View, Text } from 'react-native';
+import { ImageBackground, View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { StandardSettingButton } from '../../components/StandardSettingButton';
@@ -16,7 +16,7 @@ import {
   whiteFont,
 } from '../../styles/fonts';
 
-const PracticeScreen = ({ background, navigation }) => {
+const PracticeScreen = ({ background, navigation, currentPractice }) => {
   return (
     <ImageBackground
       style={styles.container}
@@ -49,9 +49,15 @@ const PracticeScreen = ({ background, navigation }) => {
       </View>
       <View style={styles.bottomSection}>
         <Text style={[titleFont, whiteFont]}>Today's Practice</Text>
-        <DailyExerciseItem />
-        <DailyExerciseItem />
-        <DailyExerciseItem />
+        <FlatList
+          data={currentPractice}
+          renderItem={({ item, index }) => {
+            return (
+              <DailyExerciseItem exercise={item} navigation={navigation} />
+            );
+          }}
+          contentContainerStyle={styles.flatlistContainer}
+        />
       </View>
     </ImageBackground>
   );
@@ -60,6 +66,7 @@ const PracticeScreen = ({ background, navigation }) => {
 const mapStateToProps = (state) => {
   return {
     background: state?.settings?.background || 'background1',
+    currentPractice: state?.practice?.currentPractice || [],
   };
 };
 

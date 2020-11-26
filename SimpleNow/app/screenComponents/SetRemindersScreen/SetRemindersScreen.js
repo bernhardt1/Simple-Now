@@ -23,14 +23,14 @@ const SetRemindersScreen = ({ background, navigation }) => {
       source={setLocalImage(background)}
     >
       <HeaderSpacer />
+      <HeaderDefaultBack
+        onPressBack={navigateBack}
+        title={'Practice Reminders'}
+        rightButtonImage={'plusOrange'}
+        onPressRightButton={navigateCreateReminder}
+      />
 
       <ScrollView bounces={false}>
-        <HeaderDefaultBack
-          onPressBack={navigateBack}
-          title={'Practice Reminders'}
-          rightButtonImage={'plusOrange'}
-          onPressRightButton={navigateCreateReminder}
-        />
         <InvisibleSeparator />
       </ScrollView>
     </ImageBackground>

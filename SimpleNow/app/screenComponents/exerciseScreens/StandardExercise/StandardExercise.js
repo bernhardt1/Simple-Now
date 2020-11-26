@@ -26,10 +26,10 @@ import {
 
 import styles from './styles';
 import convertMillisecondsToSeconds from '../../../helpers/timeHelpers/convertMillisecondsToSeconds';
-import { ABOUT_EXERCISE_SCREEN } from '../../../constants/constants';
 import { updateIsSoundOn } from '../../../actions/settings';
 import StandardButton from '../../../components/StandardButton/StandardButton';
 import convertSecondsToMmSs from '../../../helpers/timeHelpers/convertSecondsToMmSs';
+import SecondaryButton from '../../../components/SecondaryButton/SecondaryButton';
 
 const COUNTDOWN = 'COUNTDOWN';
 const START_EXERCISE = 'START_EXERCISE';
@@ -57,7 +57,7 @@ const StandardExercise = ({
   const [simpleInstruction, setSimpleInstruction] = useState('ready');
   const [currentStep, setCurrentStep] = useState('');
   const [exerciseDuration, setExerciseDuration] = useState(
-    convertMillisecondsToSeconds(exercise?.recommendedTime) || 60
+    convertMillisecondsToSeconds(exercise?.recommendedTime * EBS) || 60 * EBS
   );
 
   const [simpleContainerAnimation] = useState(new Animated.Value(0));
@@ -104,7 +104,7 @@ const StandardExercise = ({
         }
         break;
       case COMPLETED:
-        markAsComplete();
+        if (markAsComplete) markAsComplete();
         animateInstructionOpacity(0, EBS * 100, 'completed');
         if (this) {
           this.timeout = setTimeout(() => {
@@ -282,7 +282,7 @@ const StandardExercise = ({
         if (remainingTime > 1) {
           animateCountdown(nextStep, nextInstruction);
         } else {
-          chimeRef?.play();
+          chimeRef?.current?.play();
           setCurrentStep(nextStep);
         }
       }, EBS * 50);
@@ -365,7 +365,6 @@ const StandardExercise = ({
   const navigateAboutExercise = () => {
     navigation.navigate('AboutExercise', {
       exercise,
-      screenType: ABOUT_EXERCISE_SCREEN,
     });
   };
 
@@ -460,21 +459,9 @@ const StandardExercise = ({
               ]}
               pointerEvents={'auto'}
             >
-              <StandardButton
-                withBorder
-                title={'+1 min'}
-                onPress={() => addTime(60)}
-              />
-              <StandardButton
-                withBorder
-                title={'+2 min'}
-                onPress={() => addTime(120)}
-              />
-              <StandardButton
-                withBorder
-                title={'+5 min'}
-                onPress={() => addTime(300)}
-              />
+              <SecondaryButton title={'+1 min'} onPress={() => addTime(60)} />
+              <SecondaryButton title={'+2 min'} onPress={() => addTime(120)} />
+              <SecondaryButton title={'+5 min'} onPress={() => addTime(300)} />
             </Animated.View>
 
             <Animated.View

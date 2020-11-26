@@ -1,35 +1,22 @@
-// SCREEN TYPES
-const CLASS_SCREEN = 'class';
-const ABOUT_SCREEN = 'about';
-const ABOUT_CLASS_SCREEN = 'aboutClass';
-const EXERCISE_SCREEN = 'exercise';
-const ABOUT_EXERCISE_SCREEN = 'aboutExercise';
-
 // EXERCISE SCREEN TYPES
 const INSTRUCTION_EXERCISE_SCREEN = 'instruction';
-const STANDARD_EXERCISE_SCREEN = 'exercise';
 
 // EXERCISE METHOD TYPES
-const BREATH_EXERCISE = 'Breath';
-const SENSATION_EXERCISE = 'Sensation';
-const THOUGHT_EXERCISE = 'Thought';
-const HEAR_EXERCISE = 'Hear';
-const SEE_EXERCISE = 'See';
-const SENSE_EXERCISE = 'Sense';
-const SELF_AWARENESS_EXERCISE = 'Awareness';
-const QUESTION_EXERCISE = 'Question';
-const QUOTE_EXERCISE = 'Quote';
-const INTERACTIVE_EXERCISE = 'Interactive';
+const BREATH_EXERCISE = 'breath';
+const SENSATION_EXERCISE = 'sensation';
+const THOUGHT_EXERCISE = 'thought';
+const HEAR_EXERCISE = 'hear';
+const SEE_EXERCISE = 'see';
+const SENSE_EXERCISE = 'sense';
+const SELF_AWARENESS_EXERCISE = 'awareness';
+const QUESTION_EXERCISE = 'question';
+const QUOTE_EXERCISE = 'quote';
+const INTERACTIVE_EXERCISE = 'interactive';
 
 // URL & LINKING
 const URL_HEADER = 'simple-now://';
 
 export {
-  CLASS_SCREEN,
-  ABOUT_SCREEN,
-  ABOUT_CLASS_SCREEN,
-  EXERCISE_SCREEN,
-  ABOUT_EXERCISE_SCREEN,
   INSTRUCTION_EXERCISE_SCREEN,
   BREATH_EXERCISE,
   SENSATION_EXERCISE,

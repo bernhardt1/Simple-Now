@@ -1,5 +1,5 @@
 import { DARK_OVERLAY } from '../../styles/colors';
-import { widthUnit } from '../../styles/constants';
+import { screenWidth, widthUnit } from '../../styles/constants';
 import { buttonFromEdgeSpacing } from '../../styles/spacings';
 
 const styles = {
@@ -31,6 +31,12 @@ const styles = {
   bottomSection: {
     flex: 4,
     justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+  },
+  flatlistContainer: {
+    alignSelf: 'stretch',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   infoButtonContainer: {

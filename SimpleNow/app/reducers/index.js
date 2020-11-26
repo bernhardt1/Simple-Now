@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
-import courses from './courses';
+import content from './content';
 import practice from './practice';
 import navigation from './navigation';
 import settings from './settings';
 
 const rootReducer = combineReducers({
-  courses,
+  content,
   practice,
   navigation,
   settings,

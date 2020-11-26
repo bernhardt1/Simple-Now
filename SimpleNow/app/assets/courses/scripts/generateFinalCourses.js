@@ -11,16 +11,16 @@ const quote = '../exercises/quoteExercises.json';
 const question = '../exercises/questionExercises.json';
 const interactive = '../exercises/interactiveExercises.json';
 
-const BREATH_EXERCISE = 'Breath';
-const SENSATION_EXERCISE = 'Sensation';
-const THOUGHT_EXERCISE = 'Thought';
-const HEAR_EXERCISE = 'Hear';
-const SEE_EXERCISE = 'See';
-const SENSE_EXERCISE = 'Sense';
-const SELF_AWARENESS_EXERCISE = 'Awareness';
-const QUESTION_EXERCISE = 'Question';
-const QUOTE_EXERCISE = 'Quote';
-const INTERACTIVE_EXERCISE = 'Interactive';
+const BREATH_EXERCISE = 'breath';
+const SENSATION_EXERCISE = 'sensation';
+const THOUGHT_EXERCISE = 'thought';
+const HEAR_EXERCISE = 'hear';
+const SEE_EXERCISE = 'see';
+const SENSE_EXERCISE = 'sense';
+const SELF_AWARENESS_EXERCISE = 'awareness';
+const QUESTION_EXERCISE = 'question';
+const QUOTE_EXERCISE = 'quote';
+const INTERACTIVE_EXERCISE = 'interactive';
 
 const COURSE_WRITE_PATH = '../finalCourses/';
 

@@ -37,21 +37,23 @@ const logoTitleFont = {
 const massiveTitleFont = {
   ...human.title1,
   fontSize: screenWidth / 9,
-  lineHeight: screenWidth / 9,
+  lineHeight: screenWidth / 7,
   letterSpacing: sanFranciscoSpacing(screenWidth / 9),
   fontFamily: 'AvenirNextRoundedPro-Reg',
   fontWeight: '500',
   color: BRAND_BLACK,
+  textAlignVertical: 'center',
 };
 
 const largeTitleFont = {
   ...human.title1,
   fontSize: screenWidth / 12,
-  lineHeight: screenWidth / 12,
+  lineHeight: screenWidth / 8,
   letterSpacing: sanFranciscoSpacing(screenWidth / 12),
   fontFamily: 'AvenirNextRoundedPro-Reg',
   fontWeight: '500',
   color: BRAND_BLACK,
+  textAlignVertical: 'center',
 };
 
 const titleEmphasizedFont = {
@@ -96,15 +98,14 @@ const bodyFontTitle = {
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
 
-const captionFont = {
-  ...human.caption1,
+const footnoteFont = {
+  ...human.footnote,
   fontWeight: '500',
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
 };
-
-const footnoteFont = {
-  ...human.footnote,
+const captionFont = {
+  ...human.caption1,
   fontWeight: '500',
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',

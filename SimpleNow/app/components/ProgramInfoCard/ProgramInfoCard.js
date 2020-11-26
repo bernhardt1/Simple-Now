@@ -1,43 +1,52 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-import getProgramCardStyle from '../../helpers/styleHelpers/getProgramCardStyle';
-import { footnoteFont, boldSubheadFont, whiteFont } from '../../styles/fonts';
-import { programInfoCard } from '../../styles/standardComponents';
+import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
+import {
+  footnoteFont,
+  boldSubheadFont,
+  whiteFont,
+  centerAlign,
+} from '../../styles/fonts';
+import {
+  meditationCard,
+  programInfoCard,
+} from '../../styles/standardComponents';
 
 import styles from './styles';
 
 const ProgramInfoCard = ({
-  program,
+  cardCategory,
   isMeditation,
   onPress,
-  selectedProgramId,
+  selectedCategory,
 }) => {
+  const cardColors = getCategoryCardColors(cardCategory);
   return (
     <TouchableOpacity
       onPress={() => {
-        onPress(program?.id);
+        onPress(cardCategory);
       }}
       activeOpacity={0.8}
     >
-      <View
+      <LinearGradient
+        colors={cardColors}
         style={[
           programInfoCard,
-          isMeditation ? styles.meditationContainer : {},
-          { backgroundColor: getProgramCardStyle(program?.id) },
-          selectedProgramId === program?.id ? styles.selected : {},
+          isMeditation ? meditationCard : {},
+          selectedCategory === cardCategory ? styles.selected : {},
         ]}
+        useAngle={true}
+        angle={135}
+        angleCente={{ x: 0.5, y: 0.5 }}
       >
         <View>
           <Text
-            style={[boldSubheadFont, whiteFont]}
-          >{`${program?.title}`}</Text>
-          <Text style={[footnoteFont, whiteFont]}>30 sessions</Text>
+            style={[boldSubheadFont, whiteFont, centerAlign]}
+          >{`${cardCategory.substring(0, 1)}`}</Text>
         </View>
-        <View style={styles.infoRow}>
-          <Text style={[footnoteFont, whiteFont]}>3 of 30 complete</Text>
-        </View>
-      </View>
+      </LinearGradient>
     </TouchableOpacity>
   );
 };

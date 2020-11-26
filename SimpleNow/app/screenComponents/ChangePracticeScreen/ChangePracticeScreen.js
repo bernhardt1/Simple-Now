@@ -13,16 +13,25 @@ import { connect } from 'react-redux';
 import { addProgram, removeProgram } from '../../actions/practice';
 import { HeaderDefaultBack } from '../../components/HeaderDefaultBack';
 import { HeaderSpacer } from '../../components/HeaderSpacer';
+import { MomentCategoryCard } from '../../components/MomentCategoryCard';
 import ProgramInfoCard from '../../components/ProgramInfoCard/ProgramInfoCard';
+import StandardSettingButton from '../../components/StandardSettingButton/StandardSettingButton';
 import setLocalImage from '../../helpers/setLocalImage';
 import { LIGHT_OVERLAY } from '../../styles/colors';
-import { heightUnit } from '../../styles/constants';
+import { heightUnit, widthUnit } from '../../styles/constants';
 import {
+  bodyFont,
   captionFont,
+  centerAlign,
+  footnoteFont,
+  orangeFont,
+  subheadFont,
+  titleEmphasizedFont,
   titleFont,
   unselectedWhiteFont,
   whiteFont,
 } from '../../styles/fonts';
+import { practiceCarouselSpacing } from '../../styles/spacings';
 import MeditationsSection from './MeditationsSection';
 import MomentsSection from './MomentsSection';
 
@@ -44,17 +53,17 @@ const ChangePracticeScreen = ({
   reduxRemoveProgram,
 }) => {
   const [category, setCategory] = useState(MOMENTS);
-  const [selectedProgramId, setSelectedProgramId] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [actionButtonsAnimatedValue] = useState(new Animated.Value(0));
   const [actionButtonType, setActionButtonType] = useState(ADD);
 
   useEffect(() => {
-    if (selectedProgramId) {
+    if (selectedCategory) {
       animateActionButtons(1);
     } else {
       animateActionButtons(0);
     }
-  }, [selectedProgramId]);
+  }, [selectedCategory]);
 
   // pass 0 for hidden
   // pass 1 for shown
@@ -66,31 +75,46 @@ const ChangePracticeScreen = ({
   };
 
   const renderProgramInfoCard = (item) => {
-    console.log('item', item);
     return (
       <ProgramInfoCard
-        program={item}
+        cardCategory={item}
         isMeditation={item?.meditation}
         onPress={onPressCard}
-        selectedProgramId={selectedProgramId}
+        selectedCategory={selectedCategory}
+      />
+    );
+  };
+
+  const renderMomentCategoryCard = (item) => {
+    return (
+      <MomentCategoryCard
+        categoryData={item}
+        activePrograms={activePrograms}
+        isMeditation={item?.meditation}
+        onPress={onPressCard}
+        selectedCategory={selectedCategory}
       />
     );
   };
 
   const navigateInformation = () => {
-    navigation.navigate('Program', { programId: selectedProgramId });
+    navigation.navigate('Program', { programType: selectedCategory });
+  };
+
+  const navigateEditPractice = () => {
+    navigation.navigate('EditPractice');
   };
 
   const navigateBack = () => {
     navigation.goBack();
   };
 
-  const onPressCard = (id) => {
-    if (selectedProgramId === id) {
-      setSelectedProgramId(null);
+  const onPressCard = (categoryPressed) => {
+    if (selectedCategory === categoryPressed) {
+      setSelectedCategory(null);
     } else {
-      setSelectedProgramId(id);
-      if (activePrograms.includes(id)) {
+      setSelectedCategory(categoryPressed);
+      if (activePrograms.includes(categoryPressed)) {
         setActionButtonType(REMOVE);
       } else {
         setActionButtonType(ADD);
@@ -99,14 +123,15 @@ const ChangePracticeScreen = ({
   };
 
   const addProgramToPractice = () => {
-    reduxAddProgram(selectedProgramId);
+    reduxAddProgram(selectedCategory);
+    setActionButtonType(REMOVE);
   };
 
   const removeProgramFromPractive = () => {
-    reduxRemoveProgram(selectedProgramId);
+    reduxRemoveProgram(selectedCategory);
+    setActionButtonType(ADD);
   };
 
-  console.log('activePrograms', activePrograms);
   return (
     <ImageBackground
       style={styles.container}
@@ -117,31 +142,47 @@ const ChangePracticeScreen = ({
         onPressBack={navigateBack}
         title={'Your Practice'}
         transparent
+        rightButtonComponent={
+          <StandardSettingButton
+            title={'PRACTICE\nSETTINGS'}
+            onPress={navigateEditPractice}
+            titleColor={orangeFont}
+          />
+        }
       />
       <View style={styles.yourPracticeContainer}>
-        {activePrograms?.length <= 0 && (
-          <Text
-            style={[
-              titleFont,
-              styles.explanationText,
-              whiteFont,
-              category === MEDITATIONS ? unselectedWhiteFont : {},
-            ]}
-          >
-            Select programs from the list below to add them to your practice.
+        <View style={styles.circleContainer}>
+          <Text style={[captionFont, whiteFont]}>Practicing</Text>
+
+          <Text style={[titleEmphasizedFont, whiteFont]}>
+            {activePrograms?.length}
           </Text>
-        )}
-        <FlatList
-          data={activePrograms.map((id) => {
-            return { id };
-          })}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          contentContainerStyle={styles.practiceListScrollerContainer}
-          renderItem={({ item, index }) => renderProgramInfoCard(item)}
-          removeClippedSubviews
-          keyExtractor={(item) => `${item?.id}`}
-        />
+          <Text style={[captionFont, whiteFont]}>categories</Text>
+        </View>
+        <View style={styles.tomorrowsPracticeContainer}>
+          <Text style={[subheadFont, whiteFont, styles.tomorrowTextStyle]}>
+            Your Active Categories
+          </Text>
+          {activePrograms?.length <= 0 && (
+            <View style={styles.activePracticeFlatlistContainer}>
+              <Text style={[footnoteFont, whiteFont]}>
+                Tap a category and press "Add to Practice" to include it in your
+                daily practice.
+              </Text>
+            </View>
+          )}
+          {activePrograms?.length > 0 && (
+            <FlatList
+              data={activePrograms}
+              showsHorizontalScrollIndicator={false}
+              horizontal
+              contentContainerStyle={styles.activePracticeFlatlistContainer}
+              renderItem={({ item, index }) => renderProgramInfoCard(item)}
+              removeClippedSubviews
+              keyExtractor={(item) => `${item}`}
+            />
+          )}
+        </View>
       </View>
 
       <View style={styles.categoriesContainer}>
@@ -156,10 +197,10 @@ const ChangePracticeScreen = ({
               category === MEDITATIONS ? unselectedWhiteFont : {},
             ]}
           >
-            Moments
+            Categories
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.categoriesButton}
           onPress={() => setCategory(MEDITATIONS)}
         >
@@ -172,10 +213,10 @@ const ChangePracticeScreen = ({
           >
             Meditations
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       {category === MOMENTS && (
-        <MomentsSection renderProgramInfoCard={renderProgramInfoCard} />
+        <MomentsSection renderMomentCategoryCard={renderMomentCategoryCard} />
       )}
       {category === MEDITATIONS && (
         <MeditationsSection renderProgramInfoCard={renderProgramInfoCard} />
@@ -230,7 +271,7 @@ const ChangePracticeScreen = ({
               source={setLocalImage('infoBlack')}
               style={styles.actionButtonImage}
             />
-            <Text style={[captionFont]}>Description</Text>
+            <Text style={[captionFont]}>Explore</Text>
           </View>
         </TouchableHighlight>
       </Animated.View>

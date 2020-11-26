@@ -4,16 +4,12 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import {
   titleFont,
-  subheadFont,
   whiteFont,
-  largeTitleFont,
   orangeFont,
   captionFont,
 } from '../../styles/fonts';
-import convertReminderTimeToReadable from '../../helpers/timeHelpers/convertReminderTimeToReadable';
-import isExerciseAvailable from '../../helpers/reduxHelpers/isExerciseAvailable';
 
-const ExerciseListItem = ({
+const DailyExerciseItem = ({
   focused,
   course,
   exercise,
@@ -25,15 +21,36 @@ const ExerciseListItem = ({
   navigation,
   lastItem,
 }) => {
+  const navigateExercise = () => {
+    //   if (isExerciseAvailable(reduxCourse, course, classIndex, exerciseIndex)) {
+    //     navigateExercise();
+    //   } else {
+    //     Alert.alert(
+    //       'Exercise Not Available',
+    //       'This exercise is scheduled for later.',
+    //       [
+    //         {
+    //           text: 'OK',
+    //         },
+    //       ]
+    //     );
+    //   }
+    // };
+
+    navigation.navigate('Exercise', {
+      exercise,
+    });
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={navigateExercise}>
       <View style={styles.informationLeftContainer}>
         <Text style={[titleFont, whiteFont]}>
           {`${exercise?.title}${isExerciseComplete ? ' - complete' : ''}`}
         </Text>
-        <Text style={[captionFont, whiteFont]}>
-          {isExerciseComplete ? 'complete' : `${exercise?.duration}`}
-        </Text>
+        {isExerciseComplete && (
+          <Text style={[captionFont, whiteFont]}>complete</Text>
+        )}
       </View>
 
       <Text
@@ -47,4 +64,4 @@ const ExerciseListItem = ({
   );
 };
 
-export default ExerciseListItem;
+export default DailyExerciseItem;
