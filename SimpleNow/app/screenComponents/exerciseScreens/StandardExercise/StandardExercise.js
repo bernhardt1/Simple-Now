@@ -6,6 +6,7 @@ import {
   Animated,
   TouchableWithoutFeedback,
   Easing,
+  TouchableOpacity,
 } from 'react-native';
 import Sound from 'react-native-sound';
 import { connect } from 'react-redux';
@@ -22,6 +23,7 @@ import {
   titleEmphasizedFont,
   whiteFont,
   bodyFont,
+  captionFont,
 } from '../../../styles/fonts';
 
 import styles from './styles';
@@ -30,6 +32,10 @@ import { updateIsSoundOn } from '../../../actions/settings';
 import StandardButton from '../../../components/StandardButton/StandardButton';
 import convertSecondsToMmSs from '../../../helpers/timeHelpers/convertSecondsToMmSs';
 import SecondaryButton from '../../../components/SecondaryButton/SecondaryButton';
+import { updateContentComplete } from '../../../actions/content';
+import { updateCurrentPracticeProgress } from '../../../actions/practice';
+import { shadow } from '../../../styles/standardComponents';
+import getCategoryCardImage from '../../../helpers/styleHelpers/getCategoryCardImage';
 
 const COUNTDOWN = 'COUNTDOWN';
 const START_EXERCISE = 'START_EXERCISE';
@@ -41,8 +47,10 @@ const EBS = EXERCISE_SPEED_MULTIPLIER * 1;
 const StandardExercise = ({
   navigation,
   exercise,
-  markAsComplete,
+  practiceDuration,
   reduxUpdateIsSoundOn,
+  reduxUpdateContentComplete,
+  reduxUpdateCurrentPracticeProgress,
   background,
   isSoundOn,
 }) => {
@@ -54,10 +62,13 @@ const StandardExercise = ({
   const steelBellRef = useRef(true);
   const chimeRef = useRef(true);
 
+  const [categoryImage] = useState(
+    getCategoryCardImage(exercise?.exerciseType)
+  );
   const [simpleInstruction, setSimpleInstruction] = useState('ready');
   const [currentStep, setCurrentStep] = useState('');
   const [exerciseDuration, setExerciseDuration] = useState(
-    convertMillisecondsToSeconds(exercise?.recommendedTime * EBS) || 60 * EBS
+    convertMillisecondsToSeconds(practiceDuration * EBS) || 60 * EBS
   );
 
   const [simpleContainerAnimation] = useState(new Animated.Value(0));
@@ -104,11 +115,13 @@ const StandardExercise = ({
         }
         break;
       case COMPLETED:
-        if (markAsComplete) markAsComplete();
-        animateInstructionOpacity(0, EBS * 100, 'completed');
+        reduxUpdateContentComplete(exercise?.id);
+        reduxUpdateCurrentPracticeProgress(`${exercise?.id}:`);
+
+        animateInstructionOpacity(0, EBS * 100, 'completed!');
         if (this) {
           this.timeout = setTimeout(() => {
-            animateInstructionOpacity(1, EBS * 600, 'completed', CLEAN_UP);
+            animateInstructionOpacity(1, EBS * 600, 'completed!', CLEAN_UP);
           }, EBS * 200);
         }
         break;
@@ -383,16 +396,15 @@ const StandardExercise = ({
   };
 
   const addTime = (val) => {
-    setExerciseDuration(val);
-    setSimpleInstruction(val);
+    setExerciseDuration(val * EBS);
     animateTimeOpacity(0, 1000 * EBS);
-    setCurrentStep(START_EXERCISE);
+    setCurrentStep(COUNTDOWN);
   };
 
   return (
     <ImageBackground
       style={styles.container}
-      source={setLocalImage(background)}
+      source={setLocalImage(categoryImage)}
       blurRadius={1}
     >
       <Animated.View
@@ -526,7 +538,11 @@ const StandardExercise = ({
                 ]}
                 pointerEvents={'auto'}
               />
-              <TouchableWithoutFeedback onPress={() => onPressSimpleButton()}>
+              <TouchableOpacity
+                onPress={() => onPressSimpleButton()}
+                underlayColor="#ffffff"
+                activeOpacity={0.7}
+              >
                 <Animated.View
                   style={[
                     styles.simpleCircle,
@@ -576,8 +592,38 @@ const StandardExercise = ({
                   >
                     {simpleInstruction}
                   </Animated.Text>
+                  {currentStep === COUNTING_DOWN && (
+                    <Animated.Text
+                      style={[
+                        captionFont,
+                        whiteFont,
+                        centerAlign,
+                        {
+                          transform: [
+                            {
+                              scaleX: simpleScaleAnimation.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [1, 1.25],
+                              }),
+                            },
+                            {
+                              scaleY: simpleScaleAnimation.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [1, 1.25],
+                              }),
+                            },
+                          ],
+                        },
+                        {
+                          opacity: instructionOpacityAnimation,
+                        },
+                      ]}
+                    >
+                      Tap to pause
+                    </Animated.Text>
+                  )}
                 </Animated.View>
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
             </Animated.View>
           </View>
         </TouchableWithoutFeedback>
@@ -596,6 +642,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     reduxUpdateIsSoundOn: (val) => dispatch(updateIsSoundOn(val)),
+    reduxUpdateContentComplete: (val) => dispatch(updateContentComplete(val)),
+    reduxUpdateCurrentPracticeProgress: (val) =>
+      dispatch(updateCurrentPracticeProgress(val)),
   };
 };
 

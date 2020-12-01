@@ -1,6 +1,6 @@
-import getCategoryContent from '../courseHelpers/getCategoryContent';
-import getNextCategoryInPractice from '../courseHelpers/getNextCategoryInPractice';
-import getNextNewExercise from '../courseHelpers/getNextNewExercise';
+import getCategoryContent from '../contentHelpers/getCategoryContent';
+import getNextCategoryInPractice from '../contentHelpers/getNextCategoryInPractice';
+import getNextNewExercise from '../contentHelpers/getNextNewExercise';
 import isNewDaySinceTimestamp from '../timeHelpers/isNewDaySinceTimestamp';
 import getCategoryContentRedux from './getCategoryContentRedux';
 

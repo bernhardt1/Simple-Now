@@ -86,7 +86,7 @@ const subheadFont = {
 
 const bodyFont = {
   ...human.body,
-  lineHeight: human.body.fontSize * 1.25,
+  lineHeight: human.body.fontSize * 1.3,
   color: BRAND_BLACK,
   fontFamily: 'AvenirNextRoundedPro-Reg',
   fontWeight: '500',

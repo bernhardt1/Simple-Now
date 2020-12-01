@@ -7,16 +7,20 @@ import { HeaderDefaultBack } from '../../components/HeaderDefaultBack';
 import { ExerciseCard } from '../../components/ExerciseCard';
 
 import setLocalImage from '../../helpers/setLocalImage';
-import getCategoryContent from '../../helpers/courseHelpers/getCategoryContent';
+import getCategoryContent from '../../helpers/contentHelpers/getCategoryContent';
 import getColorRainbow from '../../helpers/getColorRainbow';
+import isExerciseComplete from '../../helpers/reduxHelpers/isExerciseComplete';
+import isExerciseNextAvailable from '../../helpers/reduxHelpers/isExerciseNextAvailable';
 
 import styles from './styles';
 
 import { heightUnit } from '../../styles/constants';
 import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
 import HeaderTitleBlock from '../../components/HeaderTitleBlock/HeaderTitleBlock';
+import LinearGradient from 'react-native-linear-gradient';
+import getCategoryCardImage from '../../helpers/styleHelpers/getCategoryCardImage';
 
-const ProgramScreen = ({ navigation, route, background }) => {
+const ProgramScreen = ({ navigation, route, background, reduxContent }) => {
   const { programType } = route.params;
 
   const [categoryExercises] = useState(
@@ -26,6 +30,7 @@ const ProgramScreen = ({ navigation, route, background }) => {
     getCategoryContent(programType)?.exerciseData?.description
   );
   const [categoryColors] = useState(getCategoryCardColors(programType));
+  const [categoryImage] = useState(getCategoryCardImage(programType));
 
   const [colorRainbow] = useState(
     getColorRainbow(
@@ -36,11 +41,24 @@ const ProgramScreen = ({ navigation, route, background }) => {
   );
 
   const renderExerciseCard = (exercise, index) => {
+    const isExerciseComp = isExerciseComplete(
+      programType,
+      exercise?.id,
+      reduxContent
+    );
+    const isExerciseNextAvail = isExerciseNextAvailable(
+      programType,
+      exercise?.id,
+      reduxContent
+    );
+
     return (
       <ExerciseCard
         exercise={exercise}
         navigation={navigation}
         exerciseIndex={index}
+        isExerciseComplete={isExerciseComp}
+        isExerciseNextAvailable={isExerciseNextAvail}
         color1={colorRainbow[Math.floor(index / 4)]}
         color2={colorRainbow[Math.floor(index / 4) + 1]}
       />
@@ -54,7 +72,7 @@ const ProgramScreen = ({ navigation, route, background }) => {
   return (
     <ImageBackground
       style={styles.container}
-      source={setLocalImage(background)}
+      source={setLocalImage(categoryImage)}
     >
       <HeaderSpacer />
       <HeaderDefaultBack onPressBack={navigateBack} title={`${programType}`} />
@@ -68,6 +86,7 @@ const ProgramScreen = ({ navigation, route, background }) => {
           contentContainerStyle={{
             paddingBottom: heightUnit * 15,
           }}
+          extraData={[reduxContent]}
         />
       </View>
     </ImageBackground>
@@ -77,6 +96,7 @@ const ProgramScreen = ({ navigation, route, background }) => {
 const mapStateToProps = (state) => {
   return {
     background: state?.settings?.background || 'background1',
+    reduxContent: state?.content || {},
   };
 };
 

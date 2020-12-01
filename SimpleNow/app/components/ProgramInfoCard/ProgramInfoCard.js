@@ -39,7 +39,7 @@ const ProgramInfoCard = ({
         ]}
         useAngle={true}
         angle={135}
-        angleCente={{ x: 0.5, y: 0.5 }}
+        angleCenter={{ x: 0.5, y: 0.5 }}
       >
         <View>
           <Text

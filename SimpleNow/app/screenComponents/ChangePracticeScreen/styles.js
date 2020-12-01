@@ -21,7 +21,7 @@ const styles = {
     backgroundColor: BRAND_BLACK,
   },
   yourPracticeContainer: {
-    marginVertical: widthUnit * 4,
+    marginVertical: widthUnit * 6,
     height:
       programInfoCard.height + heightUnit * 14 + widthUnit * 2 + widthUnit * 3,
     justifyContent: 'center',
@@ -79,7 +79,6 @@ const styles = {
   momentsCategoryContainer: {
     alignSelf: 'stretch',
     flex: 1,
-    backgroundColor: DARK_OVERLAY,
   },
   momentsFlatlistContainer: {
     alignSelf: 'stretch',

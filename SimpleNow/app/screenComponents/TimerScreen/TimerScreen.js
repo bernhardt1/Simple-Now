@@ -21,6 +21,11 @@ import convertSecondsToMmSs from '../../helpers/timeHelpers/convertSecondsToMmSs
 import { EXERCISE_SPEED_MULTIPLIER } from '../../constants/magicNumbers';
 import { steelBell } from '../../assets/tracks/bells';
 import TrackPlayerBar from '../../components/TrackPlayerBar/TrackPlayerBar';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+} from '../../styles/colors';
 
 const EBS = EXERCISE_SPEED_MULTIPLIER * 1;
 const TIMER_BAR_WIDTH =
@@ -92,9 +97,12 @@ const TimerScreen = ({
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <View style={styles.headerSpacing} pointerEvents={'auto'} />
       <View style={styles.containerHeader} pointerEvents={'auto'}>
@@ -135,7 +143,7 @@ const TimerScreen = ({
           </View>
         </View> */}
       </View>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

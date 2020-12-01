@@ -16,6 +16,13 @@ import { updateIsSoundOn } from '../../actions/settings';
 import { StandardButton } from '../../components/StandardButton/index';
 import { screenWidth, widthUnit } from '../../styles/constants';
 import StandardSettingButton from '../../components/StandardSettingButton/StandardSettingButton';
+import { HeaderSpacer } from '../../components/HeaderSpacer';
+import { TextContainer } from '../../components/TextContainer';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+} from '../../styles/colors';
 
 const TIMER_OPTIONS = Array.from(Array(120).keys()).map((i) => i + 1);
 
@@ -62,11 +69,14 @@ const TimerSetupScreen = ({
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
-      <View style={styles.headerSpacing} />
+      <HeaderSpacer transparent />
       {/* <View style={styles.containerHeader} pointerEvents={'auto'}>
         <StandardImageButton />
         <Text style={[titleFont, whiteFont]}>{'Timer'}</Text>
@@ -80,6 +90,7 @@ const TimerSetupScreen = ({
         <Text style={[titleFont, whiteFont]}>
           {`Finishes at ${Moment().add(time, 'minutes').format('LT')}`}
         </Text>
+
         <View style={styles.timeContainer}>
           <Text style={[massiveTitleFont, whiteFont]}>{`${time}`}</Text>
           <Text style={[titleFont, whiteFont]}>
@@ -124,11 +135,12 @@ const TimerSetupScreen = ({
               withBorder
               onPress={navigateSetBellInterval}
             />
+
             <Text style={[captionFont, whiteFont]}>{'Every minute'}</Text>
           </View>
         </View>
       </View>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

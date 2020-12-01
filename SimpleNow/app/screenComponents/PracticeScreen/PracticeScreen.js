@@ -1,26 +1,69 @@
 import React from 'react';
 import { ImageBackground, View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import Carousel from 'react-native-snap-carousel';
+
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { StandardSettingButton } from '../../components/StandardSettingButton';
 import { StandardButton } from '../../components/StandardButton';
 import { DailyExerciseItem } from '../../components/DailyExerciseItem';
+import { TextContainer } from '../../components/TextContainer';
+
 import setLocalImage from '../../helpers/setLocalImage';
+import isExerciseComplete from '../../helpers/reduxHelpers/isExerciseComplete';
 
 import styles from './styles';
 import {
   captionFont,
   footnoteFont,
   largeTitleFont,
+  titleEmphasizedFont,
   titleFont,
   whiteFont,
 } from '../../styles/fonts';
+import { screenWidth, widthUnit } from '../../styles/constants';
+import { itemSpacing } from '../../styles/spacings';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+  DARK_OVERLAY,
+  VERY_DARK_OVERLAY,
+} from '../../styles/colors';
+import RenderDailyExerciseItems from './RenderDailyExerciseItems';
+import LinearGradient from 'react-native-linear-gradient';
 
-const PracticeScreen = ({ background, navigation, currentPractice }) => {
+const PracticeScreen = ({
+  background,
+  navigation,
+  currentPractice,
+  currentPracticeProgress,
+  reduxResetCurrentPractice,
+  reduxContent,
+}) => {
+  const renderDailyExerciseItem = (item) => {
+    const isExerciseComp = isExerciseComplete(
+      item?.exerciseType,
+      item?.id,
+      reduxContent
+    );
+
+    return (
+      <DailyExerciseItem
+        exercise={item}
+        navigation={navigation}
+        isExerciseComplete={isExerciseComp}
+        currentPracticeProgress={currentPracticeProgress}
+      />
+    );
+  };
+
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer transparent />
       <View style={styles.topSection}>
@@ -33,8 +76,11 @@ const PracticeScreen = ({ background, navigation, currentPractice }) => {
           <StandardSettingButton
             title={'SET REMINDERS'}
             onPress={() => navigation.navigate('SetReminders')}
+            // onPress={() => reduxResetCurrentPractice()}
           />
-          <Text style={[footnoteFont, whiteFont]}>WEEK DAYS @ 6 AM</Text>
+          <TextContainer>
+            <Text style={[footnoteFont, whiteFont]}>WEEK DAYS @ 6 AM</Text>
+          </TextContainer>
         </View>
       </View>
 
@@ -48,18 +94,48 @@ const PracticeScreen = ({ background, navigation, currentPractice }) => {
         </View>
       </View>
       <View style={styles.bottomSection}>
-        <Text style={[titleFont, whiteFont]}>Today's Practice</Text>
+        <View style={styles.dailyPracticeTextContainer}>
+          <Text style={[titleEmphasizedFont, whiteFont]}>Today's Practice</Text>
+          <Text style={[titleEmphasizedFont, whiteFont]}>1 / 3</Text>
+        </View>
+
+        {/* <RenderDailyExerciseItems
+          reduxContent={reduxContent}
+          currentPracticeProgress={currentPracticeProgress}
+          navigation={navigation}
+          firstRow={
+            currentPractice?.length <= 2
+              ? currentPractice
+              : currentPractice.slice(0, Math.ceil(currentPractice.length / 2))
+          }
+          secondRow={
+            currentPractice?.length <= 2
+              ? []
+              : currentPractice.slice(
+                  Math.ceil(currentPractice.length / 2),
+                  currentPractice.length
+                )
+          }
+        /> */}
+        {/* <Carousel
+          data={currentPractice}
+          renderItem={({ item, index }) => {
+            return renderDailyExerciseItem(item);
+          }}
+          sliderWidth={screenWidth}
+          itemWidth={screenWidth - itemSpacing.margin * 2}
+        /> */}
         <FlatList
           data={currentPractice}
           renderItem={({ item, index }) => {
-            return (
-              <DailyExerciseItem exercise={item} navigation={navigation} />
-            );
+            return renderDailyExerciseItem(item);
           }}
+          horizontal
           contentContainerStyle={styles.flatlistContainer}
+          extraData={[reduxContent, currentPracticeProgress]}
         />
       </View>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 
@@ -67,6 +143,7 @@ const mapStateToProps = (state) => {
   return {
     background: state?.settings?.background || 'background1',
     currentPractice: state?.practice?.currentPractice || [],
+    currentPracticeProgress: state?.practice?.currentPracticeProgress || '',
   };
 };
 

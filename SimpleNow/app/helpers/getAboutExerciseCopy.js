@@ -24,7 +24,10 @@ import {
 } from '../constants/dict';
 
 const getAboutExerciseCopy = (exercise) => {
-  switch (exercise?.exerciseType) {
+  const switchVal = `${exercise?.exerciseType}`;
+  const val = switchVal.toLowerCase();
+
+  switch (val) {
     case BREATH_EXERCISE:
       return HOW_TO_BREATH;
     case SENSATION_EXERCISE:

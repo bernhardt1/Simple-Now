@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
-import { View, ImageBackground, Text, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import Moment from 'moment';
 
-import setLocalImage from '../../helpers/setLocalImage';
 import {
   boldSubheadFont,
-  captionFont,
   footnoteFont,
   largeTitleFont,
-  massiveTitleFont,
   orangeFont,
   subheadFont,
   titleEmphasizedFont,
-  titleFont,
   whiteFont,
 } from '../../styles/fonts';
 
 import styles from './styles';
-import { updateIsSoundOn } from '../../actions/settings';
-import { StandardButton } from '../../components/StandardButton/index';
-import { screenWidth, widthUnit } from '../../styles/constants';
-import StandardSettingButton from '../../components/StandardSettingButton/StandardSettingButton';
+import { screenWidth } from '../../styles/constants';
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { HeaderDefaultBack } from '../../components/HeaderDefaultBack';
 import LinearGradient from 'react-native-linear-gradient';
-import { DARK_BLUE_LOGO, LIGHT_BLUE_LOGO } from '../../styles/colors';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+  DARK_OVERLAY,
+} from '../../styles/colors';
 import convertMomentNumberAndDurationToTime from '../../helpers/timeHelpers/convertMomentNumberAndDurationToTime';
 import convertMomentNumberAndDurationToTimeUnit from '../../helpers/timeHelpers/convertMomentNumberAndDurationToTimeUnit';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -120,7 +116,7 @@ const EditPracticeScreen = ({
       <LinearGradient
         colors={
           dailyMomentsIndex === index
-            ? [DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]
+            ? [DARK_OVERLAY, DARK_OVERLAY]
             : ['transparent', 'transparent']
         }
         style={styles.momentItemContainer}
@@ -135,7 +131,7 @@ const EditPracticeScreen = ({
       <LinearGradient
         colors={
           momentDurationIndex === index
-            ? [DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]
+            ? [DARK_OVERLAY, DARK_OVERLAY]
             : ['transparent', 'transparent']
         }
         style={styles.durationItemContainer}
@@ -172,9 +168,12 @@ const EditPracticeScreen = ({
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
       <HeaderDefaultBack
@@ -337,7 +336,7 @@ const EditPracticeScreen = ({
           </Text>
         </View>
       </View>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

@@ -1,10 +1,15 @@
 import React from 'react';
 import { ScrollView, ImageBackground } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
 import { HeaderDefaultBack } from '../../components/HeaderDefaultBack';
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { InvisibleSeparator } from '../../components/InvisibleSeparator';
 import setLocalImage from '../../helpers/setLocalImage';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+} from '../../styles/colors';
 
 import styles from './styles';
 
@@ -18,9 +23,12 @@ const SetRemindersScreen = ({ background, navigation }) => {
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
       <HeaderDefaultBack
@@ -33,7 +41,7 @@ const SetRemindersScreen = ({ background, navigation }) => {
       <ScrollView bounces={false}>
         <InvisibleSeparator />
       </ScrollView>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

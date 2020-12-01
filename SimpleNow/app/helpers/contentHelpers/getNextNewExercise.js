@@ -21,9 +21,7 @@ const getNextNewExerciseFromCategory = (
     });
 
     for (const [key, value] of Object.entries(reduxCategoryContent)) {
-      console.log(`${key}: ${value}`);
-
-      if (key.toLowerCase().includes(content?.id)) {
+      if (key.toLowerCase().includes(content?.id?.toLowerCase())) {
         skip = true;
       }
     }

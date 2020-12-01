@@ -31,9 +31,6 @@ const defaultHeader = {
 const islandShape = {
   borderRadius: BORDER_RADIUS,
 };
-const islandCarouselItem = {
-  width: screenWidth - islandSpacing.margin * 3,
-};
 const scrollViewContainerIsland = {
   flex: 1,
   alignSelf: 'stretch',
@@ -83,13 +80,6 @@ const bottomButton = {
 };
 
 // Informational Components
-const informationalContainer = {
-  height: widthUnit * 10,
-  width: widthUnit * 10,
-  borderRadius: (widthUnit * 10) / 2,
-  justifyContent: 'center',
-  alignItems: 'center',
-};
 const informationalImage = {
   height: widthUnit * 8,
   width: widthUnit * 8,
@@ -102,26 +92,6 @@ const smallInformationIsland = {
   padding: widthUnit,
   justifyContent: 'center',
   alignItems: 'center',
-};
-
-// animatedBottomButton
-const animatedBottomButtonStyles = {
-  container: {
-    ...bottomButton,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: BRAND_BLACK,
-  },
-  gradientContainer: {
-    position: 'absolute',
-    ...bottomButton,
-    width: bottomButton.width * 2,
-    left: -screenWidth,
-  },
-  image: {
-    height: bottomButton.height * 0.75,
-    width: bottomButton.height * 0.75,
-  },
 };
 
 // Program Info Card
@@ -137,12 +107,13 @@ const programInfoCard = {
 };
 
 const meditationCard = {
-  height: widthUnit * 30,
-  width: widthUnit * 55,
+  height: widthUnit * 40,
+  width: widthUnit * 44,
   backgroundColor: BRAND_WHITE,
   ...practiceCarouselSpacing,
   ...islandShape,
   justifyContent: 'space-between',
+  padding: 0,
 };
 
 // Moment Category Card
@@ -160,15 +131,6 @@ const momentCategoryCard = {
 };
 
 //Flair
-const standardFlair = {
-  backgroundColor: BRAND_WHITE,
-  borderRadius: BORDER_RADIUS,
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: widthUnit,
-  paddingHorizontal: buttonFromEdgeSpacing.padding,
-};
-
 const standardBorder = {
   borderWidth: BORDER_WIDTH,
   borderColor: BRAND_WHITE,
@@ -194,15 +156,11 @@ export {
   standardSettingButton,
   bottomButton,
   standardImageButton,
-  islandCarouselItem,
-  animatedBottomButtonStyles,
-  informationalContainer,
   informationalImage,
   smallInformationIsland,
   programInfoCard,
   meditationCard,
   momentCategoryCard,
-  standardFlair,
   standardBorder,
   shadow,
 };

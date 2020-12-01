@@ -70,7 +70,14 @@ export default class NotifService {
     });
   }
 
-  scheduleNotif(id, soundName, secondAheadToSchedule, title, message, route) {
+  scheduleNotif(
+    id,
+    soundName,
+    secondAheadToSchedule,
+    title,
+    message,
+    route = {}
+  ) {
     this.lastId++;
     PushNotification.localNotificationSchedule({
       date: new Date(Date.now() + secondAheadToSchedule * 1000),

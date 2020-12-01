@@ -1,22 +1,9 @@
 import { widthUnit } from './constants';
 import { statusBarHeight } from './constants';
 
-const logoTitleSpacing = {
-  marginHorizontal: widthUnit * 20,
-};
-const titleVerticalSpacing = {
-  marginBottom: widthUnit * 2,
-};
-
 // Header Spacings
-const headerContentStatusBarPadding = {
-  paddingTop: statusBarHeight,
-};
 const headerPaddingHorizontal = {
   paddingHorizontal: widthUnit * 2,
-};
-const headerContentPaddingHorizontal = {
-  paddingHorizontal: widthUnit * 10,
 };
 
 // Button Spacings
@@ -33,15 +20,8 @@ const standardSettingButtonSpacing = {
 };
 
 // Carousel Spacings
-const courseItemCarouselSpacing = {
-  margin: widthUnit,
-  padding: widthUnit * 2,
-};
-
 const practiceCarouselSpacing = {
-  marginLeft: widthUnit * 5,
-  marginTop: widthUnit * 1,
-  marginBottom: widthUnit * 4,
+  marginLeft: widthUnit * 4,
   padding: widthUnit * 3,
 };
 
@@ -68,9 +48,6 @@ const itemSpacing = {
 const textContainerSpacing = {
   padding: widthUnit * 4,
 };
-const exerciseTextSpacing = {
-  padding: widthUnit * 18,
-};
 const buttonFromEdgeSpacing = {
   padding: widthUnit * 2,
   paddingHorizontal: widthUnit * 3,
@@ -85,20 +62,14 @@ const scrollViewBottomMargin = {
 };
 
 export {
-  logoTitleSpacing,
-  titleVerticalSpacing,
-  headerContentStatusBarPadding,
-  headerContentPaddingHorizontal,
   standardButtonSpacing,
   standardSettingButtonSpacing,
   headerPaddingHorizontal,
-  courseItemCarouselSpacing,
   practiceCarouselSpacing,
   islandSpacing,
   bigIslandSpacing,
   itemSpacing,
   textContainerSpacing,
-  exerciseTextSpacing,
   buttonFromEdgeSpacing,
   verticalButtonsMargin,
   scrollViewBottomMargin,

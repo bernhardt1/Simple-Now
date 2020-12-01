@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 
-import getBreathCourseList from '../../helpers/courseHelpers/getBreathCourseList';
-
 import {
   breath,
   sensation,

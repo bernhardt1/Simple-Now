@@ -11,7 +11,11 @@ import setLocalImage from '../../../helpers/setLocalImage';
 import { HeaderSpacer } from '../../../components/HeaderSpacer';
 import { HeaderDefaultBack } from '../../../components/HeaderDefaultBack';
 import { HeaderTitleBlock } from '../../../components/HeaderTitleBlock';
-import { VERY_DARK_OVERLAY } from '../../../styles/colors';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+  VERY_DARK_OVERLAY,
+} from '../../../styles/colors';
 
 const Instruction = ({
   background,
@@ -39,10 +43,12 @@ const Instruction = ({
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
-      blurRadius={1}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <LinearGradient
         colors={['transparent', 'transparent', VERY_DARK_OVERLAY]}
@@ -63,7 +69,7 @@ const Instruction = ({
 
         <SecondaryButton title={'start'} onPress={navigateNext} />
       </LinearGradient>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

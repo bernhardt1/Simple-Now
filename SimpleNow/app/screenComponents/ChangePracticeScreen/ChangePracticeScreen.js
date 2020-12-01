@@ -9,6 +9,7 @@ import {
   Animated,
   TouchableHighlight,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
 import { addProgram, removeProgram } from '../../actions/practice';
 import { HeaderDefaultBack } from '../../components/HeaderDefaultBack';
@@ -17,7 +18,11 @@ import { MomentCategoryCard } from '../../components/MomentCategoryCard';
 import ProgramInfoCard from '../../components/ProgramInfoCard/ProgramInfoCard';
 import StandardSettingButton from '../../components/StandardSettingButton/StandardSettingButton';
 import setLocalImage from '../../helpers/setLocalImage';
-import { LIGHT_OVERLAY } from '../../styles/colors';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+  LIGHT_OVERLAY,
+} from '../../styles/colors';
 import { heightUnit, widthUnit } from '../../styles/constants';
 import {
   bodyFont,
@@ -133,15 +138,17 @@ const ChangePracticeScreen = ({
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
-      <HeaderSpacer transparent />
+      <HeaderSpacer />
       <HeaderDefaultBack
         onPressBack={navigateBack}
         title={'Your Practice'}
-        transparent
         rightButtonComponent={
           <StandardSettingButton
             title={'PRACTICE\nSETTINGS'}
@@ -150,7 +157,7 @@ const ChangePracticeScreen = ({
           />
         }
       />
-      <View style={styles.yourPracticeContainer}>
+      {/* <View style={styles.yourPracticeContainer}>
         <View style={styles.circleContainer}>
           <Text style={[captionFont, whiteFont]}>Practicing</Text>
 
@@ -183,9 +190,9 @@ const ChangePracticeScreen = ({
             />
           )}
         </View>
-      </View>
+      </View> */}
 
-      <View style={styles.categoriesContainer}>
+      {/* <View style={styles.categoriesContainer}>
         <TouchableOpacity
           style={styles.categoriesButton}
           onPress={() => setCategory(MOMENTS)}
@@ -199,8 +206,8 @@ const ChangePracticeScreen = ({
           >
             Categories
           </Text>
-        </TouchableOpacity>
-        {/* <TouchableOpacity
+        </TouchableOpacity> */}
+      {/* <TouchableOpacity
           style={styles.categoriesButton}
           onPress={() => setCategory(MEDITATIONS)}
         >
@@ -214,7 +221,7 @@ const ChangePracticeScreen = ({
             Meditations
           </Text>
         </TouchableOpacity> */}
-      </View>
+      {/* </View> */}
       {category === MOMENTS && (
         <MomentsSection renderMomentCategoryCard={renderMomentCategoryCard} />
       )}
@@ -275,7 +282,7 @@ const ChangePracticeScreen = ({
           </View>
         </TouchableHighlight>
       </Animated.View>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

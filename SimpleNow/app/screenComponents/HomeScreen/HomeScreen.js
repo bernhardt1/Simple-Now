@@ -11,11 +11,16 @@ import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { HeaderHome } from '../../components/HeaderHome';
 import { PushPermissionModalContent } from '../../components/ModalContent/index';
 
-import courseNotificationScheduler from '../../helpers/courseNotificationScheduler';
+import courseNotificationScheduler from '../../helpers/notificationHelpers/courseNotificationScheduler';
 import setLocalImage from '../../helpers/setLocalImage';
 import { BACKGROUND_IMAGE_COUNT } from '../../constants/magicNumbers';
 
 import styles from './styles';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+} from '../../styles/colors';
 
 const HomeScreen = ({
   navigation,
@@ -82,9 +87,12 @@ const HomeScreen = ({
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
       <HeaderHome onPressHamburger={changeBackground} />
@@ -92,7 +100,7 @@ const HomeScreen = ({
       <Modal coverScreen={false} isVisible={isPushPermissionVisible}>
         <PushPermissionModalContent onPress={togglePushModal} />
       </Modal>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

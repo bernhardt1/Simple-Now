@@ -7,11 +7,16 @@ import {
   Image,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
 import { HeaderDefaultBack } from '../../components/HeaderDefaultBack';
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { InvisibleSeparator } from '../../components/InvisibleSeparator';
 import setLocalImage from '../../helpers/setLocalImage';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+} from '../../styles/colors';
 import {
   bodyFont,
   boldSubheadFont,
@@ -38,9 +43,12 @@ const SetBellIntervalScreen = ({ background, navigation }) => {
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
 
@@ -193,7 +201,7 @@ const SetBellIntervalScreen = ({ background, navigation }) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

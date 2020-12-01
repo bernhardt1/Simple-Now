@@ -14,11 +14,6 @@ const styles = {
   subtitleText: {
     textAlign: 'center',
   },
-  quoteText: {
-    marginTop: heightUnit * 3,
-
-    textAlign: 'left',
-  },
 };
 
 export default styles;

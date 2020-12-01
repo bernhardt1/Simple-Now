@@ -1,3 +1,21 @@
 id,title,exerciseType,copy,recommendedTime
-Question-0,Question,Question,"Ask yourself... What, in this moment, is lacking?",30000
-Question-1,Question,Question,The present moment is as it is. Always. Can you let it be?,30000
+Question-0,Question 1,Question,"What, in this moment, is lacking?",60000
+Question-1,Question 2,Question,Can you let the present moment just be?,60000
+Question-2,Question 3,Question,What matters?,60000
+Question-3,Question 4,Question,Why am I doing this?,60000
+Question-4,Question 5,Question,Does this make me happy?,60000
+Question-5,Question 6,Question,Is what I am thinking true?,60000
+Question-6,Question 7,Question,What is the worst possible thing that can happen?,60000
+Question-7,Question 8,Question,What is my relationship with the present moment?,60000
+Question-8,Question 9,Question,Am I living true to myself?,60000
+Question-9,Question 10,Question,Who am I? Who is this one sitting here?,60000
+Question-10,Question 11,Question,What is my dream goal?,60000
+Question-11,Question 12,Question,Is my happiness dependent on my goal?,60000
+Question-12,Question 13,Question,What’s preventing me from achieving my goal?,60000
+Question-13,Question 14,Question,Are you defined by what you do?,60000
+Question-14,Question 15,Question,How can I best love myself?,60000
+Question-15,Question 16,Question,Am I present?,60000
+Question-16,Question 17,Question,Will this matter in a year from now?,60000
+Question-17,Question 18,Question,What is most important in my life right now?,60000
+Question-18,Question 19,Question,What do I want?,60000
+Question-19,Question 20,Question,What is my purpose in life?,60000

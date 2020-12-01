@@ -4,4 +4,4 @@ import * as Constants from './constants';
 import * as Spacings from './spacings';
 import * as StandardComponents from './standardComponents';
 
-export {Colors, Fonts, Constants, Spacings, StandardComponents};
+export { Colors, Fonts, Constants, Spacings, StandardComponents };

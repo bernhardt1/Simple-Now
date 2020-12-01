@@ -1,4 +1,4 @@
-import courseNotificationScheduler from '../courseNotificationScheduler';
+import courseNotificationScheduler from '../notificationHelpers/courseNotificationScheduler';
 
 const startCourse = (course, reduxCourse, reduxUpdateCourseTimestamp) => {
   // Cancel all previous notifications

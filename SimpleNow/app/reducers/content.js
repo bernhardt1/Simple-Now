@@ -1,5 +1,7 @@
 import { UPDATE_CONTENT_COMPLETE, RESET_ALL_CONTENT } from '../actions/content';
 
+import generateISODate from '../helpers/timeHelpers/generateISODate';
+
 // content type - flattens the structure of all content into shallow structures - this triggers the react lifecycle on all updates
 // property name copies exact names from the json objects with _ to mimic nesting
 //   {
@@ -20,7 +22,7 @@ const contentReducer = (state = initialState, action) => {
     case UPDATE_CONTENT_COMPLETE: {
       return {
         ...state,
-        [`${action.val}_isCompleteTimestamp`]: new Date(),
+        [`${action.val}_isCompleteTimestamp`]: generateISODate(),
       };
     }
     default: {

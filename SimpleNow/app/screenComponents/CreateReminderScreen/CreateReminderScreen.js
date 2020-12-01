@@ -16,7 +16,11 @@ import { InvisibleSeparator } from '../../components/InvisibleSeparator';
 import setLocalImage from '../../helpers/setLocalImage';
 
 import styles from './styles';
-import { BRAND_WHITE } from '../../styles/colors';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+  BRAND_WHITE,
+} from '../../styles/colors';
 import { StandardButton } from '../../components/StandardButton';
 import {
   bodyFont,
@@ -25,6 +29,7 @@ import {
   whiteFont,
 } from '../../styles/fonts';
 import { verticalButtonsMargin } from '../../styles/spacings';
+import LinearGradient from 'react-native-linear-gradient';
 
 const CreateReminderScreen = ({ background, navigation }) => {
   const [date, setDate] = useState(new Date());
@@ -41,9 +46,12 @@ const CreateReminderScreen = ({ background, navigation }) => {
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
 
@@ -185,7 +193,7 @@ const CreateReminderScreen = ({ background, navigation }) => {
           <StandardButton title={'Save'} />
         </View>
       </ScrollView>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

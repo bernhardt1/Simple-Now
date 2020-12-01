@@ -1,22 +1,24 @@
 import { DARK_OVERLAY } from '../../styles/colors';
 import { screenWidth, widthUnit } from '../../styles/constants';
-import { buttonFromEdgeSpacing } from '../../styles/spacings';
+import {
+  buttonFromEdgeSpacing,
+  standardSettingButtonSpacing,
+} from '../../styles/spacings';
 
 const styles = {
   container: {
     flex: 1,
   },
   topSection: {
-    flex: 1,
     ...buttonFromEdgeSpacing,
     flexDirection: 'row',
     alignSelf: 'stretch',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingTop: widthUnit * 8,
+    paddingVertical: widthUnit * 6,
   },
   centerSection: {
-    flex: 2,
+    paddingVertical: widthUnit * 6,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -29,19 +31,42 @@ const styles = {
     alignItems: 'center',
   },
   bottomSection: {
-    flex: 4,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',
+    // backgroundColor: DARK_OVERLAY,
+  },
+  dailyPracticeTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    ...standardSettingButtonSpacing,
+    marginVertical: widthUnit * 2,
   },
   flatlistContainer: {
     alignSelf: 'stretch',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   infoButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  // RenderDailyExerciseItems
+  exerciseItemsTopRow: {
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  exerciseItemsBottomRow: {
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
 
   // other

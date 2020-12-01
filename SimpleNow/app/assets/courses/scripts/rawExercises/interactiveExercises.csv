@@ -1,2 +1,13 @@
 id,title,exerciseType,copy,recommendedTime
-Interactive-0,Interactive,Interactive,Ask someone how their day is going. Give your full attention to them throughout the conversation.,30000
+Interactive-0,Interactive 1,Interactive,"At the end of the today, take 5 minutes to recount the days events. Take the perspective of a passive observer who is watching you proceed through the day.",5000
+Interactive-1,Interactive 2,Interactive,Set a purpose right now for the rest of your day. Write down your purpose or say it out loud 3 times.,5000
+Interactive-2,Interactive 3,Interactive,"Eat your next meal without any distractions. Direct all your attention on the activity of eating. From handling the utensils, to tasting the food.",5000
+Interactive-3,Interactive 4,Interactive,"Find 3 opportunities to take a mindful pause today. This is the act of pausing and putting attention into something that would normally be automatic for you. Examples include everything from typing & walking to talking & kissing and for some it is everything they do.""  ",5000
+Interactive-4,Interactive 5,Interactive,"Take a short mindful walk without distraction. Look at the people you pass by. Give your full attention to the environment. Set aside your phone, your thoughts, and your feelings and just be present in the moment throughout.",5000
+Interactive-5,Interactive 6,Interactive,Have a conversation with someone where you give them your full attention. Engage in a study of who they are and how they feel in this exact moment. Ask them follow-up questions and be interested in what they say.,5000
+Interactive-6,Interactive 7,Interactive,"Try to pause before each time you open your phone today. Ask yourself, ""Why am I opening my phone?""
+
+Acknowledge the moments you open your phone automatically by turning off the screen and opening it intentionally instead.",5000
+Interactive-7,Interactive 8,Interactive,"Find a space at a window and look at everything there is to see. Avoid labelling what you see as and instead just observe their movement, textures, colors, and patterns. It can help to imagine yourself as an alien, seeing everything for the first time.",5000
+Interactive-8,Interactive 9,Interactive,Open the app that you find most addicting and stay present as you engage with it. Ask yourself why you click on certain things. Observe the emotional reaction you have to the things you see. We suggest you engage with the content much more slowly than your normally do to remain fully present. ,5000
+Interactive-9,Interactive 10,Interactive,"Resist one of your addictions for a full day. This can include typical addictions like smoking, alcohol, or caffeine but for some it might be sugar, carbs, or a food/drink that you consume daily.",5000

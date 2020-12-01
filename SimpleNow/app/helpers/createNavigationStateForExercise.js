@@ -1,4 +1,3 @@
-import getCourseFromId from './courseHelpers/getCourseFromId';
 import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
 
 // this function accepts a string and returns the local image with a matching name.
@@ -31,15 +30,12 @@ function createNavigationStateForExercise(path) {
     exerciseIndex = parts[3];
   }
 
-  const course = getCourseFromId(courseId);
-
   const linkingState = {
     index: 0,
     routes: [
       {
         name: 'Exercise',
         params: {
-          exercise: course?.classes[classIndex].exercises[exerciseIndex],
           classIndex,
           exerciseIndex,
         },

@@ -1,12 +1,17 @@
-import createReduxCourseObject from './createReduxCourseObject';
+import getCategoryContentRedux from './getCategoryContentRedux';
 
-const isExerciseComplete = (exerciseIndex, classIndex, reduxCourse) => {
-  const courseObject = createReduxCourseObject(reduxCourse);
+const isExerciseComplete = (category, exerciseId, reduxContent) => {
+  const reduxCategoryContent = getCategoryContentRedux(category, reduxContent);
+  let result = false;
 
-  const isComplete =
-    courseObject[classIndex]?.exercises[exerciseIndex]?.exercise?.isComplete;
+  for (const [key] of Object.entries(reduxCategoryContent)) {
+    if (key.toLowerCase().includes(exerciseId.toLowerCase())) {
+      result = true;
+      return result;
+    }
+  }
 
-  return isComplete;
+  return result;
 };
 
 export default isExerciseComplete;

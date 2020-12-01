@@ -31,7 +31,10 @@ function getRandomColor() {
 }
 
 const getCategoryCardColors = (category) => {
-  switch (category) {
+  const switchVal = `${category}`;
+  const val = switchVal.toLowerCase();
+
+  switch (val) {
     case 'breath':
       return [BREATH_1_COLOR, BREATH_2_COLOR];
     case 'sensation':

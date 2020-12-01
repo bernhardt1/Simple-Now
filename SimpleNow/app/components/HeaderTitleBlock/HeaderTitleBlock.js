@@ -1,6 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { captionFont, subheadFont, whiteFont } from '../../styles/fonts';
+import {
+  captionFont,
+  subheadFont,
+  titleFont,
+  whiteFont,
+} from '../../styles/fonts';
 
 import styles from './styles';
 
@@ -13,7 +18,9 @@ const HeaderTitleBlock = ({ onPressBack, title, subtitle }) => {
       <Text style={[subheadFont, whiteFont, styles.subtitleText]}>
         {subtitle}
       </Text>
-      {/* <Text style={[captionFont, whiteFont, styles.quoteText]}>{a}</Text> */}
+      {title && (
+        <Text style={[titleFont, whiteFont, styles.quoteText]}>{title}</Text>
+      )}
     </View>
   );
 };

@@ -1,14 +1,16 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import styles from './styles';
-import { largeTitleFont, whiteFont } from '../../styles/fonts';
+import { captionFont, largeTitleFont, whiteFont } from '../../styles/fonts';
 import LinearGradient from 'react-native-linear-gradient';
 
 const ExerciseCard = ({
   exercise,
   exerciseIndex,
   navigation,
+  isExerciseComplete,
+  isExerciseNextAvailable,
   color1,
   color2,
 }) => {
@@ -19,23 +21,29 @@ const ExerciseCard = ({
   };
 
   return (
-    <TouchableOpacity
-      style={[styles.container]}
-      onPress={navigateExercise}
-      activeOpacity={0.7}
-    >
-      <LinearGradient
-        colors={[color1, color2]}
-        style={[styles.exerciseContainer]}
-        useAngle={true}
-        angle={135}
-        angleCente={{ x: 0.5, y: 0.5 }}
-      >
-        <Text style={[largeTitleFont, whiteFont]}>{`${
-          exerciseIndex + 1
-        }`}</Text>
-      </LinearGradient>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={navigateExercise} activeOpacity={0.7}>
+        <LinearGradient
+          colors={['transparent', 'transparent']}
+          style={[styles.exerciseContainer]}
+          useAngle={true}
+          angle={135}
+          angleCenter={{ x: 0.5, y: 0.5 }}
+        >
+          <Text style={[largeTitleFont, whiteFont]}>{`${
+            exerciseIndex + 1
+          }`}</Text>
+        </LinearGradient>
+      </TouchableOpacity>
+      {isExerciseNextAvailable && !isExerciseComplete && (
+        <View style={styles.nextIndicator}>
+          <Text style={[captionFont]}>NEXT</Text>
+        </View>
+      )}
+      {!isExerciseComplete && !isExerciseNextAvailable && (
+        <View style={styles.blockerContainer} />
+      )}
+    </View>
   );
 };
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import setLocalImage from '../../helpers/setLocalImage';
 
 import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
+import getCategoryCardImage from '../../helpers/styleHelpers/getCategoryCardImage';
 import {
   boldSubheadFont,
   whiteFont,
@@ -25,7 +27,7 @@ const MomentCategoryCard = ({
   onPress,
   selectedCategory,
 }) => {
-  const cardColors = getCategoryCardColors(categoryData?.type);
+  const cardImage = getCategoryCardImage(categoryData?.type);
 
   return (
     <TouchableOpacity
@@ -33,39 +35,29 @@ const MomentCategoryCard = ({
         onPress(categoryData?.type);
       }}
       activeOpacity={0.8}
+      style={meditationCard}
     >
-      <LinearGradient
-        colors={cardColors}
-        style={[
-          momentCategoryCard,
-          isMeditation ? meditationCard : {},
-          selectedCategory === categoryData?.type ? styles.selected : {},
-          {},
-        ]}
-        useAngle={true}
-        angle={135}
-        angleCente={{ x: 0.5, y: 0.5 }}
-      >
-        <Text
-          style={[titleEmphasizedFont, whiteFont, centerAlign, shadow]}
-        >{`${categoryData?.type}`}</Text>
-        {activePrograms.includes(categoryData?.type) && (
-          <Text
-            style={[
-              boldSubheadFont,
-              orangeFont,
-              centerAlign,
-              shadow,
-              {
-                position: 'absolute',
-                bottom: momentCategoryCard.height * 0.1,
-              },
-            ]}
-          >
-            ACTIVE
+      <View>
+        <Image source={setLocalImage(cardImage)} style={styles.image} />
+        <View
+          style={[
+            styles.textContainer,
+            selectedCategory === categoryData?.type ? styles.selected : {},
+          ]}
+        >
+          <Text style={[titleEmphasizedFont, whiteFont, centerAlign, shadow]}>
+            {`${categoryData?.type}`}
           </Text>
+        </View>
+        {activePrograms.includes(categoryData?.type) && (
+          <View style={styles.checkImageContainer}>
+            <Image
+              style={styles.checkImage}
+              source={setLocalImage('checkWhite')}
+            />
+          </View>
         )}
-      </LinearGradient>
+      </View>
     </TouchableOpacity>
   );
 };

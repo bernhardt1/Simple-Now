@@ -5,27 +5,25 @@ import { INSTRUCTION_EXERCISE_SCREEN } from '../constants/constants';
 import { Instruction } from '../screenComponents/ExerciseScreens/Instruction';
 import { StandardExercise } from '../screenComponents/ExerciseScreens/StandardExercise';
 
-const Exercise = ({ route, navigation, activeCourseId }) => {
-  const { exercise, nextExercise, classIndex, exerciseIndex } = route.params;
+const Exercise = ({ route, navigation, practiceDuration }) => {
+  const { exercise } = route.params;
 
   if (exercise?.screenType === INSTRUCTION_EXERCISE_SCREEN) {
-    return (
-      <Instruction
-        exercise={exercise}
-        nextExercise={nextExercise}
-        classIndex={classIndex}
-        exerciseIndex={exerciseIndex}
-        navigation={navigation}
-      />
-    );
+    return <Instruction exercise={exercise} navigation={navigation} />;
   }
 
-  return <StandardExercise exercise={exercise} navigation={navigation} />;
+  return (
+    <StandardExercise
+      exercise={exercise}
+      navigation={navigation}
+      practiceDuration={practiceDuration * 1000}
+    />
+  );
 };
 
 const mapStateToProps = (state) => {
   return {
-    activeCourseId: state?.courses?.activeCourseId,
+    practiceDuration: state?.practice?.practiceDuration,
   };
 };
 

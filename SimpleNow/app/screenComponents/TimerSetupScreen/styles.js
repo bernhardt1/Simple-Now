@@ -1,24 +1,15 @@
 import { BRAND_WHITE, DARK_OVERLAY } from '../../styles/colors';
-import {
-  screenWidth,
-  statusBarHeight,
-  widthUnit,
-  heightUnit,
-} from '../../styles/constants';
+import { screenWidth, widthUnit, heightUnit } from '../../styles/constants';
 
 const styles = {
   container: {
     flex: 1,
-    paddingVertical: heightUnit * 3,
-  },
-  headerSpacing: {
-    height: statusBarHeight,
-    width: screenWidth,
   },
   containerHeader: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: heightUnit * 3,
   },
   timeContainer: {
     padding: heightUnit * 3,
@@ -57,6 +48,7 @@ const styles = {
   standardSettingButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: heightUnit * 3,
   },
   bottomButtons: {
     alignItems: 'flex-end',

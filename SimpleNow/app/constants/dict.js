@@ -8,8 +8,8 @@ const STRING_CONTACT_INFO_TITLE = 'Contact Information';
 const STRING_CONTACT_INFO_EMAIL = 'Email: simplenowteam@gmail.com';
 
 // Exercise How To
-const RECOMMENDED_TIME = 'Recommended Time';
-const HOW = 'How';
+const RECOMMENDED_TIME = 'RECOMMENDED TIME';
+const HOW = 'HOW';
 const HOW_TO_BREATH =
   'The most basic way to do mindful breathing is simply to focus your attention on your breath, the inhale and exhale. You can do this while standing, but ideally you’ll be sitting or even lying in a comfortable position. Your eyes may be open or closed, but you may find it easier to maintain your focus if you close your eyes.\n\nIt might help to start by taking an exaggerated breath: a deep inhale through your nostrils (3 seconds), hold your breath (2 seconds), and a long exhale through your mouth (4 seconds). Otherwise, simply observe each breath without trying to adjust it; it may help to focus on the rise and fall of your chest or the sensation through your nostrils. As you do so, you may find that your mind wanders, distracted by thoughts or bodily sensations. That’s OK. Just notice that this is happening and gently bring your attention back to your breath.';
 const HOW_TO_SENSATION =

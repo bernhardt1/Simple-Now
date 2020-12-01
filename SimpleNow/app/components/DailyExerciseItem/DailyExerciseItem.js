@@ -1,65 +1,62 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Image, View } from 'react-native';
 
 import styles from './styles';
 import {
-  titleFont,
   whiteFont,
   orangeFont,
+  bodyFont,
+  footnoteFont,
   captionFont,
 } from '../../styles/fonts';
+import LinearGradient from 'react-native-linear-gradient';
+import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
+import setLocalImage from '../../helpers/setLocalImage';
+import getCategoryCardImage from '../../helpers/styleHelpers/getCategoryCardImage';
 
 const DailyExerciseItem = ({
-  focused,
-  course,
   exercise,
-  nextExercise,
-  classIndex,
   exerciseIndex,
   isExerciseComplete,
-  reduxCourse,
+  currentPracticeProgress,
   navigation,
-  lastItem,
 }) => {
-  const navigateExercise = () => {
-    //   if (isExerciseAvailable(reduxCourse, course, classIndex, exerciseIndex)) {
-    //     navigateExercise();
-    //   } else {
-    //     Alert.alert(
-    //       'Exercise Not Available',
-    //       'This exercise is scheduled for later.',
-    //       [
-    //         {
-    //           text: 'OK',
-    //         },
-    //       ]
-    //     );
-    //   }
-    // };
+  const cardColors = getCategoryCardColors(exercise?.exerciseType);
 
+  const navigateExercise = () => {
     navigation.navigate('Exercise', {
       exercise,
     });
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={navigateExercise}>
-      <View style={styles.informationLeftContainer}>
-        <Text style={[titleFont, whiteFont]}>
-          {`${exercise?.title}${isExerciseComplete ? ' - complete' : ''}`}
-        </Text>
-        {isExerciseComplete && (
-          <Text style={[captionFont, whiteFont]}>complete</Text>
-        )}
-      </View>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={navigateExercise}
+      activeOpacity={0.7}
+    >
+      <View>
+        <Image
+          source={setLocalImage(getCategoryCardImage(exercise?.exerciseType))}
+          style={styles.image}
+        />
+        <View style={styles.textContainer}>
+          <Text style={[bodyFont, whiteFont]}>{`${exercise?.title}`}</Text>
+          {currentPracticeProgress.includes(exercise?.id) && (
+            <Text style={[captionFont, whiteFont]}>complete!</Text>
+          )}
 
-      <Text
-        ellipsizeMode="tail"
-        style={[titleFont, orangeFont]}
-        numberOfLines={2}
-      >
-        NEW
-      </Text>
+          {!isExerciseComplete && (
+            <Text
+              ellipsizeMode="tail"
+              style={[bodyFont, orangeFont]}
+              numberOfLines={2}
+            >
+              NEW
+            </Text>
+          )}
+        </View>
+      </View>
     </TouchableOpacity>
   );
 };

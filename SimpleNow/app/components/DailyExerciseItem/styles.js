@@ -1,24 +1,30 @@
-import { itemSpacing, textContainerSpacing } from '../../styles/spacings';
-import { screenWidth, widthUnit } from '../../styles/constants';
-import { DARK_OVERLAY } from '../../styles/colors';
-import { islandShape } from '../../styles/standardComponents';
+import { BORDER_RADIUS, heightUnit, widthUnit } from '../../styles/constants';
+import { VERY_DARK_OVERLAY } from '../../styles/colors';
 
 const styles = {
   container: {
-    height: widthUnit * 20,
-    width: screenWidth - itemSpacing.margin * 2,
-    flexDirection: 'row',
-    alignSelf: 'stretch',
-    ...itemSpacing,
-    ...textContainerSpacing,
-    ...islandShape,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DARK_OVERLAY,
+    height: heightUnit * 35,
+    width: widthUnit * 54,
+    borderRadius: BORDER_RADIUS,
+    backgroundColor: 'white',
+    marginLeft: widthUnit * 4,
   },
-  informationLeftContainer: {
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+  image: {
+    height: heightUnit * 35,
+    width: widthUnit * 54,
+    borderRadius: BORDER_RADIUS,
+  },
+  textContainer: {
+    position: 'absolute',
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: heightUnit * 10,
+    width: widthUnit * 54,
+    borderRadius: BORDER_RADIUS,
+    backgroundColor: VERY_DARK_OVERLAY,
   },
 };
 

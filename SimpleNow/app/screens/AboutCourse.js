@@ -10,6 +10,8 @@ import { StandardButton } from '../components/StandardButton';
 import setLocalImage from '../helpers/setLocalImage';
 import { HeaderSpacer } from '../components/HeaderSpacer';
 import { HeaderDefaultBack } from '../components/HeaderDefaultBack';
+import LinearGradient from 'react-native-linear-gradient';
+import { BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2 } from '../styles/colors';
 
 const AboutCourse = ({ navigation, route, background }) => {
   // JUST PASS COURSE ID & GET INFO FROM THAT
@@ -22,9 +24,12 @@ const AboutCourse = ({ navigation, route, background }) => {
   };
 
   return (
-    <ImageBackground
+    <LinearGradient
       style={styles.container}
-      source={setLocalImage(background)}
+      colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+      useAngle={true}
+      angle={150}
+      angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
       <HeaderDefaultBack onPressBack={navigateBack} title={title} />
@@ -67,7 +72,7 @@ const AboutCourse = ({ navigation, route, background }) => {
           withBorder
         />
       </View>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

@@ -1,10 +1,15 @@
-import { BRAND_WHITE, DARK_OVERLAY } from '../../../styles/colors';
+import {
+  BRAND_WHITE,
+  DARK_OVERLAY,
+  VERY_DARK_OVERLAY,
+} from '../../../styles/colors';
 import {
   screenWidth,
   statusBarHeight,
   widthUnit,
   heightUnit,
 } from '../../../styles/constants';
+import { shadow } from '../../../styles/standardComponents';
 
 const styles = {
   container: {
@@ -73,12 +78,13 @@ const styles = {
     left: screenWidth / 2 - (widthUnit * 55) / 2,
     width: widthUnit * 55,
     height: widthUnit * 55,
-    backgroundColor: 'transparent',
+    backgroundColor: VERY_DARK_OVERLAY,
     borderColor: BRAND_WHITE,
     borderWidth: 3,
     borderRadius: (widthUnit * 55) / 2,
     alignItems: 'center',
     justifyContent: 'center',
+    ...shadow,
   },
   simpleInnerRing: {
     position: 'absolute',
