@@ -17,6 +17,7 @@ import ChangePractice from '../screens/ChangePractice';
 import EditPractice from '../screens/EditPractice';
 import SetReminders from '../screens/SetReminders';
 import CreateReminder from '../screens/CreateReminder';
+import EditReminder from '../screens/EditReminder';
 
 import TimerSetup from '../screens/TimerSetup';
 import Timer from '../screens/Timer';
@@ -37,6 +38,7 @@ const Tab = createBottomTabNavigator();
 function TabNavigation() {
   return (
     <Tab.Navigator
+      lazy={false}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
@@ -99,6 +101,7 @@ function BaseNavigation() {
 
       <Stack.Screen name="SetReminders" component={SetReminders} />
       <Stack.Screen name="CreateReminder" component={CreateReminder} />
+      <Stack.Screen name="EditReminder" component={EditReminder} />
 
       <Stack.Screen name="Timer" component={Timer} />
       <Stack.Screen name="SetBellInterval" component={SetBellInterval} />

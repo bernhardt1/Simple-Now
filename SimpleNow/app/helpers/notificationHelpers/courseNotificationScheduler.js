@@ -1,8 +1,8 @@
-import convertReminderTimeToISODate from './timeHelpers/convertReminderTimeToISODate';
+import convertReminderTimeToISODate from '../timeHelpers/convertReminderTimeToISODate';
 
-import { MAX_NOTIFICATIONS } from '../constants/magicNumbers';
-import getDaysPastSinceStartTimestamp from './timeHelpers/getDaysPastSinceStartTimestamp';
-import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
+import { MAX_NOTIFICATIONS } from '../../constants/magicNumbers';
+import getDaysPastSinceStartTimestamp from '../timeHelpers/getDaysPastSinceStartTimestamp';
+import sentryCaptureMessage from '../errorHelpers/sentryCaptureMessage';
 
 const getScheduledNotifications = async () => {
   return new Promise(global.Notifications.getScheduledLocalNotifications)

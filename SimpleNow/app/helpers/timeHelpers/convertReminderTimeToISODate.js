@@ -1,8 +1,9 @@
 const convertReminderTimeToISODate = (
   reminderTime,
-  numberOfDaysAheadToSchedule
+  numberOfDaysAheadToSchedule = 0
 ) => {
   const now = new Date();
+
   now.setHours(0, 0, 0, 0);
 
   const reminderDate = new Date(

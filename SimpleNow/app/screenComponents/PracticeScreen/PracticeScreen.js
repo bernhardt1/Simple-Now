@@ -39,6 +39,7 @@ const PracticeScreen = ({
   currentPracticeProgress,
   reduxResetCurrentPractice,
   reduxContent,
+  isDeviceNotificationsEnabled,
 }) => {
   const renderDailyExerciseItem = (item) => {
     const isExerciseComp = isExerciseComplete(
@@ -78,9 +79,10 @@ const PracticeScreen = ({
             onPress={() => navigation.navigate('SetReminders')}
             // onPress={() => reduxResetCurrentPractice()}
           />
-          <TextContainer>
-            <Text style={[footnoteFont, whiteFont]}>WEEK DAYS @ 6 AM</Text>
-          </TextContainer>
+
+          <Text style={[footnoteFont, whiteFont]}>
+            {isDeviceNotificationsEnabled ? '' : 'NONE'}
+          </Text>
         </View>
       </View>
 
@@ -140,10 +142,13 @@ const PracticeScreen = ({
 };
 
 const mapStateToProps = (state) => {
+  console.log('state', state);
   return {
     background: state?.settings?.background || 'background1',
     currentPractice: state?.practice?.currentPractice || [],
     currentPracticeProgress: state?.practice?.currentPracticeProgress || '',
+    isDeviceNotificationsEnabled:
+      state?.notifications?.isDeviceNotificationsEnabled || false,
   };
 };
 

@@ -21,6 +21,7 @@ import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
 } from '../../styles/colors';
+import NotificationScheduler from '../NotificationScheduler/NotificationScheduler';
 
 const HomeScreen = ({
   navigation,
@@ -100,6 +101,7 @@ const HomeScreen = ({
       <Modal coverScreen={false} isVisible={isPushPermissionVisible}>
         <PushPermissionModalContent onPress={togglePushModal} />
       </Modal>
+      <NotificationScheduler navigation={navigation} />
     </LinearGradient>
   );
 };

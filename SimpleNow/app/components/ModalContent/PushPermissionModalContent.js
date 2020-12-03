@@ -24,8 +24,8 @@ const PushPermissionModalContent: React.FC<Props> = (props) => {
             setRequestedPermission(true);
           } else {
             Alert.alert(
-              'Notifications Are Required To Use Simple Now',
-              "Please navigate to your Phone's settings and enable notifications before continuing.",
+              'Enable Notifications',
+              "Please go to your Phone's settings and enable notifications for Simple Now then press OK.",
               [
                 {
                   text: 'Back',
@@ -56,8 +56,8 @@ const PushPermissionModalContent: React.FC<Props> = (props) => {
         style={styles.permissionImage}
       />
       <Text style={[titleFont, centerAlign]}>
-        Simple Now needs your permission to send you mindfulness exercise
-        notifications. Tap "OK" to continue.
+        Simple Now needs your permission to send you notifications. Tap "OK"
+        twice continue.
       </Text>
       <TouchableOpacity onPress={askPushPermissions}>
         <View style={styles.okButton}>

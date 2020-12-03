@@ -1,30 +1,24 @@
 import Moment from 'moment';
 
-import convertReminderTimeToISODate from './timeHelpers/convertReminderTimeToISODate';
-import sentryCaptureMessage from './errorHelpers/sentryCaptureMessage';
+import convertReminderTimeToISODate from '../timeHelpers/convertReminderTimeToISODate';
+import sentryCaptureMessage from '../errorHelpers/sentryCaptureMessage';
 
-import { MAX_NOTIFICATIONS } from '../constants/magicNumbers';
+import { MAX_NOTIFICATIONS } from '../../constants/magicNumbers';
+import { DAILY_REMINDER_NOTIFICATION_ID } from '../../constants/constants';
+import getScheduledNotifications from './getScheduledNotifications';
 
-const getScheduledNotifications = async () => {
-  return new Promise(global.Notifications.getScheduledLocalNotifications)
-    .then((notifs) => {
-      return notifs;
-    })
-    .catch((e) => {
-      // assume there are no notifications to return.
-      return [];
-    });
-};
+const reminderScheduler = async (reminder, daysAheadToSchedule) => {
+  const { time } = reminder;
 
-// reminderTime format - 7:00
-const dailyReminderScheduler = async (reminderTime, notificationCount) => {
   try {
     const scheduledNotifications = await getScheduledNotifications();
+    console.log('scheduledNotifications', scheduledNotifications);
+
     let globalNumberOfScheduledNotification = scheduledNotifications?.length;
 
     const nowIso = new Date().toISOString();
-    let notificationCounter = notificationCount;
-    let numberOfDaysAheadToSchedule = 1;
+    let notificationCounter = daysAheadToSchedule;
+    let numberOfDaysAheadToSchedule = 0;
 
     // schedule notifications
 
@@ -35,13 +29,15 @@ const dailyReminderScheduler = async (reminderTime, notificationCount) => {
       notificationCounter--;
 
       const reminderDate = convertReminderTimeToISODate(
-        reminderTime,
+        time,
         numberOfDaysAheadToSchedule
       );
-      if (reminderDate < nowIso) return;
+      numberOfDaysAheadToSchedule += 1;
 
-      const date = Moment().format('L');
-      const id = `daily-reminder-${date}`;
+      if (reminderDate < nowIso) continue;
+
+      const date = Moment(reminderDate).format('L');
+      const id = `${DAILY_REMINDER_NOTIFICATION_ID}${date}`;
 
       const secondsAheadToSchedule = Math.floor(
         (new Date(reminderDate) - new Date(nowIso)) / 1000
@@ -59,11 +55,12 @@ const dailyReminderScheduler = async (reminderTime, notificationCount) => {
         'Tap to view',
         {}
       );
+
       globalNumberOfScheduledNotification += 1;
     }
   } catch (e) {
-    sentryCaptureMessage('caught dailyReminderScheduler error', e);
+    sentryCaptureMessage('caught reminderScheduler error', e);
   }
 };
 
-export default dailyReminderScheduler;
+export default reminderScheduler;

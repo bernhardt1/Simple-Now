@@ -6,19 +6,19 @@ import { standardButton } from '../../styles/standardComponents';
 import { buttonFont, centerAlign, whiteFont } from '../../styles/fonts';
 import {
   BRAND_WHITE,
-  DARK_BLUE_LOGO,
-  LIGHT_BLUE_LOGO,
+  DARK_OVERLAY,
+  VERY_DARK_OVERLAY,
 } from '../../styles/colors';
 import { BORDER_WIDTH } from '../../styles/constants';
 import setLocalImage from '../../helpers/setLocalImage';
 
 import styles from './styles';
 
-const StandardButton = ({ title, image, onPress, withBorder }) => {
+const StandardButton = ({ title, image, onPress, withBorder, textColor }) => {
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <LinearGradient
-        colors={[DARK_BLUE_LOGO, LIGHT_BLUE_LOGO]}
+        colors={[VERY_DARK_OVERLAY, DARK_OVERLAY]}
         style={[
           standardButton,
           withBorder
@@ -27,7 +27,16 @@ const StandardButton = ({ title, image, onPress, withBorder }) => {
         ]}
       >
         {title && (
-          <Text style={[buttonFont, whiteFont, centerAlign]}>{title}</Text>
+          <Text
+            style={[
+              buttonFont,
+              whiteFont,
+              centerAlign,
+              textColor ? { color: textColor } : {},
+            ]}
+          >
+            {title}
+          </Text>
         )}
         {image && <Image source={setLocalImage(image)} style={styles.image} />}
       </LinearGradient>

@@ -13,33 +13,44 @@ import styles from './styles';
 import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
+  BRAND_ORANGE,
   BRAND_WHITE,
 } from '../../styles/colors';
 import { StandardButton } from '../../components/StandardButton';
 import {
   bodyFont,
   boldSubheadFont,
+  orangeFont,
   titleFont,
   whiteFont,
 } from '../../styles/fonts';
 import { verticalButtonsMargin } from '../../styles/spacings';
 import LinearGradient from 'react-native-linear-gradient';
-import { addReminder } from '../../actions/notifications';
+import { addReminder, deleteReminder } from '../../actions/notifications';
+import convertReminderTimeToISODate from '../../helpers/timeHelpers/convertReminderTimeToISODate';
 
-const CreateReminderScreen = ({ background, navigation, reduxAddReminder }) => {
-  const [date, setDate] = useState(new Date());
-  const [isMonday, setIsMonday] = useState(true);
-  const [isTuesday, setIsTuesday] = useState(true);
-  const [isWednesday, setIsWednesday] = useState(true);
-  const [isThursday, setIsThursday] = useState(true);
-  const [isFriday, setIsFriday] = useState(true);
-  const [isSaturday, setIsSaturday] = useState(true);
-  const [isSunday, setIsSunday] = useState(true);
+const EditReminderScreen = ({
+  background,
+  navigation,
+  route,
+  reduxAddReminder,
+  reduxDeleteReminder,
+}) => {
+  console.log('route', route);
+  const [reminder] = useState(route?.params?.reminder);
+  const [date, setDate] = useState(
+    new Date(convertReminderTimeToISODate(reminder?.time))
+  );
+  const [isMonday, setIsMonday] = useState(reminder?.isMo);
+  const [isTuesday, setIsTuesday] = useState(reminder?.isTu);
+  const [isWednesday, setIsWednesday] = useState(reminder?.isWe);
+  const [isThursday, setIsThursday] = useState(reminder?.isTh);
+  const [isFriday, setIsFriday] = useState(reminder?.isFr);
+  const [isSaturday, setIsSaturday] = useState(reminder?.isSa);
+  const [isSunday, setIsSunday] = useState(reminder?.isSu);
 
   const onPressSave = () => {
-    var d = new Date();
-    var id = `_id_${d.getTime()}`;
-
+    var id = reminder?.id;
     const time = Moment(date).format('HH:mm');
 
     const reminderObj = {
@@ -59,6 +70,12 @@ const CreateReminderScreen = ({ background, navigation, reduxAddReminder }) => {
     navigateBack();
   };
 
+  const onPressDelete = () => {
+    reduxDeleteReminder(reminder?.id);
+
+    navigateBack();
+  };
+
   const navigateBack = () => {
     navigation.goBack();
   };
@@ -74,7 +91,15 @@ const CreateReminderScreen = ({ background, navigation, reduxAddReminder }) => {
       <HeaderSpacer />
 
       <ScrollView contentContainerStyle={styles.container} bounces={false}>
-        <HeaderDefaultBack onPressBack={navigateBack} title={'Add Reminder'} />
+        <HeaderDefaultBack
+          onPressBack={navigateBack}
+          title={'Edit Reminder'}
+          rightButtonComponent={
+            <TouchableOpacity activeOpacity={0.7} onPress={onPressSave}>
+              <Text style={[boldSubheadFont, orangeFont]}>SAVE</Text>
+            </TouchableOpacity>
+          }
+        />
         <InvisibleSeparator />
         <View style={styles.timePickerContainer}>
           <DatePicker
@@ -208,7 +233,11 @@ const CreateReminderScreen = ({ background, navigation, reduxAddReminder }) => {
               )}
             </TouchableOpacity>
           </View>
-          <StandardButton title={'Save'} onPress={onPressSave} />
+          <StandardButton
+            title={'DELETE'}
+            onPress={onPressDelete}
+            textColor={BRAND_ORANGE}
+          />
         </View>
       </ScrollView>
     </LinearGradient>
@@ -224,10 +253,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     reduxAddReminder: (obj) => dispatch(addReminder(obj)),
+    reduxDeleteReminder: (val) => dispatch(deleteReminder(val)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateReminderScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(EditReminderScreen);
