@@ -11,7 +11,9 @@ const convertSecondsToMmSs = (seconds) => {
   const secs = seconds % 60;
   minutes = minutes % 60;
 
-  return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
+  const result = `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
+
+  return result;
 };
 
 export default convertSecondsToMmSs;

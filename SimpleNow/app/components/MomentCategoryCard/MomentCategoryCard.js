@@ -11,6 +11,7 @@ import {
   titleEmphasizedFont,
   centerAlign,
   orangeFont,
+  capitalizeFont,
 } from '../../styles/fonts';
 import {
   meditationCard,
@@ -45,7 +46,14 @@ const MomentCategoryCard = ({
             selectedCategory === categoryData?.type ? styles.selected : {},
           ]}
         >
-          <Text style={[titleEmphasizedFont, whiteFont, centerAlign, shadow]}>
+          <Text
+            style={[
+              titleEmphasizedFont,
+              whiteFont,
+              centerAlign,
+              capitalizeFont,
+            ]}
+          >
             {`${categoryData?.type}`}
           </Text>
         </View>

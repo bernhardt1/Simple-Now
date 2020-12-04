@@ -2,7 +2,8 @@ const generateAllRemindersArray = (allReminders) => {
   const reminders = [];
 
   for (const [key, value] of Object.entries(allReminders)) {
-    if (!key.includes('_id_') || key.includes('isEnabled')) continue;
+    if (!key.includes('0') || key.includes('isEnabled')) continue;
+    console.log('key', key);
 
     const parts = value.split('-');
 

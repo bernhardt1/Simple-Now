@@ -11,7 +11,7 @@ import {
 import generateOneDayAgoISO from '../helpers/timeHelpers/generateOneDayAgoISO';
 
 const initialState = {
-  activePrograms: [],
+  activePrograms: ['breath', 'sensation', 'hear'],
   currentPractice: [],
   currentPracticeProgress: '',
   generatePracticeIndex: 0,

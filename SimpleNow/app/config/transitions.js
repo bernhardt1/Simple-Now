@@ -12,9 +12,9 @@
 // HACKY: hold the animation at 0 for a moment after clicking to give more time for the load. This
 // done by locking outputRange at 0, until input range > some value.
 const forFade = ({ current, next }) => {
+  // the popped screen locks it's next.progress at 1, so use current.progress for the calculation
+  // the incoming screen animated current.progres 0 -> 1. Use it for the transition calculation
   const opacity =
-    // the popped screen locks it's next.progress at 1, so use current.progress for the calculation
-    // the incoming screen animated current.progres 0 -> 1. Use it for the transition calculation
     current.progress === 1
       ? next.progress.interpolate({
           inputRange: [0, 0.1, 1],
@@ -29,9 +29,14 @@ const forFade = ({ current, next }) => {
   return {
     cardStyle: {
       opacity,
-      backgroundColor: 'transparent',
     },
   };
 };
 
-export { forFade };
+const forFadeDefault = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
+
+export { forFade, forFadeDefault };

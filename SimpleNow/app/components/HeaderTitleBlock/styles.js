@@ -1,11 +1,11 @@
-import { DARK_OVERLAY } from '../../styles/colors';
+import { DARK_OVERLAY, VERY_DARK_OVERLAY } from '../../styles/colors';
 import { heightUnit, screenWidth } from '../../styles/constants';
 
 const styles = {
   container: {
     // height: heightUnit * 10,
     // width: screenWidth,
-    backgroundColor: DARK_OVERLAY,
+    backgroundColor: VERY_DARK_OVERLAY,
     // justifyContent: 'flex-start',
     // alignItems: 'center',d
     paddingBottom: heightUnit * 3,

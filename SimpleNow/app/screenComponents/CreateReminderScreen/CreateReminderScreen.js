@@ -38,7 +38,9 @@ const CreateReminderScreen = ({ background, navigation, reduxAddReminder }) => {
 
   const onPressSave = () => {
     var d = new Date();
-    var id = `_id_${d.getTime()}`;
+    var seconds = `${Math.floor(d.getTime() / 1000)}`;
+    const idTimePortion = seconds.substr(seconds.length - 5);
+    const id = `${idTimePortion}0`;
 
     const time = Moment(date).format('HH:mm');
 
@@ -82,6 +84,7 @@ const CreateReminderScreen = ({ background, navigation, reduxAddReminder }) => {
             mode={'time'}
             onDateChange={setDate}
             textColor={BRAND_WHITE}
+            fadeToColor={'#303030'}
           />
         </View>
         <View style={styles.lowerSection}>

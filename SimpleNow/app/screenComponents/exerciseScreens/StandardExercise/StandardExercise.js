@@ -24,6 +24,7 @@ import {
   whiteFont,
   bodyFont,
   captionFont,
+  boldSubheadFont,
 } from '../../../styles/fonts';
 
 import styles from './styles';
@@ -71,13 +72,13 @@ const StandardExercise = ({
     convertMillisecondsToSeconds(practiceDuration * EBS) || 60 * EBS
   );
 
-  const [simpleContainerAnimation] = useState(new Animated.Value(0));
   const [textContainerAnimation] = useState(new Animated.Value(0));
+
+  const [isAddTimeButtonsDisabled, setIsAddTimeButtonsDisabled] = useState(
+    true
+  );
   const [addTimeOpacityAnimation] = useState(new Animated.Value(0));
-  const [simpleScaleAnimation] = useState(new Animated.Value(0));
   const [instructionOpacityAnimation] = useState(new Animated.Value(1));
-  const [innerRingOpacityAnimation] = useState(new Animated.Value(0));
-  const [outerRingOpacityAnimation] = useState(new Animated.Value(0));
   const [innerRingPulseAnimation] = useState(new Animated.Value(0));
   const [globalOpacityAnimation] = useState(new Animated.Value(1));
 
@@ -86,14 +87,14 @@ const StandardExercise = ({
       case COUNTDOWN:
         animateInstructionOpacity(
           0,
-          EBS * 10,
+          EBS * 100,
           convertSecondsToMmSs(exerciseDuration)
         );
-        if (this) {
-          this.timeout = setTimeout(() => {
-            animateInnerRingPulse(1, START_EXERCISE, 1);
-          }, EBS * 200);
-        }
+
+        this.timeout = setTimeout(() => {
+          animateInnerRingPulse(1, START_EXERCISE, 1);
+        }, EBS * 200);
+
         break;
       case START_EXERCISE:
         animateInstructionOpacity(1, EBS * 600);
@@ -213,6 +214,12 @@ const StandardExercise = ({
   // pass 0 for disappearing
   // pass 1 for appearing
   const animateTimeOpacity = (value, duration, nextStep) => {
+    if (value === 1) {
+      setIsAddTimeButtonsDisabled(false);
+    } else {
+      setIsAddTimeButtonsDisabled(true);
+    }
+
     Animated.timing(addTimeOpacityAnimation, {
       toValue: value,
       duration,
@@ -251,6 +258,7 @@ const StandardExercise = ({
 
   // pass 1 to pulse
   const animateInnerRingPulse = (value, nextStep, count) => {
+    console.log('animating inner ring pulse');
     Animated.timing(innerRingPulseAnimation, {
       toValue: value,
       duration: EBS * 3000,
@@ -351,6 +359,7 @@ const StandardExercise = ({
   };
 
   const onPressSimpleButton = () => {
+    console.log('pressed');
     if (currentStep === COUNTING_DOWN) {
       // pause too
       if (this?.isPaused) {
@@ -405,7 +414,6 @@ const StandardExercise = ({
     <ImageBackground
       style={styles.container}
       source={setLocalImage(categoryImage)}
-      blurRadius={1}
     >
       <Animated.View
         pointerEvents={'auto'}
@@ -438,6 +446,7 @@ const StandardExercise = ({
         <TouchableWithoutFeedback
           onPress={() => {
             animateGlobalOpacity1(0, EBS * 1000, true);
+            // onPressSimpleButton();
           }}
         >
           <View style={styles.containerContent} pointerEvents={'auto'}>
@@ -457,7 +466,7 @@ const StandardExercise = ({
               ]}
               pointerEvents={'auto'}
             >
-              <Text style={[bodyFont, whiteFont, centerAlign]}>
+              <Text style={[boldSubheadFont, whiteFont, centerAlign]}>
                 {exercise?.copy}
               </Text>
             </Animated.View>
@@ -471,45 +480,27 @@ const StandardExercise = ({
               ]}
               pointerEvents={'auto'}
             >
-              <SecondaryButton title={'+1 min'} onPress={() => addTime(60)} />
-              <SecondaryButton title={'+2 min'} onPress={() => addTime(120)} />
-              <SecondaryButton title={'+5 min'} onPress={() => addTime(300)} />
+              <SecondaryButton
+                title={'+1 min'}
+                onPress={() => addTime(60)}
+                disabled={isAddTimeButtonsDisabled}
+              />
+              <SecondaryButton
+                title={'+2 min'}
+                onPress={() => addTime(120)}
+                disabled={isAddTimeButtonsDisabled}
+              />
+              <SecondaryButton
+                title={'+5 min'}
+                onPress={() => addTime(300)}
+                disabled={isAddTimeButtonsDisabled}
+              />
             </Animated.View>
 
             <Animated.View
-              style={[
-                styles.simpleContainer,
-                {
-                  transform: [
-                    {
-                      translateY: simpleContainerAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [0, -heightUnit * 20],
-                      }),
-                    },
-                  ],
-                },
-              ]}
+              style={styles.simpleContainer}
               pointerEvents={'auto'}
             >
-              <Animated.View
-                style={[
-                  styles.simpleInnerRing,
-                  {
-                    opacity: innerRingOpacityAnimation,
-                  },
-                ]}
-                pointerEvents={'auto'}
-              />
-              <Animated.View
-                style={[
-                  styles.simpleOuterRing,
-                  {
-                    opacity: outerRingOpacityAnimation,
-                  },
-                ]}
-                pointerEvents={'auto'}
-              />
               <Animated.View
                 style={[
                   styles.simpleInnerRing,
@@ -542,49 +533,14 @@ const StandardExercise = ({
                 onPress={() => onPressSimpleButton()}
                 underlayColor="#ffffff"
                 activeOpacity={0.7}
+                style={styles.simpleCircle}
               >
-                <Animated.View
-                  style={[
-                    styles.simpleCircle,
-                    {
-                      transform: [
-                        {
-                          scaleX: simpleScaleAnimation.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [1, 1.25],
-                          }),
-                        },
-                        {
-                          scaleY: simpleScaleAnimation.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [1, 1.25],
-                          }),
-                        },
-                      ],
-                    },
-                  ]}
-                >
+                <View>
                   <Animated.Text
                     style={[
                       titleEmphasizedFont,
                       whiteFont,
                       centerAlign,
-                      {
-                        transform: [
-                          {
-                            scaleX: simpleScaleAnimation.interpolate({
-                              inputRange: [0, 1],
-                              outputRange: [1, 1.25],
-                            }),
-                          },
-                          {
-                            scaleY: simpleScaleAnimation.interpolate({
-                              inputRange: [0, 1],
-                              outputRange: [1, 1.25],
-                            }),
-                          },
-                        ],
-                      },
                       {
                         opacity: instructionOpacityAnimation,
                       },
@@ -599,22 +555,6 @@ const StandardExercise = ({
                         whiteFont,
                         centerAlign,
                         {
-                          transform: [
-                            {
-                              scaleX: simpleScaleAnimation.interpolate({
-                                inputRange: [0, 1],
-                                outputRange: [1, 1.25],
-                              }),
-                            },
-                            {
-                              scaleY: simpleScaleAnimation.interpolate({
-                                inputRange: [0, 1],
-                                outputRange: [1, 1.25],
-                              }),
-                            },
-                          ],
-                        },
-                        {
                           opacity: instructionOpacityAnimation,
                         },
                       ]}
@@ -622,7 +562,7 @@ const StandardExercise = ({
                       Tap to pause
                     </Animated.Text>
                   )}
-                </Animated.View>
+                </View>
               </TouchableOpacity>
             </Animated.View>
           </View>

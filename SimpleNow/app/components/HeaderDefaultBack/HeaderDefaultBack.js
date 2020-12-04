@@ -1,6 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { titleEmphasizedFont, whiteFont } from '../../styles/fonts';
+import {
+  capitalizeFont,
+  titleEmphasizedFont,
+  whiteFont,
+} from '../../styles/fonts';
 import { StandardImageButton } from '../StandardImageButton';
 
 import styles from './styles';
@@ -21,7 +25,9 @@ const HeaderDefaultBack = ({
       ]}
     >
       <View style={styles.centerTextContainer}>
-        <Text style={[titleEmphasizedFont, whiteFont]}>{title}</Text>
+        <Text style={[titleEmphasizedFont, whiteFont, capitalizeFont]}>
+          {title}
+        </Text>
       </View>
       <StandardImageButton image={'backWhite'} onPress={onPressBack} />
       {!rightButtonImage && !rightButtonComponent && (

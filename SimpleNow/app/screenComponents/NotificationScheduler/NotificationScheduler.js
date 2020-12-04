@@ -15,6 +15,8 @@ const NotificationScheduler = ({
   reduxUpdateDeviceNotificationsEnabled,
   allReminders,
 }) => {
+  const [isScheduling, setIsScheduling] = useState(false);
+
   useEffect(() => {
     const allRemindersArray = generateAllRemindersArray(allReminders);
 
@@ -45,13 +47,16 @@ const NotificationScheduler = ({
 
     if (isNotificationPermissionEnabled) {
       const allRemindersArray = generateAllRemindersArray(allReminders);
-      scheduleAllReminders(allRemindersArray);
+
+      // wait a little while to avoid calling the scheduler twice in a row
+      setTimeout(() => {
+        scheduleAllReminders(allRemindersArray);
+      }, 1000);
     }
   };
 
   const scheduleAllReminders = (allRemindersArray) => {
-    console.log('allRemindersArray', allRemindersArray);
-
+    deleteAllNotifications();
     allRemindersArray.forEach((r) => {
       reminderScheduler(r, 10);
     });

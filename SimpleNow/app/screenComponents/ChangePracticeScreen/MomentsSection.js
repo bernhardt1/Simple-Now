@@ -17,9 +17,9 @@ import {
 const categories = [
   breath,
   sensation,
-  thought,
   hear,
   see,
+  thought,
   sense,
   awareness,
   quote,

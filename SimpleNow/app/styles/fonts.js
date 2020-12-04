@@ -29,7 +29,7 @@ import { screenWidth } from './constants';
 
 const logoTitleFont = {
   ...human.largeTitle,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
   fontWeight: '500',
   color: BRAND_BLACK,
 };
@@ -39,7 +39,7 @@ const massiveTitleFont = {
   fontSize: screenWidth / 9,
   lineHeight: screenWidth / 7,
   letterSpacing: sanFranciscoSpacing(screenWidth / 9),
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
   fontWeight: '500',
   color: BRAND_BLACK,
   textAlignVertical: 'center',
@@ -50,7 +50,7 @@ const largeTitleFont = {
   fontSize: screenWidth / 12,
   lineHeight: screenWidth / 8,
   letterSpacing: sanFranciscoSpacing(screenWidth / 12),
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
   fontWeight: '500',
   color: BRAND_BLACK,
   textAlignVertical: 'center',
@@ -59,28 +59,28 @@ const largeTitleFont = {
 const titleEmphasizedFont = {
   ...human.title2,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
-  fontWeight: '700',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontWeight: Platform.OS === 'ios' ? '700' : '500',
 };
 
 const titleFont = {
   ...human.title3,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
   fontWeight: '500',
 };
 
 const boldSubheadFont = {
   ...human.body,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
-  fontWeight: '700',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontWeight: Platform.OS === 'ios' ? '700' : '500',
 };
 
 const subheadFont = {
   ...human.body,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
   fontWeight: '500',
 };
 
@@ -88,40 +88,40 @@ const bodyFont = {
   ...human.body,
   lineHeight: human.body.fontSize * 1.3,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
   fontWeight: '500',
 };
 
 const bodyFontTitle = {
   ...human.body,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
 };
 
 const footnoteFont = {
   ...human.footnote,
   fontWeight: '500',
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
 };
 const captionFont = {
   ...human.caption1,
   fontWeight: '500',
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
 };
 
 const buttonFont = {
   ...human.body,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
 };
 
 const bottomButtonFont = {
   ...human.title1,
   fontWeight: '500',
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Reg',
+  fontFamily: 'AvenirNextRoundedPro-Bold',
 };
 
 const whiteFont = {
@@ -144,6 +144,10 @@ const centerAlign = {
   textAlign: 'center',
 };
 
+const capitalizeFont = {
+  textTransform: 'capitalize',
+};
+
 export {
   logoTitleFont,
   massiveTitleFont,
@@ -163,4 +167,5 @@ export {
   orangeFont,
   systemFont,
   centerAlign,
+  capitalizeFont,
 };

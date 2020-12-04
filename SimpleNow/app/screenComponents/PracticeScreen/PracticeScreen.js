@@ -1,5 +1,11 @@
 import React from 'react';
-import { ImageBackground, View, Text, FlatList } from 'react-native';
+import {
+  ImageBackground,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 
@@ -31,6 +37,9 @@ import {
 } from '../../styles/colors';
 import RenderDailyExerciseItems from './RenderDailyExerciseItems';
 import LinearGradient from 'react-native-linear-gradient';
+import NotificationScheduler from '../NotificationScheduler/NotificationScheduler';
+import getNumberOfDailyExercisesComplete from '../../helpers/reduxHelpers/getNumberOfDailyExercisesComplete';
+import getNumberOfExercisesCompletedSinceXDaysAgo from '../../helpers/reduxHelpers/getNumberOfExercisesCompletedSinceXDaysAgo';
 
 const PracticeScreen = ({
   background,
@@ -86,19 +95,43 @@ const PracticeScreen = ({
         </View>
       </View>
 
-      <View style={styles.centerSection}>
+      <TouchableOpacity
+        style={styles.centerSection}
+        onPress={() => {
+          global.Notifications.getScheduledLocalNotifications((notifs) =>
+            console.log('notifications', notifs)
+          );
+
+          global.Notifications.scheduleNotif(
+            '123456789',
+            'steel_bell.mp3',
+            1,
+            'test notification',
+            'this is a test',
+            '103/20/7'
+          );
+        }}
+      >
         <View style={styles.centerCircle}>
           <Text style={[captionFont, whiteFont, styles.textSpacing]}>
             You've practiced
           </Text>
-          <Text style={[largeTitleFont, whiteFont]}>13 times</Text>
+          <Text
+            style={[largeTitleFont, whiteFont]}
+          >{`${getNumberOfExercisesCompletedSinceXDaysAgo(
+            reduxContent,
+            7
+          )} times`}</Text>
           <Text style={[captionFont, whiteFont]}>this week</Text>
         </View>
-      </View>
+      </TouchableOpacity>
       <View style={styles.bottomSection}>
         <View style={styles.dailyPracticeTextContainer}>
           <Text style={[titleEmphasizedFont, whiteFont]}>Today's Practice</Text>
-          <Text style={[titleEmphasizedFont, whiteFont]}>1 / 3</Text>
+          <Text style={[titleEmphasizedFont, whiteFont]}>{`${Math.min(
+            getNumberOfDailyExercisesComplete(currentPracticeProgress),
+            currentPractice?.length
+          )} / ${currentPractice?.length}`}</Text>
         </View>
 
         {/* <RenderDailyExerciseItems
@@ -135,14 +168,15 @@ const PracticeScreen = ({
           horizontal
           contentContainerStyle={styles.flatlistContainer}
           extraData={[reduxContent, currentPracticeProgress]}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
+      <NotificationScheduler navigation={navigation} />
     </LinearGradient>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log('state', state);
   return {
     background: state?.settings?.background || 'background1',
     currentPractice: state?.practice?.currentPractice || [],

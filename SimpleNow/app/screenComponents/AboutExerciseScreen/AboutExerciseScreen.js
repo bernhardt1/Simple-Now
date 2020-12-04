@@ -28,7 +28,6 @@ import {
 
 const AboutExerciseScreen = ({ route, navigation }) => {
   const { exercise } = route.params;
-  console.log('exercise', exercise);
   const copy = getAboutExerciseCopy(exercise);
 
   const navigateBack = () => {

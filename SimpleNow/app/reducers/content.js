@@ -10,9 +10,7 @@ import generateISODate from '../helpers/timeHelpers/generateISODate';
 
 // initial state is empty because all exercises are incomplete
 // BONUS: adding new exercises automatically considers them incomplete.
-const initialState = {
-  Breath_0_isCompleteTimestamp: new Date(),
-};
+const initialState = {};
 
 const contentReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,10 +18,23 @@ const contentReducer = (state = initialState, action) => {
       return {};
     }
     case UPDATE_CONTENT_COMPLETE: {
-      return {
-        ...state,
-        [`${action.val}_isCompleteTimestamp`]: generateISODate(),
-      };
+      if (state[`${action.val}_isCompleteTimestamp`]) {
+        let count = 1;
+
+        while (state[`${action.val}_isCompleteTimestamp_${count}`]) {
+          count++;
+        }
+
+        return {
+          ...state,
+          [`${action.val}_isCompleteTimestamp_${count}`]: generateISODate(),
+        };
+      } else {
+        return {
+          ...state,
+          [`${action.val}_isCompleteTimestamp`]: generateISODate(),
+        };
+      }
     }
     default: {
       return state;

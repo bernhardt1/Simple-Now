@@ -9,6 +9,7 @@ import {
   resetCurrentPractice,
   updateCurrentPractice,
 } from '../actions/practice';
+import { bodyFont } from '../styles/fonts';
 
 const Practice = ({
   navigation,
@@ -18,6 +19,7 @@ const Practice = ({
   reduxUpdateCurrentPractice,
   reduxResetCurrentPractice,
 }) => {
+  console.log('bodyFont', bodyFont);
   useEffect(() => {
     generatePractice(reduxPractice, reduxContent, reduxUpdateCurrentPractice);
     // reduxResetAllContent();

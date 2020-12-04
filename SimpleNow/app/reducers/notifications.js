@@ -8,8 +8,8 @@ import {
 
 const initialState = {
   isDeviceNotificationsEnabled: Platform.OS !== 'ios',
-  _id_0000000000001: '07:00-true-true-true-true-true-true-true',
-  _id_0000000000001_isEnabled: true,
+  12340: '07:00-true-true-true-true-true-true-true',
+  '12340_isEnabled': true,
 };
 
 const reducer = (state = initialState, action) => {

@@ -71,7 +71,7 @@ class AppSetup extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
         <StatusBar
           barStyle="light-content"
           translucent

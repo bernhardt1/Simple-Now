@@ -13,8 +13,10 @@ import styles from './styles';
 import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
+  BRAND_BLACK,
   BRAND_ORANGE,
   BRAND_WHITE,
+  EXTREMELY_DARK_OVERLAY,
 } from '../../styles/colors';
 import { StandardButton } from '../../components/StandardButton';
 import {
@@ -36,7 +38,6 @@ const EditReminderScreen = ({
   reduxAddReminder,
   reduxDeleteReminder,
 }) => {
-  console.log('route', route);
   const [reminder] = useState(route?.params?.reminder);
   const [date, setDate] = useState(
     new Date(convertReminderTimeToISODate(reminder?.time))
@@ -107,6 +108,7 @@ const EditReminderScreen = ({
             mode={'time'}
             onDateChange={setDate}
             textColor={BRAND_WHITE}
+            fadeToColor={'#303030'}
           />
         </View>
         <View style={styles.lowerSection}>

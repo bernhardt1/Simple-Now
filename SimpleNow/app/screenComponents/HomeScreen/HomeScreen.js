@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { ImageBackground } from 'react-native';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { CommonActions } from '@react-navigation/native';
-import Modal from 'react-native-modal';
 
 import { updateNavigationDeepLink } from '../../actions/navigation';
 import { updateBackground } from '../../actions/settings';
 
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { HeaderHome } from '../../components/HeaderHome';
-import { PushPermissionModalContent } from '../../components/ModalContent/index';
 
-import courseNotificationScheduler from '../../helpers/notificationHelpers/courseNotificationScheduler';
-import setLocalImage from '../../helpers/setLocalImage';
 import { BACKGROUND_IMAGE_COUNT } from '../../constants/magicNumbers';
 
 import styles from './styles';
@@ -21,7 +16,6 @@ import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
 } from '../../styles/colors';
-import NotificationScheduler from '../NotificationScheduler/NotificationScheduler';
 
 const HomeScreen = ({
   navigation,
@@ -30,8 +24,6 @@ const HomeScreen = ({
   reduxUpdateNavigationDeepLink,
   reduxUpdateBackground,
 }) => {
-  const [isPushPermissionVisible, setIsPushPermissionVisible] = useState(false);
-
   useEffect(() => {
     // handleDeepLinkNavigation(deepLinkState);
     // Run the course notification scheduler every time the app is opened
@@ -54,26 +46,6 @@ const HomeScreen = ({
     reduxUpdateNavigationDeepLink(null);
   };
 
-  const checkPermissionsBeforeNavigating = async () => {
-    if (Platform.OS !== 'ios') {
-      navigateClass();
-      return;
-    }
-
-    try {
-      global.Notifications.checkPermission((permissions) => {
-        if (permissions.notificationCenter) {
-          navigateClass();
-        } else {
-          togglePushModal();
-        }
-      });
-    } catch (error) {
-      sentryCaptureMessage('error checking push permissions');
-      togglePushModal();
-    }
-  };
-
   const changeBackground = () => {
     const current = background.split('background')[1];
     const result = current
@@ -81,10 +53,6 @@ const HomeScreen = ({
       : 'background1';
 
     reduxUpdateBackground(result);
-  };
-
-  const togglePushModal = () => {
-    setIsPushPermissionVisible((prevPermission) => !prevPermission);
   };
 
   return (
@@ -97,11 +65,6 @@ const HomeScreen = ({
     >
       <HeaderSpacer />
       <HeaderHome onPressHamburger={changeBackground} />
-
-      <Modal coverScreen={false} isVisible={isPushPermissionVisible}>
-        <PushPermissionModalContent onPress={togglePushModal} />
-      </Modal>
-      <NotificationScheduler navigation={navigation} />
     </LinearGradient>
   );
 };

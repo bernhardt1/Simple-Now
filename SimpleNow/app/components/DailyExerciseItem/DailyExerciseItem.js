@@ -43,7 +43,7 @@ const DailyExerciseItem = ({
         <View style={styles.textContainer}>
           <Text style={[bodyFont, whiteFont]}>{`${exercise?.title}`}</Text>
           {currentPracticeProgress.includes(exercise?.id) && (
-            <Text style={[captionFont, whiteFont]}>complete!</Text>
+            <Text style={[footnoteFont, whiteFont]}>COMPLETE</Text>
           )}
 
           {!isExerciseComplete && (

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import {
   boldSubheadFont,
+  centerAlign,
   footnoteFont,
   largeTitleFont,
   orangeFont,
@@ -200,7 +201,7 @@ const EditPracticeScreen = ({
                 MOMENTS_DURATION_OPTIONS[momentDurationIndex]
               )}
             </Text>
-            <Text style={[subheadFont, whiteFont]}>
+            <Text style={[subheadFont, whiteFont, centerAlign]}>
               {`${convertMomentNumberAndDurationToTimeUnit(
                 DAILY_MOMENTS_OPTIONS[dailyMomentsIndex],
                 MOMENTS_DURATION_OPTIONS[momentDurationIndex]

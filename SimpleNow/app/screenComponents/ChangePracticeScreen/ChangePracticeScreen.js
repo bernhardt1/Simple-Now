@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Animated,
   TouchableHighlight,
+  Platform,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
@@ -236,7 +237,10 @@ const ChangePracticeScreen = ({
               {
                 translateY: actionButtonsAnimatedValue.interpolate({
                   inputRange: [0, 1],
-                  outputRange: [0, -heightUnit * 10],
+                  outputRange: [
+                    0,
+                    Platform.OS === -'ios' ? -heightUnit * 10 : -heightUnit * 8,
+                  ],
                 }),
               },
             ],

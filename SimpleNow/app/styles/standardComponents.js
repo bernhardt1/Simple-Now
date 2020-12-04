@@ -13,14 +13,19 @@ import {
   standardButtonSpacing,
   standardSettingButtonSpacing,
 } from './spacings';
-import { BRAND_BLACK, BRAND_WHITE, DARK_OVERLAY } from './colors';
+import {
+  BRAND_BLACK,
+  BRAND_WHITE,
+  DARK_OVERLAY,
+  VERY_DARK_OVERLAY,
+} from './colors';
 import { footnoteFont } from './fonts';
 
 // default header
 const defaultHeader = {
   height: headerHeight,
   width: screenWidth,
-  backgroundColor: DARK_OVERLAY,
+  backgroundColor: VERY_DARK_OVERLAY,
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -145,7 +150,7 @@ const shadow = {
   shadowOpacity: 0.22,
   shadowRadius: 2.22,
 
-  elevation: 3,
+  // elevation: 3,
 };
 
 export {

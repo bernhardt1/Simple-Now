@@ -15,25 +15,25 @@ const QUESTION = 'question';
 const INTERACTIVE = 'interactive';
 
 const BREATH_DESCRIPTION =
-  'Include the Breath category in your practice to receive daily focused breathing exercises.';
+  'The Breath category contains simple breathing exercises that encourage mindfulness.';
 const SENSATION_DESCRIPTION =
   "Include the Sensation category in your practice to become more mindful of your body and it's stream of sensations.";
-const THOUGHT_DESCRIPTION =
-  'Include the Thought category in your practice to become more mindful of your stream of thoughts and to observe their flow.';
 const HEAR_DESCRIPTION =
-  'Include the Hear category in your practice to broaden your awareness to include the sounds around you.';
+  'The Hear category encourages you to broaden your practice by becoming mindful of the sounds around you.';
 const SEE_DESCRIPTION =
-  'Include the See category in your practice to explore the relationship between self and environment by directing your attention outwards.';
+  'The exercises in the See category explore the relationship between self and environment by directing your attention outwards.';
+const THOUGHT_DESCRIPTION =
+  'Include the Thought category in your practice to become more mindful of your stream of thoughts and observe their flow.';
 const SENSE_DESCRIPTION =
   'Include the Sense category in your practice to explore the intermingling of your senses and environment.';
 const AWARENESS_DESCRIPTION =
-  'Include the Awareness category in your practice to reflect upon the self you identify with.';
+  'The exercises in the Awareness category will encourage you to reflect upon the self you identify with.';
 const QUOTE_DESCRIPTION =
-  'Include the Quote category in your practice to receive quotes from spiritual leaders and thinkers to reflect upon.';
+  'The Quote category contains quotes from mindfulness experts for you to reflect upon.';
 const QUESTION_DESCRIPTION =
-  'Include the Question category in your practice to receive Questions posited by spiritual leaders and thinkers to reflect upon.';
+  'The Question category contains questions posited by spiritual leaders and thinkers for you to reflect upon.';
 const INTERACTIVE_DESCRIPTION =
-  'Include the Interactive category in your practice to receive real world exercises inspired by spiritual leaders and thinkers that will put your mindfulness into practice.';
+  'The Interactive category contains real world exercises inspired by spiritual leaders and thinkers that will put your mindfulness into practice.';
 
 const BREATH_CSV = `./rawExercises/${BREATH}Exercises.csv`;
 const SENSATION_CSV = `./rawExercises/${SENSATION}Exercises.csv`;
