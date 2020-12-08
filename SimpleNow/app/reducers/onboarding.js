@@ -1,15 +1,15 @@
-import { UPDATE_NAVIGATION_DEEP_LINK } from '../actions/navigation';
+import { UPDATE_ONBOARDING_COMPLETE } from '../actions/onboarding';
 
 const initialState = {
-  deepLinkState: null,
+  onboardingComplete: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NAVIGATION_DEEP_LINK:
+    case UPDATE_ONBOARDING_COMPLETE:
       return {
         ...state,
-        deepLinkState: action.result,
+        onboardingComplete: action.val,
       };
     default:
       return state;

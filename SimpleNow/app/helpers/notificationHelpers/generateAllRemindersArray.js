@@ -3,7 +3,6 @@ const generateAllRemindersArray = (allReminders) => {
 
   for (const [key, value] of Object.entries(allReminders)) {
     if (!key.includes('0') || key.includes('isEnabled')) continue;
-    console.log('key', key);
 
     const parts = value.split('-');
 

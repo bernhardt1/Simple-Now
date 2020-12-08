@@ -21,6 +21,7 @@ const StandardButton = ({ title, image, onPress, withBorder, textColor }) => {
         colors={[VERY_DARK_OVERLAY, DARK_OVERLAY]}
         style={[
           standardButton,
+          styles.buttonRow,
           withBorder
             ? { borderColor: BRAND_WHITE, borderWidth: BORDER_WIDTH }
             : {},

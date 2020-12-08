@@ -92,6 +92,14 @@ const bodyFont = {
   fontWeight: '500',
 };
 
+const bodyFontThin = {
+  ...human.body,
+  lineHeight: human.body.fontSize * 1.3,
+  color: BRAND_BLACK,
+  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontWeight: '300',
+};
+
 const bodyFontTitle = {
   ...human.body,
   color: BRAND_BLACK,
@@ -157,6 +165,7 @@ export {
   boldSubheadFont,
   subheadFont,
   bodyFont,
+  bodyFontThin,
   bodyFontTitle,
   captionFont,
   footnoteFont,

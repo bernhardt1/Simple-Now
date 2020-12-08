@@ -4,6 +4,7 @@ import {
   BORDER_RADIUS,
   headerHeight,
   BORDER_WIDTH,
+  heightUnit,
 } from './constants';
 import {
   buttonFromEdgeSpacing,
@@ -135,6 +136,17 @@ const momentCategoryCard = {
   ...shadow,
 };
 
+// Daily Exercist Item
+const dailyExerciseItem = {
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: heightUnit * 35,
+  width: widthUnit * 54,
+  borderRadius: BORDER_RADIUS,
+  backgroundColor: 'white',
+  marginLeft: widthUnit * 4,
+};
+
 //Flair
 const standardBorder = {
   borderWidth: BORDER_WIDTH,
@@ -166,6 +178,7 @@ export {
   programInfoCard,
   meditationCard,
   momentCategoryCard,
+  dailyExerciseItem,
   standardBorder,
   shadow,
 };

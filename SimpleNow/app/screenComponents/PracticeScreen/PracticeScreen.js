@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ImageBackground,
   View,
@@ -40,6 +40,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import NotificationScheduler from '../NotificationScheduler/NotificationScheduler';
 import getNumberOfDailyExercisesComplete from '../../helpers/reduxHelpers/getNumberOfDailyExercisesComplete';
 import getNumberOfExercisesCompletedSinceXDaysAgo from '../../helpers/reduxHelpers/getNumberOfExercisesCompletedSinceXDaysAgo';
+import { dailyExerciseItem } from '../../styles/standardComponents';
 
 const PracticeScreen = ({
   background,
@@ -50,7 +51,7 @@ const PracticeScreen = ({
   reduxContent,
   isDeviceNotificationsEnabled,
 }) => {
-  const renderDailyExerciseItem = (item) => {
+  const renderDailyExerciseItem = (item, index) => {
     const isExerciseComp = isExerciseComplete(
       item?.exerciseType,
       item?.id,
@@ -63,6 +64,7 @@ const PracticeScreen = ({
         navigation={navigation}
         isExerciseComplete={isExerciseComp}
         currentPracticeProgress={currentPracticeProgress}
+        lastItem={index === currentPractice.length - 1}
       />
     );
   };
@@ -95,22 +97,22 @@ const PracticeScreen = ({
         </View>
       </View>
 
-      <TouchableOpacity
+      <View
         style={styles.centerSection}
-        onPress={() => {
-          global.Notifications.getScheduledLocalNotifications((notifs) =>
-            console.log('notifications', notifs)
-          );
+        // onPress={() => {
+        //   global.Notifications.getScheduledLocalNotifications((notifs) =>
+        //     console.log('notifications', notifs)
+        //   );
 
-          global.Notifications.scheduleNotif(
-            '123456789',
-            'steel_bell.mp3',
-            1,
-            'test notification',
-            'this is a test',
-            '103/20/7'
-          );
-        }}
+        //   global.Notifications.scheduleNotif(
+        //     '123456789',
+        //     'steel_bell.mp3',
+        //     1,
+        //     'test notification',
+        //     'this is a test',
+        //     '103/20/7'
+        //   );
+        // }}
       >
         <View style={styles.centerCircle}>
           <Text style={[captionFont, whiteFont, styles.textSpacing]}>
@@ -124,7 +126,7 @@ const PracticeScreen = ({
           )} times`}</Text>
           <Text style={[captionFont, whiteFont]}>this week</Text>
         </View>
-      </TouchableOpacity>
+      </View>
       <View style={styles.bottomSection}>
         <View style={styles.dailyPracticeTextContainer}>
           <Text style={[titleEmphasizedFont, whiteFont]}>Today's Practice</Text>
@@ -134,41 +136,25 @@ const PracticeScreen = ({
           )} / ${currentPractice?.length}`}</Text>
         </View>
 
-        {/* <RenderDailyExerciseItems
-          reduxContent={reduxContent}
-          currentPracticeProgress={currentPracticeProgress}
-          navigation={navigation}
-          firstRow={
-            currentPractice?.length <= 2
-              ? currentPractice
-              : currentPractice.slice(0, Math.ceil(currentPractice.length / 2))
-          }
-          secondRow={
-            currentPractice?.length <= 2
-              ? []
-              : currentPractice.slice(
-                  Math.ceil(currentPractice.length / 2),
-                  currentPractice.length
-                )
-          }
-        /> */}
-        {/* <Carousel
-          data={currentPractice}
-          renderItem={({ item, index }) => {
-            return renderDailyExerciseItem(item);
-          }}
-          sliderWidth={screenWidth}
-          itemWidth={screenWidth - itemSpacing.margin * 2}
-        /> */}
         <FlatList
           data={currentPractice}
           renderItem={({ item, index }) => {
-            return renderDailyExerciseItem(item);
+            return renderDailyExerciseItem(item, index);
           }}
           horizontal
           contentContainerStyle={styles.flatlistContainer}
           extraData={[reduxContent, currentPracticeProgress]}
           showsHorizontalScrollIndicator={false}
+          initialScrollIndex={Math.min(
+            getNumberOfDailyExercisesComplete(currentPracticeProgress),
+            currentPractice?.length - 1
+          )}
+          getItemLayout={(data, index) => ({
+            length: dailyExerciseItem.width,
+            offset:
+              dailyExerciseItem.width * index - dailyExerciseItem.width / 3,
+            index,
+          })}
         />
       </View>
       <NotificationScheduler navigation={navigation} />

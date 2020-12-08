@@ -258,7 +258,6 @@ const StandardExercise = ({
 
   // pass 1 to pulse
   const animateInnerRingPulse = (value, nextStep, count) => {
-    console.log('animating inner ring pulse');
     Animated.timing(innerRingPulseAnimation, {
       toValue: value,
       duration: EBS * 3000,
@@ -359,7 +358,6 @@ const StandardExercise = ({
   };
 
   const onPressSimpleButton = () => {
-    console.log('pressed');
     if (currentStep === COUNTING_DOWN) {
       // pause too
       if (this?.isPaused) {

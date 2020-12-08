@@ -66,21 +66,16 @@ const reminderScheduler = async (reminder, daysAheadToSchedule) => {
 
       if (globalNumberOfScheduledNotification >= MAX_NOTIFICATIONS) return;
       if (!isDayActive) continue;
-      console.log('reminderDate < nowIso', reminderDate < nowIso);
       if (reminderDate < nowIso) continue;
 
       const date = Moment(reminderDate).format('L');
       const monthDayYearArray = date?.split('/');
-      console.log('monthDayYearArray', monthDayYearArray);
       const day = monthDayYearArray[1];
-      console.log('day', day);
       const id = `${reminderId}${day}`;
-      console.log('id', id);
 
       const secondsAheadToSchedule = Math.floor(
         (new Date(reminderDate) - new Date(nowIso)) / 1000
       );
-      console.log('secondsAheadToSchedule', secondsAheadToSchedule);
 
       // check if reminder is in the schedule. continue if it isn't.
       if (scheduledNotifications.map((sn) => sn?.id).includes(id)) continue;

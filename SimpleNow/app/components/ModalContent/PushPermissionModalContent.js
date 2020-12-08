@@ -56,8 +56,8 @@ const PushPermissionModalContent: React.FC<Props> = (props) => {
         style={styles.permissionImage}
       />
       <Text style={[titleFont, centerAlign]}>
-        Simple Now needs your permission to send you notifications. Tap "OK"
-        twice continue.
+        Simple Now needs your permission to send you notifications. Tap twice to
+        continue.
       </Text>
       <TouchableOpacity onPress={askPushPermissions}>
         <View style={styles.okButton}>

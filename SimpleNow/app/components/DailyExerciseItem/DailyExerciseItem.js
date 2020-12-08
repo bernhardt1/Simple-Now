@@ -7,12 +7,11 @@ import {
   orangeFont,
   bodyFont,
   footnoteFont,
-  captionFont,
 } from '../../styles/fonts';
-import LinearGradient from 'react-native-linear-gradient';
-import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
 import setLocalImage from '../../helpers/setLocalImage';
 import getCategoryCardImage from '../../helpers/styleHelpers/getCategoryCardImage';
+import NotificationSwitchSelector from '../NotificationSwitchSelector/NotificationSwitchSelector';
+import { dailyExerciseItem } from '../../styles/standardComponents';
 
 const DailyExerciseItem = ({
   exercise,
@@ -20,9 +19,8 @@ const DailyExerciseItem = ({
   isExerciseComplete,
   currentPracticeProgress,
   navigation,
+  lastItem,
 }) => {
-  const cardColors = getCategoryCardColors(exercise?.exerciseType);
-
   const navigateExercise = () => {
     navigation.navigate('Exercise', {
       exercise,
@@ -30,34 +28,43 @@ const DailyExerciseItem = ({
   };
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={navigateExercise}
-      activeOpacity={0.7}
-    >
-      <View>
-        <Image
-          source={setLocalImage(getCategoryCardImage(exercise?.exerciseType))}
-          style={styles.image}
-        />
-        <View style={styles.textContainer}>
-          <Text style={[bodyFont, whiteFont]}>{`${exercise?.title}`}</Text>
-          {currentPracticeProgress.includes(exercise?.id) && (
-            <Text style={[footnoteFont, whiteFont]}>COMPLETE</Text>
-          )}
+    <View>
+      <TouchableOpacity
+        style={[
+          styles.container,
+          lastItem ? { marginRight: dailyExerciseItem.marginLeft } : {},
+        ]}
+        onPress={navigateExercise}
+        activeOpacity={0.7}
+      >
+        <View>
+          <Image
+            source={setLocalImage(getCategoryCardImage(exercise?.exerciseType))}
+            style={styles.image}
+          />
+          <View style={styles.textContainer}>
+            <Text style={[bodyFont, whiteFont]}>{`${exercise?.title}`}</Text>
+            {currentPracticeProgress.includes(exercise?.id) && (
+              <Text style={[footnoteFont, whiteFont]}>COMPLETE</Text>
+            )}
 
-          {!isExerciseComplete && (
-            <Text
-              ellipsizeMode="tail"
-              style={[bodyFont, orangeFont]}
-              numberOfLines={2}
-            >
-              NEW
-            </Text>
-          )}
+            {!isExerciseComplete && (
+              <Text
+                ellipsizeMode="tail"
+                style={[bodyFont, orangeFont]}
+                numberOfLines={2}
+              >
+                NEW
+              </Text>
+            )}
+          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+      {/* <View style={styles.remindMeContainer}>
+        <Text style={[bodyFont, whiteFont]}>{`03:57:23`}</Text>
+        <NotificationSwitchSelector />
+      </View> */}
+    </View>
   );
 };
 

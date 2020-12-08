@@ -854,8 +854,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
-				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
+				PROVISIONING_PROFILE = "1863a0dc-9c27-44b6-9c71-63f5d9a0b844";
+				PROVISIONING_PROFILE_SPECIFIER = "Simple Now";
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNow.app/SimpleNow";
 			};
@@ -869,7 +869,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimpleNow/SimpleNow.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 46X2Y8LV94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SimpleNow/Info.plist;
@@ -896,7 +896,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimpleNow/SimpleNow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 46X2Y8LV94;
 				INFOPLIST_FILE = SimpleNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -907,8 +907,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimpleNow;
 				PRODUCT_NAME = SimpleNow;
-				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
-				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
+				PROVISIONING_PROFILE = "1863a0dc-9c27-44b6-9c71-63f5d9a0b844";
+				PROVISIONING_PROFILE_SPECIFIER = "Simple Now";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -967,8 +967,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.daily-mindfulness.SimpleNow-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
-				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
+				PROVISIONING_PROFILE = "1863a0dc-9c27-44b6-9c71-63f5d9a0b844";
+				PROVISIONING_PROFILE_SPECIFIER = "Simple Now";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1027,8 +1027,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.SimpleNow-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a68eeeb2-d472-454d-8655-bf8f4f03a7cd";
-				PROVISIONING_PROFILE_SPECIFIER = "Simple Now Distribution";
+				PROVISIONING_PROFILE = "1863a0dc-9c27-44b6-9c71-63f5d9a0b844";
+				PROVISIONING_PROFILE_SPECIFIER = "Simple Now";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNow-tvOS.app/SimpleNow-tvOS";

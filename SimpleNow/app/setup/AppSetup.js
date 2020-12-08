@@ -13,6 +13,13 @@ import linking from '../config/linking';
 import { updateNavigationDeepLink } from '../actions/navigation';
 import convertUrlToPath from '../helpers/convertUrlToPath';
 import createNavigationStateForExercise from '../helpers/createNavigationStateForExercise';
+import OnboardingNavigation from '../config/OnboardingNavigation';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  BACKGROUND_GRADIENT_1,
+  BACKGROUND_GRADIENT_2,
+  DARK_OVERLAY,
+} from '../styles/colors';
 
 class AppSetup extends Component {
   constructor(props) {
@@ -70,20 +77,35 @@ class AppSetup extends Component {
   }
 
   render() {
+    const { onboardingComplete } = this.props;
     return (
-      <View style={{ flex: 1, backgroundColor: 'black' }}>
+      <LinearGradient
+        style={{ flex: 1 }}
+        colors={[BACKGROUND_GRADIENT_1, BACKGROUND_GRADIENT_2]}
+        useAngle={true}
+        angle={150}
+        angleCenter={{ x: 0.5, y: 0.5 }}
+      >
         <StatusBar
           barStyle="light-content"
           translucent
           backgroundColor={'transparent'}
         />
         <NavigationContainer linking={linking}>
-          {<BaseNavigation />}
+          {onboardingComplete && <BaseNavigation />}
+          {!onboardingComplete && <OnboardingNavigation />}
         </NavigationContainer>
-      </View>
+      </LinearGradient>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    onboardingComplete: state?.onboarding?.onboardingComplete,
+    activePrograms: state?.practice?.activePrograms || [],
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -92,4 +114,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AppSetup);
+export default connect(mapStateToProps, mapDispatchToProps)(AppSetup);

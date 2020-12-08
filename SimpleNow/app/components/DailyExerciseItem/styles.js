@@ -1,20 +1,15 @@
-import { BORDER_RADIUS, heightUnit, widthUnit } from '../../styles/constants';
+import { heightUnit, widthUnit } from '../../styles/constants';
 import { VERY_DARK_OVERLAY } from '../../styles/colors';
+import { dailyExerciseItem } from '../../styles/standardComponents';
 
 const styles = {
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: heightUnit * 35,
-    width: widthUnit * 54,
-    borderRadius: BORDER_RADIUS,
-    backgroundColor: 'white',
-    marginLeft: widthUnit * 4,
+    ...dailyExerciseItem,
   },
   image: {
-    height: heightUnit * 35,
-    width: widthUnit * 54,
-    borderRadius: BORDER_RADIUS,
+    height: dailyExerciseItem.height,
+    width: dailyExerciseItem.width,
+    borderRadius: dailyExerciseItem.borderRadius,
   },
   textContainer: {
     position: 'absolute',
@@ -22,9 +17,18 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: heightUnit * 10,
-    width: widthUnit * 54,
-    borderRadius: BORDER_RADIUS,
+    width: dailyExerciseItem.width,
+    borderRadius: dailyExerciseItem.borderRadius,
     backgroundColor: VERY_DARK_OVERLAY,
+  },
+  remindMeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: dailyExerciseItem.width,
+    marginLeft: dailyExerciseItem.marginLeft,
+    marginTop: widthUnit,
+    paddingHorizontal: widthUnit * 2,
   },
 };
 

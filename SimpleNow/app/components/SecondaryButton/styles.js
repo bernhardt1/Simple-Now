@@ -6,7 +6,6 @@ const styles = {
   container: {
     ...bottomButton,
     backgroundColor: VERY_DARK_OVERLAY,
-    ...standardBorder,
   },
   absoluteBottomButton: {
     position: 'absolute',
