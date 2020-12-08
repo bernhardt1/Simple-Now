@@ -50,7 +50,10 @@ const largeTitleFont = {
   fontSize: screenWidth / 12,
   lineHeight: screenWidth / 8,
   letterSpacing: sanFranciscoSpacing(screenWidth / 12),
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Med',
   fontWeight: '500',
   color: BRAND_BLACK,
   textAlignVertical: 'center',
@@ -59,28 +62,40 @@ const largeTitleFont = {
 const titleEmphasizedFont = {
   ...human.title2,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Med',
   fontWeight: Platform.OS === 'ios' ? '700' : '500',
 };
 
 const titleFont = {
   ...human.title3,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Med',
   fontWeight: '500',
 };
 
 const boldSubheadFont = {
   ...human.body,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Med',
   fontWeight: Platform.OS === 'ios' ? '700' : '500',
 };
 
 const subheadFont = {
   ...human.body,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Demi',
   fontWeight: '500',
 };
 
@@ -88,7 +103,10 @@ const bodyFont = {
   ...human.body,
   lineHeight: human.body.fontSize * 1.3,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Reg',
   fontWeight: '500',
 };
 
@@ -96,7 +114,10 @@ const bodyFontThin = {
   ...human.body,
   lineHeight: human.body.fontSize * 1.3,
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Reg',
   fontWeight: '300',
 };
 
@@ -110,7 +131,10 @@ const footnoteFont = {
   ...human.footnote,
   fontWeight: '500',
   color: BRAND_BLACK,
-  fontFamily: 'AvenirNextRoundedPro-Bold',
+  fontFamily:
+    Platform.OS === 'ios'
+      ? 'AvenirNextRoundedPro-Bold'
+      : 'AvenirNextRoundedPro-Demi',
 };
 const captionFont = {
   ...human.caption1,

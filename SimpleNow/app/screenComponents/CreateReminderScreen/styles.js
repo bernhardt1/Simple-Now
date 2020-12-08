@@ -17,9 +17,8 @@ const styles = {
     alignItems: 'center',
   },
   lowerSection: {
-    flex: 1,
     ...islandSpacing,
-
+    paddingBottom: widthUnit * 16,
     justifyContent: 'space-between',
   },
   dayButton: {

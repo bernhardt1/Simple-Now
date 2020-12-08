@@ -71,7 +71,7 @@ const styles = {
 
   // other
   textSpacing: {
-    marginBottom: widthUnit * 2,
+    marginBottom: widthUnit * 1,
   },
 };
 

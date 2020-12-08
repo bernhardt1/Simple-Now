@@ -90,158 +90,151 @@ const EditReminderScreen = ({
       angleCenter={{ x: 0.5, y: 0.5 }}
     >
       <HeaderSpacer />
-
-      <ScrollView contentContainerStyle={styles.container} bounces={false}>
-        <HeaderDefaultBack
-          onPressBack={navigateBack}
-          title={'Edit Reminder'}
-          rightButtonComponent={
-            <TouchableOpacity activeOpacity={0.7} onPress={onPressSave}>
-              <Text style={[boldSubheadFont, orangeFont]}>SAVE</Text>
-            </TouchableOpacity>
-          }
+      <HeaderDefaultBack
+        onPressBack={navigateBack}
+        title={'Edit Reminder'}
+        rightButtonComponent={
+          <TouchableOpacity activeOpacity={0.7} onPress={onPressSave}>
+            <Text style={[boldSubheadFont, orangeFont]}>SAVE</Text>
+          </TouchableOpacity>
+        }
+      />
+      <InvisibleSeparator />
+      <View style={styles.timePickerContainer}>
+        <DatePicker
+          date={date}
+          mode={'time'}
+          onDateChange={setDate}
+          textColor={BRAND_WHITE}
+          fadeToColor={'#303030'}
         />
-        <InvisibleSeparator />
-        <View style={styles.timePickerContainer}>
-          <DatePicker
-            date={date}
-            mode={'time'}
-            onDateChange={setDate}
-            textColor={BRAND_WHITE}
-            fadeToColor={'#303030'}
-          />
-        </View>
-        <View style={styles.lowerSection}>
-          <View style={styles.textContainer}>
-            <Text style={[titleFont, whiteFont, verticalButtonsMargin]}>
-              REPEAT
+      </View>
+      <ScrollView contentContainerStyle={styles.lowerSection}>
+        <View style={styles.textContainer}>
+          <Text style={[titleFont, whiteFont, verticalButtonsMargin]}>
+            REPEAT
+          </Text>
+
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsMonday(!isMonday)}
+          >
+            <Text
+              style={[bodyFont, isMonday ? boldSubheadFont : {}, whiteFont]}
+            >
+              Every Monday
             </Text>
-
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsMonday(!isMonday)}
+            {isMonday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsTuesday(!isTuesday)}
+          >
+            <Text
+              style={[bodyFont, isTuesday ? boldSubheadFont : {}, whiteFont]}
             >
-              <Text
-                style={[bodyFont, isMonday ? boldSubheadFont : {}, whiteFont]}
-              >
-                Every Monday
-              </Text>
-              {isMonday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsTuesday(!isTuesday)}
+              Every Tuesday
+            </Text>
+            {isTuesday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsWednesday(!isWednesday)}
+          >
+            <Text
+              style={[bodyFont, isWednesday ? boldSubheadFont : {}, whiteFont]}
             >
-              <Text
-                style={[bodyFont, isTuesday ? boldSubheadFont : {}, whiteFont]}
-              >
-                Every Tuesday
-              </Text>
-              {isTuesday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsWednesday(!isWednesday)}
+              Every Wednesday
+            </Text>
+            {isWednesday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsThursday(!isThursday)}
+          >
+            <Text
+              style={[bodyFont, isThursday ? boldSubheadFont : {}, whiteFont]}
             >
-              <Text
-                style={[
-                  bodyFont,
-
-                  isWednesday ? boldSubheadFont : {},
-                  whiteFont,
-                ]}
-              >
-                Every Wednesday
-              </Text>
-              {isWednesday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsThursday(!isThursday)}
+              Every Thursday
+            </Text>
+            {isThursday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsFriday(!isFriday)}
+          >
+            <Text
+              style={[bodyFont, isFriday ? boldSubheadFont : {}, whiteFont]}
             >
-              <Text
-                style={[bodyFont, isThursday ? boldSubheadFont : {}, whiteFont]}
-              >
-                Every Thursday
-              </Text>
-              {isThursday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsFriday(!isFriday)}
+              Every Friday
+            </Text>
+            {isFriday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsSaturday(!isSaturday)}
+          >
+            <Text
+              style={[bodyFont, isSaturday ? boldSubheadFont : {}, whiteFont]}
             >
-              <Text
-                style={[bodyFont, isFriday ? boldSubheadFont : {}, whiteFont]}
-              >
-                Every Friday
-              </Text>
-              {isFriday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsSaturday(!isSaturday)}
+              Every Saturday
+            </Text>
+            {isSaturday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dayButton}
+            onPress={() => setIsSunday(!isSunday)}
+          >
+            <Text
+              style={[bodyFont, isSunday ? boldSubheadFont : {}, whiteFont]}
             >
-              <Text
-                style={[bodyFont, isSaturday ? boldSubheadFont : {}, whiteFont]}
-              >
-                Every Saturday
-              </Text>
-              {isSaturday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => setIsSunday(!isSunday)}
-            >
-              <Text
-                style={[bodyFont, isSunday ? boldSubheadFont : {}, whiteFont]}
-              >
-                Every Sunday
-              </Text>
-              {isSunday && (
-                <Image
-                  source={setLocalImage('checkWhite')}
-                  style={styles.checkImage}
-                />
-              )}
-            </TouchableOpacity>
-          </View>
-          <StandardButton
-            title={'DELETE'}
-            onPress={onPressDelete}
-            textColor={BRAND_ORANGE}
-          />
+              Every Sunday
+            </Text>
+            {isSunday && (
+              <Image
+                source={setLocalImage('checkWhite')}
+                style={styles.checkImage}
+              />
+            )}
+          </TouchableOpacity>
         </View>
+        <StandardButton
+          title={'DELETE'}
+          onPress={onPressDelete}
+          textColor={BRAND_ORANGE}
+        />
       </ScrollView>
+      {/* </ScrollView> */}
     </LinearGradient>
   );
 };

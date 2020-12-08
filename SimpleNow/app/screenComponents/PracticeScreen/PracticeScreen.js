@@ -21,6 +21,7 @@ import isExerciseComplete from '../../helpers/reduxHelpers/isExerciseComplete';
 import styles from './styles';
 import {
   captionFont,
+  centerAlign,
   footnoteFont,
   largeTitleFont,
   titleEmphasizedFont,
@@ -115,7 +116,9 @@ const PracticeScreen = ({
         // }}
       >
         <View style={styles.centerCircle}>
-          <Text style={[captionFont, whiteFont, styles.textSpacing]}>
+          <Text
+            style={[captionFont, whiteFont, styles.textSpacing, centerAlign]}
+          >
             You've practiced
           </Text>
           <Text
