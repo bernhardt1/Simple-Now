@@ -15,7 +15,7 @@ const HOW_TO_BREATH =
 const HOW_TO_SENSATION =
   'Begin by bringing your attention into your body. You can close your eyes if that’s comfortable for you.\n\nYou can notice your body, feel the weight of your body. Take a few deep breaths. As you take a deep breath, bring in more oxygen enlivening the body. As you exhale, have a sense of relaxing more deeply.\n\nBe aware of the sensation in the targeted area as best you can. Notice the area and see if you can allow it to soften.As you do so, you may find that your mind wanders, distracted by thoughts or other bodily sensations. That’s OK. Just notice that this is happening and gently bring your attention back to the targetted area.';
 const HOW_TO_THOUGHT =
-  'Take a few moments to settle into feeling the body as a whole, sitting and breathing. Close your eyes if that’s comfortable for you.\n\nAllow breath and body to recede into the background and invite the domain of thought to be center stage in the field of awareness.\n\nRather than being carried away by the content or emotional charge of individual thoughts, instead rest comfortably on the bank of the thoughts, allowing individual thoughts if and when they arise to be seen, felt, recognized and known, as thoughts as events in the field of awareness.';
+  'Take a few moments to settle into feeling the body as a whole, sitting and breathing. Close your eyes if that’s comfortable for you.\n\nAllow breath and body to recede into the background and invite the domain of thought to be center stage in the field of awareness.\n\nRather than being carried away by the content or emotional charge of individual thoughts, instead rest comfortably on the bank of the thoughts, allowing individual thoughts if and when they arise to be seen, felt, recognized and known, as events in the field of awareness.';
 const HOW_TO_HEAR =
   'Begin by bringing awareness to your ears as you become aware of hearing.\n\nTake a moment to recognize if you’re trying to listen. If so, stop trying. Instead, just allow the sounds to come to you. Notice that you have no control over when the next sound will come or what the next sound will be.\n\nAs you do this practice you may become aware of how the mind becomes busy with images or stories connected with the sounds. That is fine, just notice this and come back to being aware of the fundamental aspect of hearing. Sounds appearing and disappearing.';
 const HOW_TO_SEE =
@@ -26,10 +26,6 @@ const HOW_TO_SELF_AWARENESS =
   'Self awareness exercises usually pose a question. The purpose of these questions is to provide a starting point to re-examine your fundamental understanding of yourself and the world around you.\n\nThey examine the relationship between your body, awareness, thoughts, emotions, senses, and environment.';
 const HOW_TO_QUESTION =
   'The question are designed for you to ask yourself after you bring your awareness to the present moment but it can also be helpful to read and ponder them at any time.\n\nThe questions themselves are inspired by teachings from spiritual leaders, both contemporary and historical. They are valuable teachings that have helped many people to change their understanding and experience of life.';
-const HOW_TO_QUOTE =
-  'The quotes we share are from contemporary and historical teachers.\n\nWe include them to inspire and motivate you as you continue with your practice.';
-const HOW_TO_INTERACTIVE =
-  'Interactive exercises are meant to be a next step beyond private practice.\n\nSimple Now, the app, is designed to help you integrate mindfulness into every day life. Most of the exercises we share will help you build private mindfulness patterns into your life. These exercises help you bring your awareness to the present moment more often.\n\nThe next step is to be more mindful in everything you do. Whether it’s interacting with others, or doing the dishes. Awareness and attention to the present moment can change everything. These interactive exercises will help you with that progression.';
 
 export {
   STRING_ABOUT_SIMPLENOW_1,
@@ -46,6 +42,4 @@ export {
   HOW_TO_SENSE,
   HOW_TO_SELF_AWARENESS,
   HOW_TO_QUESTION,
-  HOW_TO_QUOTE,
-  HOW_TO_INTERACTIVE,
 };

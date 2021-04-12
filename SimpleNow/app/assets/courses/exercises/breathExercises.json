@@ -1,1 +1,157 @@
-{"exerciseData":{"data":[{"id":"Breath-0","title":"Breath 1","exerciseType":"Breath","copy":"Close your eyes and notice the natural rhythm of your breath.","recommendedTime":30000},{"id":"Breath-1","title":"Breath 2","exerciseType":"Breath","copy":"Narrow your attention to the rising and falling of your chest as you breathe.","recommendedTime":30000},{"id":"Breath-2","title":"Breath 3","exerciseType":"Breath","copy":"Narrow your attention to the feeling of air flowing in and out through your nose. Keep your mouth closed and breath only through your nose.","recommendedTime":30000},{"id":"Breath-3","title":"Breath 4","exerciseType":"Breath","copy":"Focus on your breath. When you notice you’ve become distracted by a thought, gently acknowledge that thought with a smile and return attention to your breath.","recommendedTime":30000},{"id":"Breath-4","title":"Breath 5","exerciseType":"Breath","copy":"Place your attention on your ribcage expanding and contracting as you breathe.","recommendedTime":30000},{"id":"Breath-5","title":"Breath 6","exerciseType":"Breath","copy":"Close your eyes and mentally count your breaths. Keep your attention on your breathing.","recommendedTime":30000},{"id":"Breath-6","title":"Breath 7","exerciseType":"Breath","copy":"Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.","recommendedTime":30000},{"id":"Breath-7","title":"Breath 8","exerciseType":"Breath","copy":"Close your eyes and focus on your breath. Count each breath you take.","recommendedTime":60000},{"id":"Breath-8","title":"Breath 9","exerciseType":"Breath","copy":"Breathe very slowly and deeply by mentally counting to five for every inhale and again to five for every exhale.","recommendedTime":60000},{"id":"Breath-9","title":"Breath 10","exerciseType":"Breath","copy":"Close your eyes and focus intensely on the feeling of your lungs expanding and deflating as you breathe. ","recommendedTime":60000},{"id":"Breath-10","title":"Breath 11","exerciseType":"Breath","copy":"Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.","recommendedTime":60000},{"id":"Breath-11","title":"Breath 12","exerciseType":"Breath","copy":"Without adjusting anything, simply notice the natural rhythm of your breath.","recommendedTime":60000},{"id":"Breath-12","title":"Breath 13","exerciseType":"Breath","copy":"Find a pain or discomfort in your body. Breathe into that spot. Feel the sensation change as you breathe in and out.","recommendedTime":60000},{"id":"Breath-13","title":"Breath 14","exerciseType":"Breath","copy":"Focus on the feeling of your chest rising and falling as you breath.","recommendedTime":90000},{"id":"Breath-14","title":"Breath 15","exerciseType":"Breath","copy":"Focus on the feeling of your lungs expanding and contracting with each breath.","recommendedTime":60000},{"id":"Breath-15","title":"Breath 16","exerciseType":"Breath","copy":"Narrow your attention to the natural rhythm of your breath. Do this without changing or controlling your breathing pattern.","recommendedTime":90000},{"id":"Breath-16","title":"Breath 17","exerciseType":"Breath","copy":"Find an area of tension, perhaps in your neck or eyes. Narrow your attention to that spot as you breath. With each inhale focus on a specific point of tension and with each exhale release the tension you feel.","recommendedTime":90000},{"id":"Breath-17","title":"Breath 18","exerciseType":"Breath","copy":"Close your eyes and feel the natural movement of your entire body as you breath. Focus on this broad external expansion and contraction of the entire body.  ","recommendedTime":90000},{"id":"Breath-18","title":"Breath 19","exerciseType":"Breath","copy":"Close your eyes and, starting in the toes, move your attention through your body slowly. Breath into and release any muscle tension in the areas you pass your attention through. ","recommendedTime":120000},{"id":"Breath-19","title":"Breath 20","exerciseType":"Breath","copy":"Close your eyes and focus on your breath as intensely as you can. Think of nothing else. Ignore any thoughts, or distractions that arise.","recommendedTime":120000}],"errors":[],"meta":{"delimiter":",","linebreak":"\r\n","aborted":false,"truncated":false,"cursor":2957,"fields":["id","title","exerciseType","copy","recommendedTime"]},"type":"breath","description":"The Breath category contains simple breathing exercises that encourage mindfulness."}}
+{
+  "exerciseData": {
+    "data": [
+      {
+        "id": "Breath-0",
+        "title": "Breath 1",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and notice the natural rhythm of your breath.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-1",
+        "title": "Breath 2",
+        "exerciseType": "Breath",
+        "copy": "Narrow your attention to the rising and falling of your chest as you breathe.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-2",
+        "title": "Breath 3",
+        "exerciseType": "Breath",
+        "copy": "Narrow your attention to the feeling of air flowing in and out through your nose. Keep your mouth closed and breath only through your nose.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-3",
+        "title": "Breath 4",
+        "exerciseType": "Breath",
+        "copy": "Focus on your breath. When you notice you’ve become distracted by a thought, gently acknowledge that thought with a smile and return attention to your breath.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-4",
+        "title": "Breath 5",
+        "exerciseType": "Breath",
+        "copy": "Place your attention on your ribcage expanding and contracting as you breathe.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-5",
+        "title": "Breath 6",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and mentally count your breaths. Keep your attention on your breathing.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-6",
+        "title": "Breath 7",
+        "exerciseType": "Breath",
+        "copy": "Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Breath-7",
+        "title": "Breath 8",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and focus on your breath. Count each breath you take.",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-8",
+        "title": "Breath 9",
+        "exerciseType": "Breath",
+        "copy": "Breathe very slowly and deeply by mentally counting to five for every inhale and again to five for every exhale.",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-9",
+        "title": "Breath 10",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and focus intensely on the feeling of your lungs expanding and deflating as you breathe. ",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-10",
+        "title": "Breath 11",
+        "exerciseType": "Breath",
+        "copy": "Concentrate on your breath. Feel the sensation in your nostrils as you breathe through your nose.",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-11",
+        "title": "Breath 12",
+        "exerciseType": "Breath",
+        "copy": "Without adjusting anything, simply notice the natural rhythm of your breath.",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-12",
+        "title": "Breath 13",
+        "exerciseType": "Breath",
+        "copy": "Find a pain or discomfort in your body. Breathe into that spot. Feel the sensation change as you breathe in and out.",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-13",
+        "title": "Breath 14",
+        "exerciseType": "Breath",
+        "copy": "Focus on the feeling of your chest rising and falling as you breath.",
+        "recommendedTime": 90000
+      },
+      {
+        "id": "Breath-14",
+        "title": "Breath 15",
+        "exerciseType": "Breath",
+        "copy": "Focus on the feeling of your lungs expanding and contracting with each breath.",
+        "recommendedTime": 60000
+      },
+      {
+        "id": "Breath-15",
+        "title": "Breath 16",
+        "exerciseType": "Breath",
+        "copy": "Narrow your attention to the natural rhythm of your breath. Do this without changing or controlling your breathing pattern.",
+        "recommendedTime": 90000
+      },
+      {
+        "id": "Breath-16",
+        "title": "Breath 17",
+        "exerciseType": "Breath",
+        "copy": "Find an area of tension, perhaps in your neck or eyes. Narrow your attention to that spot as you breath. With each inhale focus on a specific point of tension and with each exhale release the tension you feel.",
+        "recommendedTime": 90000
+      },
+      {
+        "id": "Breath-17",
+        "title": "Breath 18",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and feel the natural movement of your entire body as you breath. Focus on this broad external expansion and contraction of the entire body.  ",
+        "recommendedTime": 90000
+      },
+      {
+        "id": "Breath-18",
+        "title": "Breath 19",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and, starting in the toes, move your attention through your body slowly. Breath into and release any muscle tension in the areas you pass your attention through. ",
+        "recommendedTime": 120000
+      },
+      {
+        "id": "Breath-19",
+        "title": "Breath 20",
+        "exerciseType": "Breath",
+        "copy": "Close your eyes and focus on your breath as intensely as you can. Think of nothing else. Ignore any thoughts, or distractions that arise.",
+        "recommendedTime": 120000
+      }
+    ],
+    "errors": [],
+    "meta": {
+      "delimiter": ",",
+      "linebreak": "\r\n",
+      "aborted": false,
+      "truncated": false,
+      "cursor": 2957,
+      "fields": ["id", "title", "exerciseType", "copy", "recommendedTime"]
+    },
+    "type": "breath",
+    "description": "The Breath category contains simple breathing exercises that encourage mindfulness."
+  }
+}

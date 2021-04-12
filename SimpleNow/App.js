@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './app/config/store';
-import AppSetup from './app/setup/AppSetup';
+import IAPManager from './app/setup/IAPManager';
 
 import * as Sentry from '@sentry/react-native';
 
@@ -32,7 +32,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppSetup initialNotification={initialNotificationUserInfo?.screen} />
+          <IAPManager
+            initialNotification={initialNotificationUserInfo?.screen}
+          />
         </PersistGate>
       </Provider>
     );

@@ -14,9 +14,10 @@
 		15A811597184438588769D82 /* AvenirNextRoundedPro-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 561A69242B844B57A176AC95 /* AvenirNextRoundedPro-Reg.ttf */; };
 		15F83F3A512E4CD0A83A3C76 /* AvenirNextRoundedPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D6E4E1D2DF45ACBC9B7A12 /* AvenirNextRoundedPro-Bold.ttf */; };
 		176AC623B7064AEEA0621262 /* AvenirNextRoundedPro-DemiIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7EF0AE1D87C4CB8804500F3 /* AvenirNextRoundedPro-DemiIt.ttf */; };
+		19630D0E2610F2D90044261D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19630D0D2610F2D90044261D /* StoreKit.framework */; };
 		198157F5254F9508001D9377 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 198157F4254F9508001D9377 /* GoogleService-Info.plist */; };
 		198F46BF252D83FC004C0150 /* steel_bell_long.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 198F46BD252D83FC004C0150 /* steel_bell_long.mp3 */; };
-		198F46C0252D83FC004C0150 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 198F46BE252D83FC004C0150 /* chime.mp3 */; };
+		19CAA4C325E3343D00D338BC /* closing_bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19CAA4C225E3343D00D338BC /* closing_bell.mp3 */; };
 		19D4CBC8250AA27700F37C8E /* steel_bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19D4CBC7250AA27700F37C8E /* steel_bell.mp3 */; };
 		19E6A2B3255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */; };
 		19E6A2B4255DABF6005C5CF7 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98DC0773C74FF18C114914 /* RNPlaceholder.swift */; };
@@ -70,9 +71,10 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SimpleNow/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SimpleNow/main.m; sourceTree = "<group>"; };
 		15E4BA6BD3765A4C6EAB4EB6 /* Pods-SimpleNow-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNow-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNow-tvOS/Pods-SimpleNow-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		19630D0D2610F2D90044261D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		198157F4254F9508001D9377 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/Simple_Now/firebaseConfigFiles/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		198F46BD252D83FC004C0150 /* steel_bell_long.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steel_bell_long.mp3; sourceTree = "<group>"; };
-		198F46BE252D83FC004C0150 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
+		19CAA4C225E3343D00D338BC /* closing_bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = closing_bell.mp3; sourceTree = "<group>"; };
 		19D4CBC1250A8DD700F37C8E /* SimpleNow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SimpleNow.entitlements; path = SimpleNow/SimpleNow.entitlements; sourceTree = "<group>"; };
 		19D4CBC7250AA27700F37C8E /* steel_bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steel_bell.mp3; sourceTree = "<group>"; };
 		19E6A2B7255DB727005C5CF7 /* attention_to_the_breathe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attention_to_the_breathe.mp3; path = ../../../../../Documents/Simple_Now/audio/attention_to_the_breathe.mp3; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA61AB88CFBB9C8E099F3AD /* libPods-SimpleNow.a in Frameworks */,
+				19630D0E2610F2D90044261D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +191,7 @@
 		19D4CBC2250AA13600F37C8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				198F46BE252D83FC004C0150 /* chime.mp3 */,
+				19CAA4C225E3343D00D338BC /* closing_bell.mp3 */,
 				198F46BD252D83FC004C0150 /* steel_bell_long.mp3 */,
 				19D4CBC7250AA27700F37C8E /* steel_bell.mp3 */,
 				65D6E4E1D2DF45ACBC9B7A12 /* AvenirNextRoundedPro-Bold.ttf */,
@@ -246,6 +249,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19630D0D2610F2D90044261D /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				9BE591847F66F965196B11AA /* libPods-SimpleNow.a */,
@@ -393,7 +397,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 46X2Y8LV94;
 						LastSwiftMigration = 1120;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -445,11 +449,11 @@
 				19D4CBC8250AA27700F37C8E /* steel_bell.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				198F46C0252D83FC004C0150 /* chime.mp3 in Resources */,
 				198F46BF252D83FC004C0150 /* steel_bell_long.mp3 in Resources */,
 				15F83F3A512E4CD0A83A3C76 /* AvenirNextRoundedPro-Bold.ttf in Resources */,
 				E93BFC161C8248FAB36A427B /* AvenirNextRoundedPro-BoldIt.ttf in Resources */,
 				9998391CCB37442BB39F4C75 /* AvenirNextRoundedPro-Demi.ttf in Resources */,
+				19CAA4C325E3343D00D338BC /* closing_bell.mp3 in Resources */,
 				176AC623B7064AEEA0621262 /* AvenirNextRoundedPro-DemiIt.ttf in Resources */,
 				9C6C646854954031BECED1D3 /* AvenirNextRoundedPro-Italic.ttf in Resources */,
 				E0F582DA16454C2E9555FDD6 /* AvenirNextRoundedPro-Med.ttf in Resources */,
@@ -868,8 +872,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimpleNow/SimpleNow.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 46X2Y8LV94;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SimpleNow/Info.plist;
@@ -881,7 +886,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimpleNow;
 				PRODUCT_NAME = SimpleNow;
-				PROVISIONING_PROFILE_SPECIFIER = "SimpleNow-development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -896,7 +901,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimpleNow/SimpleNow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 15;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 46X2Y8LV94;
 				INFOPLIST_FILE = SimpleNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -1,41 +1,28 @@
 import React, { useEffect } from 'react';
-import {
-  ImageBackground,
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import Carousel from 'react-native-snap-carousel';
+import { CommonActions } from '@react-navigation/native';
+
+import { updateNavigationDeepLink } from '../../actions/navigation';
 
 import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { StandardSettingButton } from '../../components/StandardSettingButton';
-import { StandardButton } from '../../components/StandardButton';
 import { DailyExerciseItem } from '../../components/DailyExerciseItem';
-import { TextContainer } from '../../components/TextContainer';
-
-import setLocalImage from '../../helpers/setLocalImage';
 import isExerciseComplete from '../../helpers/reduxHelpers/isExerciseComplete';
 
 import styles from './styles';
 import {
   captionFont,
+  centerAlign,
   footnoteFont,
   largeTitleFont,
   titleEmphasizedFont,
-  titleFont,
   whiteFont,
 } from '../../styles/fonts';
-import { screenWidth, widthUnit } from '../../styles/constants';
-import { itemSpacing } from '../../styles/spacings';
 import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
-  DARK_OVERLAY,
-  VERY_DARK_OVERLAY,
 } from '../../styles/colors';
-import RenderDailyExerciseItems from './RenderDailyExerciseItems';
 import LinearGradient from 'react-native-linear-gradient';
 import NotificationScheduler from '../NotificationScheduler/NotificationScheduler';
 import getNumberOfDailyExercisesComplete from '../../helpers/reduxHelpers/getNumberOfDailyExercisesComplete';
@@ -50,7 +37,26 @@ const PracticeScreen = ({
   reduxResetCurrentPractice,
   reduxContent,
   isDeviceNotificationsEnabled,
+  deepLinkState,
+  reduxUpdateNavigationDeepLink,
 }) => {
+  useEffect(() => {
+    this.timeout = setTimeout(() => {
+      handleDeepLinkNavigation(deepLinkState);
+    }, 100);
+
+    return () => {
+      if (this?.timeout) clearTimeout(this.timeout);
+    };
+  }, [deepLinkState, currentPractice]);
+
+  const handleDeepLinkNavigation = () => {
+    if (!deepLinkState) return;
+
+    navigateNextExerciseIfAvailable();
+    reduxUpdateNavigationDeepLink(null);
+  };
+
   const renderDailyExerciseItem = (item, index) => {
     const isExerciseComp = isExerciseComplete(
       item?.exerciseType,
@@ -67,6 +73,32 @@ const PracticeScreen = ({
         lastItem={index === currentPractice.length - 1}
       />
     );
+  };
+
+  const navigateNextExerciseIfAvailable = () => {
+    let indexOfNextExercise = -1;
+    let counter = 0;
+
+    while (counter < currentPractice.length) {
+      const isExerciseComp = isExerciseComplete(
+        currentPractice[counter]?.exerciseType,
+        currentPractice[counter]?.id,
+        reduxContent
+      );
+
+      if (!isExerciseComp) {
+        indexOfNextExercise = counter;
+        counter = currentPractice.length;
+      }
+
+      counter++;
+    }
+
+    if (indexOfNextExercise >= 0) {
+      navigation.navigate('Exercise', {
+        exercise: currentPractice[indexOfNextExercise],
+      });
+    }
   };
 
   return (
@@ -115,7 +147,9 @@ const PracticeScreen = ({
         // }}
       >
         <View style={styles.centerCircle}>
-          <Text style={[captionFont, whiteFont, styles.textSpacing]}>
+          <Text
+            style={[captionFont, whiteFont, styles.textSpacing, centerAlign]}
+          >
             You've practiced
           </Text>
           <Text
@@ -169,7 +203,15 @@ const mapStateToProps = (state) => {
     currentPracticeProgress: state?.practice?.currentPracticeProgress || '',
     isDeviceNotificationsEnabled:
       state?.notifications?.isDeviceNotificationsEnabled || false,
+    deepLinkState: state?.navigation?.deepLinkState || null,
   };
 };
 
-export default connect(mapStateToProps)(PracticeScreen);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reduxUpdateNavigationDeepLink: (deepLinkState) =>
+      dispatch(updateNavigationDeepLink(deepLinkState)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PracticeScreen);

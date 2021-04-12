@@ -26,11 +26,12 @@ const Onboarding3 = ({ navigation }) => {
     <View style={{ flex: 1, backgroundColor: 'transparent' }}>
       <OnboardingScrollwheelScreen
         navigation={navigation}
-        title={'3 / 4: A Mindful Reminder'}
-        subtitle={'Would you like to receive our morning mindfulness reminder?'}
+        title={'3 / 4: Remembering to Practice'}
+        subtitle={'Our most effective offering'}
         copy={
-          'This single reminder can greatly help you with establishing your daily practice.'
+          'Choosing to use practice reminders is choosing to make mindfulness a part of your day. This is the best way we can help you.'
         }
+        image={'desertNight'}
         buttonTitle={'Continue'}
         nextScreen={nextScreen}
         goBack={navigateBack}

@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { View, StatusBar, Alert, Linking, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import analytics from '@react-native-firebase/analytics';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { connect } from 'react-redux';
 
+import { forFade } from '../config/transitions';
 import sentryCaptureMessage from '../helpers/errorHelpers/sentryCaptureMessage';
 
 import NotificationService from '../notifications/NotificationService';
@@ -21,9 +24,18 @@ import {
   DARK_OVERLAY,
 } from '../styles/colors';
 
+const BaseStack = createStackNavigator();
+
 class AppSetup extends Component {
   constructor(props) {
     super(props);
+
+    this.setNavigationRef = (element) => {
+      this.navigationRef = element;
+    };
+    this.setRouteNameRef = (element) => {
+      this.routeNameRef = element;
+    };
 
     this.notif = new NotificationService(
       this.onRegister.bind(this),
@@ -51,11 +63,13 @@ class AppSetup extends Component {
     try {
       const { reduxUpdateNavigationDeepLink } = this.props;
       let url = incomingUrl;
+      console.log('url', url);
       if (incomingUrl?.url) url = incomingUrl.url;
       if (Platform.OS === 'ios' && url?.url) url = url.url;
 
       const path = convertUrlToPath(url);
-      const linkingState = createNavigationStateForExercise(path);
+      console.log('path', path);
+      const linkingState = createNavigationStateForExercise();
 
       reduxUpdateNavigationDeepLink(linkingState);
     } catch (e) {
@@ -91,9 +105,48 @@ class AppSetup extends Component {
           translucent
           backgroundColor={'transparent'}
         />
-        <NavigationContainer linking={linking}>
-          {onboardingComplete && <BaseNavigation />}
-          {!onboardingComplete && <OnboardingNavigation />}
+        <NavigationContainer
+          ref={this.setNavigationRef}
+          onReady={this.setRouteNameRef}
+          linking={linking}
+          onStateChange={async () => {
+            const previousRouteName = this.routeNameRef;
+            const currentRouteName = this.navigationRef.getCurrentRoute().name;
+
+            if (previousRouteName !== currentRouteName) {
+              await analytics().logScreenView({
+                screen_name: currentRouteName,
+                screen_class: currentRouteName,
+              });
+            }
+
+            this.routeNameRef = currentRouteName;
+          }}
+        >
+          <BaseStack.Navigator
+            mode={Platform.OS === 'ios' ? 'modal' : 'card'}
+            headerMode="screen"
+            screenOptions={{
+              cardStyleInterpolator: forFade,
+              headerStyle: {
+                height: 0,
+              },
+              header: () => {
+                return null;
+              },
+            }}
+          >
+            {onboardingComplete ? (
+              <>
+                <BaseStack.Screen name="MainApp" component={BaseNavigation} />
+              </>
+            ) : (
+              <BaseStack.Screen
+                name="OnboardingSection"
+                component={OnboardingNavigation}
+              />
+            )}
+          </BaseStack.Navigator>
         </NavigationContainer>
       </LinearGradient>
     );

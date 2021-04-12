@@ -13,6 +13,8 @@ target 'SimpleNow' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNIap', :path => '../node_modules/react-native-iap'
+
   target 'SimpleNowTests' do
     inherit! :complete
     # Pods for testing

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 import {
   breath,
@@ -9,9 +10,7 @@ import {
   see,
   sense,
   awareness,
-  quote,
   question,
-  interactive,
 } from '../../assets/courses/exercises/index';
 
 const categories = [
@@ -22,9 +21,7 @@ const categories = [
   thought,
   sense,
   awareness,
-  quote,
   question,
-  interactive,
 ].map((c) => {
   return {
     type: c?.exerciseData?.type,

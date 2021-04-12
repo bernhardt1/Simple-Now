@@ -17,7 +17,7 @@ const styles = {
   },
   containerDarken: {
     flex: 1,
-    backgroundColor: DARK_OVERLAY,
+    backgroundColor: VERY_DARK_OVERLAY,
   },
   headerSpacing: {
     height: statusBarHeight,

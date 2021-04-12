@@ -1,1 +1,185 @@
-{"exerciseData":{"data":[{"id":"Quote-0","title":"Quote 1","exerciseType":"Quote","copy":"\"The mind is everything. What you think you become.\"\n\n- Buddha","recommendedTime":30000},{"id":"Quote-1","title":"Quote 2","exerciseType":"Quote","copy":"“Meditation is a way for nourishing and blossoming the divinity within you.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-2","title":"Quote 3","exerciseType":"Quote","copy":"\"This moment, here, is inseparable from who you are at the deepest level.\"\n\n- Eckhart Tolle","recommendedTime":30000},{"id":"Quote-3","title":"Quote 4","exerciseType":"Quote","copy":"“Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.”\n\n- Thich Nhat Hanh","recommendedTime":30000},{"id":"Quote-4","title":"Quote 5","exerciseType":"Quote","copy":"“If you want to conquer the anxiety of life, live in the moment, live in the breath.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-5","title":"Quote 6","exerciseType":"Quote","copy":"\"If\nthe ocean\ncan calm itself,\nso can you.\nWe\nare both\nsalt water\nmixed with\nair.\"\n\n- Nayyirah Waheed","recommendedTime":30000},{"id":"Quote-6","title":"Quote 7","exerciseType":"Quote","copy":"“Looking at beauty in the world, is the first step of purifying the mind.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-7","title":"Quote 8","exerciseType":"Quote","copy":"\"The future is always beginning now.\"\n\n- Mark Strand","recommendedTime":30000},{"id":"Quote-8","title":"Quote 9","exerciseType":"Quote","copy":"“To understand the immeasurable, the mind must be extraordinarily quiet, still.”\n\n- Jiddu Krishnamurti","recommendedTime":30000},{"id":"Quote-9","title":"Quote 10","exerciseType":"Quote","copy":"“Sometimes you need to sit lonely on the floor in a quiet room in order to hear your own voice and not let it drown in the noise of others.”\n\n- Charlotte Eriksson","recommendedTime":30000},{"id":"Quote-10","title":"Quote 11","exerciseType":"Quote","copy":"“An awake heart is like a sky that pours light.”\n\n- Hafiz","recommendedTime":30000},{"id":"Quote-11","title":"Quote 12","exerciseType":"Quote","copy":"“Beautify your inner dialogue. Beautify your inner world with love light and compassion. Life will be beautiful.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-12","title":"Quote 13","exerciseType":"Quote","copy":"\"A simple practice. Accept whatever arises - within or without.\"\n\n- Eckhart Tolle","recommendedTime":30000},{"id":"Quote-13","title":"Quote 14","exerciseType":"Quote","copy":"\"If you just sit and observe, you will see how restless your mind is. If you try to calm it, it only makes it worse, but over time it does calm, and when it does, there's room to hear more subtle things--that's when your intuition starts to blossom and you start to see things more clearly and be in the present more. Your mind just slows down, and you see a tremendous expanse in the moment. You see so much more than you could see before.\"\n\n- Steve Jobs","recommendedTime":30000},{"id":"Quote-14","title":"Quote 15","exerciseType":"Quote","copy":"“A woman is human.\n\nShe is not better, wiser, stronger, more intelligent, more creative, or more responsible than a man.\n\nLikewise, she is never less.\n\nEquality is a given.\n\nA woman is human.”\n\n- Vera Nazarian","recommendedTime":30000},{"id":"Quote-15","title":"Quote 16","exerciseType":"Quote","copy":"\"Give your attention to the experience of seeing rather than to the object seen and you will find yourself everywhere.\"\n\n- Rupert Spira","recommendedTime":30000},{"id":"Quote-16","title":"Quote 17","exerciseType":"Quote","copy":"“You exist in time, but you belong to\neternity- You are a penetration of eternity into the world of time-You are\ndeathless, living in a body of death- Your consciousness knows no death, no\nbirth- It is only your body that is born and dies-But you are not aware of\nyour consciousness-You are not conscious of your consciousness-And that is the whole art of meditation;Becoming conscious of consciousness itself.”\n\n- Osho","recommendedTime":30000},{"id":"Quote-17","title":"Quote 18","exerciseType":"Quote","copy":"“Meditation is the dissolution of thoughts in Eternal awareness or Pure consciousness without objectification, knowing without thinking, merging finitude in infinity.”\n\n- Voltaire","recommendedTime":30000},{"id":"Quote-18","title":"Quote 19","exerciseType":"Quote","copy":"\"Suffering usually relates to wanting things to be different than they are.\" \n\n- Allan Lokos","recommendedTime":30000},{"id":"Quote-19","title":"Quote 20","exerciseType":"Quote","copy":"“Self-observation is the first step of inner unfolding.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-20","title":"Quote 21","exerciseType":"Quote","copy":"“Your thoughts are your message to the world. Just as the rays are the messages of the Sun.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-21","title":"Quote 22","exerciseType":"Quote","copy":"“You asked me how to get out of the finite dimensions when I feel like it. I certainly don't use logic when I do it. Logic's the first thing you have to get rid of.”\n\n- J.D. Salinger","recommendedTime":30000},{"id":"Quote-22","title":"Quote 23","exerciseType":"Quote","copy":"“Have love for your inner Self and everything else is done for you.”\n\n- Amit Ray","recommendedTime":30000},{"id":"Quote-23","title":"Quote 24","exerciseType":"Quote","copy":"\"Each morning we are born again. What we do today is what matters most.\"\n\n- Buddha","recommendedTime":30000}],"errors":[],"meta":{"delimiter":",","linebreak":"\r\n","aborted":false,"truncated":false,"cursor":4069,"fields":["id","title","exerciseType","copy","recommendedTime"]},"type":"quote","description":"The Quote category contains quotes from mindfulness experts for you to reflect upon."}}
+{
+  "exerciseData": {
+    "data": [
+      {
+        "id": "Quote-0",
+        "title": "Quote 1",
+        "exerciseType": "Quote",
+        "copy": "\"The mind is everything. What you think you become.\"\n\n- Buddha",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-1",
+        "title": "Quote 2",
+        "exerciseType": "Quote",
+        "copy": "“Meditation is a way for nourishing and blossoming the divinity within you.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-2",
+        "title": "Quote 3",
+        "exerciseType": "Quote",
+        "copy": "\"This moment, here, is inseparable from who you are at the deepest level.\"\n\n- Eckhart Tolle",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-3",
+        "title": "Quote 4",
+        "exerciseType": "Quote",
+        "copy": "“Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.”\n\n- Thich Nhat Hanh",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-4",
+        "title": "Quote 5",
+        "exerciseType": "Quote",
+        "copy": "“If you want to conquer the anxiety of life, live in the moment, live in the breath.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-5",
+        "title": "Quote 6",
+        "exerciseType": "Quote",
+        "copy": "\"If\nthe ocean\ncan calm itself,\nso can you.\nWe\nare both\nsalt water\nmixed with\nair.\"\n\n- Nayyirah Waheed",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-6",
+        "title": "Quote 7",
+        "exerciseType": "Quote",
+        "copy": "“Looking at beauty in the world, is the first step of purifying the mind.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-7",
+        "title": "Quote 8",
+        "exerciseType": "Quote",
+        "copy": "\"The future is always beginning now.\"\n\n- Mark Strand",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-8",
+        "title": "Quote 9",
+        "exerciseType": "Quote",
+        "copy": "“To understand the immeasurable, the mind must be extraordinarily quiet, still.”\n\n- Jiddu Krishnamurti",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-9",
+        "title": "Quote 10",
+        "exerciseType": "Quote",
+        "copy": "“Sometimes you need to sit lonely on the floor in a quiet room in order to hear your own voice and not let it drown in the noise of others.”\n\n- Charlotte Eriksson",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-10",
+        "title": "Quote 11",
+        "exerciseType": "Quote",
+        "copy": "“An awake heart is like a sky that pours light.”\n\n- Hafiz",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-11",
+        "title": "Quote 12",
+        "exerciseType": "Quote",
+        "copy": "“Beautify your inner dialogue. Beautify your inner world with love light and compassion. Life will be beautiful.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-12",
+        "title": "Quote 13",
+        "exerciseType": "Quote",
+        "copy": "\"A simple practice. Accept whatever arises - within or without.\"\n\n- Eckhart Tolle",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-13",
+        "title": "Quote 14",
+        "exerciseType": "Quote",
+        "copy": "\"If you just sit and observe, you will see how restless your mind is. If you try to calm it, it only makes it worse, but over time it does calm, and when it does, there's room to hear more subtle things--that's when your intuition starts to blossom and you start to see things more clearly and be in the present more. Your mind just slows down, and you see a tremendous expanse in the moment. You see so much more than you could see before.\"\n\n- Steve Jobs",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-14",
+        "title": "Quote 15",
+        "exerciseType": "Quote",
+        "copy": "“A woman is human.\n\nShe is not better, wiser, stronger, more intelligent, more creative, or more responsible than a man.\n\nLikewise, she is never less.\n\nEquality is a given.\n\nA woman is human.”\n\n- Vera Nazarian",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-15",
+        "title": "Quote 16",
+        "exerciseType": "Quote",
+        "copy": "\"Give your attention to the experience of seeing rather than to the object seen and you will find yourself everywhere.\"\n\n- Rupert Spira",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-16",
+        "title": "Quote 17",
+        "exerciseType": "Quote",
+        "copy": "“You exist in time, but you belong to\neternity- You are a penetration of eternity into the world of time-You are\ndeathless, living in a body of death- Your consciousness knows no death, no\nbirth- It is only your body that is born and dies-But you are not aware of\nyour consciousness-You are not conscious of your consciousness-And that is the whole art of meditation;Becoming conscious of consciousness itself.”\n\n- Osho",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-17",
+        "title": "Quote 18",
+        "exerciseType": "Quote",
+        "copy": "“Meditation is the dissolution of thoughts in Eternal awareness or Pure consciousness without objectification, knowing without thinking, merging finitude in infinity.”\n\n- Voltaire",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-18",
+        "title": "Quote 19",
+        "exerciseType": "Quote",
+        "copy": "\"Suffering usually relates to wanting things to be different than they are.\" \n\n- Allan Lokos",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-19",
+        "title": "Quote 20",
+        "exerciseType": "Quote",
+        "copy": "“Self-observation is the first step of inner unfolding.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-20",
+        "title": "Quote 21",
+        "exerciseType": "Quote",
+        "copy": "“Your thoughts are your message to the world. Just as the rays are the messages of the Sun.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-21",
+        "title": "Quote 22",
+        "exerciseType": "Quote",
+        "copy": "“You asked me how to get out of the finite dimensions when I feel like it. I certainly don't use logic when I do it. Logic's the first thing you have to get rid of.”\n\n- J.D. Salinger",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-22",
+        "title": "Quote 23",
+        "exerciseType": "Quote",
+        "copy": "“Have love for your inner Self and everything else is done for you.”\n\n- Amit Ray",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "Quote-23",
+        "title": "Quote 24",
+        "exerciseType": "Quote",
+        "copy": "\"Each morning we are born again. What we do today is what matters most.\"\n\n- Buddha",
+        "recommendedTime": 30000
+      }
+    ],
+    "errors": [],
+    "meta": {
+      "delimiter": ",",
+      "linebreak": "\r\n",
+      "aborted": false,
+      "truncated": false,
+      "cursor": 4069,
+      "fields": ["id", "title", "exerciseType", "copy", "recommendedTime"]
+    },
+    "type": "quote",
+    "description": "The Quote category contains quotes from mindfulness experts for you to reflect upon."
+  }
+}

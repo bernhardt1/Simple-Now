@@ -1,5 +1,5 @@
 import { BRAND_WHITE, VERY_DARK_OVERLAY } from '../../styles/colors';
-import { widthUnit } from '../../styles/constants';
+import { BORDER_RADIUS, widthUnit } from '../../styles/constants';
 import { practiceCarouselSpacing } from '../../styles/spacings';
 import {
   islandShape,
@@ -28,11 +28,10 @@ const styles = {
   },
   checkImageContainer: {
     position: 'absolute',
-    height: 30,
-    width: 30,
+    padding: 8,
     top: meditationCard.height * 0.05,
     left: meditationCard.height * 0.05,
-    borderRadius: 15,
+    borderRadius: BORDER_RADIUS,
     backgroundColor: VERY_DARK_OVERLAY,
     justifyContent: 'center',
     alignItems: 'center',

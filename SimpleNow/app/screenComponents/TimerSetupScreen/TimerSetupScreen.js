@@ -23,6 +23,8 @@ import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
 } from '../../styles/colors';
+import { NONE } from '../../constants/constants';
+import { updateTimerDuration } from '../../actions/practice';
 
 const TIMER_OPTIONS = Array.from(Array(120).keys()).map((i) => i + 1);
 
@@ -31,8 +33,16 @@ const TimerSetupScreen = ({
   reduxUpdateIsSoundOn,
   background,
   isSoundOn,
+  bellInterval,
+  timerDuration,
+  reduxUpdateTimerDuration,
 }) => {
-  const [time, setTime] = useState(1);
+  const [time, setTime] = useState(timerDuration / 60);
+
+  const setTimerDuration = (val) => {
+    reduxUpdateTimerDuration(val * 60);
+    setTime(val);
+  };
 
   const navigateSetBellInterval = () => {
     navigation.navigate('SetBellInterval');
@@ -106,24 +116,39 @@ const TimerSetupScreen = ({
           contentContainerStyle={styles.timerScrollerContentContainer}
           renderItem={({ item, index }) => renderTimerItem(item, index)}
           removeClippedSubviews
+          getItemLayout={(data, index) => ({
+            length: widthUnit * 6,
+            offset: widthUnit * 6 * index,
+            index,
+          })}
           onScroll={({ nativeEvent }) => {
             const { contentOffset } = nativeEvent;
 
-            const index = Math.round(contentOffset.x / (widthUnit * 6));
+            const index = Math.round(contentOffset.x / (widthUnit * 6)) + 1;
             const lowerBound = Math.max(1, index);
             const upperBound = Math.min(TIMER_OPTIONS.length, lowerBound);
 
             if (upperBound !== time) {
-              setTime(upperBound);
+              setTimerDuration(upperBound);
             }
           }}
+          initialScrollIndex={time - 1}
           keyExtractor={(item) => `${item}`}
           ListHeaderComponent={() => (
-            <View style={{ width: screenWidth / 2 }} />
+            <View
+              style={{
+                width: screenWidth / 2 - styles.timerSelectedItem.width / 2,
+              }}
+            />
           )}
           ListFooterComponent={() => (
-            <View style={{ width: screenWidth / 2 }} />
+            <View
+              style={{
+                width: screenWidth / 2 - styles.timerSelectedItem.width / 2,
+              }}
+            />
           )}
+          snapToAlignment="center"
         />
       </View>
       <View style={styles.footerContainer}>
@@ -136,7 +161,7 @@ const TimerSetupScreen = ({
               onPress={navigateSetBellInterval}
             />
 
-            <Text style={[captionFont, whiteFont]}>{'Every minute'}</Text>
+            <Text style={[captionFont, whiteFont]}>{bellInterval.name}</Text>
           </View>
         </View>
       </View>
@@ -148,12 +173,15 @@ const mapStateToProps = (state) => {
   return {
     background: state?.settings?.background || 'background1',
     isSoundOn: state?.settings?.isSoundOn,
+    bellInterval: state?.practice?.bellInterval || NONE,
+    timerDuration: state?.practice?.timerDuration || 60,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     reduxUpdateIsSoundOn: (val) => dispatch(updateIsSoundOn(val)),
+    reduxUpdateTimerDuration: (val) => dispatch(updateTimerDuration(val)),
   };
 };
 

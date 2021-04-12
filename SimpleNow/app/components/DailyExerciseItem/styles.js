@@ -1,10 +1,11 @@
 import { heightUnit, widthUnit } from '../../styles/constants';
 import { VERY_DARK_OVERLAY } from '../../styles/colors';
-import { dailyExerciseItem } from '../../styles/standardComponents';
+import { bigShadow, dailyExerciseItem } from '../../styles/standardComponents';
 
 const styles = {
   container: {
     ...dailyExerciseItem,
+    ...bigShadow,
   },
   image: {
     height: dailyExerciseItem.height,

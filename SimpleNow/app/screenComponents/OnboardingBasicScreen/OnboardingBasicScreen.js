@@ -13,6 +13,7 @@ import {
   titleFont,
   whiteFont,
 } from '../../styles/fonts';
+import { shadow } from '../../styles/standardComponents';
 
 import styles from './styles';
 
@@ -31,10 +32,10 @@ const OnboardingBasicScreen = ({
       <HeaderSpacer transparent />
       <LinearGradient
         style={styles.gradientContainer}
-        colors={['#55555500', '#55555511', '#555555ee', '#555555', '#555555']}
+        colors={['#55555500', '#55555511', '#555555aa', '#555555dd', '#555555']}
       >
         <View style={styles.topSection}>
-          <Text style={[titleFont, whiteFont]}>{title}</Text>
+          <Text style={[titleFont, whiteFont, shadow]}>{title}</Text>
         </View>
         <View style={styles.bottomSection}>
           <Text style={[titleFont, whiteFont, centerAlign]}>{subtitle}</Text>

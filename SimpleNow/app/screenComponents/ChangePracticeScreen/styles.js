@@ -2,6 +2,7 @@ import {
   BRAND_BLACK,
   BRAND_WHITE_OFF,
   DARK_OVERLAY,
+  EXTREMELY_DARK_OVERLAY,
   VERY_DARK_OVERLAY,
 } from '../../styles/colors';
 import { heightUnit, screenWidth, widthUnit } from '../../styles/constants';
@@ -37,12 +38,16 @@ const styles = {
     backgroundColor: DARK_OVERLAY,
   },
   tomorrowsPracticeContainer: {
+    backgroundColor: DARK_OVERLAY,
+    width: screenWidth,
     alignSelf: 'stretch',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    paddingVertical: widthUnit * 5,
   },
   tomorrowTextStyle: {
     marginLeft: practiceCarouselSpacing.marginLeft,
-    marginTop: widthUnit * 2,
+    marginBottom: widthUnit * 3,
   },
   categoriesContainer: {
     flexDirection: 'row',
@@ -71,8 +76,6 @@ const styles = {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     height: programInfoCard.height,
-    marginBottom: widthUnit * 3,
-    marginTop: widthUnit * 2,
     marginHorizontal: practiceCarouselSpacing.marginLeft,
   },
   // Moments Section
@@ -103,13 +106,15 @@ const styles = {
   },
   actionButton: {
     flex: 1,
+    flexDirection: 'row',
     paddingVertical: widthUnit,
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   actionButtonImage: {
-    height: 20,
-    width: 20,
+    height: 24,
+    width: 24,
+    marginRight: widthUnit * 2,
   },
 
   // other

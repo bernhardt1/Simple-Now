@@ -17,12 +17,8 @@ const getCategoryCardImage = (category) => {
       return 'cloud';
     case 'awareness':
       return 'space';
-    case 'quote':
-      return 'animal';
     case 'question':
       return 'buddha';
-    case 'interactive':
-      return 'people';
     default:
       return '';
   }

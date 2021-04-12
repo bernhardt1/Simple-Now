@@ -1,11 +1,17 @@
 import { DARK_OVERLAY, VERY_DARK_OVERLAY } from '../../styles/colors';
 import { screenHeight, screenWidth, widthUnit } from '../../styles/constants';
-import { bottomButton, standardBorder } from '../../styles/standardComponents';
+import {
+  bigShadow,
+  bottomButton,
+  shadow,
+  standardBorder,
+} from '../../styles/standardComponents';
 
 const styles = {
   container: {
     ...bottomButton,
     backgroundColor: VERY_DARK_OVERLAY,
+    ...bigShadow,
   },
   absoluteBottomButton: {
     position: 'absolute',

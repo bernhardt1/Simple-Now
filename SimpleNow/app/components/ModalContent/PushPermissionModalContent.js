@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity, Alert } from 'react-native';
 import sentryCaptureMessage from '../../helpers/errorHelpers/sentryCaptureMessage';
 import setLocalImage from '../../helpers/setLocalImage';
-import { centerAlign, logoTitleFont, titleFont } from '../../styles/fonts';
+import { bodyFont, centerAlign, titleFont } from '../../styles/fonts';
 
 import styles from './styles';
 
@@ -48,14 +48,12 @@ const PushPermissionModalContent: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.content}>
-      <Text style={[logoTitleFont, centerAlign, styles.title]}>
-        Notifications
-      </Text>
+      <Text style={[titleFont, centerAlign, styles.title]}>Notifications</Text>
       <Image
         source={setLocalImage('notificationPermission')}
         style={styles.permissionImage}
       />
-      <Text style={[titleFont, centerAlign]}>
+      <Text style={[bodyFont, centerAlign]}>
         Simple Now needs your permission to send you notifications. Tap twice to
         continue.
       </Text>

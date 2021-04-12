@@ -23,9 +23,10 @@ const styles = {
     marginBottom: islandSpacing.margin / 2,
   },
   okButton: {
-    padding: widthUnit * 4,
-    marginTop: islandSpacing.margin,
-    width: widthUnit * 60,
+    padding: widthUnit * 2,
+    marginTop: islandSpacing.margin * 1.5,
+    marginBottom: islandSpacing.margin * 0.5,
+    width: widthUnit * 40,
     justifyContent: 'center',
     alignItems: 'center',
     ...standardBorder,

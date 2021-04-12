@@ -13,6 +13,7 @@ import {
   practiceCarouselSpacing,
   standardButtonSpacing,
   standardSettingButtonSpacing,
+  subscriptionInformativeSpacing,
 } from './spacings';
 import {
   BRAND_BLACK,
@@ -65,6 +66,18 @@ const standardSettingButton = {
   ...standardSettingButtonSpacing,
   justifyContent: 'center',
   alignItems: 'center',
+  ...shadow,
+};
+
+const subscriptionInformativeButton = {
+  minHeight: widthUnit * 15,
+  minWidth: widthUnit * 20,
+  borderRadius: BORDER_RADIUS,
+  backgroundColor: VERY_DARK_OVERLAY,
+  ...subscriptionInformativeSpacing,
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  ...bigShadow,
 };
 
 const standardImageButton = {
@@ -92,7 +105,7 @@ const informationalImage = {
 };
 const smallInformationIsland = {
   height: footnoteFont.fontSize + widthUnit * 4,
-  width: footnoteFont.fontSize + widthUnit * 4,
+  width: footnoteFont.fontSize * 6,
   borderRadius: (footnoteFont.fontSize + widthUnit * 4) / 2,
   backgroundColor: DARK_OVERLAY,
   padding: widthUnit,
@@ -102,8 +115,8 @@ const smallInformationIsland = {
 
 // Program Info Card
 const programInfoCard = {
-  height: widthUnit * 14,
-  width: widthUnit * 14,
+  height: widthUnit * 24,
+  width: widthUnit * 24,
   backgroundColor: BRAND_WHITE,
   marginRight: widthUnit * 3,
   padding: widthUnit * 3,
@@ -133,7 +146,6 @@ const momentCategoryCard = {
   ...islandShape,
   justifyContent: 'center',
   alignItems: 'center',
-  ...shadow,
 };
 
 // Daily Exercist Item
@@ -162,7 +174,39 @@ const shadow = {
   shadowOpacity: 0.22,
   shadowRadius: 2.22,
 
-  // elevation: 3,
+  elevation: 1,
+};
+
+const iOSShadow = {
+  shadowColor: '#000000',
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+};
+
+const bigShadow = {
+  shadowColor: '#000000',
+  shadowOffset: {
+    width: 3,
+    height: 4,
+  },
+  shadowOpacity: 0.66,
+  shadowRadius: 6.22,
+
+  elevation: 3,
+};
+
+const iOSBigShadow = {
+  shadowColor: '#000000',
+  shadowOffset: {
+    width: 3,
+    height: 4,
+  },
+  shadowOpacity: 0.66,
+  shadowRadius: 6.22,
 };
 
 export {
@@ -171,6 +215,7 @@ export {
   islandShape,
   standardButton,
   standardSettingButton,
+  subscriptionInformativeButton,
   bottomButton,
   standardImageButton,
   informationalImage,
@@ -181,4 +226,7 @@ export {
   dailyExerciseItem,
   standardBorder,
   shadow,
+  bigShadow,
+  iOSShadow,
+  iOSBigShadow,
 };

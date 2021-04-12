@@ -6,9 +6,7 @@ import {
   see,
   sense,
   awareness,
-  quote,
   question,
-  interactive,
 } from '../../assets/courses/exercises/index';
 
 // this function accepts a string and returns the local image with a matching name.
@@ -28,12 +26,8 @@ const getCategoryContent = (category) => {
       return sense;
     case 'awareness':
       return awareness;
-    case 'quote':
-      return quote;
     case 'question':
       return question;
-    case 'interactive':
-      return interactive;
 
     default:
       return {};

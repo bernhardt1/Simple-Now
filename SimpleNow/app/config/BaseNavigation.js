@@ -10,8 +10,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { forFade, forFadeDefault } from './transitions';
 
 import Practice from '../screens/Practice';
+import Explore from '../screens/Explore';
 import Program from '../screens/Program';
 import Home from '../screens/Home';
+
+import SubscriptionOffer from '../screens/SubscriptionOffer';
 
 import ChangePractice from '../screens/ChangePractice';
 import EditPractice from '../screens/EditPractice';
@@ -34,54 +37,59 @@ import {
 } from '../styles/colors';
 import { Platform } from 'react-native';
 
-// const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-// function TabNavigation() {
-//   return (
-//     <Tab.Navigator
-//       lazy={false}
-//       screenOptions={({ route }) => ({
-//         tabBarIcon: ({ focused, color, size }) => {
-//           let iconName;
+function TabNavigation() {
+  return (
+    <Tab.Navigator
+      lazy={false}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
 
-//           if (route.name === 'TIMER') {
-//             iconName = focused ? 'time' : 'time-outline';
-//           } else if (route.name === 'HOME') {
-//             iconName = focused ? 'home' : 'home-outline';
-//           } else if (route.name === 'PRACTICE') {
-//             iconName = focused ? 'heart' : 'heart-outline';
-//           }
+          if (route.name === 'TIMER') {
+            iconName = focused ? 'time' : 'time-outline';
+          } else if (route.name === 'HOME') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'PRACTICE') {
+            iconName = focused ? 'heart' : 'heart-outline';
+          } else if (route.name === 'EXPLORE') {
+            iconName = focused ? 'compass' : 'compass-outline';
+          }
 
-//           // You can return any component that you like here!
-//           return <Ionicons name={iconName} size={size} color={color} />;
-//         },
-//       })}
-//       tabBarOptions={{
-//         activeTintColor: BRAND_BLACK,
-//         inactiveTintColor: BRAND_BLACK_UNSELECTED,
-//         labelStyle: {
-//           fontFamily: 'AvenirNextRoundedPro-Reg',
-//           fontWeight: '500',
-//           fontSize: 12,
-//         },
-//         style: {
-//           backgroundColor: BRAND_WHITE_OFF,
-//         },
-//       }}
-//     >
-//       <Tab.Screen name="PRACTICE" component={Practice} />
-//       <Tab.Screen name="TIMER" component={TimerSetup} />
-//       <Tab.Screen name="HOME" component={Home} />
-//     </Tab.Navigator>
-//   );
-// }
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: BRAND_BLACK,
+        inactiveTintColor: BRAND_BLACK_UNSELECTED,
+        labelStyle: {
+          fontFamily: 'AvenirNextRoundedPro-Reg',
+          fontWeight: '500',
+          fontSize: 12,
+        },
+        style: {
+          backgroundColor: BRAND_WHITE_OFF,
+        },
+        adaptive: true,
+        allowFontScaling: true,
+      }}
+    >
+      <Tab.Screen name="PRACTICE" component={Practice} />
+      <Tab.Screen name="EXPLORE" component={Explore} />
+      <Tab.Screen name="TIMER" component={TimerSetup} />
+      <Tab.Screen name="HOME" component={Home} />
+    </Tab.Navigator>
+  );
+}
 
 const Stack = createStackNavigator();
 
 function BaseNavigation() {
   return (
     <Stack.Navigator
-      initialRouteName="Practice"
+      initialRouteName="TabNavigation"
       mode={Platform.OS === 'ios' ? 'modal' : 'card'}
       headerMode="screen"
       screenOptions={{
@@ -95,8 +103,19 @@ function BaseNavigation() {
         },
       }}
     >
-      <Stack.Screen name="Practice" component={Practice} />
-
+      {/* <Stack.Screen name="Practice" component={Practice} /> */}
+      <Stack.Screen name="TabNavigation" component={TabNavigation} />
+      <Stack.Screen
+        name="SubscriptionOffer"
+        component={SubscriptionOffer}
+        options={
+          Platform.OS === 'ios'
+            ? {}
+            : {
+                ...TransitionPresets.DefaultTransition,
+              }
+        }
+      />
       <Stack.Screen
         name="ChangePractice"
         component={ChangePractice}

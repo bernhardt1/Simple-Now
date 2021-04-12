@@ -8,7 +8,9 @@ const Onboarding2 = ({ navigation }) => {
   };
 
   const nextScreen = (number) => {
-    navigation.navigate(`Onboarding3`);
+    Platform.OS === 'ios'
+      ? navigation.navigate(`Onboarding3`)
+      : navigation.navigate(`Onboarding4`);
   };
 
   return (

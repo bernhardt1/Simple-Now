@@ -1,23 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import setLocalImage from '../../helpers/setLocalImage';
 
-import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
 import getCategoryCardImage from '../../helpers/styleHelpers/getCategoryCardImage';
 import {
-  boldSubheadFont,
   whiteFont,
   titleEmphasizedFont,
   centerAlign,
-  orangeFont,
   capitalizeFont,
+  boldSubheadFont,
+  footnoteThin,
+  buttonFont,
+  bodyFont,
+  bodyFontThin,
 } from '../../styles/fonts';
-import {
-  meditationCard,
-  momentCategoryCard,
-  shadow,
-} from '../../styles/standardComponents';
+import { meditationCard } from '../../styles/standardComponents';
 
 import styles from './styles';
 
@@ -57,12 +54,9 @@ const MomentCategoryCard = ({
             {`${categoryData?.type}`}
           </Text>
         </View>
-        {activePrograms.includes(categoryData?.type) && (
+        {activePrograms?.includes(categoryData?.type) && (
           <View style={styles.checkImageContainer}>
-            <Image
-              style={styles.checkImage}
-              source={setLocalImage('checkWhite')}
-            />
+            <Text style={[footnoteThin, whiteFont]}>ACTIVE</Text>
           </View>
         )}
       </View>

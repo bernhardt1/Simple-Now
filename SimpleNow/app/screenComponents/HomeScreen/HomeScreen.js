@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { CommonActions } from '@react-navigation/native';
 
-import { updateNavigationDeepLink } from '../../actions/navigation';
 import { updateBackground } from '../../actions/settings';
 
 import { HeaderSpacer } from '../../components/HeaderSpacer';
@@ -17,34 +15,11 @@ import {
   BACKGROUND_GRADIENT_2,
 } from '../../styles/colors';
 
-const HomeScreen = ({
-  navigation,
-  deepLinkState,
-  background,
-  reduxUpdateNavigationDeepLink,
-  reduxUpdateBackground,
-}) => {
+const HomeScreen = ({ navigation, background, reduxUpdateBackground }) => {
   useEffect(() => {
-    // handleDeepLinkNavigation(deepLinkState);
     // Run the course notification scheduler every time the app is opened
     // courseNotificationScheduler();
-  }, [deepLinkState, background]);
-
-  const handleDeepLinkNavigation = () => {
-    if (!deepLinkState) return;
-
-    navigation.dispatch((state) => {
-      const newState = CommonActions.reset({
-        index: 0,
-        ...deepLinkState,
-      });
-
-      return newState;
-    });
-
-    // Reset the route after handling it
-    reduxUpdateNavigationDeepLink(null);
-  };
+  }, [background]);
 
   const changeBackground = () => {
     const current = background.split('background')[1];
@@ -71,15 +46,12 @@ const HomeScreen = ({
 
 const mapStateToProps = (state) => {
   return {
-    deepLinkState: state?.navigation?.deepLinkState || null,
     background: state?.settings?.background || 'background1',
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reduxUpdateNavigationDeepLink: (deepLinkState) =>
-      dispatch(updateNavigationDeepLink(deepLinkState)),
     reduxUpdateBackground: (deepLinkState) =>
       dispatch(updateBackground(deepLinkState)),
   };

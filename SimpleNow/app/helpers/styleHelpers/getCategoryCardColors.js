@@ -5,12 +5,8 @@ import {
   BREATH_2_COLOR,
   HEAR_1_COLOR,
   HEAR_2_COLOR,
-  INTERACT_1_COLOR,
-  INTERACT_2_COLOR,
   QUESTION_1_COLOR,
   QUESTION_2_COLOR,
-  QUOTE_1_COLOR,
-  QUOTE_2_COLOR,
   SEE_1_COLOR,
   SEE_2_COLOR,
   SENSATION_1_COLOR,
@@ -49,12 +45,8 @@ const getCategoryCardColors = (category) => {
       return [SENSE_1_COLOR, SENSE_2_COLOR];
     case 'awareness':
       return [AWARENESS_1_COLOR, AWARENESS_2_COLOR];
-    case 'quote':
-      return [QUOTE_1_COLOR, QUOTE_2_COLOR];
     case 'question':
       return [QUESTION_1_COLOR, QUESTION_2_COLOR];
-    case 'interactive':
-      return [INTERACT_1_COLOR, INTERACT_2_COLOR];
     case 'everything':
       return [
         BREATH_2_COLOR,

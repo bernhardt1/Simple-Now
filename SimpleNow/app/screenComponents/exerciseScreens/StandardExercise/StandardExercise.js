@@ -14,29 +14,32 @@ import { useKeepAwake } from 'expo-keep-awake';
 import Moment from 'moment';
 
 import { StandardImageButton } from '../../../components/StandardImageButton';
-import { EXERCISE_SPEED_MULTIPLIER } from '../../../constants/magicNumbers';
+import SecondaryButton from '../../../components/SecondaryButton/SecondaryButton';
+
+import { updateIsSoundOn } from '../../../actions/settings';
+import { updateContentComplete } from '../../../actions/content';
+import { updateCurrentPracticeProgress } from '../../../actions/practice';
+
 import setLocalImage from '../../../helpers/setLocalImage';
+import getCategoryCardImage from '../../../helpers/styleHelpers/getCategoryCardImage';
+import convertSecondsToMmSs from '../../../helpers/timeHelpers/convertSecondsToMmSs';
+import convertMillisecondsToSeconds from '../../../helpers/timeHelpers/convertMillisecondsToSeconds';
+import levelUp from '../../../helpers/analyticsHelpers/levelUp';
+
+import { EXERCISE_SPEED_MULTIPLIER } from '../../../constants/magicNumbers';
+
+import styles from './styles';
 import { heightUnit } from '../../../styles/constants';
 import {
   titleFont,
   centerAlign,
   titleEmphasizedFont,
   whiteFont,
-  bodyFont,
   captionFont,
   boldSubheadFont,
 } from '../../../styles/fonts';
 
-import styles from './styles';
-import convertMillisecondsToSeconds from '../../../helpers/timeHelpers/convertMillisecondsToSeconds';
-import { updateIsSoundOn } from '../../../actions/settings';
-import StandardButton from '../../../components/StandardButton/StandardButton';
-import convertSecondsToMmSs from '../../../helpers/timeHelpers/convertSecondsToMmSs';
-import SecondaryButton from '../../../components/SecondaryButton/SecondaryButton';
-import { updateContentComplete } from '../../../actions/content';
-import { updateCurrentPracticeProgress } from '../../../actions/practice';
-import { shadow } from '../../../styles/standardComponents';
-import getCategoryCardImage from '../../../helpers/styleHelpers/getCategoryCardImage';
+const READY_STRING = 'ready';
 
 const COUNTDOWN = 'COUNTDOWN';
 const START_EXERCISE = 'START_EXERCISE';
@@ -61,12 +64,12 @@ const StandardExercise = ({
 
   // const copyAudioRef = useRef(true);
   const steelBellRef = useRef(true);
-  const chimeRef = useRef(true);
+  const closingBellRef = useRef(true);
 
   const [categoryImage] = useState(
     getCategoryCardImage(exercise?.exerciseType)
   );
-  const [simpleInstruction, setSimpleInstruction] = useState('ready');
+  const [simpleInstruction, setSimpleInstruction] = useState(READY_STRING);
   const [currentStep, setCurrentStep] = useState('');
   const [exerciseDuration, setExerciseDuration] = useState(
     convertMillisecondsToSeconds(practiceDuration * EBS) || 60 * EBS
@@ -175,20 +178,24 @@ const StandardExercise = ({
       }
     );
 
-    chimeRef.current = new Sound('chime.mp3', Sound.MAIN_BUNDLE, (error) => {
-      if (error) {
-        return;
-      }
+    closingBellRef.current = new Sound(
+      'closing_bell.mp3',
+      Sound.MAIN_BUNDLE,
+      (error) => {
+        if (error) {
+          return;
+        }
 
-      if (!isSoundOn) {
-        chimeRef.current.setVolume(0);
+        if (!isSoundOn) {
+          closingBellRef.current.setVolume(0);
+        }
       }
-    });
+    );
 
     return () => {
       // copyAudioRef.current?.release();
       steelBellRef.current?.release();
-      chimeRef.current?.release();
+      closingBellRef.current?.release();
       if (this?.timeout) clearTimeout(this.timeout);
       if (this?.timeout2) clearTimeout(this.timeout2);
       if (this?.timeout3) clearTimeout(this.timeout3);
@@ -302,8 +309,10 @@ const StandardExercise = ({
         if (remainingTime > 1) {
           animateCountdown(nextStep, nextInstruction);
         } else {
-          chimeRef?.current?.play();
+          closingBellRef?.current?.play();
           setCurrentStep(nextStep);
+
+          levelUp(exercise?.id);
         }
       }, EBS * 50);
     }
@@ -392,13 +401,13 @@ const StandardExercise = ({
     if (isSoundOn) {
       // copyAudioRef.current.setVolume(0);
       steelBellRef.current.setVolume(0);
-      chimeRef.current.setVolume(0);
+      closingBellRef.current.setVolume(0);
       reduxUpdateIsSoundOn(false);
     } else {
       reduxUpdateIsSoundOn(true);
       // copyAudioRef.current.setVolume(1);
       steelBellRef.current.setVolume(1);
-      chimeRef.current.setVolume(1);
+      closingBellRef.current.setVolume(1);
     }
   };
 

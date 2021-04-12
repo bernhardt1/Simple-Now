@@ -4,6 +4,11 @@ import {
   buttonFromEdgeSpacing,
   standardSettingButtonSpacing,
 } from '../../styles/spacings';
+import {
+  shadow,
+  bigShadow,
+  iOSBigShadow,
+} from '../../styles/standardComponents';
 
 const styles = {
   container: {
@@ -29,6 +34,7 @@ const styles = {
     borderRadius: (widthUnit * 50) / 2,
     justifyContent: 'center',
     alignItems: 'center',
+    ...iOSBigShadow,
   },
   bottomSection: {
     flex: 1,
@@ -44,6 +50,7 @@ const styles = {
     alignSelf: 'stretch',
     ...standardSettingButtonSpacing,
     marginVertical: widthUnit * 2,
+    ...shadow,
   },
   flatlistContainer: {
     alignSelf: 'stretch',
@@ -71,7 +78,7 @@ const styles = {
 
   // other
   textSpacing: {
-    marginBottom: widthUnit * 2,
+    marginBottom: widthUnit * 1,
   },
 };
 

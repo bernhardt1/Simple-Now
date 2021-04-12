@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, ImageBackground, Text, Alert } from 'react-native';
+import {
+  View,
+  ImageBackground,
+  Text,
+  Alert,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import DatePicker from 'react-native-date-picker';
 
@@ -27,12 +34,14 @@ import convertReminderTimeToISODate from '../../helpers/timeHelpers/convertRemin
 import { StandardButton } from '../../components/StandardButton';
 import NotificationScheduler from '../NotificationScheduler/NotificationScheduler';
 import { connect } from 'react-redux';
+import { bigShadow } from '../../styles/standardComponents';
 
 const OnboardingScrollwheelScreen = ({
   navigation,
   title,
   subtitle,
   copy,
+  image,
   buttonTitle,
   nextScreen,
   goBack,
@@ -51,28 +60,64 @@ const OnboardingScrollwheelScreen = ({
     );
   };
 
+  const doubleCheckPermissions = () => {
+    if (!isDeviceNotificationsEnabled) {
+      Alert.alert(
+        'Continue without reminders?',
+        'Reminders are the most effective tool we offer.',
+        [
+          {
+            text: 'Remind me',
+            onPress: () => {
+              togglePushModal();
+            },
+          },
+          {
+            text: 'Skip',
+            onPress: () => {
+              nextScreen();
+            },
+          },
+        ]
+      );
+    } else {
+      nextScreen();
+    }
+  };
+
   return (
-    <LinearGradient
-      style={styles.container}
-      colors={[BACKGROUND_GRADIENT_2, BACKGROUND_GRADIENT_1]}
-    >
+    <ImageBackground style={styles.container} source={setLocalImage(image)}>
       <HeaderSpacer transparent />
       <View style={styles.contentContainer}>
         <View style={styles.topSection}>
           <Text
-            style={[titleFont, whiteFont, { marginBottom: heightUnit * 20 }]}
+            style={[
+              titleFont,
+              whiteFont,
+              { marginBottom: heightUnit * 20 },
+              bigShadow,
+            ]}
           >
             {title}
           </Text>
-          <StandardButton
-            title={'Use  Daily Reminder'}
-            onPress={
-              !isDeviceNotificationsEnabled
-                ? togglePushModal
-                : deactivePushAlert
-            }
-            image={!isDeviceNotificationsEnabled ? null : 'checkWhite'}
-          />
+          <View style={styles.centerCircleContainer}>
+            <TouchableOpacity
+              style={styles.centerCircle}
+              onPress={
+                !isDeviceNotificationsEnabled
+                  ? togglePushModal
+                  : deactivePushAlert
+              }
+            >
+              <Text style={[titleFont, whiteFont]}>Remind Me</Text>
+              {isDeviceNotificationsEnabled && (
+                <Image
+                  source={setLocalImage('checkWhite')}
+                  style={styles.image}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.bottomSection}>
           <Text style={[titleFont, whiteFont, centerAlign]}>{subtitle}</Text>
@@ -83,14 +128,14 @@ const OnboardingScrollwheelScreen = ({
             <SecondaryButton
               title={buttonTitle}
               style={{ width: widthUnit * 46, marginTop: heightUnit * 8 }}
-              onPress={nextScreen}
+              onPress={doubleCheckPermissions}
             />
           </View>
           {goBack && <PressableText title={'Back'} onPress={goBack} />}
         </View>
       </View>
       <NotificationScheduler navigation={navigation} />
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

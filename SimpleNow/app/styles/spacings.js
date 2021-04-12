@@ -3,7 +3,7 @@ import { statusBarHeight } from './constants';
 
 // Header Spacings
 const headerPaddingHorizontal = {
-  paddingHorizontal: widthUnit * 2,
+  paddingHorizontal: widthUnit * 4,
 };
 
 // Button Spacings
@@ -17,6 +17,11 @@ const standardSettingButtonSpacing = {
   margin: widthUnit,
   padding: widthUnit,
   paddingHorizontal: widthUnit * 3,
+};
+
+const subscriptionInformativeSpacing = {
+  padding: widthUnit * 3,
+  paddingHorizontal: widthUnit * 4,
 };
 
 // Carousel Spacings
@@ -64,6 +69,7 @@ const scrollViewBottomMargin = {
 export {
   standardButtonSpacing,
   standardSettingButtonSpacing,
+  subscriptionInformativeSpacing,
   headerPaddingHorizontal,
   practiceCarouselSpacing,
   islandSpacing,

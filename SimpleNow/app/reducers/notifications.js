@@ -8,8 +8,6 @@ import {
 
 const initialState = {
   isDeviceNotificationsEnabled: Platform.OS !== 'ios',
-  12340: '07:00-true-true-true-true-true-true-true',
-  '12340_isEnabled': true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +21,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         [action?.obj
-          ?.id]: `${action?.obj?.time}-${action?.obj?.isMo}-${action?.obj?.isTu}-${action?.obj?.isWe}-${action?.obj?.iTh}-${action?.obj?.isFr}-${action?.obj?.isSa}-${action?.obj?.isSu}`,
+          ?.id]: `${action?.obj?.time}-${action?.obj?.isMo}-${action?.obj?.isTu}-${action?.obj?.isWe}-${action?.obj?.isTh}-${action?.obj?.isFr}-${action?.obj?.isSa}-${action?.obj?.isSu}`,
         [`${action?.obj?.id}_isEnabled`]: true,
       };
     case DELETE_REMINDER:

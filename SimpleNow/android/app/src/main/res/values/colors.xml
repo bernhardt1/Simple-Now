@@ -1,4 +1,5 @@
 <resources>
+    <color name="black">#000</color>
     <color name="white">#FFF</color>
     <color name="brandDarkBlue">#1164C2</color>
     <color name="brandlightBlue">#16C0F0</color>

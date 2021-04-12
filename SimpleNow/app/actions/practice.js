@@ -7,6 +7,8 @@ export const UPDATE_PRACTICE_DURATION = 'UPDATE_PRACTICE_DURATION';
 export const UPDATE_NUMBER_DAILY_PRACTICE_SESSIONS =
   'UPDATE_NUMBER_DAILY_PRACTICE_SESSIONS';
 export const RESET_CURRENT_PRACTICE = 'RESET_CURRENT_PRACTICE';
+export const UPDATE_BELL_INTERVAL = 'UPDATE_BELL_INTERVAL';
+export const UPDATE_TIMER_DURATION = 'UPDATE_TIMER_DURATION';
 
 export const resetCurrentPractice = (val) => ({
   type: RESET_CURRENT_PRACTICE,
@@ -36,5 +38,15 @@ export const addProgram = (val) => ({
 
 export const removeProgram = (val) => ({
   type: REMOVE_PROGRAM,
+  val,
+});
+
+export const updateBellInterval = (val) => ({
+  type: UPDATE_BELL_INTERVAL,
+  val,
+});
+
+export const updateTimerDuration = (val) => ({
+  type: UPDATE_TIMER_DURATION,
   val,
 });

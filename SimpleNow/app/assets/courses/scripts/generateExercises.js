@@ -15,19 +15,19 @@ const QUESTION = 'question';
 const INTERACTIVE = 'interactive';
 
 const BREATH_DESCRIPTION =
-  'The Breath category contains simple breathing exercises that encourage mindfulness.';
+  'Our Breath exercises encourage mindfulness by narrowing your attention to the breath.';
 const SENSATION_DESCRIPTION =
-  "Include the Sensation category in your practice to become more mindful of your body and it's stream of sensations.";
+  'Our Sensation exercises direct your attention to your body and its stream of feelings.';
 const HEAR_DESCRIPTION =
-  'The Hear category encourages you to broaden your practice by becoming mindful of the sounds around you.';
+  'Our Sound exercises encourage you to broaden your practice by becoming mindful of the emergent sounds around you.';
 const SEE_DESCRIPTION =
-  'The exercises in the See category explore the relationship between self and environment by directing your attention outwards.';
+  'Our Sight exercises explore the relationship between self and environment by directing your attention outwards.';
 const THOUGHT_DESCRIPTION =
-  'Include the Thought category in your practice to become more mindful of your stream of thoughts and observe their flow.';
+  'The Thought category will point your attention to your stream of thoughts and encourage you to observe their flow.';
 const SENSE_DESCRIPTION =
-  'Include the Sense category in your practice to explore the intermingling of your senses and environment.';
+  'Our Sense exercises encourage you to practice mindfuless as the world and your sense of it emerges.';
 const AWARENESS_DESCRIPTION =
-  'The exercises in the Awareness category will encourage you to reflect upon the self you identify with.';
+  'Our Awareness exercises will encourage you to reflect upon the self you identify with.';
 const QUOTE_DESCRIPTION =
   'The Quote category contains quotes from mindfulness experts for you to reflect upon.';
 const QUESTION_DESCRIPTION =

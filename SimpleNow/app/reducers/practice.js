@@ -6,18 +6,23 @@ import {
   UPDATE_PRACTICE_DURATION,
   UPDATE_NUMBER_DAILY_PRACTICE_SESSIONS,
   RESET_CURRENT_PRACTICE,
+  UPDATE_BELL_INTERVAL,
+  UPDATE_TIMER_DURATION,
 } from '../actions/practice';
+import { NONE } from '../constants/constants';
 
 import generateOneDayAgoISO from '../helpers/timeHelpers/generateOneDayAgoISO';
 
 const initialState = {
-  activePrograms: ['breath', 'sensation', 'hear'],
+  activePrograms: ['breath', 'sensation', 'hear', 'see', 'thought'],
   currentPractice: [],
   currentPracticeProgress: '',
   generatePracticeIndex: 0,
   generatePracticeTimestamp: null,
-  practiceDuration: 30,
+  practiceDuration: 45,
   numberDailyPracticeSessions: 3,
+  bellInterval: NONE,
+  timerDuration: 60,
 };
 
 const practiceReducer = (state = initialState, action) => {
@@ -74,6 +79,18 @@ const practiceReducer = (state = initialState, action) => {
       return {
         ...state,
         activePrograms: newActivePrograms,
+      };
+    }
+    case UPDATE_BELL_INTERVAL: {
+      return {
+        ...state,
+        bellInterval: action.val,
+      };
+    }
+    case UPDATE_TIMER_DURATION: {
+      return {
+        ...state,
+        timerDuration: action.val,
       };
     }
     default: {

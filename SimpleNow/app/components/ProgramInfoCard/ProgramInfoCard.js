@@ -1,13 +1,16 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import setLocalImage from '../../helpers/setLocalImage';
 
 import getCategoryCardColors from '../../helpers/styleHelpers/getCategoryCardColors';
+import getCategoryCardImage from '../../helpers/styleHelpers/getCategoryCardImage';
 import {
-  footnoteFont,
+  footnoteFontThin,
   boldSubheadFont,
   whiteFont,
   centerAlign,
+  captionFont,
 } from '../../styles/fonts';
 import {
   meditationCard,
@@ -16,35 +19,24 @@ import {
 
 import styles from './styles';
 
-const ProgramInfoCard = ({
-  cardCategory,
-  isMeditation,
-  onPress,
-  selectedCategory,
-}) => {
-  const cardColors = getCategoryCardColors(cardCategory);
+const ProgramInfoCard = ({ exercise }) => {
+  const cardColors = getCategoryCardColors(exercise?.exerciseType);
+  const cardImage = getCategoryCardImage(exercise?.exerciseType);
+
   return (
-    <TouchableOpacity
-      onPress={() => {
-        onPress(cardCategory);
-      }}
-      activeOpacity={0.8}
-    >
+    <TouchableOpacity onPress={() => {}} activeOpacity={0.8}>
       <LinearGradient
         colors={cardColors}
-        style={[
-          programInfoCard,
-          isMeditation ? meditationCard : {},
-          selectedCategory === cardCategory ? styles.selected : {},
-        ]}
+        style={programInfoCard}
         useAngle={true}
         angle={135}
         angleCenter={{ x: 0.5, y: 0.5 }}
       >
-        <View>
+        <Image source={setLocalImage(cardImage)} style={styles.image} />
+        <View style={styles.programInfoCardTextContainer}>
           <Text
-            style={[boldSubheadFont, whiteFont, centerAlign]}
-          >{`${cardCategory.substring(0, 1)}`}</Text>
+            style={[footnoteFontThin, whiteFont, centerAlign]}
+          >{`${exercise?.exerciseType}`}</Text>
         </View>
       </LinearGradient>
     </TouchableOpacity>

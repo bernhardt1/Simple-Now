@@ -28,6 +28,8 @@ const styles = {
   containerContent: {
     flex: 1,
     ...islandSpacing,
+    margin: widthUnit * 6,
+    paddingHorizontal: 0,
     justifyContent: 'flex-end',
   },
   countdownContainer: {
@@ -38,12 +40,14 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: heightUnit,
   },
   timeBarContainer: {
     width: screenWidth - (islandSpacing.margin + islandSpacing.padding) * 2,
     height: widthUnit,
     backgroundColor: BRAND_WHITE,
     borderRadius: widthUnit / 2,
+    marginHorizontal: widthUnit * 4,
   },
   progressTracker: {
     position: 'absolute',

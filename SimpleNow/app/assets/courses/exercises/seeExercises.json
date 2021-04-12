@@ -1,1 +1,52 @@
-{"exerciseData":{"data":[{"id":"See-0","title":"See 1","exerciseType":"See","copy":"Look around and notice everything that is green and blue in your environment.","recommendedTime":30000},{"id":"See-1","title":"See 2","exerciseType":"See","copy":"Pick out an object and focus on it as intensely as you can. When thoughts arise, let them go and refocus on the object.","recommendedTime":30000},{"id":"See-2","title":"See 3","exerciseType":"See","copy":"Lower your gaze, unfocus your eyes and pay attention to your entire visual field.","recommendedTime":30000},{"id":"See-3","title":"See 4","exerciseType":"See","copy":"Pick up an object and stare at it for 20 seconds. Who is looking at it? Who is looking at the thought \"I am\"?","recommendedTime":30000},{"id":"See-4","title":"See 5","exerciseType":"See","copy":"Close your eyes. Observe the patterns of light and dark on your eyelid.","recommendedTime":30000}],"errors":[],"meta":{"delimiter":",","linebreak":"\r\n","aborted":false,"truncated":false,"cursor":627,"fields":["id","title","exerciseType","copy","recommendedTime"]},"type":"see","description":"The exercises in the See category explore the relationship between self and environment by directing your attention outwards."}}
+{
+  "exerciseData": {
+    "data": [
+      {
+        "id": "See-0",
+        "title": "See 1",
+        "exerciseType": "See",
+        "copy": "Look around and notice everything that is green and blue in your environment.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "See-1",
+        "title": "See 2",
+        "exerciseType": "See",
+        "copy": "Pick out an object and focus on it as intensely as you can. When thoughts arise, let them go and refocus on the object.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "See-2",
+        "title": "See 3",
+        "exerciseType": "See",
+        "copy": "Lower your gaze, unfocus your eyes and pay attention to your entire visual field.",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "See-3",
+        "title": "See 4",
+        "exerciseType": "See",
+        "copy": "Pick up an object and stare at it for 20 seconds. Who is looking at it? Who is looking at the thought \"I am\"?",
+        "recommendedTime": 30000
+      },
+      {
+        "id": "See-4",
+        "title": "See 5",
+        "exerciseType": "See",
+        "copy": "Close your eyes. Observe the patterns of light and dark on your eyelid.",
+        "recommendedTime": 30000
+      }
+    ],
+    "errors": [],
+    "meta": {
+      "delimiter": ",",
+      "linebreak": "\r\n",
+      "aborted": false,
+      "truncated": false,
+      "cursor": 627,
+      "fields": ["id", "title", "exerciseType", "copy", "recommendedTime"]
+    },
+    "type": "see",
+    "description": "The exercises in the See category explore the relationship between self and environment by directing your attention outwards."
+  }
+}

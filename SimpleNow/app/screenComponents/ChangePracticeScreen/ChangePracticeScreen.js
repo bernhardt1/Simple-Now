@@ -18,34 +18,28 @@ import { HeaderSpacer } from '../../components/HeaderSpacer';
 import { MomentCategoryCard } from '../../components/MomentCategoryCard';
 import ProgramInfoCard from '../../components/ProgramInfoCard/ProgramInfoCard';
 import StandardSettingButton from '../../components/StandardSettingButton/StandardSettingButton';
+import joinGroup from '../../helpers/analyticsHelpers/joinGroup';
+import getCategoryGroupId from '../../helpers/analyticsHelpers/getCategoryGroupId';
 import setLocalImage from '../../helpers/setLocalImage';
 import {
   BACKGROUND_GRADIENT_1,
   BACKGROUND_GRADIENT_2,
   LIGHT_OVERLAY,
 } from '../../styles/colors';
-import { heightUnit, widthUnit } from '../../styles/constants';
+import { heightUnit, screenWidth } from '../../styles/constants';
 import {
-  bodyFont,
-  captionFont,
-  centerAlign,
-  footnoteFont,
+  boldSubheadFont,
   orangeFont,
-  subheadFont,
   titleEmphasizedFont,
-  titleFont,
-  unselectedWhiteFont,
   whiteFont,
 } from '../../styles/fonts';
-import { practiceCarouselSpacing } from '../../styles/spacings';
-import MeditationsSection from './MeditationsSection';
 import MomentsSection from './MomentsSection';
 
 import styles from './styles';
+import getTomorrowsPractice from '../../helpers/reduxHelpers/getTomorrowsPractice';
 
 // categories
 const MOMENTS = 'MOMENTS';
-const MEDITATIONS = 'MEDITATIONS';
 
 // action button types
 const ADD = 'ADD';
@@ -57,11 +51,22 @@ const ChangePracticeScreen = ({
   activePrograms,
   reduxAddProgram,
   reduxRemoveProgram,
+  reduxPractice,
+  reduxContent,
 }) => {
   const [category, setCategory] = useState(MOMENTS);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [actionButtonsAnimatedValue] = useState(new Animated.Value(0));
   const [actionButtonType, setActionButtonType] = useState(ADD);
+  const [tomorrowsPractice, setTomorrowsPractice] = useState(
+    getTomorrowsPractice(reduxPractice, reduxContent)
+  );
+  const [isScrollEnabled, setIsScrollEnabled] = useState(false);
+
+  useEffect(() => {
+    const newDailyExercises = getTomorrowsPractice(reduxPractice, reduxContent);
+    setTomorrowsPractice(newDailyExercises);
+  }, [reduxPractice]);
 
   useEffect(() => {
     if (selectedCategory) {
@@ -81,14 +86,7 @@ const ChangePracticeScreen = ({
   };
 
   const renderProgramInfoCard = (item) => {
-    return (
-      <ProgramInfoCard
-        cardCategory={item}
-        isMeditation={item?.meditation}
-        onPress={onPressCard}
-        selectedCategory={selectedCategory}
-      />
-    );
+    return <ProgramInfoCard exercise={item} />;
   };
 
   const renderMomentCategoryCard = (item) => {
@@ -101,10 +99,6 @@ const ChangePracticeScreen = ({
         selectedCategory={selectedCategory}
       />
     );
-  };
-
-  const navigateInformation = () => {
-    navigation.navigate('Program', { programType: selectedCategory });
   };
 
   const navigateEditPractice = () => {
@@ -129,8 +123,11 @@ const ChangePracticeScreen = ({
   };
 
   const addProgramToPractice = () => {
+    console.log('selectedCategory', selectedCategory);
     reduxAddProgram(selectedCategory);
     setActionButtonType(REMOVE);
+
+    joinGroup(getCategoryGroupId(selectedCategory));
   };
 
   const removeProgramFromPractive = () => {
@@ -149,7 +146,7 @@ const ChangePracticeScreen = ({
       <HeaderSpacer />
       <HeaderDefaultBack
         onPressBack={navigateBack}
-        title={'Your Practice'}
+        title={'Change Practice'}
         rightButtonComponent={
           <StandardSettingButton
             title={'PRACTICE\nSETTINGS'}
@@ -158,76 +155,32 @@ const ChangePracticeScreen = ({
           />
         }
       />
-      {/* <View style={styles.yourPracticeContainer}>
-        <View style={styles.circleContainer}>
-          <Text style={[captionFont, whiteFont]}>Practicing</Text>
 
-          <Text style={[titleEmphasizedFont, whiteFont]}>
-            {activePrograms?.length}
-          </Text>
-          <Text style={[captionFont, whiteFont]}>categories</Text>
-        </View>
-        <View style={styles.tomorrowsPracticeContainer}>
-          <Text style={[subheadFont, whiteFont, styles.tomorrowTextStyle]}>
-            Your Active Categories
-          </Text>
-          {activePrograms?.length <= 0 && (
-            <View style={styles.activePracticeFlatlistContainer}>
-              <Text style={[footnoteFont, whiteFont]}>
-                Tap a category and press "Add to Practice" to include it in your
-                daily practice.
-              </Text>
-            </View>
-          )}
-          {activePrograms?.length > 0 && (
-            <FlatList
-              data={activePrograms}
-              showsHorizontalScrollIndicator={false}
-              horizontal
-              contentContainerStyle={styles.activePracticeFlatlistContainer}
-              renderItem={({ item, index }) => renderProgramInfoCard(item)}
-              removeClippedSubviews
-              keyExtractor={(item) => `${item}`}
-            />
-          )}
-        </View>
-      </View> */}
+      <View style={styles.tomorrowsPracticeContainer}>
+        <Text
+          style={[titleEmphasizedFont, whiteFont, styles.tomorrowTextStyle]}
+        >
+          Tomorrow's Practice
+        </Text>
 
-      {/* <View style={styles.categoriesContainer}>
-        <TouchableOpacity
-          style={styles.categoriesButton}
-          onPress={() => setCategory(MOMENTS)}
-        >
-          <Text
-            style={[
-              titleFont,
-              whiteFont,
-              category === MEDITATIONS ? unselectedWhiteFont : {},
-            ]}
-          >
-            Categories
-          </Text>
-        </TouchableOpacity> */}
-      {/* <TouchableOpacity
-          style={styles.categoriesButton}
-          onPress={() => setCategory(MEDITATIONS)}
-        >
-          <Text
-            style={[
-              titleFont,
-              whiteFont,
-              category === MOMENTS ? unselectedWhiteFont : {},
-            ]}
-          >
-            Meditations
-          </Text>
-        </TouchableOpacity> */}
-      {/* </View> */}
+        <FlatList
+          data={tomorrowsPractice}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          contentContainerStyle={styles.activePracticeFlatlistContainer}
+          renderItem={({ item, index }) => renderProgramInfoCard(item, index)}
+          keyExtractor={(item) => `${item?.id}`}
+          scrollEnabled={isScrollEnabled}
+          onContentSizeChange={(contentWidth) => {
+            contentWidth > screenWidth
+              ? setIsScrollEnabled(true)
+              : setIsScrollEnabled(false);
+          }}
+        />
+      </View>
+
       {category === MOMENTS && (
         <MomentsSection renderMomentCategoryCard={renderMomentCategoryCard} />
-      )}
-      {category === MEDITATIONS && (
-        <MeditationsSection renderProgramInfoCard={renderProgramInfoCard} />
       )}
       <Animated.View
         style={[
@@ -265,24 +218,9 @@ const ChangePracticeScreen = ({
               }
               style={styles.actionButtonImage}
             />
-            <Text style={[captionFont]}>
-              {actionButtonType === REMOVE ? 'Remove' : 'Add to Practice'}
+            <Text style={boldSubheadFont}>
+              {actionButtonType === REMOVE ? 'Remove' : 'Add'}
             </Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={{ flex: 1 }}
-          onPress={() => {
-            navigateInformation();
-          }}
-          underlayColor={LIGHT_OVERLAY}
-        >
-          <View style={styles.actionButton}>
-            <Image
-              source={setLocalImage('infoBlack')}
-              style={styles.actionButtonImage}
-            />
-            <Text style={[captionFont]}>Explore</Text>
           </View>
         </TouchableHighlight>
       </Animated.View>
@@ -294,6 +232,8 @@ const mapStateToProps = (state) => {
   return {
     background: state?.settings?.background || 'background1',
     activePrograms: state?.practice?.activePrograms || [],
+    reduxPractice: state?.practice || {},
+    reduxContent: state?.content || {},
   };
 };
 

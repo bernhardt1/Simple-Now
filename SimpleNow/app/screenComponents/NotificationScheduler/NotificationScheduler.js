@@ -8,6 +8,11 @@ import checkPushPermissions from '../../helpers/notificationHelpers/checkPushPer
 import reminderScheduler from '../../helpers/notificationHelpers/reminderScheduler';
 import deleteAllNotifications from '../../helpers/notificationHelpers/deleteAllNotifications';
 import generateAllRemindersArray from '../../helpers/notificationHelpers/generateAllRemindersArray';
+import joinGroup from '../../helpers/analyticsHelpers/joinGroup';
+import {
+  ANALYTICS_NOTIFICATION_OFF,
+  ANALYTICS_NOTIFICATION_ON,
+} from '../../helpers/analyticsHelpers/constants';
 
 const NotificationScheduler = ({
   navigation,
@@ -39,6 +44,14 @@ const NotificationScheduler = ({
 
   const backgroundPermissionCheck = async () => {
     const isNotificationPermissionEnabled = await checkPushPermissions();
+
+    if (!isDeviceNotificationsEnabled && isNotificationPermissionEnabled) {
+      joinGroup(ANALYTICS_NOTIFICATION_ON);
+    }
+    if (isDeviceNotificationsEnabled && !isNotificationPermissionEnabled) {
+      joinGroup(ANALYTICS_NOTIFICATION_OFF);
+    }
+
     reduxUpdateDeviceNotificationsEnabled(isNotificationPermissionEnabled);
 
     if (!isNotificationPermissionEnabled) {
